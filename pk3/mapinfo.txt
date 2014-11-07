@@ -1,50 +1,51 @@
+gameinfo
+{
+	playerclasses="DiazPlayer","HernandezPlayer"
+}
+
 clearskills
-
 skill Diaz1
-AmmoFactor 1.0
-DamageFactor 0.5
-Aggressiveness -0.5
-SpawnFilter Easy
-EasyBossBrain
-ACSReturn 0
-Key 1
-Name "One-Armed Boxer"
-
+{
+	DamageFactor=0.5
+	Aggressiveness=-0.5
+	SpawnFilter=Easy
+	EasyBossBrain
+	ACSReturn=0
+	Key=1
+	Name="One-Armed Boxer"
+}
 skill Diaz2
-AmmoFactor 1.0
-DamageFactor 0.75
-Aggressiveness 0
-SpawnFilter Easy
-ACSReturn 1
-Key 2
-Name "Assault on Precinct 13"
-
+{
+	DamageFactor=0.75
+	SpawnFilter=Easy
+	ACSReturn=1
+	Key=2
+	Name="Assault on Precinct 13"
+}
 skill Diaz3
-AmmoFactor 1.0
-DamageFactor 1.0
-Aggressiveness 0
-SpawnFilter Normal
-ACSReturn 2
-Key 3
-Name "On Deadly Ground"
-
+{
+	SpawnFilter=Normal
+	ACSReturn=2
+	Key=3
+	Name="On Deadly Ground"
+}
 skill Diaz4
-AmmoFactor 1.0
-DamageFactor 1.0
-Aggressiveness 0.5
-SpawnFilter Hard
-ACSReturn 3
-Key 4
-Name "Reservoir Dogs"
-
+{
+	Aggressiveness=0.5
+	SpawnFilter=Hard
+	ACSReturn=3
+	Key=4
+	Name="Reservoir Dogs"
+}
 skill Diaz5
-AmmoFactor 1.0
-DamageFactor 2.0
-Aggressiveness 1
-SpawnFilter Hard
-ACSReturn 4
-Key 5
-DisableCheats
-MustConfirm
-FastMonsters
-Name "Wepon modz r 4 noobs!!1"
+{
+	DamageFactor=2.0
+	Aggressiveness=1
+	SpawnFilter=Hard
+	ACSReturn=4
+	Key=5
+	DisableCheats
+	MustConfirm
+	FastMonsters
+	Name="Wepon modz r 4 noobs!!1"
+}

@@ -1,7 +1,6 @@
 ACTOR RPGLoaded : Ammo
 {
 	+IGNORESKILL
-	Inventory.MaxAmount 1
 	Tag "Loaded"
 }
 
@@ -11,7 +10,6 @@ ACTOR RPGAmmo : Ammo replaces RocketAmmo
 	Inventory.MaxAmount 8
 	Inventory.PickupMessage "RPG-7 Rocket"
 	Tag "Rockets"
-	Inventory.Amount	1
 	Inventory.PickupSound "rpg/ammo"
 	Ammo.BackpackAmount 1
 	Ammo.BackpackMaxAmount 16
@@ -19,8 +17,8 @@ ACTOR RPGAmmo : Ammo replaces RocketAmmo
 	States
 	{
 	Spawn:
-	    	RPGA A -1
-	    	LOOP
+		RPGA A -1
+		LOOP
 	}
 }
 
@@ -31,27 +29,26 @@ ACTOR RPG7 : Weapon replaces RocketLauncher
 	Inventory.PickupSound "rpg/pickup"
 	Obituary "%o notices %k's rocket speeding towards %h."
 	Weapon.SisterWeapon RPG2
-	ConversationID 192
-	Weapon.AmmoType		"RPGLoaded"
-	Weapon.AmmoGive		0
-	Weapon.AmmoUse		1
-	Weapon.AmmoType2	"RPGAmmo"
-	Weapon.AmmoGive2	1
-	Weapon.AmmoUse2		0
-	Radius				18
-	Height				12
-	Weapon.Kickback		25000
+	Weapon.AmmoType "RPGLoaded"
+	Weapon.AmmoUse 1
+	Weapon.AmmoType2 "RPGAmmo"
+	Weapon.AmmoGive2 1
+	Weapon.AmmoUse2 1
+	Radius 18
+	Height 12
+	Weapon.Kickback 25000
 	+NOAUTOFIRE
 	+NOALERT
-	+AMMO_OPTIONAL
+	+AMMO_CHECKBOTH
 	Scale 0.25
 	States
 	{
 	Spawn:
-		RPGP A 1
+		RPGP A -1
 		LOOP
     Deselect:
-		RPG7 A 0 A_JumpIfNoAmmo("DeselectNoAmmo")
+		RPG7 A 0 A_JumpIfInventory("RPGLoaded",1,1)
+		Goto DeselectNoAmmo
 		RPG7 A 1 Offset(12,38)
 		RPG7 A 1 Offset(24,46)
 		RPG7 A 1 Offset(36,54) A_PlaySound("weapon/deselect")
@@ -61,13 +58,23 @@ ACTOR RPG7 : Weapon replaces RocketLauncher
 		RPG7 A 1 Offset(100,110)
 		RPG7 A 1 Offset(120,136)
 		RPG7 A 1 Offset(140,160)
-		TNT1 A 15 A_WeaponReady(14)
-	DeselectLoop:
-		TNT1 A 1 A_Lower
-		Goto DeselectLoop
-	Select:
-		RPG7 A 0 A_JumpIfNoAmmo("SelectNoAmmo")
-		TNT1 A 9 SetPlayerProperty(0,1,2)
+		TNT1 A 15
+		TNT1 A 0 A_Lower
+		Wait
+	DeselectNoAmmo:
+		RPG7 C 1 Offset(-12,38)
+		RPG7 C 1 Offset(-24,46)
+		RPG7 C 1 Offset(-36,54) A_PlaySound("weapon/deselect")
+		RPG7 C 1 Offset(-48,66)
+		RPG7 C 1 Offset(-60,80)
+		RPG7 C 1 Offset(-80,96)
+		TNT1 A 15
+		TNT1 A 0 A_Lower
+		Wait
+	Ready:
+		RPG7 A 0 A_JumpIfInventory("RPGLoaded",1,1)
+		Goto SelectNoAmmo
+		TNT1 A 9
 		RPG7 A 1 Offset(140,160)
 		RPG7 A 1 Offset(120,136)
 		RPG7 A 1 Offset(100,110)
@@ -77,44 +84,30 @@ ACTOR RPG7 : Weapon replaces RocketLauncher
 		RPG7 A 1 Offset(36,54) A_PlaySound("weapon/select5")
 		RPG7 A 1 Offset(24,46)
 		RPG7 A 1 Offset(12,38)
-	SelectLoop:
-		RPG7 A 1 A_Raise
-		Goto SelectLoop
-	DeselectNoAmmo:
-		RPG7 C 1 Offset(-12,38)
-		RPG7 C 1 Offset(-24,46)
-		RPG7 C 1 Offset(-36,54) A_PlaySound("weapon/deselect")
-		RPG7 C 1 Offset(-48,66)
-		RPG7 C 1 Offset(-60,80)
-		RPG7 C 1 Offset(-80,96)
-		TNT1 A 15 A_WeaponReady(26)
-	DeselectLoopNoAmmo:
-		TNT1 A 1 A_Lower
-		Goto DeselectLoopNoAmmo
+		Goto Ready2
 	SelectNoAmmo:
-		TNT1 A 9 SetPlayerProperty(0,1,2)
+		TNT1 A 9
 		RPG7 C 1 Offset(-80,96)
 		RPG7 C 1 Offset(-60,80)
 		RPG7 C 1 Offset(-48,66)
 		RPG7 C 1 Offset(-36,54) A_PlaySound("weapon/select5")
 		RPG7 C 1 Offset(-24,46)
 		RPG7 C 1 Offset(-12,38)
-	SelectLoopNoAmmo:
-		RPG7 C 1 A_Raise
-		Goto SelectLoopNoAmmo
-    Ready:
-		RPG7 A 0 A_JumpIfNoAmmo("ReadyNoAmmo")
-		RPG7 A 0 A_JumpIfInventory("IsReloading",1,"Reload")
-    	RPG7 A 1 A_WeaponReady
+		Goto Ready2
+	Select:
+		TNT1 A 0 A_Raise
+		Loop
+    Ready2:
+		RPG7 A 0 A_JumpIfInventory("RPGLoaded",1,1)
+    	RPG7 C 1 A_WeaponReady(WRF_ALLOWRELOAD)
     	Loop
-	ReadyNoAmmo:
-		RPG7 C 0 A_JumpIfInventory("IsReloading",1,"ReloadNoAmmo")
-		RPG7 C 1 A_WeaponReady
-		Goto Ready
+		RPG7 A 1 A_WeaponReady
+		Loop
     Fire:
-		RPG7 A 0 A_JumpIfNoAmmo("Dryfire")
+		RPG7 A 0 A_JumpIfInventory("RPGLoaded",1,1)
+		Goto DryFire
         RPG7 A 0 A_PlayWeaponSound("rpg/fire")
-        RPG7 A 0 BRIGHT A_GunFlash
+        RPG7 A 0 A_GunFlash
     	RPG7 B 2 Bright A_FireCustomMissile("RPG7Rocket",0,1,12,0)
 		RPG7 C 1 Offset(6,34)
 		RPG7 C 1 Offset(14,36)
@@ -130,20 +123,17 @@ ACTOR RPG7 : Weapon replaces RocketLauncher
 		RPG7 C 1 Offset(1,29)
 		RPG7 C 1 Offset(-2,30)
 		RPG7 C 1 Offset(-1,32)
-    	Goto Ready
+		TNT1 A 0 A_CheckReload
+    	Goto Ready2
 	Dryfire:
 		RPG7 C 4 A_PlaySound("skorpion/noammo")
-		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"ReloadNoAmmo")
-		Goto Ready
+		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"Reload")
+		Goto Ready2
 	Reload:
-		RPG7 A 1
-		Goto Ready
-	ReloadNoAmmo:
 		RPG7 C 0 A_JumpIfInventory("RPGLoaded",1,2)
 		RPG7 C 0 A_JumpIfInventory("RPGAmmo",1,2)
-		RPG7 C 1
-		Goto Ready
-	TrueReload:
+		RPG7 C 1 A_WeaponReady(WRF_NOFIRE)
+		Goto Ready2
 		RPG7 C 1 Offset(-1,33)
 		RPG7 C 1 Offset(-2,34)
 		RPG7 C 1 Offset(-3,35)
@@ -160,7 +150,7 @@ ACTOR RPG7 : Weapon replaces RocketLauncher
 		RPG7 C 1 Offset(-1,106)
 		RPG7 C 1 Offset(1,108) A_PlayWeaponSound("rpg/load")
 		RPG7 C 0 A_TakeInventory("RPGAmmo",1)
-		RPG7 C 0 A_GiveInventory("RPGLoaded",1)
+		RPG7 C 0 A_GiveInventory("RPGLoaded")
 		RPG7 C 1 Offset(5,116)
 		RPG7 C 1 Offset(10,124)
 		RPG7 A 1 Offset(18,128)
@@ -178,13 +168,11 @@ ACTOR RPG7 : Weapon replaces RocketLauncher
 		RPG7 A 1 Offset(2,28)
 		RPG7 A 1 Offset(-1,27)
 		RPG7 A 1 Offset(1,29)
-		Goto Ready
+		Goto Ready2
     Flash:
-      	TNT1 A 0
       	TNT1 A 2 A_Light2
       	TNT1 A 2 A_Light1
-      	TNT1 A 1 A_Light0
-      	Stop
+      	Goto LightDone
     }
 }
 
@@ -196,14 +184,10 @@ ACTOR RPG2 : RPG7
 	States
 	{
 	Reload:
-		RPG7 A 1
-		Goto Ready
-	ReloadNoAmmo:
 		RPG7 C 0 A_JumpIfInventory("RPGLoaded",1,2)
 		RPG7 C 0 A_JumpIfInventory("RPGAmmo",1,2)
-		RPG7 C 1
-		Goto Ready
-	TrueReload:
+		RPG7 C 1 A_WeaponReady(WRF_NOFIRE)
+		Goto Ready2
 		RPG7 C 1 Offset(-1,33)
 		RPG7 C 1 Offset(-3,35)
 		RPG7 C 1 Offset(-4,43)
@@ -214,7 +198,7 @@ ACTOR RPG2 : RPG7
 		RPG7 C 1 Offset(-2,100)
 		RPG7 C 1 Offset(1,108) A_PlayWeaponSound("rpg/load")
 		RPG7 C 0 A_TakeInventory("RPGAmmo",1)
-		RPG7 C 0 A_GiveInventory("RPGLoaded",1)
+		RPG7 C 0 A_GiveInventory("RPGLoaded")
 		RPG7 C 1 Offset(5,116)
 		RPG7 C 1 Offset(10,124)
 		RPG7 A 1 Offset(18,128)
@@ -225,6 +209,6 @@ ACTOR RPG2 : RPG7
 		RPG7 A 1 Offset(14,46)
 		RPG7 A 1 Offset(6,32)
 		RPG7 A 1 Offset(2,28)
-		Goto Ready
+		Goto Ready2
 	}
 }

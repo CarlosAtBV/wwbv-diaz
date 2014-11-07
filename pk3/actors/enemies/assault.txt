@@ -1,6 +1,6 @@
-ACTOR WeaselChaingunner 3435
+ACTOR WeaselChaingunner
 {
-	DropItem Skorpion
+	DropItem Chaingun//Skorpion
 	AttackSound "enemy/skor"
 	SeeSound "lizardcommando/sight"
 	PainSound "lizarcommando/pain"
@@ -9,7 +9,6 @@ ACTOR WeaselChaingunner 3435
 	Obituary "threat ''%o'' has been neutralized."
 	Decal BulletChip
 	health 70
-	radius 20
 	height 56
 	mass 100
 	speed 8
@@ -19,20 +18,20 @@ ACTOR WeaselChaingunner 3435
 	States
 	{
 	Spawn:
-    	CPOS AB 10 A_Look
-    	loop
+		CPOS AB 10 A_Look
+		loop
 	See:
 		CPOS F 0 A_JumpIfInventory("SkorClip",20,"Reload")
-    	CPOS AABBCCDD 3 A_Chase
-    	loop
+		CPOS AABBCCDD 3 A_Chase
+		loop
 	Missile:
-    	CPOS E 10 A_FaceTarget
+		CPOS E 10 A_FaceTarget
 		CPOS F 0 A_JumpIfInventory("SkorClip",20,"Reload")
-    	CPOS F 2 BRIGHT A_CPosAttack
+		CPOS F 2 BRIGHT A_CPosAttack
 		CPOS E 0 A_CustomMissile("DiazRifleCasing",32,10,random(260,280))
 		CPOS E 3 A_GiveInventory("SkorClip",1)
-    	CPOS F 1 A_CPosRefire
-    	goto Missile+1
+		CPOS F 1 A_CPosRefire
+		goto Missile+1
 	Reload:
 		CPOS D 0 A_TakeInventory("SkorClip",30)
 		CPOS D 8 A_PlaySound("skorpion/clipout")
@@ -42,11 +41,11 @@ ACTOR WeaselChaingunner 3435
 		CPOS E 8
 		Goto See
 	Pain:
-    	CPOS G 3
-    	CPOS G 3 A_Pain
-	    goto See
+		CPOS G 3
+		CPOS G 3 A_Pain
+		goto See
 		Death.Lightning:
-		LDTH A 2 BRIGHT A_PlaySoundEx("misc/lightningdeath","SoundSlot5",0)
+		LDTH A 2 BRIGHT A_PlaySound("misc/lightningdeath",5)
 		LDTH A 2
 		LDTH A 2 BRIGHT
 		LDTH A 2
@@ -67,44 +66,43 @@ ACTOR WeaselChaingunner 3435
 		Stop
 	XDeath:
 		BCUL O 0 A_SpawnDebris("NashGore_Gib9",0)
- 	BCUL O 0 A_SpawnDebris("NashGore_Gib10",0)
- 	BCUL O 0 A_SpawnDebris("NashGore_Gib11",0)
- 	BCUL O 0 A_SpawnDebris("NashGore_Gib11",0)
- 	BCUL O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
-
+		BCUL O 0 A_SpawnDebris("NashGore_Gib10",0)
+		BCUL O 0 A_SpawnDebris("NashGore_Gib11",0)
+		BCUL O 0 A_SpawnDebris("NashGore_Gib11",0)
+		BCUL O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
 		CPOS M 4 A_XScream
-		 	BCUL P 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		BCUL P 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
 		CPOS N 4
-		 	BCUL Q 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		BCUL Q 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
 		CPOS O 4
-		 	BCUL R 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		BCUL R 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
 		CPOS PQR 4
 		CPOS S 4 A_Fall
 		CPOS T 4
 		CPOS U -1
 		Stop
 	Death.Fire:
-	BURN ABC 5 BRIGHT
-	BURN D 5 BRIGHT A_PlaySound("misc/flamedeath")
-	BURN EFGHIJKLMN 5 BRIGHT
-	BURN O 5 BRIGHT A_NoBlocking
-	BURN PQRSTU 5 BRIGHT
-	BURN V -1
-	Stop
+		BURN ABC 5 BRIGHT
+		BURN D 5 BRIGHT A_PlaySound("misc/flamedeath")
+		BURN EFGHIJKLMN 5 BRIGHT
+		BURN O 5 BRIGHT A_NoBlocking
+		BURN PQRSTU 5 BRIGHT
+		BURN V -1
+		Stop
 	Death.Neut:
-	DISR A 3 BRIGHT A_SetTranslucent(0.9,0)
-	DISR B 3 BRIGHT A_PlaySound("misc/disintdeath")
-	DISR C 3 BRIGHT A_SetTranslucent(0.8,0)
-	DISR D 3 BRIGHT A_SetTranslucent(0.7,0)
-	DISR E 3 BRIGHT A_SetTranslucent(0.6,0)
-	DISR F 3 BRIGHT A_SetTranslucent(0.5,0)
-	DISR G 3 BRIGHT A_SetTranslucent(0.4,0)
-	DISR H 3 BRIGHT A_SetTranslucent(0.3,0)
-	DISR I 3 BRIGHT A_SetTranslucent(0.2,0)
-	DISR J 3 BRIGHT A_SetTranslucent(0.1,0)
-	Stop
+		DISR A 3 BRIGHT A_SetTranslucent(0.9,0)
+		DISR B 3 BRIGHT A_PlaySound("misc/disintdeath")
+		DISR C 3 BRIGHT A_SetTranslucent(0.8,0)
+		DISR D 3 BRIGHT A_SetTranslucent(0.7,0)
+		DISR E 3 BRIGHT A_SetTranslucent(0.6,0)
+		DISR F 3 BRIGHT A_SetTranslucent(0.5,0)
+		DISR G 3 BRIGHT A_SetTranslucent(0.4,0)
+		DISR H 3 BRIGHT A_SetTranslucent(0.3,0)
+		DISR I 3 BRIGHT A_SetTranslucent(0.2,0)
+		DISR J 3 BRIGHT A_SetTranslucent(0.1,0)
+		Stop
 	Raise:
-    	CPOS LKJIH 5
-	    goto See
+		CPOS LKJIH 5
+		goto See
 	}
 }

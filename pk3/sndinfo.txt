@@ -10,24 +10,24 @@ menu/activate menupick
 menu/dismiss menupick
 menu/clear menuinvl
 
-$playeralias	player	diaz	*crazydeath		diaz/deathhi
-$playeralias	player	diaz	*wimpydeath		diaz/deathlo
-$playeralias	player	diaz	*death		diaz/deathlo
-$playeralias	player	diaz	*xdeath		diaz/deathhi
-$playersound	player	diaz	*gibbed		diaz/deathhi
-$playersound	player	diaz	*pain100	diazp25
-$playersound	player	diaz	*pain75		diazp50
-$playersound	player	diaz	*pain50		diazp75
-$playersound	player	diaz	*pain25		diazp100
-$playersound    player	diaz	*land       diazland
-$playersound	player	diaz	*grunt		diazoof
-$playersound	player	diaz	*usefail	dsnoway
-$playersound	player	diaz	*jump		diazjump
-$playeralias	player	diaz	*melee		diaz/melee
-$playeralias	player	diaz	*taunt		diaz/taunt
-$playeralias	player	diaz	*disint		diaz/disint
-$playeralias	player	diaz	*falcon		diaz/falcon
-$playeralias	player	diaz	*paunch		diaz/paunch
+$playeralias	diaz	male	*crazydeath	diaz/deathhi
+$playeralias	diaz	male	*wimpydeath	diaz/deathlo
+$playeralias	diaz	male	*death		diaz/deathlo
+$playeralias	diaz	male	*xdeath		diaz/deathhi
+$playersound	diaz	male	*gibbed		diaz/deathhi
+$playersound	diaz	male	*pain100	diazp25
+$playersound	diaz	male	*pain75		diazp50
+$playersound	diaz	male	*pain50		diazp75
+$playersound	diaz	male	*pain25		diazp100
+$playersound   	diaz	male	*land       diazland
+$playersound	diaz	male	*grunt		diazoof
+$playersound	diaz	male	*usefail	dsnoway
+$playersound	diaz	male	*jump		diazjump
+$playeralias	diaz	male	*melee		diaz/melee
+$playeralias	diaz	male	*taunt		diaz/taunt
+$playeralias	diaz	male	*disint		diaz/disint
+$playeralias	diaz	male	*falcon		diaz/falcon
+$playeralias	diaz	male	*paunch		diaz/paunch
 diaz/disint diazdist
 $random diaz/deathlo { dzldth1 dzldth2 dzldth3 dzldth4 }
 dzldth1 diazldt1
@@ -57,8 +57,8 @@ dztaunt3 dztaunt3
 dztaunt4 dztaunt4
 dztaunt5 dztaunt5
 
-$playersound	hernandez	male	*crazydeath		hdth1
-$playersound	hernandez	male	*wimpydeath		hdth1
+$playersound	hernandez	male	*crazydeath	hdth1
+$playersound	hernandez	male	*wimpydeath	hdth1
 $playersound	hernandez	male	*death		hdth1
 $playersound	hernandez	male	*xdeath		hdth1
 $playersound	hernandez	male	*gibbed		hdth1
@@ -277,7 +277,7 @@ $random melee/hit { m1 m2 m3 m4 m5 m6 }
 $random melee/wall { mw1 mw2 mw3 }
 mls1 meleesw1
 mls2 meleesw2
-m1 melee1 
+m1 melee1
 m2 melee2
 m3 melee3
 m4 melee4
@@ -478,7 +478,7 @@ cf9 dsbgflm9
 cfa dsbgflma
 cfb dsbgflmb
 cfc dsbgflmc
-cfd dsbgflmd 
+cfd dsbgflmd
 cfe dsbgflme
 
 $alias world/barrelx		weapons/rocklx
@@ -494,69 +494,69 @@ explosion7					dsbarex7
 $random lizardcommando/death { guydie01 guydie02 guydie03 guydie04 guydie05 guydie06 guydie07 guydie08 guydie09 guydie10 guydie11 guydie12 guydie13 guydie14 guydie15 guydie16 guydie17 guydie18 guydie19 guydie20 }
 guydie01 guydie01
 guydie02 guydie02
-guydie03 guydie03 
-guydie04 guydie04 
-guydie05 guydie05 
-guydie06 guydie06 
-guydie07 guydie07 
-guydie08 guydie08 
-guydie09 guydie09 
-guydie10 guydie10 
-guydie11 guydie11 
-guydie12 guydie12 
-guydie13 guydie13 
-guydie14 guydie14 
-guydie15 guydie15 
-guydie16 guydie16 
-guydie17 guydie17 
-guydie18 guydie18 
-guydie19 guydie19 
-guydie20 guydie20 
+guydie03 guydie03
+guydie04 guydie04
+guydie05 guydie05
+guydie06 guydie06
+guydie07 guydie07
+guydie08 guydie08
+guydie09 guydie09
+guydie10 guydie10
+guydie11 guydie11
+guydie12 guydie12
+guydie13 guydie13
+guydie14 guydie14
+guydie15 guydie15
+guydie16 guydie16
+guydie17 guydie17
+guydie18 guydie18
+guydie19 guydie19
+guydie20 guydie20
 $random lizardcommando/pain { guyhrt10 guyhrt11 guyhurt1 guyhurt2 guyhurt3 guyhurt4 guyhurt5 guyhurt6 guyhurt7 guyhurt8 guyhurt9 }
-guyhrt10 guyhrt10 
-guyhrt11 guyhrt11 
-guyhurt1 guyhurt1 
-guyhurt2 guyhurt2 
-guyhurt3 guyhurt3 
-guyhurt4 guyhurt4 
-guyhurt5 guyhurt5 
-guyhurt6 guyhurt6 
-guyhurt7 guyhurt7 
-guyhurt8 guyhurt8 
-guyhurt9 guyhurt9 
+guyhrt10 guyhrt10
+guyhrt11 guyhrt11
+guyhurt1 guyhurt1
+guyhurt2 guyhurt2
+guyhurt3 guyhurt3
+guyhurt4 guyhurt4
+guyhurt5 guyhurt5
+guyhurt6 guyhurt6
+guyhurt7 guyhurt7
+guyhurt8 guyhurt8
+guyhurt9 guyhurt9
 $random lizardcommando/sight { guyrsit1 guyrsit2 guyrsit3 guyrsit4 guysit01 guysit02 guysit03 guysit04 guysit05 guysit06 guysit07 guysit08 guysit09 guysit10 guysit11 guysit12 guysit13 guysit14 guysit15 guysit16 guysit17 guysit18 guysit19 guysit20 guysit21 guysit22 guysit23 }
-guyrsit1 guyrsit1 
-guyrsit2 guyrsit2 
-guyrsit3 guyrsit3 
-guyrsit4 guyrsit4 
-guysit01 guysit01 
-guysit02 guysit02 
-guysit03 guysit03 
-guysit04 guysit04 
-guysit05 guysit05 
-guysit06 guysit06 
-guysit07 guysit07 
-guysit08 guysit08 
-guysit09 guysit09 
-guysit10 guysit10 
-guysit11 guysit11 
-guysit12 guysit12 
-guysit13 guysit13 
-guysit14 guysit14 
-guysit15 guysit15 
-guysit16 guysit16 
-guysit17 guysit17 
-guysit18 guysit18 
-guysit19 guysit19 
-guysit20 guysit20 
-guysit21 guysit21 
-guysit22 guysit22 
-guysit23 guysit23 
+guyrsit1 guyrsit1
+guyrsit2 guyrsit2
+guyrsit3 guyrsit3
+guyrsit4 guyrsit4
+guysit01 guysit01
+guysit02 guysit02
+guysit03 guysit03
+guysit04 guysit04
+guysit05 guysit05
+guysit06 guysit06
+guysit07 guysit07
+guysit08 guysit08
+guysit09 guysit09
+guysit10 guysit10
+guysit11 guysit11
+guysit12 guysit12
+guysit13 guysit13
+guysit14 guysit14
+guysit15 guysit15
+guysit16 guysit16
+guysit17 guysit17
+guysit18 guysit18
+guysit19 guysit19
+guysit20 guysit20
+guysit21 guysit21
+guysit22 guysit22
+guysit23 guysit23
 lizardcommando/misc misc01
 
 $random vacbob/sight {vacbob/sight1 vacbob/sight2 vacbob/sight3 vacbob/sight4 vacbob/sight5 vacbob/sight6 vacbob/sight7}
 vacbob/sight1			dschsit1
-vacbob/sight2			dschsit2		
+vacbob/sight2			dschsit2
 vacbob/sight3			dschsit3
 vacbob/sight4			dschsit4
 vacbob/sight5			dschsit5

@@ -1,4 +1,4 @@
-Actor DiazPlayer : DoomPlayer 
+Actor DiazPlayer : DoomPlayer
 {
     Player.StartItem P50Handgun
     Player.StartItem MartialArts
@@ -13,10 +13,13 @@ Actor DiazPlayer : DoomPlayer
 	Player.StartItem PsiEnergy 100
 	Player.StartItem ATClip 2
 	Player.StartItem NeutClip 2
-	Player.StartItem Action_Reload
-	Player.StartItem Action_ReloadCancel
-	Player.StartItem AutoReloadingToggle
-	Player.WeaponSlot 2, P50Handgun, Marteba
+	Player.WeaponSlot 1,MartialArts,PsiAmp
+	Player.WeaponSlot 2,P50Handgun,JudgmentPistol,Marteba
+	Player.WeaponSlot 3,MauserRifle,MiniShotgun
+	Player.WeaponSlot 4,SMG37,Skorpion
+	Player.WeaponSlot 5,SlugRifle,RPK
+	Player.WeaponSlot 6,RPG7,HandGrenade
+	Player.WeaponSlot 7,Neutralizer,LanceDriver
 	Player.CrouchSprite ""
 	Player.RunHealth 14
 	Player.ViewHeight 49
@@ -27,26 +30,26 @@ Actor DiazPlayer : DoomPlayer
 	States
 	{
 	Spawn:
-		DIAZ A 1
+		DIAZ A -1
 		Loop
 	See:
 		DIAZ A 6
 		DIAZ B 6 A_SpawnItemEx("PlayerStep", 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, SXF_NoCheckPosition | 128)
 		DIAZ C 6
 		DIAZ D 6 A_SpawnItemEx("PlayerStep", 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, SXF_NoCheckPosition | 128)
-		goto Spawn
+		Loop
 	Pain:
 		DIAZ G 0 A_SetBlend ("20 00 00", 0.7, 6)
 		DIAZ G 3 A_Pain
 		Goto Spawn
 	Missile:
-		DIAZ E 12 
+		DIAZ E 12
 		Goto Spawn
 	Melee:
 		DIAZ F 6 BRIGHT
 		Goto Missile
 	Death.Lightning:
-		LDTH A 2 BRIGHT A_PlaySoundEx("misc/lightningdeath","SoundSlot5",0)
+		LDTH A 2 BRIGHT A_PlaySound("misc/lightningdeath",5)
 		LDTH A 2
 		LDTH A 2 BRIGHT
 		LDTH A 2
@@ -97,7 +100,7 @@ Actor DiazPlayer : DoomPlayer
 	}
 }
 
-ACTOR HernandezPlayer : DoomPlayer
+ACTOR HernandezPlayer : DiazPlayer
 {
     Player.StartItem JudgmentPistol
     Player.StartItem MartialArts
@@ -112,42 +115,33 @@ ACTOR HernandezPlayer : DoomPlayer
 	Player.StartItem PsiEnergy 100
 	Player.StartItem ATClip 2
 	PLayer.StartItem IsHernandez
-	Player.StartItem Action_Reload
-	Player.StartItem Action_ReloadCancel
-	Player.StartItem AutoReloadingToggle
-	Player.WeaponSlot 2, JudgmentPistol, Marteba
-	Player.RunHealth 14
-	Player.ViewHeight 49
-	Player.AttackZOffset 17
-	Player.ColorRange 0 0
 	Player.DisplayName "Hernandez"
 	Player.ViewHeight 50
 	Player.AttackZOffset 18
 	Player.SoundClass "hernandez"
-	Player.CrouchSprite ""
 	States
 	{
 	Spawn:
-		AGTH A 1
+		AGTH A -1
 		Loop
 	See:
 		AGTH A 6
 		AGTH B 6 A_SpawnItemEx("PlayerStep", 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, SXF_NoCheckPosition | 128)
 		AGTH C 6
 		AGTH D 6 A_SpawnItemEx("PlayerStep", 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, SXF_NoCheckPosition | 128)
-		goto Spawn
+		Loop
 	Pain:
 		AGTH G 0 A_SetBlend ("20 00 00", 0.7, 6)
 		AGTH G 3 A_Pain
 		Goto Spawn
 	Missile:
-		AGTH E 12 
+		AGTH E 12
 		Goto Spawn
 	Melee:
 		AGTH F 6 BRIGHT
 		Goto Missile
 	Death.Lightning:
-		LDTH A 2 BRIGHT A_PlaySoundEx("misc/lightningdeath","SoundSlot5",0)
+		LDTH A 2 BRIGHT A_PlaySound("misc/lightningdeath",5)
 		LDTH A 2
 		LDTH A 2 BRIGHT
 		LDTH A 2
@@ -160,7 +154,6 @@ ACTOR HernandezPlayer : DoomPlayer
 		LDTH A 2 BRIGHT
 		LDTH A 2
 	Death:
-		AGTH I 0 BRIGHT
 		AGTH J 4 BRIGHT A_PlayerScream
 		AGTH K 4 BRIGHT A_NoBlocking
 		AGTH L 4
@@ -168,7 +161,6 @@ ACTOR HernandezPlayer : DoomPlayer
 		AGTH N -1
 		Stop
 	XDeath:
-		MISL B 0 BRIGHT
 		MISL B 5 BRIGHT A_XScream
 		MISL C 5 BRIGHT A_NoBlocking
 		MISL D 5
@@ -200,90 +192,42 @@ ACTOR HernandezPlayer : DoomPlayer
     	AGTH O 1 A_FreezeDeathChunks
     	Wait
 	}
-}	
+}
 
 ACTOR PlayerStep
 {
-   Radius  6
-   Height  6
-   //Mass 0
-     +CORPSE
-     +NOCLIP
-     -DONTSPLASH
-   States
-   {
-   Spawn:
-      TNT1 A 8
-      Stop
-   Crash:
-      TNT1 A 1
-      Stop
-   }
+	Radius  6
+	Height  6
+	//Mass 0
+	+CORPSE
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 A 8
+		Stop
+	Crash:
+		TNT1 A 1
+		Stop
+	}
 }
 
-ACTOR Action_Reload : CustomInventory
-{
-   Inventory.Amount 1
-   Inventory.MaxAmount 1
-   -INVBAR
-
-   States
-   {
-       Use:
-       TNT1 A 0 A_GiveInventory("IsReloading",1)
-       Fail
-   }
-}
-
-ACTOR Action_ReloadCancel : CustomInventory
-{
-   Inventory.Amount 1
-   Inventory.MaxAmount 1
-   -INVBAR
-
-   States
-   {
-       Use:
-       TNT1 A 0 A_TakeInventory("IsReloading",1)
-       Fail
-   }
-}
-
-ACTOR IsReloading : Inventory
-{
-   Inventory.Amount 1
-   Inventory.MaxAmount 1
-   -INVBAR
-}
-
-ACTOR EnableAutoReload : Inventory
-{
-   Inventory.Amount 1
-   Inventory.MaxAmount 1
-   -INVBAR
-}
+ACTOR EnableAutoReload : Inventory{}
 
 ACTOR AutoReloadingToggle : CustomInventory
 {
-	Inventory.Amount 1
-   Inventory.MaxAmount 1
-   -INVBAR
-
-   States
-   {
-       Use:
+	States
+	{
+	Use:
 		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"Disable")
-       TNT1 A 0 A_GiveInventory("EnableAutoReload",1)
-	   TNT1 A 0 A_Print("Auto-Reload ON")
-       Fail
-	   Disable:
-	   	TNT1 A 0 A_TakeInventory("EnableAutoReload",1)
+		TNT1 A 0 A_GiveInventory("EnableAutoReload")
+		TNT1 A 0 A_Print("Auto-Reload ON")
+		Fail
+	Disable:
+		TNT1 A 0 A_TakeInventory("EnableAutoReload")
 		TNT1 A 0 A_Print("Auto-Reload OFF")
 		Fail
-   }
+	}
 }
 
-ACTOR IsHernandez : Inventory
-{
-	Inventory.MaxAmount 1
-}
+ACTOR IsHernandez : Inventory{}

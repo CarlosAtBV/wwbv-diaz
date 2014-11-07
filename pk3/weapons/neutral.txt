@@ -22,55 +22,55 @@ ACTOR Neutralizer : Weapon replaces BFG9000
 	Inventory.PickupMessage "Compressed Energy Neutralizer (7)"
 	Inventory.PickupSound "neutralizer/pickup"
 	Obituary "%o was turned into toothpaste by %k."
-	Weapon.AmmoType		"NeutAmmo"
-	Weapon.AmmoGive		2
-	Weapon.AmmoUse		1
-	Radius				12
-	Height				12
-	Weapon.Kickback		250
+	Weapon.AmmoType "NeutAmmo"
+	Weapon.AmmoGive 2
+	Weapon.AmmoUse 1
+	Radius 12
+	Height 12
+	Weapon.Kickback 250
 	+NOAUTOFIRE
 	States
 	{
 	Spawn:
 		NEUP A -1
 		Loop
-	Select:
-		TNT1 A 10 SetPlayerProperty(0,1,2)
-		NEUH E 1 A_PlayWeaponSound("neutralizer/pickup")
-		NEUH DCBA 1
-		NEUT A 1 A_Raise
-		Goto Select+6
 	Deselect:
-		NEUH A 1 A_PlayWeaponSound("neutralizer/down")
+		NEUH A 1 A_PlaySound("neutralizer/down",CHAN_WEAPON)
 		NEUH BCDE 1
 		TNT1 A 10
-		TNT1 A 1 A_Lower
-		Goto Deselect+6
+		TNT1 A 0 A_Lower
+		Wait
+	Select:
+		TNT1 A 0 A_Raise
+		Loop
 	Ready:
+		NEUH E 1 A_PlaySound("neutralizer/pickup",CHAN_WEAPON)
+		NEUH DCBA 1
+	Ready2:
 		NEUT AAAAABBBBBCCCCCBBBBB 1 A_WeaponReady
 		Loop
 	Fire:
 		NEUC ABCDEFG 1
-		NEUT A 0 A_PlayWeaponSound("neutralizer/fire")
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",12,0,15,5)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",-12,0,15,5)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",6,0,15,5)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",-6,0,15,5)
+		NEUT A 0 A_PlaySound("neutralizer/fire",CHAN_WEAPON)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",12,0,15,5)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",-12,0,15,5)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",6,0,15,5)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",-6,0,15,5)
 		NEUF A 2 BRIGHT A_FireCustomMissile("SwarmBolt",0,0,15,5)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",12,0,15,0)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",-12,0,15,0)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",6,0,15,0)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",-6,0,15,0)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",12,0,15,0)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",-12,0,15,0)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",6,0,15,0)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",-6,0,15,0)
 		NEUF A 2 BRIGHT A_FireCustomMissile("SwarmBolt",0,0,15,0)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",12,0,15,-5)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",-12,0,15,-5)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",6,0,15,-5)
-		NEUT B 0 BRIGHT A_FireCustomMissile("SwarmBolt",-6,0,15,-5)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",12,0,15,-5)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",-12,0,15,-5)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",6,0,15,-5)
+		NEUT B 0 A_FireCustomMissile("SwarmBolt",-6,0,15,-5)
 		NEUF A 2 BRIGHT A_FireCustomMissile("SwarmBolt",0,1,15,-5)
 		NEUF BC 2 BRIGHT
-		NEUI A 3 A_PlaySoundEx("neutralizer/charge","SoundSlot5",0)
+		NEUI A 3 A_PlaySound("neutralizer/charge",5)
 		NEUI BCDEFGH 3
-		Goto Ready
+		TNT1 A 0 A_CheckReload
+		Goto Ready2
 	}
 }
-

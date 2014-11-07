@@ -1,4 +1,3 @@
-
 ACTOR WeaselCaco : Cacodemon replaces Cacodemon
 {
 	BloodColor "00 00 FF"

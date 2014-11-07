@@ -4,99 +4,94 @@ ACTOR LanceDriver : Weapon
 	Tag "Lance Driver"
 	Inventory.PickupSound "lance/deselect"
 	Obituary "%o couldn't stand in the way of %k's lance driver."
-	Weapon.AmmoType		"NeutClip"
-	Weapon.AmmoGive		0
-	Weapon.AmmoUse		1
-	Weapon.AmmoType2	"NeutAmmo"
-	Weapon.AmmoGive2	2
-	Weapon.AmmoUse2		0
-	Radius				12
-	Height				12
-	Weapon.Kickback		250
+	Weapon.AmmoType "NeutClip"
+	Weapon.AmmoUse 1
+	Weapon.AmmoType2 "NeutAmmo"
+	Weapon.AmmoGive2 2
+	Weapon.AmmoUse2 1
+	Radius 12
+	Height 12
+	Weapon.Kickback 250
 	Scale 0.25
-	+AMMO_OPTIONAL
+	+AMMO_CHECKBOTH
 	+NOAUTOFIRE
 	States
 	{
 	Spawn:
 		LNDP A -1
 		Loop
-	Select:
-		TNT1 A 15 SetPlayerProperty(0,1,2)
-		LNDH D 1 A_PlayWeaponSound("lance/select")
-		LNDH CB 1
-		LNDH A 1 A_Raise
-		Goto Select+5
 	Deselect:
 		LNDH A 1 A_PlayWeaponSound("lance/deselect")
 		LNDH BCD 1
 		TNT1 A 10
-		TNT1 A 1 A_Lower
-		Goto Deselect+5
-	Ready:
-		TNT1 A 0 A_TakeInventory("PowerLevel",3)
-		TNT1 A 0 A_TakeInventory("LevelCounter",9100)
-		LNDG A 1 A_WeaponReady
-		LNDG A 0 A_JumpIfInventory("IsReloading",1,"Reload")
+		TNT1 A 0 A_Lower
+		Wait
+	Select:
+		TNT1 A 0 A_Raise
 		Loop
+	Ready:
+		TNT1 A 15
+		LNDH D 1 A_PlayWeaponSound("lance/select")
+		LNDH CB 1
+	Ready2:
+		TNT1 A 0 A_TakeInventory("PowerLevel")
+		TNT1 A 0 A_TakeInventory("LevelCounter")
+		LNDG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		Wait
 	Fire:
-		TNT1 A 0 A_JumpIfNoAmmo("DryFire")
+		TNT1 A 0 A_JumpIfInventory("NeutClip",1,1)
+		Goto DryFire
 	    // TNT1 A 0 A_JumpIfInventory("Overload",1,"Hyperfire")  //for planned rapid fire overdrive mode
 		TNT1 A 0 A_PlayWeaponSound("lance/charge")
 	Hold://	LevelCheck:
-		TNT1 A 0 A_GiveInventory("LevelCounter",1)
-		TNT1 A 0 A_GiveInventory("FrameIdle",1)  //increment the frame duration
+		TNT1 A 0 A_GiveInventory("LevelCounter")
+		TNT1 A 0 A_GiveInventory("FrameIdle")  //increment the frame duration
 	    TNT1 A 0 A_JumpIfInventory("LevelCounter",0,1)
 	    Goto Level1Charge
-		TNT1 A 0 A_TakeInventory("LevelCounter",9100)  //what 9000!
+		TNT1 A 0 A_TakeInventory("LevelCounter")  //what 9000!
 		TNT1 A 0 A_PlayWeaponSound("lance/charge")
-		TNT1 A 0 A_GiveInventory("PowerLevel",1)
+		TNT1 A 0 A_GiveInventory("PowerLevel")
 	Level1Charge:
 		TNT1 A 0 A_JumpIfInventory("PowerLevel",1,"Level2Charge")
 		TNT1 A 0 A_JumpIfInventory("FrameIdle",0,1)  //check frame duration
 		Goto Display
-		TNT1 A 0 A_TakeInventory("FrameIdle",7)
+		TNT1 A 0 A_TakeInventory("FrameIdle")
 		Goto FrameCheck
 	Level2Charge:
 		TNT1 A 0 A_JumpIfInventory("PowerLevel",2,"Level3Charge")
-		TNT1 A 0 A_PlaySoundEx("lance/level1","Weapon",1)
+		TNT1 A 0 A_PlaySound("lance/level1",CHAN_WEAPON,1.0,1)
 		TNT1 A 0 A_JumpIfInventory("FrameIdle",5,1)
 		Goto Display
-		TNT1 A 0 A_TakeInventory("FrameIdle",8)
+		TNT1 A 0 A_TakeInventory("FrameIdle")
 		Goto FrameCheck
 	Level3Charge:
 		TNT1 A 0 A_JumpIfInventory("PowerLevel",3,"Level4Charge")
-		TNT1 A 0 A_PlaySoundEx("lance/level2","Weapon",1)
+		TNT1 A 0 A_PlaySound("lance/level2",CHAN_WEAPON,1.0,1)
 		TNT1 A 0 A_JumpIfInventory("FrameIdle",3,1)
 		Goto Display
-		TNT1 A 0 A_TakeInventory("FrameIdle",7)
+		TNT1 A 0 A_TakeInventory("FrameIdle")
 		Goto FrameCheck
 	Level4Charge:
-		TNT1 A 0 A_PlaySoundEx("lance/level3","Weapon",1)
+		TNT1 A 0 A_PlaySound("lance/level3",CHAN_WEAPON,1.0,1)
 		TNT1 A 0 A_JumpIfInventory("FrameIdle",1,1)
 		Goto Display
-		TNT1 A 0 A_TakeInventory("FrameIdle",7)
+		TNT1 A 0 A_TakeInventory("FrameIdle")
 	FrameCheck:
 		TNT1 A 0 A_GiveInventory("FrameCounter",1)
 	    TNT1 A 0 A_JumpIfInventory("FrameCounter",0,1) //check frame letter
 		Goto Display
-		TNT1 A 0 A_TakeInventory("FrameCounter",3)
+		TNT1 A 0 A_TakeInventory("FrameCounter")
 		Goto Display
 	Display:
-		TNT1 A 0 A_JumpIfInventory("FrameCounter",1,3)
-		LNDF A 1 BRIGHT
+		LNDF A 1 BRIGHT A_JumpIfInventory("FrameCounter",1,2)
 		TNT1 A 0 A_Refire
 		Goto AttackCheck
-        TNT1 A 0 A_JumpIfInventory("FrameCounter",2,3)
-		LNDF B 1 BRIGHT
+		LNDF B 1 BRIGHT A_JumpIfInventory("FrameCounter",2,2)
 		TNT1 A 0 A_Refire
 		Goto AttackCheck
 		LNDF C 1 BRIGHT
 		TNT1 A 0 A_Refire
 		Goto AttackCheck
-
-
-		
 	AttackCheck:
 	    TNT1 A 0 A_JumpIfInventory("PowerLevel",1,"Level2")
 	Level1:
@@ -115,12 +110,11 @@ ACTOR LanceDriver : Weapon
 		LNDF A 1 BRIGHT A_FireCustomMissile("DriverLance",Random (-7, 7),1,8,4,0)
 		LNDF BCDEFG 1 BRIGHT
 		LNDG FEBA 2
-		LNDG A 0 A_PlayWeaponSound("lance/ready")
-		LNDG A 5		
-		Goto Ready
+		LNDG A 5 A_PlayWeaponSound("lance/Ready2")
+		TNT1 A 0 A_CheckReload
+		Goto Ready2
 	Level3:
 	    TNT1 A 0 A_JumpIfInventory("PowerLevel",3,"Level4")
-	
 		LNDG A 0 A_JumpIfInventory("NeutClip",6,1)
 		Goto DryFire
 		LNDF A 0 A_PlayWeaponSound("lance/fire")
@@ -139,33 +133,31 @@ ACTOR LanceDriver : Weapon
 		LNDF F 1 BRIGHT A_FireCustomMissile("DriverLance",Random (-7, 7),0,8,8,0)
 		LNDF G 1 BRIGHT A_FireCustomMissile("DriverLance",Random (-7, 7),0,8,4,0)
 		LNDG FEBA 2
-		Goto Ready
+		TNT1 A 0 A_CheckReload
+		Goto Ready2
 	Level4:  //OVERDRIVE!!!!
-		LDNF A 0 A_PlaySoundEx("lance/exploburst","Weapon",0)
+		LDNF A 0 A_PlaySound("lance/exploburst",CHAN_WEAPON)
 		LDNF A 0 A_SetBlend("A0 FF 99", 0.95, 70)
 		LDNF AAAAAAAAAAAAAAAAAAAAAAAA 0 A_FireBullets(0,0,0,0,"MechaBallSpark",1)
-		LDNF A 0 
 		LDNF A 1 BRIGHT A_SpawnItemEx("DriverBlast",0,0,32)
 		LNDF BCDEFG 1 BRIGHT
 		LNDG FEBA 2
-		Goto Ready
-		
+		TNT1 A 0 A_CheckReload
+		Goto Ready2
 	HyperFire:
 	    //add attacks for rapid fire overload mode here
-		Goto Ready
+		Goto Ready2
 	DryFire:
-		LNDG A 0 A_PlayWeaponSound("lance/failed")
-		LNDG A 5
-		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"Reload")
-		Goto Ready
+		LNDG A 5 A_PlayWeaponSound("lance/failed")
+		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"Reload")
+		Goto Ready2
 	Reload:
 		LNDG A 0 A_JumpIfInventory("NeutClip",24,2)
 		LNDG A 0 A_JumpIfInventory("NeutAmmo",6,2)
-		LNDG A 1 A_TakeInventory("IsReloading",1)
-		Goto Ready
+		LNDG A 1 A_WeaponReady(WRF_NOFIRE)
+		Goto Ready2
 		LNDR A 3 A_PlayWeaponSound("skorpion/clipout")
 		LNDR B 3 A_SpawnItemEx("SpentClip5",random(-6,6),3,5)
-		TNT1 A 0 A_TakeInventory("NeutClip",24)
 		LNDR CCCCC 3 A_SpawnItemEx("SpentClip5",random(-6,6),3,5)
 		LNDR C 0 A_PlayWeaponSound("lance/reload")
 		LNDR DEFGCCCC 3
@@ -173,7 +165,7 @@ ACTOR LanceDriver : Weapon
 		TNT1 A 0 A_TakeInventory("NeutAmmo",6)
 		TNT1 A 0 A_GiveInventory("NeutClip",24)
 		LNDR A 4
-		Goto Ready
+		Goto Ready2
 	}
 }
 
@@ -220,20 +212,13 @@ ACTOR DriverLance
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_PlaySoundEx("lance/fly","Weapon",1)
-		TNT1 A 0 A_Jump(128,"Spawn2")
-		LNDS A 1
-		Loop
-	Spawn2:
-		LNDS B 1
+		TNT1 A 0 NODELAY A_PlaySound("lance/fly",CHAN_WEAPON,1.0,1)
+		TNT1 A 0 A_Jump(128,2)
+		LNDS AB -1
 		Loop
 	Death:
-		LNDS B 0 A_StopSoundEx("Weapon")
-		LNDS B 0
-		LNDS B 0
 		LNDS BBBBBB 0 A_SpawnDebris("MechaBallSpark")
-		LNDS B 1
+		LNDS B 1 A_StopSound(CHAN_WEAPON)
 		Stop
 	}
 }
@@ -241,23 +226,22 @@ ACTOR DriverLance
 ACTOR DriverLance3 : DriverLance
 {
     States
-	{    
+	{
 	Death:
-		LNDS B 0
-		LNDS B 0 A_BFGSpray("DummyBFGSpray", 0, 2)
+		LNDS B 0 A_BFGSpray("DummyBFGSpray",0,2)
 		LNDS BBBBBB 0 A_SpawnDebris("MechaBallSpark")
 		LNDS B 1
 		Stop
 	}
 }
-    
+
 ACTOR DriverLance2 : DriverLance
 {
     DeathSound "lance/explode"
     Decal BFGLightning
     States
 	{
-    	Spawn2:
+	Spawn2:
 		LNDS B 1 Radius_Quake(4,10,0,10,0)
 	}
 }
@@ -265,17 +249,15 @@ ACTOR DriverLance2 : DriverLance
 ACTOR DriverBlast
 {
 	Obituary "%o receives a Tan from Hell, thanks to %k's magnetic blast."
-   Projectile
-   +FORCERADIUSDMG
-   States
-   {
-   Spawn:
-   TNT1 AA 1 A_Explode(500,1024,0)
-   Stop
-   }
+	Projectile
+	+FORCERADIUSDMG
+	States
+	{
+	Spawn:
+		TNT1 AA 1 A_Explode(500,1024,0)
+		Stop
+	}
 }
-
-
 
 ACTOR DiazBFGSpray replaces BFGExtra
 {

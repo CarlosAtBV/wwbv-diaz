@@ -1,184 +1,168 @@
 ACTOR FistSeq : Inventory
 {
-   Inventory.MaxAmount 3
-   Inventory.Icon TNT1A0
+	Inventory.MaxAmount 3
 }
 
 ACTOR FinalFist : Inventory
 {
-   Inventory.MaxAmount 6
-   Inventory.Icon TNT1A0
+	Inventory.MaxAmount 6
 }
 
 ACTOR FinalFistCooldown : Inventory
 {
-   Inventory.MaxAmount 4
-   Inventory.Icon TNT1A0
-} 
+	Inventory.MaxAmount 4
+}
 
 ACTOR MartialArts : Weapon
 {
-   Weapon.SelectionOrder 180
-   Inventory.PickupSound "misc/thisisacrappysound"
-   Inventory.PickupMessage "i kno kungfu lol"
-   Weapon.Kickback 40
-   Weapon.SisterWeapon MartialArts2
-   AttackSound "fist/hit"
-   Tag "Unarmed"
-   +NOAUTOFIRE
-   +NOALERT
-   +NOEXTREMEDEATH
-   +INVENTORY.UNDROPPABLE
-   States
-   {
-   Spawn:
-      	TNT1 A -1
-      	Loop
-   Ready:
-   		MART A 0 A_TakeInventory("FistSeq",3)
-		MART A 0 A_JumpIfInventory("IsReloading",1,"Taunt")
-      	MART A 1 A_WeaponReady
-      	Goto Ready
-   Deselect:
-      	MART A 0 A_TakeInventory("FistSeq",3)
-	  	MART VW 1
-      	MART A 1 A_Lower
-      	Goto Deselect+3
-   Select:
+	Weapon.SelectionOrder 180
+	Inventory.PickupSound "misc/thisisacrappysound"
+	Inventory.PickupMessage "i kno kungfu lol"
+	Weapon.Kickback 40
+	Weapon.SisterWeapon MartialArts2
+	AttackSound "fist/hit"
+	Tag "Unarmed"
+	+NOAUTOFIRE
+	+NOALERT
+	+NOEXTREMEDEATH
+	+INVENTORY.UNDROPPABLE
+	States
+	{
+	Ready:
 		MART WV 1
-      	MART A 1 A_Raise
-      	Goto Select+2
+	Ready2:
+		MART A 0 A_TakeInventory("FistSeq")
+		MART A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		Wait
+	Deselect:
+		MART V 1 A_TakeInventory("FistSeq")
+		MART W 1
+		MART A 0 A_Lower
+		Wait
+	Select:
+		TNT1 A 0 A_Raise
+		Loop
 	Taunt:
-		MART W 0 A_TakeInventory("FistSeq",3)
-		MART W 0 A_TakeInventory("FinalFist",6)
-		MART W 0 A_TakeInventory("FinalFistCooldown",4)
-		MART WV 1
-		TNT1 A 0 A_PlaySoundEx("*taunt","Voice",0)
-	Taunt2:
-		TNT1 A 4
+	Reload:
+		MART W 0 A_TakeInventory("FinalFist")
+		MART W 1 A_TakeInventory("FinalFistCooldown")
+		MART V 1
+		TNT1 A 0 A_PlaySound("*taunt",CHAN_VOICE)
 		CMON ABC 1
 		CMON C 6 A_AlertMonsters
 		CMON DEFFFEDCCCEFFFEDCCCCCCBA 1
 		MART WV 1
-		Goto Ready
-   Fire:
-        MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
-         MART A 0 A_JumpIfInventory("FinalFist",1,"Fire3")
-         MART A 0 A_JumpIfInventory("FistSeq",1,"Fire2")
-         MART A 0 A_PlayWeaponSound("fist/swing")
-         MART B 1 A_GiveInventory("FistSeq",1)
-         MART C 1
-         MART D 1 A_CustomPunch(18,1,0,"FistPuff")
-         MART ED 1 A_WeaponReady
-         MART CBAAA 1 A_WeaponReady
-         MART G 0 A_TakeInventory("FistSeq",3)
-         Goto Ready
-   Fire2:
-      MART H 0 A_GiveInventory("FinalFist",1)
-         MART H 1 A_GiveInventory("FistSeq",1)
-         MART I 1 A_PlayWeaponSound("fist/swing")
-         MART J 1
-         MART K 1 A_CustomPunch(18,1,0,"FistPuff")
-         MART LMNO 1 A_WeaponReady
-         MART P 2 A_WeaponReady
-         MART AAA 1 A_WeaponReady
-       MART A 1 A_TakeInventory("FistSeq",3)
-	   MART A 0 A_TakeInventory("FinalFist",1)
-         Goto Ready
-   Fire3:
-        MART A 0 A_JumpIfInventory("FinalFist",6,"Fire3part6")
-        MART A 0 A_JumpIfInventory("FinalFist",5,"Fire3part5")
-      MART A 0 A_JumpIfInventory("FinalFist",4,"Fire3part4")
-        MART A 0 A_JumpIfInventory("FinalFist",3,"Fire3part3")
-        MART A 0 A_JumpIfInventory("FinalFist",2,"Fire3part2")
-      MART VW 1
-      TNT1 A 3 A_GiveInventory("FistSeq",1)
-      MAR3 ABCD 1
-      MAR3 E 1 A_PlayWeaponSound("fist/swing")
-      MAR3 F 1 A_CustomPunch(22,1,0,"FistPuff")
-      MAR3 G 1
-   Fire3part1:                                     //for ease of sequencing- not needed
-        MAR3 H 1 A_GiveInventory("FinalFist",1)  //this frame ensures one tic passes so we
-      MAR3 H 0 A_WeaponReady                   //can jump to the appropriate spot on fire
-    Fire3part2:
-      MAR3 I 1 A_GiveInventory("FinalFist",1)
-      MAR3 I 0 A_WeaponReady
-    Fire3part3:
-      MAR3 J 1 A_GiveInventory("FinalFist",1)
-      MAR3 J 0 A_WeaponReady
-    Fire3part4:
-      MAR3 K 1 A_GiveInventory("FinalFist",1)
-      MAR3 K 0 A_WeaponReady
-    Fire3part5:
-      MART W 1 A_GiveInventory("FinalFist",1)
-      MART W 0 A_WeaponReady
-    Fire3part6:
-        MART V 0 A_GiveInventory("FinalFistCooldown",4)
-      MART V 1 A_TakeInventory("FinalFist",6)
-      MART V 0 A_WeaponReady
-    Fire3part7:
-       MART A 1 A_TakeInventory("FinalFistCooldown",1)
-      MART A 0 A_WeaponReady
-      MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
-      MAR3 H 0 A_TakeInventory("FistSeq",3)
-      Goto Ready
+		Goto Ready2
+	Fire:
+		MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
+		MART A 0 A_JumpIfInventory("FinalFist",1,"Fire3")
+		MART A 0 A_JumpIfInventory("FistSeq",1,"Fire2")
+		MART A 0 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MART B 1 A_GiveInventory("FistSeq")
+		MART C 1
+		MART D 1 A_CustomPunch(18,1,0,"FistPuff")
+		MART EDCBAAA 1 A_WeaponReady
+		Goto Ready2
+	Fire2:
+		MART H 0 A_GiveInventory("FinalFist")
+		MART H 1 A_GiveInventory("FistSeq")
+		MART I 1 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MART J 1
+		MART K 1 A_CustomPunch(18,1,0,"FistPuff")
+		MART LMNOPPAAA 1 A_WeaponReady
+		MART A 1 A_TakeInventory("FinalFist")
+		Goto Ready2
+	Fire3:
+		MART A 0 A_JumpIfInventory("FinalFist",6,"Fire3part6")
+		MART A 0 A_JumpIfInventory("FinalFist",5,"Fire3part5")
+		MART A 0 A_JumpIfInventory("FinalFist",4,"Fire3part4")
+		MART A 0 A_JumpIfInventory("FinalFist",3,"Fire3part3")
+		MART A 0 A_JumpIfInventory("FinalFist",2,"Fire3part2")
+		MART VW 1
+		TNT1 A 3 A_GiveInventory("FistSeq")
+		MAR3 ABCD 1
+		MAR3 E 1 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MAR3 F 1 A_CustomPunch(22,1,0,"FistPuff")
+		MAR3 G 1
+	Fire3part1:								 //for ease of sequencing- not needed
+		MAR3 H 1 A_GiveInventory("FinalFist")  //this frame ensures one tic passes so we
+		MAR3 H 0 A_WeaponReady				 //can jump to the appropriate spot on fire
+	Fire3part2:
+		MAR3 I 1 A_GiveInventory("FinalFist")
+		MAR3 I 0 A_WeaponReady
+	Fire3part3:
+		MAR3 J 1 A_GiveInventory("FinalFist")
+		MAR3 J 0 A_WeaponReady
+	Fire3part4:
+		MAR3 K 1 A_GiveInventory("FinalFist")
+		MAR3 K 0 A_WeaponReady
+	Fire3part5:
+		MART W 1 A_GiveInventory("FinalFist")
+		MART W 0 A_WeaponReady
+	Fire3part6:
+		MART V 0 A_GiveInventory("FinalFistCooldown",4)
+		MART V 1 A_TakeInventory("FinalFist")
+		MART V 0 A_WeaponReady
+	Fire3part7:
+		MART A 1 A_TakeInventory("FinalFistCooldown",1)
+		MART A 0 A_WeaponReady
+		MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
+		MAR3 H 0 A_TakeInventory("FistSeq")
+		Goto Ready2
 	AltFire:
 		MART Q 0 A_JumpIfInventory("FistSeq",3,"Finisher3")
 		MART Q 0 A_JumpIfInventory("FistSeq",2,"Finisher2")
 		MART Q 0 A_JumpIfInventory("FistSeq",1,"Finisher1")
-		MART Q 2 SetPlayerProperty(0,1,0)
-      	MART R 1 A_PlayWeaponSound("fist/kickswing")
-      	MART US 1
-      	MART T 4 A_CustomPunch(25,1,0,"KickPuff")
-		MART S 2
-      	MART U 2
-      	TNT1 A 4 SetPlayerProperty(0,0,0)
-      	MART WV 1
-      	MART A 8
-		MART Q 0 A_TakeInventory("FinalFistCooldown",4)
-      	Goto Ready
+		MART Q 2 SetPlayerProperty(0,1,PROP_FROZEN)
+		MART R 1 A_PlaySound("fist/kickswing",CHAN_WEAPON)
+		MART US 1
+		MART T 4 A_CustomPunch(25,1,0,"KickPuff")
+		MART SU 2
+		TNT1 A 4 SetPlayerProperty(0,0,PROP_FROZEN)
+		MART WV 1
+		MART A 8
+		MART Q 0 A_TakeInventory("FinalFistCooldown")
+		Goto Ready2
 	Finisher1:
 		TNT1 A 5 A_PlaySound("*melee")
-		MAR6 A 0 A_PlayWeaponSound("fist/swing")
-		MAR6 A 1
-      	MAR6 B 1
+		MAR6 A 0 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MAR6 AB 1
 		MAR6 C 3 A_CustomPunch(36,1,0,"FistPuff")
 		MAR6 D 1
-      	MART O 1
-      	MART P 2 A_TakeInventory("FistSeq",3)
+		MART O 1
+		MART P 2 A_TakeInventory("FistSeq")
 		MART V 0 A_TakeInventory("FinalFist",1)
-		MART Q 0 A_TakeInventory("FinalFistCooldown",4)
-		Goto Ready
+		MART Q 0 A_TakeInventory("FinalFistCooldown")
+		Goto Ready2
 	Finisher2:
-		TNT1 A 6 SetPlayerProperty(0,1,0)
+		TNT1 A 6 SetPlayerProperty(0,1,PROP_FROZEN)
 		MAR2 J 1 A_PlaySound("*melee")
 		MAR2 KL 1
-		MAR2 M 1 A_PlayWeaponSound("fist/kickswing")
+		MAR2 M 1 A_PlaySound("fist/kickswing",CHAN_WEAPON)
 		MAR2 N 1 A_CustomPunch(32,1,0,"KickPuff")
-		MAR2 O 1
-		MAR2 P 1
+		MAR2 OP 1
 		TNT1 A 6
-		MART W 1 A_TakeInventory("FistSeq",3)
-		MART V 0 SetPlayerProperty(0,0,0)
+		MART W 1 A_TakeInventory("FistSeq")
+		MART V 0 SetPlayerProperty(0,0,PROP_FROZEN)
 		MART V 1 A_TakeInventory("FinalFist",1)
-		MART Q 0 A_TakeInventory("FinalFistCooldown",4)
+		MART Q 0 A_TakeInventory("FinalFistCooldown")
 		MART A 8
-		Goto Ready
+		Goto Ready2
 	Finisher3:
 		MART VW 1
-		TNT1 A 2 SetPlayerProperty(0,1,0)
-      	TNT1 A 12 ThrustThingZ(0,30,0,1)
+		TNT1 A 2 SetPlayerProperty(0,1,PROP_FROZEN)
+		TNT1 A 12 ThrustThingZ(0,30,0,1)
 		MAR4 AB 1
 		MAR4 C 1 A_PlaySound("*melee")
-		MAR4 D 1 A_PlayWeaponSound("fist/kickswing")
+		MAR4 D 1 A_PlaySound("fist/kickswing",CHAN_WEAPON)
 		MAR4 E 1 A_CustomPunch(64,1,0,"KickPuff")
 		MAR4 FGH 1
-		TNT1 A 12 SetPlayerProperty(0,0,0)
-		MART W 1 A_TakeInventory("FistSeq",3)
-		MART V 1 A_TakeInventory("FinalFist",6)
-		MART Q 0 A_TakeInventory("FinalFistCooldown",4)
-		Goto Ready
-   }
+		TNT1 A 12 SetPlayerProperty(0,0,PROP_FROZEN)
+		MART W 1 A_TakeInventory("FistSeq")
+		MART V 1 A_TakeInventory("FinalFist")
+		MART Q 0 A_TakeInventory("FinalFistCooldown")
+		Goto Ready2
+	}
 }
 
 ACTOR MartialArts2 : MartialArts
@@ -189,126 +173,123 @@ ACTOR MartialArts2 : MartialArts
 	States
 	{
 	Fire:
-        MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
-         MART A 0 A_JumpIfInventory("FinalFist",1,"Fire3")
-         MART A 0 A_JumpIfInventory("FistSeq",1,"Fire2")
-         MART A 0 A_PlayWeaponSound("fist/swing")
-         MART B 1 A_GiveInventory("FistSeq",1)
-         MART C 1
-         MART D 1 A_CustomPunch(72,1,0,"PowerFistPuff")
-         MART ED 1 A_WeaponReady
-         MART CBAAA 1 A_WeaponReady
-         MART G 0 A_TakeInventory("FistSeq",3)
-         Goto Ready
-   Fire2:
-      MART H 0 A_GiveInventory("FinalFist",1)
-         MART H 1 A_GiveInventory("FistSeq",1)
-         MART I 1 A_PlayWeaponSound("fist/swing")
-         MART J 1
-         MART K 1 A_CustomPunch(72,1,0,"PowerFistPuff")
-         MART LMNO 1 A_WeaponReady
-         MART P 2 A_WeaponReady
-         MART AAA 1 A_WeaponReady
-       MART A 1 A_TakeInventory("FistSeq",3)
-	   MART A 0 A_TakeInventory("FinalFist",1)
-         Goto Ready
-   Fire3:
-        MART A 0 A_JumpIfInventory("FinalFist",6,"Fire3part6")
-        MART A 0 A_JumpIfInventory("FinalFist",5,"Fire3part5")
-      MART A 0 A_JumpIfInventory("FinalFist",4,"Fire3part4")
-        MART A 0 A_JumpIfInventory("FinalFist",3,"Fire3part3")
-        MART A 0 A_JumpIfInventory("FinalFist",2,"Fire3part2")
-      MART VW 1
-      TNT1 A 3 A_GiveInventory("FistSeq",1)
-      MAR3 ABCD 1
-      MAR3 E 1 A_PlayWeaponSound("fist/swing")
-      MAR3 F 1 A_CustomPunch(88,1,0,"PowerFistPuff")
-      MAR3 G 1
-   Fire3part1:                                     //for ease of sequencing- not needed
-        MAR3 H 1 A_GiveInventory("FinalFist",1)  //this frame ensures one tic passes so we
-      MAR3 H 0 A_WeaponReady                   //can jump to the appropriate spot on fire
-    Fire3part2:
-      MAR3 I 1 A_GiveInventory("FinalFist",1)
-      MAR3 I 0 A_WeaponReady
-    Fire3part3:
-      MAR3 J 1 A_GiveInventory("FinalFist",1)
-      MAR3 J 0 A_WeaponReady
-    Fire3part4:
-      MAR3 K 1 A_GiveInventory("FinalFist",1)
-      MAR3 K 0 A_WeaponReady
-    Fire3part5:
-      MART W 1 A_GiveInventory("FinalFist",1)
-      MART W 0 A_WeaponReady
-    Fire3part6:
-        MART V 0 A_GiveInventory("FinalFistCooldown",4)
-      MART V 1 A_TakeInventory("FinalFist",6)
-      MART V 0 A_WeaponReady
-    Fire3part7:
-       MART A 1 A_TakeInventory("FinalFistCooldown",1)
-      MART A 0 A_WeaponReady
-      MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
-      MAR3 H 0 A_TakeInventory("FistSeq",3)
-      Goto Ready
+		MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
+		MART A 0 A_JumpIfInventory("FinalFist",1,"Fire3")
+		MART A 0 A_JumpIfInventory("FistSeq",1,"Fire2")
+		MART A 0 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MART B 1 A_GiveInventory("FistSeq",1)
+		MART C 1
+		MART D 1 A_CustomPunch(72,1,0,"PowerFistPuff")
+		MART ED 1 A_WeaponReady
+		MART CBAAA 1 A_WeaponReady
+		MART G 0 A_TakeInventory("FistSeq")
+		Goto Ready2
+	Fire2:
+		MART H 0 A_GiveInventory("FinalFist")
+		MART H 1 A_GiveInventory("FistSeq",1)
+		MART I 1 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MART J 1
+		MART K 1 A_CustomPunch(72,1,0,"PowerFistPuff")
+		MART LMNOPPAAA 1 A_WeaponReady
+		MART A 1 A_TakeInventory("FistSeq")
+		MART A 0 A_TakeInventory("FinalFist",1)
+		Goto Ready2
+	Fire3:
+		MART A 0 A_JumpIfInventory("FinalFist",6,"Fire3part6")
+		MART A 0 A_JumpIfInventory("FinalFist",5,"Fire3part5")
+		MART A 0 A_JumpIfInventory("FinalFist",4,"Fire3part4")
+		MART A 0 A_JumpIfInventory("FinalFist",3,"Fire3part3")
+		MART A 0 A_JumpIfInventory("FinalFist",2,"Fire3part2")
+		MART VW 1
+		TNT1 A 3 A_GiveInventory("FistSeq")
+		MAR3 ABCD 1
+		MAR3 E 1 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MAR3 F 1 A_CustomPunch(88,1,0,"PowerFistPuff")
+		MAR3 G 1
+	Fire3part1:								 //for ease of sequencing- not needed
+		MAR3 H 1 A_GiveInventory("FinalFist")  //this frame ensures one tic passes so we
+		MAR3 H 0 A_WeaponReady				 //can jump to the appropriate spot on fire
+	Fire3part2:
+		MAR3 I 1 A_GiveInventory("FinalFist")
+		MAR3 I 0 A_WeaponReady
+	Fire3part3:
+		MAR3 J 1 A_GiveInventory("FinalFist")
+		MAR3 J 0 A_WeaponReady
+	Fire3part4:
+		MAR3 K 1 A_GiveInventory("FinalFist")
+		MAR3 K 0 A_WeaponReady
+	Fire3part5:
+		MART W 1 A_GiveInventory("FinalFist")
+		MART W 0 A_WeaponReady
+	Fire3part6:
+		MART V 0 A_GiveInventory("FinalFistCooldown",4)
+		MART V 1 A_TakeInventory("FinalFist")
+		MART V 0 A_WeaponReady
+	Fire3part7:
+		MART A 1 A_TakeInventory("FinalFistCooldown",1)
+		MART A 0 A_WeaponReady
+		MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
+		MAR3 H 0 A_TakeInventory("FistSeq")
+		Goto Ready2
 	AltFire:
 		MART Q 0 A_JumpIfInventory("FistSeq",3,"Finisher3")
 		MART Q 0 A_JumpIfInventory("FistSeq",2,"Finisher2")
 		MART Q 0 A_JumpIfInventory("FistSeq",1,"Finisher1")
 		MART VW 1
-		TNT1 A 2 SetPlayerProperty(0,1,0)
-      	TNT1 A 12 ThrustThingZ(0,30,0,1)
+		TNT1 A 2 SetPlayerProperty(0,1,PROP_FROZEN)
+		TNT1 A 12 ThrustThingZ(0,30,0,1)
 		MAR4 AB 1
 		MAR4 C 1 A_PlaySound("*melee")
-		MAR4 D 1 A_PlayWeaponSound("fist/kickswing")
+		MAR4 D 1 A_PlaySound("fist/kickswing",CHAN_WEAPON)
 		MAR4 E 1 A_CustomPunch(128,1,0,"KickPuff")
 		MAR4 FGH 1
-		TNT1 A 12 SetPlayerProperty(0,0,0)
-		MART W 1 A_TakeInventory("FistSeq",3)
-		MART V 1 A_TakeInventory("FinalFist",6)
-		MART Q 0 A_TakeInventory("FinalFistCooldown",4)
-		Goto Ready
+		TNT1 A 12 SetPlayerProperty(0,0,PROP_FROZEN)
+		MART W 1 A_TakeInventory("FistSeq")
+		MART V 1 A_TakeInventory("FinalFist")
+		MART Q 0 A_TakeInventory("FinalFistCooldown")
+		Goto Ready2
 	Finisher1:
 		TNT1 A 5 A_PlaySound("*melee")
-		MAR6 A 0 A_PlayWeaponSound("fist/swing")
+		MAR6 A 0 A_PlaySound("fist/swing",CHAN_WEAPON)
 		MAR6 A 1
-      	MAR6 B 1
+		MAR6 B 1
 		MAR6 C 3 A_CustomPunch(144,1,0,"PowerFistPuff")
 		MAR6 D 1
-      	MART O 1
-      	MART P 2 A_TakeInventory("FistSeq",3)
+		MART O 1
+		MART P 2 A_TakeInventory("FistSeq")
 		MART V 0 A_TakeInventory("FinalFist",1)
-		MART Q 0 A_TakeInventory("FinalFistCooldown",4)
-		Goto Ready
+		MART Q 0 A_TakeInventory("FinalFistCooldown")
+		Goto Ready2
 	Finisher2:
-		TNT1 A 6 SetPlayerProperty(0,1,0)
+		TNT1 A 6 SetPlayerProperty(0,1,PROP_FROZEN)
 		MAR2 J 1 A_PlaySound("*melee")
 		MAR2 KL 1
-		MAR2 M 1 A_PlayWeaponSound("fist/kickswing")
+		MAR2 M 1 A_PlaySound("fist/kickswing",CHAN_WEAPON)
 		MAR2 N 1 A_CustomPunch(128,1,0,"PowerKickPuff")
 		MAR2 O 1
 		MAR2 P 1
 		TNT1 A 6
-		MART W 1 A_TakeInventory("FistSeq",3)
-		MART V 0 SetPlayerProperty(0,0,0)
+		MART W 1 A_TakeInventory("FistSeq")
+		MART V 0 SetPlayerProperty(0,0,PROP_FROZEN)
 		MART V 1 A_TakeInventory("FinalFist",1)
-		MART Q 0 A_TakeInventory("FinalFistCooldown",4)
+		MART Q 0 A_TakeInventory("FinalFistCooldown")
 		MART A 8
-		Goto Ready
+		Goto Ready2
 	Finisher3:
 		MAR4 I 1 A_PlaySound("*falcon")
-		MAR4 I 2 SetPlayerProperty(0,1,0)
+		MAR4 I 2 SetPlayerProperty(0,1,PROP_FROZEN)
 		MAR4 IIJJKL 1
 		MAR4 M 15
 		MAR4 K 1
-		MAR4 I 1 A_PlayWeaponSound("fist/swing")
+		MAR4 I 1 A_PlaySound("fist/swing",CHAN_WEAPON)
 		MAR5 A 1
 		MAR5 B 1 A_PlaySound("*paunch")
 		MAR5 C 1 A_FireCustomMissile("FalconPanch",0,0,0)
 		MAR5 DEEEEEFFA 1
-		TNT1 A 12 SetPlayerProperty(0,0,0)
-		MART W 1 A_TakeInventory("FistSeq",3)
-		MART V 1 A_TakeInventory("FinalFist",6)
-		MART Q 0 A_TakeInventory("FinalFistCooldown",4)
-		Goto Ready
-   }
+		TNT1 A 12 SetPlayerProperty(0,0,PROP_FROZEN)
+		MART W 1 A_TakeInventory("FistSeq")
+		MART V 1 A_TakeInventory("FinalFist")
+		MART Q 0 A_TakeInventory("FinalFistCooldown")
+		Goto Ready2
+	}
 }
-
