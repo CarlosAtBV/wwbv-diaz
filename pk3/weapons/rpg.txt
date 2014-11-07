@@ -58,7 +58,7 @@ ACTOR RPG7 : Weapon replaces RocketLauncher
 		RPG7 A 1 Offset(100,110)
 		RPG7 A 1 Offset(120,136)
 		RPG7 A 1 Offset(140,160)
-		TNT1 A 15
+		TNT1 A 15 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
 		TNT1 A 0 A_Lower
 		Wait
 	DeselectNoAmmo:
@@ -68,7 +68,7 @@ ACTOR RPG7 : Weapon replaces RocketLauncher
 		RPG7 C 1 Offset(-48,66)
 		RPG7 C 1 Offset(-60,80)
 		RPG7 C 1 Offset(-80,96)
-		TNT1 A 15
+		TNT1 A 15 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
 		TNT1 A 0 A_Lower
 		Wait
 	Ready:
