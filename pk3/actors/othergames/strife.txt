@@ -1,0 +1,132 @@
+// Strife Replacers - Makes the mod work with Strife
+
+ACTOR StrifeMauserAmmo : CustomInventory replaces PoisonBolts
+{
+	Inventory.PickupSound "mauser/insert"
+	Inventory.PickupMessage "7.62mm Mauser Ammo"
+	States
+	{
+	Spawn:
+		MAUA A -1
+		Loop
+	Pickup:
+		MAUA A 0
+		MAUA A 0 A_GiveInventory("MauserAmmo",1)
+		Stop
+	}
+}
+
+ACTOR StrifeMarteba : CustomInventory replaces StrifeCrossbow
+{
+	Inventory.PickupMessage "MarTeba m2042 Revolver (2)"
+	Inventory.PickupSound "webpick"
+	Scale 0.5
+	States
+	{
+	Spawn:
+		REVP A -1
+		Loop
+	Pickup:
+		REVP A 0
+		REVP A 0 A_GiveInventory("Marteba",1)
+		Stop
+	}
+}
+
+ACTOR StrifeMartebaAmmo : ExtraMagnumAmmo replaces ElectricBolts
+{
+	Game Strife
+	ConversationID 179
+}
+
+ACTOR StrifeRPG : CustomInventory replaces MiniMissileLauncher
+{
+	Inventory.PickupMessage "RPG-7 (6)"
+	Inventory.PickupSound "rpg/pickup"
+	Scale 0.5
+	States
+	{
+	Spawn:
+		RPGP A -1
+		Loop
+	Pickup:
+		RPGP A 0
+		RPGP A 0 A_GiveInventory("RPG7",1)
+		Stop
+	}
+}
+
+ACTOR StrifeRPGAmmo : RPGAmmo replaces MiniMissiles
+{
+	Game Strife
+	ConversationID 181
+}
+
+ACTOR StrifeRPKAmmo : RPDAmmo replaces CrateofMissiles
+{
+	Game Strife
+	ConversationID 182
+}
+
+ACTOR StrifeHandGrenade : CustomInventory replaces AmmoSatchel
+{
+	Inventory.PickupSound "grenade/pickup" 
+	Inventory.PickupMessage "mk.ii a1 Hand Grenades (6)"
+	Scale 0.5
+	States
+	{
+	Spawn:
+		GRNP A -1
+		Loop
+	Pickup:
+		GRNP A 0
+		GRNP A 0 A_GiveInventory("HandGrenade",1)
+		Stop
+	}
+}
+
+ACTOR StrifeSMGAmmo : ExtraSMGAmmo replaces BoxOfBullets
+{
+	Game Strife
+	ConversationID 180
+}
+
+ACTOR StrifeSMG : CustomInventory replaces AssaultGun
+{
+	Inventory.PickupMessage "midgrais tactical defense SMG-39 (4)"
+	Inventory.PickupSound "mp40/cock"
+	ConversationID 188
+	Scale 0.75
+	States
+	{
+	Spawn:
+		MP4P A -1
+		Loop
+	Pickup:
+		MP4P A 0
+		MP4P A 0 A_GiveInventory("SMG37",1)
+		Stop
+	}
+}
+
+
+ACTOR StrifeSMGStanding : StrifeSMG replaces AssaultGunStanding
+{
+	ConversationID 189
+	States
+	{
+	Spawn:
+		MP4P B -1
+		Loop
+	Pickup:
+		MP4P B 0
+		MP4P B 0 A_GiveInventory("SMG37",1)
+		Stop
+	}
+}
+
+ACTOR StrifeColtAmmo : P50Ammo replaces ElectricBolts
+{
+	Game Strife
+	ConversationID 186
+}

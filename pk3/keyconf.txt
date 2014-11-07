@@ -1,0 +1,18 @@
+clearplayerclasses
+addplayerclass DiazPlayer
+addplayerclass HernandezPlayer
+
+weaponsection "DiazV3"
+setslot 1 MartialArts PsiAmp
+setslot 3 MauserRifle MiniShotgun
+setslot 4 SMG37 Skorpion
+setslot 5 SlugRifle RPK
+setslot 6 RPG7 HandGrenade
+setslot 7 Neutralizer LanceDriver
+
+addkeysection "ww-diaz" outlawskeys                    
+addmenukey "Reload" +d_reload                    
+addmenukey "Toggle Auto-Reload" "use AutoReloadingToggle"
+alias +d_reload "use Action_Reload"
+alias -d_reload "use Action_ReloadCancel"
+defaultbind r +d_reload

@@ -1,0 +1,5 @@
+Agent Diaz: The Last Hours of Purity
+A Doom/Doom 2 weapon mod by wildweasel
+see DIAZLORE.txt for credits information
+
+if you're reading this, don't extract this! run it in zdoom instead!

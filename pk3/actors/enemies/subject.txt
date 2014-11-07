@@ -1,0 +1,152 @@
+
+
+ACTOR WeaselPsiTestSubject
+{
+	obituary "%o found another one of the UAC's dark little secrets."
+  	health 25
+  	radius 20
+  	height 56
+  	mass 100
+  	speed 18
+  	painchance 200
+  	seesound "subject/sight"
+  	painsound "subject/pain"
+  	deathsound "subject/death"
+  	dropitem PsiEnergyDropped 128
+	dropitem PsiAmp 42
+	Scale 1.15
+  	MONSTER
+  	+FLOORCLIP
+	+QUICKTORETALIATE
+  	States
+	{
+	Spawn:
+		SUBJ AB 10 A_Look
+		Loop
+	See:
+		SUBJ A 0 A_SpawnItemEx("TestSubjectTrailA")
+		SUBJ A 2 A_FastChase
+		SUBJ A 0 A_SpawnItemEx("TestSubjectTrailA")
+		SUBJ A 2 A_FastChase
+		SUBJ A 0 A_SpawnItemEx("TestSubjectTrailA")
+		SUBJ A 2 A_FastChase
+		SUBJ B 0 A_SpawnItemEx("TestSubjectTrailB")
+		SUBJ B 2 A_FastChase
+		SUBJ B 0 A_SpawnItemEx("TestSubjectTrailB")
+		SUBJ B 2 A_FastChase
+		SUBJ B 0 A_SpawnItemEx("TestSubjectTrailB")
+		SUBJ B 2 A_FastChase
+		SUBJ C 0 A_SpawnItemEx("TestSubjectTrailC")
+		SUBJ C 2 A_FastChase
+		SUBJ C 0 A_SpawnItemEx("TestSubjectTrailC")
+		SUBJ C 2 A_FastChase
+		SUBJ C 0 A_SpawnItemEx("TestSubjectTrailC")
+		SUBJ C 2 A_FastChase
+		SUBJ D 0 A_SpawnItemEx("TestSubjectTrailD")
+		SUBJ D 2 A_FastChase
+		SUBJ D 0 A_SpawnItemEx("TestSubjectTrailD")
+		SUBJ D 2 A_FastChase
+		SUBJ D 0 A_SpawnItemEx("TestSubjectTrailD")
+		SUBJ D 2 A_FastChase
+		Loop
+	Missile:
+		SUBJ A 0 A_Jump(96,"IceMissile")
+		SUBJ A 0 A_Jump(96,"ChargeMissile")
+		SUBJ A 5 A_FaceTarget
+		SUBJ E 0 A_PlaySound("subject/attack")
+		SUBJ E 5 BRIGHT A_CustomMissile("TestPsiFireBall",32,0,0)
+		SUBJ A 5
+		Goto See
+	ChargeMissile:
+		SUBJ A 0 A_PlaySoundEx("subject/chargeattack","Voice",0)
+		SUBJ AAAAAAAAAAAAA 2 A_FaceTarget
+		SUBJ E 5 BRIGHT A_CustomRailgun(10,2,"none","00 99 FF",0,1)
+		SUBJ A 5
+		Goto See
+	IceMissile:
+		SUBJ A 0 A_PlaySoundEx("subject/chargeattack","Voice",0)
+		SUBJ AAAAAAAAAAAAA 2 A_FaceTarget
+		SUBJ E 5 BRIGHT A_CustomMissile("TestPsiIceBall",32,0,0)
+		SUBJ A 5
+		Goto See
+	Pain:
+    	SUBJ F 2
+    	SUBJ F 2 A_Pain
+    	goto See
+	Death.Lightning:
+		LDTH A 2 BRIGHT A_PlaySoundEx("misc/lightningdeath","SoundSlot5",0)
+		LDTH A 2 A_PlaySoundEx("subject/tasered","Voice",0)
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		SUBJ GH 5
+    	SUBJ I 5 A_NoBlocking
+    	SUBJ J 5
+    	SUBJ K -1 A_PlaySound("misc/bodyfall")
+  	Death:
+    	SUBJ G 5
+    	SUBJ H 5 A_Scream
+    	SUBJ I 5 A_NoBlocking
+    	SUBJ J 5
+    	SUBJ K -1 A_PlaySound("misc/bodyfall")
+    	stop
+  	XDeath:
+	 	SUBJ L 0 A_SpawnDebris("NashGore_Gib9",0)
+	 	SUBJ L 0 A_SpawnDebris("NashGore_Gib10",0)
+	 	SUBJ L 0 A_SpawnDebris("NashGore_Gib11",0)
+ 	 	SUBJ L 0 A_SpawnDebris("NashGore_Gib11",0)
+	 	SUBJ L 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+     	SUBJ L 5
+	 	SUBJ M 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+     	SUBJ M 5 A_XScream
+	 	SUBJ N 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+     	SUBJ N 5 A_NoBlocking
+	 	SUBJ O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+     	SUBJ PQRS 5
+     	SUBJ T -1
+     	stop
+	Crush:
+	 	TNT1 A 1 A_SpawnItem("NashGore_CrushedSmall",0,0,0,0)
+	 	stop
+	Death.Fire:
+		BURN ABC 5 BRIGHT
+		BURN D 5 BRIGHT A_PlaySound("misc/flamedeath")
+		BURN EFGHIJKLMN 5 BRIGHT
+		BURN O 5 BRIGHT A_NoBlocking
+		BURN PQRSTU 5 BRIGHT
+		BURN V -1
+		Stop
+	Death.Neut:
+		DISR A 3 BRIGHT A_SetTranslucent(0.9,0)
+		DISR B 3 BRIGHT A_PlaySound("misc/disintdeath")
+		DISR C 3 BRIGHT A_SetTranslucent(0.8,0)
+		DISR D 3 BRIGHT A_SetTranslucent(0.7,0)
+		DISR E 3 BRIGHT A_SetTranslucent(0.6,0)
+		DISR F 3 BRIGHT A_SetTranslucent(0.5,0)
+		DISR G 3 BRIGHT A_SetTranslucent(0.4,0)
+		DISR H 3 BRIGHT A_SetTranslucent(0.3,0)
+		DISR I 3 BRIGHT A_SetTranslucent(0.2,0)
+		DISR J 3 BRIGHT A_SetTranslucent(0.1,0)
+		Stop
+  	Raise:
+    	SUBJ JIHG 5
+    	goto See
+	}
+}

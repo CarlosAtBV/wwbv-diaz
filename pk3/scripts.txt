@@ -1,0 +1,11 @@
+#library "DIAZ"
+#include "zcommon.acs"
+
+// Player move speed script
+// donated by DoomRater
+// used for the Mauser and RPK
+
+Script 357 (int movespeed)
+{
+  SetActorProperty(0,APROP_Speed,movespeed*65535/100);
+}

@@ -1,0 +1,203 @@
+ACTOR GrenadeTimer : Inventory
+{
+	Inventory.MaxAmount 3
+}
+
+ACTOR DiazBandage : HealthBonus replaces HealthBonus
+{
+	Scale 0.075
+	Inventory.PickupMessage "MediPatch"
+	Inventory.PickupSound "medi/small"
+	States
+	{
+	Spawn:
+		BAND A -1
+		Stop
+	}
+}
+
+ACTOR DiazGauze : Stimpack replaces Stimpack
+{
+	Scale 0.1
+	Inventory.PickupMessage "HealFast(tm) bandage"
+	Inventory.PickupSound "medi/medium"
+	States
+	{
+	Spawn:
+		GAUZ A -1
+		Stop
+	}
+}
+
+ACTOR DiazMedkit : Medikit replaces Medikit
+{
+	Scale 0.08
+	Inventory.PickupMessage "First aid bag"
+	States
+	{
+	Spawn:
+		FAID A -1
+		Stop
+	}
+}
+
+ACTOR DiazArmor1 : GreenArmor replaces GreenArmor
+{
+	Inventory.PickupMessage "Standard Armor"
+	Inventory.PickupSound "misc/armor_pkup2"
+}
+
+ACTOR DiazArmor2 : BlueArmor replaces BlueArmor
+{
+	Inventory.PickupMessage "Powered Armor"
+	Inventory.PickupSound "misc/armor_pkup3"
+}
+
+ACTOR DiazArmorBonus : ArmorBonus replaces ArmorBonus
+{
+	Inventory.PickupMessage "Armor Fragment"
+}
+
+ACTOR DiazBerserk : ArtiTomeOfPower
+{
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+COUNTITEM
+	Powerup.Color 102,0,0,0.2
+	Powerup.Duration 2100
+	States
+	{
+	Spawn:
+		HYPO A -1
+		Loop
+	}
+}
+		
+
+ACTOR CombatBoost : CustomInventory replaces Berserk
+{
+	inventory.pickupsound "pickups/hypo"
+   inventory.pickupmessage "Medicorp Combatboost Hypo"
+   Translation "162:166=179:185"
+   States
+   {
+   Spawn:
+       HYPO A 10 BRIGHT
+       HYPO A 10
+       Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("HealthBonus",100)
+		TNT1 A 0 A_GiveInventory("DiazBerserk",1)
+		TNT1 A 0
+		Stop
+	}
+}
+
+ACTOR ShellAmmoSpawner replaces Shell
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,"ShellDrop")
+		TNT1 A 1 A_SpawnItem("ExtraMagnumAmmo",1,0)
+		Stop
+	ShellDrop:
+		TNT1 A 1 A_SpawnItem("ExtraShotgunAmmo",1,0)
+		Stop
+	}
+}
+
+ACTOR ShellBoxAmmoSpawner replaces ShellBox
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(128,"ShellDrop")
+		TNT1 A 0 A_SpawnItem("ExtraMagnumAmmo",1,0)
+		TNT1 A 0 A_Jump(128,"ShellDrop2")
+		TNT1 A 0 A_SpawnItem("ExtraMagnumAmmo",1,0)
+		Stop
+	ShellDrop:
+		TNT1 A 0 A_SpawnItem("ExtraShotgunAmmo",1,0)
+		TNT1 A 0 A_Jump(128,"ShellDrop2")
+		TNT1 A 0 A_SpawnItem("ExtraMagnumAmmo",1,0)
+		Stop
+	ShellDrop2:
+		TNT1 A 0 A_SpawnItem("ExtraShotgunAmmo",1,0)
+		Stop
+	}
+}
+
+ACTOR ChaingunGuySpawner replaces ChaingunGuy
+{
+	+ISMONSTER
+   States
+   {
+      Spawn:
+         TNT1 A 0
+         TNT1 A 0 A_Jump(128,"Nazi")
+         TNT1 A 1 A_SpawnItemEx("WeaselChaingunner",0,0,0,0,0,0,0,288)
+         Stop
+		Nazi:
+         TNT1 A 1 A_SpawnItemEx("WeaselNaziRifleman",0,0,0,0,0,0,0,288)
+         Stop
+   }
+} 
+
+ACTOR ShotgunGuySpawner replaces ShotgunGuy
+{
+	+ISMONSTER
+   States
+   {
+      Spawn:
+         TNT1 A 0
+         TNT1 A 0 A_Jump(128,"Magnum")
+         TNT1 A 1 A_SpawnItemEx("WeaselShotgunner",0,0,0,0,0,0,0,288)
+         Stop
+		Magnum:
+         TNT1 A 1 A_SpawnItemEx("WeaselMagnumer",0,0,0,0,0,0,0,288)
+         Stop
+   }
+} 
+
+ACTOR PistolGuySpawner replaces ZombieMan
+{
+	+ISMONSTER
+   States
+   {
+      Spawn:
+         TNT1 A 0
+         TNT1 A 0 A_Jump(255,"SMG","Pistol2","Pistol1")
+		 Pistol1:
+         TNT1 A 1 A_SpawnItemEx("WeaselPistolZombie",0,0,0,0,0,0,0,288)
+         Stop
+		SMG:
+         TNT1 A 1 A_SpawnItemEx("WeaselSMGZombie",0,0,0,0,0,0,0,288)
+         Stop
+		Pistol2:
+         TNT1 A 1 A_SpawnItemEx("WeaselJudgmentZombie",0,0,0,0,0,0,0,288)
+         Stop
+   }
+} 
+
+ACTOR ImpSpawner replaces DoomImp
+{
+	+ISMONSTER
+   States
+   {
+      Spawn:
+         TNT1 A 0
+         TNT1 A 0 A_Jump(128,"Cult")
+		 TNT1 A 0 A_Jump(96,"SMG")
+		 TNT1 A 1 A_SpawnItemEx("NewDiazImp",0,0,0,0,0,0,0,288)
+         Stop
+		SMG:
+         TNT1 A 1 A_SpawnItemEx("WeaselPsiTestSubject",0,0,0,0,0,0,0,288)
+         Stop
+		 Cult:
+         TNT1 A 1 A_SpawnItemEx("WeaselCultist",0,0,0,0,0,0,0,288)
+         Stop
+   }
+} 

@@ -1,0 +1,165 @@
+ACTOR P50Handgun : Weapon 8402
+{
+	//$Category weapons
+	Inventory.PickupMessage "K&S P50 Handgun (2)"
+	Inventory.PickupSound "colt45/pickup"
+	Obituary "%o was bored to death by %k's generic pistol."
+	Weapon.AmmoType		"P50Clip"
+	Weapon.AmmoGive		0
+	Weapon.AmmoUse		1
+	Weapon.AmmoType2	"P50Ammo"
+	Weapon.AmmoGive2	2
+	Weapon.AmmoUse2		0
+	Radius				12
+	Height				12
+	Weapon.SisterWeapon P50Handgun2
+	Tag "K&S P50"
+	Scale 0.75
+	+AMMO_OPTIONAL
+	+NOEXTREMEDEATH
+	+NOAUTOFIRE
+	+NOALERT
+	+INVENTORY.UNDROPPABLE
+	+WEAPON.NO_AUTO_SWITCH
+	States
+	{
+	Spawn:
+		KNSP A -1
+		Loop
+    Select:
+		TNT1 A 4 SetPlayerProperty(0,1,2)
+		KNSH DCB 1
+		KNSH A 1 A_PlaySound("weapon/select3")
+		KNR2 QPON 1
+		KNR2 EFG 1
+		KNR2 H 1 A_PlayWeaponSound("colt45/pickup")
+		KNR2 IJKLMNOPQ 1
+    	KNSG A 1 A_Raise
+    	Goto Select+23
+    Deselect:
+		KNSH A 1 A_PlaySound("weapon/deselect")
+		KNSH BCD 1
+		TNT1 A 4
+	DeselectLoop:
+    	TNT1 A 1 A_Lower
+    	Goto DeselectLoop
+    Ready:
+    	KNSG A 1 A_WeaponReady
+    	KNSG A 0 A_JumpIfInventory("IsReloading",1,"Reload")
+    	Loop
+    Fire:
+    	KNSG A 0 A_JumpIfNoAmmo("DryFire")
+    	KNSG A 0 A_PlayWeaponSound("colt45/fire")
+    	KNSG A 0 A_GunFlash
+    	KNSF A 1 BRIGHT A_FireBullets(2.5,2,-1,7,"BulletPuff",1)
+		KNSG A 0 A_SetPitch(pitch - 1.6)
+		KNSG A 0 A_SetAngle(angle + (frandom(-0.6,0.6)))
+    	KNSF B 1 BRIGHT A_FireCustomMissile("PistolSmokeSpawner",0,0,6,8)
+    	KNSF C 1 BRIGHT A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
+    	KNSG C 1 A_AlertMonsters
+		KNSG EDBA 1 A_WeaponReady
+    	Goto Ready
+	DryFire:
+    	KNSG C 1 A_PlayWeaponSound("colt45/noammo")
+    	KNSG EDB 1
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"Reload")
+    	Goto Ready
+    Reload:
+    	TNT1 A 0 A_JumpIfInventory("P50Clip",12,2)
+    	TNT1 A 0 A_JumpIfInventory("P50Ammo",1,2)
+      	TNT1 A 0
+      	Goto Ready
+      	KNSR ABCDEF 1
+      	KNSR G 1 A_PlaySound("colt45/clipout")
+      	KNSR H 2 A_TakeInventory("P50Clip",12)
+      	KNSR I 3 A_FireCustomMissile("SpentClip1",3,0,5,0)
+      	KNSR JJJKKLL 1
+      	KNSR M 1 A_PlaySound("colt45/cliphit")
+		KNSR NNNOOPQRRSSSTTT 1
+      	KNSR U 0 A_TakeInventory("P50Ammo",1)
+      	KNSR U 0 A_GiveInventory("P50Clip",12)
+		KNSR U 1 A_PlaySound("colt45/clipin")
+      	KNSR UVWXYYZZ 1
+		KNR2 ABCDEFG 1
+		KNR2 H 1 A_PlaySound("colt45/pickup")
+		KNR2 IJKLMNOPQ 1
+		Goto Ready
+	AltFire:
+      	KNSM ABCD 1
+      	TNT1 A 3
+      	KNSM E 1 A_PlaySound("melee/swing")
+		KNSM F 1
+      	KNSM G 1 A_CustomPunch(4,0,0,"hitpuff")
+      	KNSM GHIJK 1
+		TNT1 A 4
+      	KNSH DCBA 1
+      	Goto Ready
+      Flash:
+      	TNT1 A 0
+      	TNT1 A 2 A_Light1
+      	TNT1 A 1 A_Light0
+      	Stop
+    }
+}
+
+ACTOR P50Handgun2 : P50Handgun
+{
+	Weapon.SisterWeapon P50Handgun
+	Weapon.AmmoGive2 0
+	+POWERED_UP
+	States
+	{
+	Reload:
+    	TNT1 A 0 A_JumpIfInventory("P50Clip",12,2)
+    	TNT1 A 0 A_JumpIfInventory("P50Ammo",1,2)
+      	TNT1 A 0
+      	Goto Ready
+      	KNSR ABCDEF 1
+      	KNSR G 1 A_PlaySound("colt45/clipout")
+      	KNSR H 2 A_TakeInventory("P50Clip",12)
+      	KNSR I 2 A_FireCustomMissile("SpentClip1",3,0,5,0)
+      	KNSR JJKL 1
+      	KNSR MNNO 1
+      	KNSR U 0 A_TakeInventory("P50Ammo",1)
+      	KNSR U 0 A_GiveInventory("P50Clip",12)
+		KNSR U 1 A_PlaySound("colt45/clipin")
+      	KNSR UVWXYZ 1
+		Goto Ready
+	AltFire:
+      	KNSM ABCD 1
+      	TNT1 A 3
+      	KNSM E 1 A_PlaySound("melee/swing")
+		KNSM F 1
+      	KNSM G 1 A_CustomPunch(16,0,0,"powerhitpuff")
+      	KNSM GHIJK 1
+		TNT1 A 4
+      	KNSH DCBA 1
+      	Goto Ready
+	}
+}
+
+ACTOR P50Ammo : Ammo replaces Clip
+{
+	//$Category ammunition
+	Inventory.MaxAmount 8
+	Inventory.PickupMessage "9mm pistol ammo"
+	Tag "9x19mm"
+	Inventory.Amount	1
+	Inventory.PickupSound "colt45/clipout"
+	Inventory.Icon KNSAA0
+	Ammo.BackpackAmount 1
+	Ammo.BackpackMaxAmount 16
+	Scale 0.75
+	States
+	{
+	Spawn:
+	    	KNSA A -1
+	    	LOOP
+	}
+}
+
+ACTOR P50Clip : Ammo
+{
+	Inventory.MaxAmount 12
+	Inventory.Icon KNSPA0
+}

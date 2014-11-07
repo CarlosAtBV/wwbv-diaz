@@ -1,0 +1,30 @@
+STATUSFONT
+   {
+       0 STCFN048
+       1 STCFN049
+       2 STCFN050
+       3 STCFN051
+       4 STCFN052
+       5 STCFN053
+       6 STCFN054
+       7 STCFN055
+       8 STCFN056
+       9 STCFN057
+       % STCFN037
+       / STCFN047
+       - STCFN045
+   }
+   
+TINYAMMOFONT
+	{
+		0 NUM0
+		1 NUM1
+		2 NUM2
+		3 NUM3
+		4 NUM4
+		5 NUM5
+		6 NUM6
+		7 NUM7
+		8 NUM8
+		9 NUM9
+	}

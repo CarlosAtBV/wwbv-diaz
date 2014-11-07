@@ -1,0 +1,263 @@
+ACTOR ExtraSMGAmmo : Ammo 8411
+{
+	//$Category ammunition
+	Inventory.MaxAmount 7
+	Inventory.PickupMessage "4.6mm MP7 Ammo"
+	Tag "4.6x30mm"
+	Inventory.Amount	1
+	Inventory.PickupSound "mp40/clipout"
+	Ammo.BackpackAmount 2
+	Ammo.BackpackMaxAmount 14
+	Scale 0.25
+	States
+	{
+	Spawn:
+	    	MP7A A -1
+	    	LOOP
+	}
+}
+
+ACTOR SMGClip : Ammo
+{
+	Inventory.MaxAmount 40
+	Inventory.Icon MP7PA0
+}
+
+ACTOR SMG37 : Weapon replaces Chainsaw
+{
+	//$Category weapons
+	Inventory.PickupMessage "heckler & koch MP7 (4)"
+	Tag "H&K MP7"
+	Inventory.PickupSound "mp40/cock"
+	Obituary "%o was pelted repeatedly by %k's SMG."
+	Weapon.AmmoType		"SMGClip"
+	Weapon.AmmoGive		0
+	Weapon.AmmoUse		1
+	Weapon.AmmoType2	"ExtraSMGAmmo"
+	Weapon.AmmoGive2	2
+	Weapon.AmmoUse2		0
+	Weapon.SisterWeapon SMG2
+	Radius				12
+	Height				12
+	scale 0.75
+	+AMMO_OPTIONAL
+	+NOEXTREMEDEATH
+	+NOAUTOFIRE
+	+NOALERT
+	States
+	{
+	Spawn:
+		MP7P A 1
+		LOOP
+    Ready:
+		MP7G A 0 A_JumpIfInventory("IsReloading",1,"Reload")
+		MP7G A 1 A_WeaponReady
+		Loop
+	Deselect:
+		MP7G A 1 Offset(-12,38)
+		MP7G A 1 Offset(-24,46)
+		MP7G A 1 Offset(-36,54) A_PlaySound("weapon/deselect")
+		MP7G A 1 Offset(-48,66)
+		MP7G A 1 Offset(-60,80)
+		MP7G A 1 Offset(-80,96)
+		TNT1 A 15 A_WeaponReady(14)
+	DeselectLoop:
+		TNT1 A 1 A_Lower
+		Goto DeselectLoop
+	Select:
+		TNT1 A 9 SetPlayerProperty(0,1,2)
+		MP7G A 1 Offset(-80,96)
+		MP7G A 1 Offset(-60,80)
+		MP7G A 1 Offset(-48,66)
+		MP7G A 1 Offset(-36,54) A_PlaySound("weapon/select5")
+		MP7G A 1 Offset(-24,46)
+		MP7G A 1 Offset(-12,38)
+	SelectLoop:
+		MP7G A 1 A_Raise
+		Goto SelectLoop
+    Ready:
+    	MP7G A 1 A_WeaponReady
+    	MP7G A 0 A_JumpIfInventory("IsReloading",1,"Reload")
+    	Loop
+    Fire:
+    	MP7G A 0 A_JumpIfNoAmmo("DryFire")
+		MP7F A 0 A_SetPitch(pitch - 0.9)//ACS_Execute(287,0,20,random(7,14),0)
+    	MP7F A 0 A_FireBullets(4,2,1,4,"BulletPuff",1)
+    	MP7F A 0 A_GunFlash
+    	MP7F A 0 A_PlaySoundEx("mp40/fire","weapon")
+    	MP7F A 1 BRIGHT Offset(6,35) A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
+    	MP7G A 1 Offset(4,34) A_FireCustomMissile("PistolSmokeSpawner",0,0,4,6)
+    	MP7G A 1 Offset(2,33) A_AlertMonsters
+		MP7G A 1 A_Refire
+    	Goto Ready
+	DryFire:
+    	MP7G A 1 Offset(6,35) A_PlaySound("mp40/noammo")
+		MP7G A 1 Offset(4,34)
+		MP7G A 1 Offset(2,33)
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"Reload")
+        Goto Ready    	
+    Reload:
+    	TNT1 A 0 A_StopSoundEx("weapon")
+    	TNT1 A 0 A_JumpIfInventory("SMGClip",40,2)
+    	TNT1 A 0 A_JumpIfInventory("ExtraSMGAmmo",1,2)
+      	TNT1 A 0
+      	Goto Ready
+      	MP7G B 1 Offset(2,36)
+		MP7G B 1 Offset(4,41)
+		MP7G B 1 Offset(6,47)
+		MP7G B 1 Offset(8,54)
+      	MP7G C 1 Offset(10,60) A_TakeInventory("SMGClip",40)
+      	MP7G C 1 Offset(12,64) A_PlayWeaponSound("mp40/clipout")
+      	MP7G C 1 Offset(14,67)
+		MP7G C 1 Offset(15,69)
+		MP7G C 1 Offset(16,70)
+      	MP7G C 1 A_FireCustomMissile("SpentClip4",3,0,5,0)
+		MP7G C 1 Offset(17,67)
+		MP7G C 1 Offset(18,64)
+		MP7G C 1 Offset(17,62)
+      	MP7G C 1 Offset(16,61)
+		MP7G C 1 Offset(15,70)
+		MP7G C 1 Offset(14,78)
+      	MP7G C 1 Offset(13,86)
+		MP7G C 1 Offset(13,87)
+		MP7G C 1 Offset(13,88)
+      	MP7G C 1 Offset(12,89)
+		MP7G C 1 Offset(12,90)
+		MP7G C 1 Offset(12,91)
+      	MP7G C 1 Offset(11,92) A_PlayWeaponSound("mp40/clipin")
+	    TNT1 A 0 A_TakeInventory("ExtraSMGAmmo",1)
+      	TNT1 A 0 A_GiveInventory("SMGClip",40)
+		MP7G C 1 Offset(11,93)
+		MP7G C 1 Offset(11,94)
+		MP7G C 1 Offset(11,95)
+		MP7G C 1 Offset(11,94)
+		MP7G C 1 Offset(11,93)
+		MP7G C 1 Offset(12,92)
+		MP7G C 1 Offset(12,90)
+		MP7G C 1 Offset(12,88)
+		MP7G C 1 Offset(13,86)
+		MP7G C 1 Offset(13,83)
+		MP7G C 1 Offset(15,80)
+		MP7G C 1 Offset(15,78)
+		MP7G C 1 Offset(18,76)
+		MP7G C 1 Offset(19,76)
+		MP7G C 1 Offset(20,76)
+		MP7G C 1 Offset(21,75)
+		MP7G C 1 Offset(22,75)
+		MP7G C 1 Offset(23,76)
+		MP7G C 1 Offset(24,77)
+		MP7G C 1 Offset(25,79)
+		MP7G C 1 Offset(26,82)
+		MP7G C 1 Offset(27,86)
+		MP7G C 1 Offset(32,96)
+		MP7G C 1 Offset(37,101)
+      	MP7G C 1 Offset(42,106) A_PlayWeaponSound("mp40/cock")
+      	MP7G C 1 Offset(47,111)
+      	MP7G C 1 Offset(50,116)
+      	MP7G C 1 Offset(52,119)
+		MP7G C 1 Offset(49,117)
+		MP7G C 1 Offset(47,114)
+		MP7G C 1 Offset(42,110)
+		MP7G C 1 Offset(35,105)
+		MP7G C 1 Offset(28,95)
+		MP7G C 1 Offset(20,86)
+		MP7G C 1 Offset(12,68)
+		MP7G B 1 Offset(6,54)
+		MP7G B 1 Offset(3,42)
+		MP7G B 1 Offset(1,30)
+		MP7G B 1 Offset(-1,29)
+		MP7G A 1 Offset(-1,31)
+      	Goto Ready
+	AltFire:
+		MP7G A 1 Offset(-12,38)
+		MP7G A 1 Offset(-36,54) A_PlaySound("weapon/deselect")
+		MP7G A 1 Offset(-60,80)
+		TNT1 A 5
+		MP7G D 1 Offset(-222,45) A_PlayWeaponSound("melee/swing")
+		MP7G D 1 Offset(-147,35)
+		MP7G D 1 Offset(-74,30)
+		MP7G D 1 Offset(34,36) A_CustomPunch(7.5,0,0,"hitpuff")
+		MP7G D 1 Offset(120,43)
+		TNT1 A 6
+		MP7G A 1 Offset(-80,96)
+		MP7G A 1 Offset(-48,66) A_PlaySound("weapon/select5")
+		MP7G A 1 Offset(-12,38)
+      	Goto Ready
+	Flash:
+		TNT1 A 1 A_Light2
+		TNT1 A 1 A_Light1
+		TNT1 A 1 A_Light0
+		Stop
+    }
+}
+
+ACTOR SMG2 : SMG37
+{
+	Weapon.SisterWeapon SMG37
+	+POWERED_UP
+	Obituary "%k fills %o with so many holes that %g is now semi-transparent."
+	Weapon.AmmoGive2 0
+	States
+	{
+	Reload:
+    	TNT1 A 0 A_StopSoundEx("weapon")
+    	TNT1 A 0 A_JumpIfInventory("SMGClip",40,2)
+    	TNT1 A 0 A_JumpIfInventory("ExtraSMGAmmo",1,2)
+      	TNT1 A 0
+      	Goto Ready
+      	MP7G B 1 Offset(2,36)
+		MP7G B 1 Offset(6,47)
+      	MP7G C 1 Offset(10,60) A_TakeInventory("SMGClip",40)
+      	MP7G C 1 Offset(12,64) A_PlayWeaponSound("mp40/clipout")
+      	MP7G C 1 Offset(14,67)
+		MP7G C 1 Offset(16,70)
+      	MP7G C 1 A_FireCustomMissile("SpentClip4",3,0,5,0)
+		MP7G C 1 Offset(17,67)
+		MP7G C 1 Offset(17,62)
+		MP7G C 1 Offset(15,70)
+      	MP7G C 1 Offset(13,86)
+		MP7G C 1 Offset(13,88)
+      	MP7G C 1 Offset(12,89)
+		MP7G C 1 Offset(12,91)
+      	MP7G C 1 Offset(11,92) A_PlayWeaponSound("mp40/clipin")
+	    TNT1 A 0 A_TakeInventory("ExtraSMGAmmo",1)
+      	TNT1 A 0 A_GiveInventory("SMGClip",40)
+		MP7G C 1 Offset(11,94)
+		MP7G C 1 Offset(12,92)
+		MP7G C 1 Offset(12,88)
+		MP7G C 1 Offset(13,83)
+		MP7G C 1 Offset(15,78)
+		MP7G C 1 Offset(19,76)
+		MP7G C 1 Offset(21,75)
+		MP7G C 1 Offset(23,76)
+		MP7G C 1 Offset(25,79)
+		MP7G C 1 Offset(27,86)
+		MP7G C 1 Offset(37,101)
+      	MP7G C 1 Offset(42,106) A_PlayWeaponSound("mp40/cock")
+      	MP7G C 1 Offset(47,111)
+      	MP7G C 1 Offset(52,119)
+		MP7G C 1 Offset(47,114)
+		MP7G C 1 Offset(35,105)
+		MP7G C 1 Offset(20,86)
+		MP7G B 1 Offset(6,54)
+		MP7G B 1 Offset(1,30)
+		MP7G B 1 Offset(-1,29)
+		MP7G A 1 Offset(-1,31)
+      	Goto Ready
+	AltFire:
+		MP7G A 1 Offset(-12,38)
+		MP7G A 1 Offset(-36,54) A_PlaySound("weapon/deselect")
+		MP7G A 1 Offset(-60,80)
+		TNT1 A 5
+		MP7G D 1 Offset(-222,45) A_PlayWeaponSound("melee/swing")
+		MP7G D 1 Offset(-147,35)
+		MP7G D 1 Offset(-74,30)
+		MP7G D 1 Offset(34,36) A_CustomPunch(20,0,0,"powerhitpuff")
+		MP7G D 1 Offset(120,43)
+		TNT1 A 6
+		MP7G A 1 Offset(-80,96)
+		MP7G A 1 Offset(-48,66) A_PlaySound("weapon/select5")
+		MP7G A 1 Offset(-12,38)
+      	Goto Ready
+	}
+}

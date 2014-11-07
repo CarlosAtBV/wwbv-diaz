@@ -1,0 +1,94 @@
+
+
+ACTOR WeaselSlugCombine : Zombieman replaces Revenant
+{
+   Health 250
+   Obituary "Subject: %o - Analysis: Exterminated"
+   SeeSound "vacbob/sight"
+   ActiveSound "vacbob/chatter"
+   PainSound "vacbob/pain"
+   DeathSound "vacbob/death"
+   Decal MiniScorch
+   DamageFactor "Combinepuff", 0
+   PainChance 64
+   Speed 12
+   Damage 1
+   TRANSLATION 1
+   DropItem SlugRifle 64
+   DropItem ATAmmo 84
+   States
+   {
+    Spawn:
+        CMBN AB 10 A_Look
+        Loop
+    See:
+        CMBN AABBCCDD 3 A_Chase
+        Loop
+    Missile:
+    	CMBN D 5 //A_PlaySoundEx("vacbob/getdown","Voice",0)
+		CMBN DDDDDDD 5 A_FaceTarget
+        CMBN E 5 A_FaceTarget
+        CMBN F 5 BRIGHT A_CustomMissile("CombineSlug",32,0,0)
+        Goto See
+    Pain:
+        CMBN G 3
+        CMBN G 3 A_Pain
+        Goto See
+		Death.Lightning:
+		LDTH A 2 BRIGHT A_PlaySoundEx("misc/lightningdeath","SoundSlot5",0)
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+       Death:
+        CMBN H 5
+        CMBN I 5 A_Scream
+        CMBN J 5 A_Fall
+        CMBN K 5
+        CMBN L -1 A_PlaySound("misc/bodyfall")
+        Stop
+    XDeath:
+	BCUL O 0 A_SpawnDebris("NashGore_Gib9",0)
+ 	BCUL O 0 A_SpawnDebris("NashGore_Gib10",0)
+ 	BCUL O 0 A_SpawnDebris("NashGore_Gib11",0)
+ 	BCUL O 0 A_SpawnDebris("NashGore_Gib11",0)
+ 	BCUL O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+	CMBN M 4 A_XScream
+	BCUL O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+	CMBN N 4 A_Fall
+	BCUL O 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+	CMBN OPQRS 4
+	CMBN T -1
+        Stop
+	Death.Fire:
+	BURN ABC 5 BRIGHT
+	BURN D 5 BRIGHT A_PlaySound("misc/combineflame")
+	BURN EFGHIJKLMN 5 BRIGHT
+	BURN O 5 BRIGHT A_NoBlocking
+	BURN PQRSTU 5 BRIGHT
+	BURN V -1
+	Stop
+	Death.Neut:
+	DISR A 3 BRIGHT A_SetTranslucent(0.9,0)
+	DISR B 3 BRIGHT A_PlaySound("misc/disintdeath")
+	DISR C 3 BRIGHT A_SetTranslucent(0.8,0)
+	DISR D 3 BRIGHT A_SetTranslucent(0.7,0)
+	DISR E 3 BRIGHT A_SetTranslucent(0.6,0)
+	DISR F 3 BRIGHT A_SetTranslucent(0.5,0)
+	DISR G 3 BRIGHT A_SetTranslucent(0.4,0)
+	DISR H 3 BRIGHT A_SetTranslucent(0.3,0)
+	DISR I 3 BRIGHT A_SetTranslucent(0.2,0)
+	DISR J 3 BRIGHT A_SetTranslucent(0.1,0)
+	Stop
+    Raise:
+        CMBN LKJIH 5
+        Goto See
+   }
+}

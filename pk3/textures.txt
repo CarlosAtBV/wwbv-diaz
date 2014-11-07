@@ -1,0 +1,254 @@
+graphic WP1A, 18, 18
+{
+	Patch "1a-Fist", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP1AX, 18, 18
+{
+	Patch "1a-Fist", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP1B, 18, 18
+{
+	Patch "1b-Psi", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP1BX, 18, 18
+{
+	Patch "1b-Psi", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP2A, 18, 18
+{
+	Patch "2a-P50", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP2AX, 18, 18
+{
+	Patch "2a-P50", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP2B, 18, 18
+{
+	Patch "2b-Judge", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP2BX, 18, 18
+{
+	Patch "2b-Judge", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP2C, 18, 18
+{
+	Patch "2c-Mart", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP2CX, 18, 18
+{
+	Patch "2c-Mart", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP3A, 18, 18
+{
+	Patch "3a-Shot", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP3AX, 18, 18
+{
+	Patch "3a-Shot", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP3B, 18, 18
+{
+	Patch "3b-Maus", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP3BX, 18, 18
+{
+	Patch "3b-Maus", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP3C, 18, 18
+{
+	Patch "3c-Hiddn", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP3CX, 18, 18
+{
+	Patch "3c-Hiddn", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP4A, 18, 18
+{
+	Patch "4a-mp7", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP4AX, 18, 18
+{
+	Patch "4a-mp7", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP4B, 18, 18
+{
+	Patch "4b-an41", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP4BX, 18, 18
+{
+	Patch "4b-an41", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP5A, 18, 18
+{
+	Patch "5a-rpk", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP5AX, 18, 18
+{
+	Patch "5a-rpk", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP5B, 18, 18
+{
+	Patch "5b-at30", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP5BX, 18, 18
+{
+	Patch "5b-at30", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP6A, 18, 18
+{
+	Patch "6a-gren", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP6AX, 18, 18
+{
+	Patch "6a-gren", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP6B, 18, 18
+{
+	Patch "6b-rpg", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP6BX, 18, 18
+{
+	Patch "6b-rpg", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP7A, 18, 18
+{
+	Patch "7a-neut", 0, 0
+	XScale 2.0
+	YScale 2.0
+}
+
+graphic WP7AX, 18, 18
+{
+	Patch "7a-neut", 0, 0
+	{
+		Translation Red
+	}
+	XScale 2.0
+	YScale 2.0
+}

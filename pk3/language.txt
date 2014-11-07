@@ -1,0 +1,25 @@
+[enu default]
+
+QUITMSG = "It's over. It's all over.";
+
+// QuitDoom1 messages
+QUITMSG1 = "I can't stop now.\nI must keep moving forward!";
+QUITMSG2 = "There is every reason to continue.";
+QUITMSG3 = "I didn't become a special agent\nthrough acts of cowardice!";
+QUITMSG4 = "I'm not abandoning this mission.";
+QUITMSG5 = "the director won't be happy.";
+QUITMSG6 = "I've got to keep moving...if\nnot for Hernandez's sake, then...";
+QUITMSG7 = "fine then! get out of my way!";
+
+// QuitDOOM II messages
+QUITMSG8 = "Oh no you don't.";
+QUITMSG9 = "The future of mankind\nwill be put in jeopardy.";
+QUITMSG10 = "no! don't stop now, you fool!";
+QUITMSG11 = "oh, is there some other crisis\nyou need to deal with?";
+QUITMSG12 = "i hate you.";
+QUITMSG13 = "if you're gonna go, then\njust go already.";
+QUITMSG14 = "i'm not speaking to you again.\never.";
+
+NIGHTMARE = "This weapon mod is certainly\nnot for noobs. But if you're\nstill of the opinion that weapon\nmods are only for those whose Dooming\nskills are very lacking...\nthen be my guest.\n\njust don't complain if you can't\nbeat the first level.\n\n(press y to accept my challenge)";
+
+MNU_CHOOSECLASS		= "CHOOSE COSTUME:";

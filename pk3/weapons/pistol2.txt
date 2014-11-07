@@ -1,0 +1,196 @@
+ACTOR JudgmentPistol : Weapon 8409
+{
+	//$Category weapons
+	Inventory.PickupMessage "Judgment Mark II Pistol (2)"
+	Tag "Judgment Mk.2"
+	Inventory.PickupSound "judgment/cock"
+	Obituary "%o was sissied to death by %k's nickel pistol."
+	Weapon.AmmoType		"JudgmentClip"
+	Weapon.AmmoGive		0
+	Weapon.AmmoUse		1
+	Weapon.AmmoType2	"P50Ammo"
+	Weapon.AmmoGive2	2
+	Weapon.AmmoUse2		0
+	Radius				12
+	Height				12
+	Weapon.SisterWeapon JudgmentPistol2
+	Scale 0.75
+	+AMMO_OPTIONAL
+	+NOEXTREMEDEATH
+	+NOAUTOFIRE
+	+NOALERT
+	+INVENTORY.UNDROPPABLE
+	+WEAPON.NO_AUTO_SWITCH
+	States
+	{
+	Spawn:
+		JUDP A -1
+		Loop
+    Select:
+		TNT1 A 4 SetPlayerProperty(0,1,2)
+		JDGH AB 1
+		JDGH C 1 A_PlaySound("weapon/select3")
+		JDGC ABCD 1
+		JDGC E 1 A_PlayWeaponSound("judgment/cock")
+		JDGC FFGGHIJK 1
+	SelectLoop:
+    	JDGG A 1 A_Raise
+    	Goto SelectLoop
+    Deselect:
+		JDGH C 1 A_PlaySound("weapon/deselect")
+		JDGH BA 1
+		TNT1 A 4
+	DeselectLoop:
+    	TNT1 A 1 A_Lower
+    	Goto DeselectLoop
+    Ready:
+		JDGG e 0 A_JumpIfInventory("JudgmentClip",1,"ReadyFull")
+		JDGG E 1 A_WeaponReady
+    	JDGG E 0 A_JumpIfInventory("IsReloading",1,"Reload")
+		Goto Ready
+	ReadyFull:
+    	JDGG A 1 A_WeaponReady
+    	JDGG A 0 A_JumpIfInventory("IsReloading",1,"Reload")
+    	Goto Ready
+	Fire:
+		JDGG A 0 A_JumpIfNoAmmo("Dryfire")
+		JDGF A 1 A_AlertMonsters
+		JDGF B 0 A_SetPitch(pitch - 1.0)//ACS_Execute(287,0,16,random(-5,5),0)
+		JDGF B 0 A_PlayWeaponSound("judgment/fire")
+		JDGF B 1 BRIGHT A_FireBullets(1,1,-1,6.5,"BulletPuff",1)
+		JDGF C 1 BRIGHT A_FireCustomMissile("PistolSmokeSpawner",0,0,3,8)
+    	JDGG D 1 BRIGHT A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
+		JDGG E 1 A_JumpIfNoAmmo("Slideback")
+ 		JDGG C 1
+		JDGG BA 1 A_WeaponReady
+		Goto Ready
+	Dryfire:
+		JDGg e 1 A_PlayWeaponSound("judgment/empty")
+		JDGG E 1
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"Reload")
+		Goto Ready
+	Slideback:
+		JDGg e 1 A_PlaySound("judgment/slideback")
+		JDGG E 1
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"Reload")
+		Goto Ready
+	Reload:
+    	TNT1 A 0 A_JumpIfInventory("JudgmentClip",12,2)
+    	TNT1 A 0 A_JumpIfInventory("P50Ammo",1,2)
+      	TNT1 A 0
+      	Goto Ready
+		JDGR a 0 A_JumpIfInventory("JudgmentClip",1,"ReloadFull")
+		JDGR a 0 A_TakeInventory("JudgmentClip",12)
+		JDGR a 0 A_PlayWeaponSound("judgment/clipout")
+		JDGR A 1 A_FireCustomMissile("SpentClip1",3,0,5,0)
+		JDGR B 1
+		JDGR CCCCCCCCCCCCCCCDDE 1
+		TNT1 A 0 A_TakeInventory("P50Ammo",1)
+		TNT1 A 0 A_GiveInventory("JudgmentClip",12)
+		JDGR F 1 A_PlayWeaponSound("judgment/clipin")
+		JDGR GHIJ 1
+		JDGR K 1 A_PlayWeaponSound("judgment/cliphit")
+		JDGR LMNO 1
+		JDGR P 1 A_PlaySoundEx("judgment/slide","SoundSlot5")
+		JDGR QRST 1
+		Goto Ready
+	ReloadFull:
+		JDGG A 1 A_PlayWeaponSound("judgment/clipout")
+		JDGG AA 1
+		JDGS A 1 A_FireCustomMissile("SpentClip1",3,0,5,0)
+		JDGS B 1
+		JDGS CCCCCCCCCCCCCCCDDE 1
+		JDGS e 0 A_TakeInventory("P50Ammo",1)
+		JDGS e 0 A_GiveInventory("JudgmentClip",12)
+		JDGS F 1 A_PlayWeaponSound("judgment/clipin")
+		JDGS GHH 1
+		JDGS K 1 A_PlayWeaponSound("judgment/cliphit")
+		JDGS LMRST 1
+		Goto Ready	
+	Flash:
+      	TNT1 A 0
+      	TNT1 A 2 A_Light1
+      	TNT1 A 1 A_Light0
+      	Stop
+	AltFire:
+		JDGM A 0 A_JumpIfInventory("JudgmentClip",1,"AltfireFull")
+		JDGM ABC 1
+      	TNT1 A 3
+      	JDGM I 1 A_PlaySound("melee/swing")
+		JDGM J 1
+      	JDGM K 1 A_CustomPunch(6.5,0,0,"hitpuff")
+      	JDGM LM 1
+		TNT1 A 4
+		JDGH ABC 1
+      	Goto Ready
+	AltfireFull:
+      	JDGM ABC 1
+      	TNT1 A 3
+      	JDGM D 1 A_PlaySound("melee/swing")
+		JDGM E 1
+      	JDGM F 1 A_CustomPunch(7,0,0,"hitpuff")
+      	JDGM GH 1
+		TNT1 A 4
+		JDGH ABC 1
+      	Goto Ready
+    }
+}
+
+ACTOR JudgmentPistol2 : JudgmentPistol
+{
+	Weapon.SisterWeapon JudgmentPistol
+	Weapon.AmmoGive2 0
+	+POWERED_UP
+	States
+	{
+	Reload:
+    	TNT1 A 0 A_JumpIfInventory("JudgmentClip",12,2)
+    	TNT1 A 0 A_JumpIfInventory("P50Ammo",1,2)
+      	TNT1 A 0
+      	Goto Ready
+		JDGR a 0 A_JumpIfInventory("JudgmentClip",1,"ReloadFull")
+		JDGR a 0 A_TakeInventory("JudgmentClip",12)
+		JDGR a 0 A_PlayWeaponSound("judgment/clipout")
+		JDGR A 1 A_FireCustomMissile("SpentClip1",3,0,5,0)
+		JDGR B 1
+		JDGR CCCDDE 1
+		TNT1 A 0 A_TakeInventory("P50Ammo",1)
+		TNT1 A 0 A_GiveInventory("JudgmentClip",12)
+		JDGR F 1 A_PlayWeaponSound("judgment/clipin")
+		JDGR HJ 1
+		JDGR K 1 A_PlayWeaponSound("judgment/cliphit")
+		JDGR LN 1
+		JDGR P 1 A_PlaySoundEx("judgment/slide","SoundSlot5")
+		JDGR RT 1
+		Goto Ready
+	ReloadFull:
+		JDGG A 1 A_PlayWeaponSound("judgment/clipout")
+		JDGG A 1
+		JDGS A 1 A_FireCustomMissile("SpentClip1",3,0,5,0)
+		JDGS B 1
+		JDGS CCCDDE 1
+		JDGS e 0 A_TakeInventory("P50Ammo",1)
+		JDGS e 0 A_GiveInventory("JudgmentClip",12)
+		JDGS F 1 A_PlayWeaponSound("judgment/clipin")
+		JDGS H 1
+		JDGS K 1 A_PlayWeaponSound("judgment/cliphit")
+		JDGS MST 1
+		Goto Ready
+	AltFire:
+      	JDGM ABC 1
+      	TNT1 A 3
+      	JDGM D 1 A_PlaySound("melee/swing")
+		JDGM E 1
+      	JDGM F 1 A_CustomPunch(22,0,0,"powerhitpuff")
+      	JDGM GH 1
+		TNT1 A 4
+      	JDGH ABC 1
+      	Goto Ready
+	}
+}
+
+ACTOR JudgmentClip : Ammo
+{
+	Inventory.MaxAmount 12
+	Inventory.Icon JUDPA0
+}

@@ -1,0 +1,212 @@
+// Heretic Replacers - Makes the mod work with Heretic
+// Note: The way I had to replace the weapons for Heretic
+// makes them not respawn or stay in multiplayer!
+
+ACTOR HereticPistolAmmo : P50Ammo replaces GoldWandAmmo {}
+ACTOR HereticMagnumAmmo : ExtraMagnumAmmo replaces GoldWandHefty {}
+ACTOR HereticShotgunAmmo : ExtraShotgunAmmo replaces CrossbowAmmo {}
+ACTOR HereticMauserAmmo : MauserAmmo replaces CrossbowHefty {}
+ACTOR HereticSMGAmmo : ExtraSMGAmmo replaces BlasterAmmo {}
+ACTOR HereticSkorAmmo : SkorAmmo replaces BlasterHefty {}
+ACTOR HereticRPGAmmo : RPGAmmo replaces PhoenixRodAmmo {}
+ACTOR HereticGrenades : GrenadePile replaces PhoenixRodHefty {}
+ACTOR HereticRPKAmmo : RPDAmmo replaces SkullRodHefty {}
+ACTOR HereticNeutAmmo : NeutAmmo replaces SkullRodAmmo {}
+
+ACTOR HereticAmmoPileSmall replaces MaceAmmo
+{
+	DropItem P50Ammo
+	DropItem ExtraMagnumAmmo
+	DropItem ExtraShotgunAmmo
+	DropItem MauserAmmo
+	DropItem ExtraSMGAmmo
+	DropItem SkorAmmo
+	DropItem GrenadePile
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_Fall
+		Stop
+	}
+}
+
+ACTOR HereticAmmoPileLarge replaces MaceHefty
+{
+	DropItem P50Ammo
+	DropItem ExtraMagnumAmmo
+	DropItem ExtraShotgunAmmo
+	DropItem MauserAmmo
+	DropItem ExtraSMGAmmo
+	DropItem SkorAmmo
+	DropItem GrenadePile
+	DropItem RPGAmmo
+	DropItem RPDAmmo
+	DropItem NeutAmmo
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_Fall
+		Stop
+	}
+}
+
+ACTOR HereticPsiAmp : CustomInventory replaces ArtiInvisibility
+{
+	Inventory.PickupMessage "psionic amplifier (1)"
+	Inventory.PickupSound "psiamp/pickup"
+	Scale 0.3
+	States
+	{
+	Spawn:
+		PSIP A -1
+		Loop
+	Pickup:
+		PSIP A 0
+		PSIP A 0 A_GiveInventory("PsiAmp",1)
+		Stop
+	}
+}
+
+ACTOR HereticShotgun : CustomInventory replaces Crossbow
+{
+	Inventory.PickupMessage "makoto type 305 Mini-Shotgun (3)"
+	Inventory.PickupSound "mini/pickup"
+	States
+	{
+	Spawn:
+		MSHP A -1
+		Loop
+	Pickup:
+		MSHP A 0
+		MSHP A 0 A_GiveInventory("MiniShotgun",1)
+		Stop
+	}
+}
+
+ACTOR HereticRPG : CustomInventory replaces PhoenixRod
+{
+	Inventory.PickupMessage "RPG-7 (6)"
+	Inventory.PickupSound "rpg/pickup"
+	Scale 0.5
+	States
+	{
+	Spawn:
+		RPGP A -1
+		Loop
+	Pickup:
+		RPGP A 0
+		RPGP A 0 A_GiveInventory("RPG7",1)
+		Stop
+	}
+}
+
+ACTOR HereticSkorpion : CustomInventory replaces Blaster
+{
+	Inventory.PickupMessage "skorpion m77-l assault rifle (4)"
+	Inventory.PickupSound "skorpion/clipin"
+	Scale 0.75
+	States
+	{
+	Spawn:
+		SKPP A -1
+		Loop
+	Pickup:
+		SKPP A 0
+		SKPP A 0 A_GiveInventory("Skorpion",1)
+		Stop
+	}
+}
+
+ACTOR HereticSMG : CustomInventory replaces Gauntlets
+{
+	Inventory.PickupMessage "midgrais tactical defense SMG-39 (4)"
+	Inventory.PickupSound "mp40/cock"
+	Scale 0.75
+	States
+	{
+	Spawn:
+		MP4P A -1
+		Loop
+	Pickup:
+		MP4P A 0
+		MP4P A 0 A_GiveInventory("SMG37",1)
+		Stop
+	}
+}
+
+ACTOR HereticRPK : CustomInventory replaces SkullRod
+{
+	inventory.pickupmessage "ruchnoy pulemyot kalashnikova (rpk) (5)"
+	inventory.pickupsound "rpd/pick"
+	States
+	{
+	Spawn:
+		RPDP A -1
+		Loop
+	Pickup:
+		RPDP A 0
+		RPDP A 0 A_GiveInventory ("RPK",1)
+		Stop
+	}
+}
+
+ACTOR HereticNeutralizer : CustomInventory replaces Mace
+{
+	Inventory.PickupMessage "compressed energy neutralizer (7)"
+	Inventory.PickupMessage "neutralizer/pickup"
+	States
+	{
+	Spawn:
+		NEUP A -1
+		Loop
+	Pickup:
+		NEUP A 0
+		NEUP A 0 A_GiveInventory("Neutralizer",1)
+		Stop
+	}
+}
+
+ACTOR DiazKnight : Knight replaces Knight
+{
+	DropItem MauserRifle 64
+	DropItem MauserAmmo 48
+}
+
+ACTOR DiazKnightGhost : KnightGhost replaces KnightGhost
+{
+	DropItem MauserRifle 64
+	DropItem MauserAmmo 48
+}
+
+ACTOR DiazBeast : Beast replaces Beast
+{
+	DropItem ExtraMagnumAmmo 84
+}
+
+ACTOR DiazMummy : Mummy replaces Mummy
+{
+	DropItem P50Ammo 84 1
+}
+
+ACTOR DiazMummyGhost : MummyGhost replaces MummyGhost
+{
+	DropItem P50Ammo 84 1
+}
+
+ACTOR DiazMummyLeader : MummyLeader replaces MummyLeader
+{
+	DropItem Marteba 84
+}
+
+ACTOR DiazMummyLeaderGhost : MummyLeaderGhost replaces MummyLeaderGhost
+{
+	DropItem Marteba 84
+	DropItem ExtraMagnumAmmo 84
+}
+
+ACTOR DiazClink : Clink replaces Clink
+{
+	DropItem SkorAmmo 84
+}

@@ -1,0 +1,45 @@
+/**** CRUSHED DEAD BODIES ****/
+
+// small
+actor NashGore_CrushedSmall
+{
+states
+	{
+	Spawn:
+	 CRS1 A -1
+	 loop
+	}
+}
+
+// medium
+actor NashGore_CrushedMedium
+{
+states
+	{
+	Spawn:
+	 CRS2 A -1
+	 loop
+	}
+}
+
+// large
+actor NashGore_CrushedLarge
+{
+states
+	{
+	Spawn:
+	 CRS3 A -1
+	 loop
+	}
+}
+
+// TRANSLATED CRUSHED BODIES
+actor NashGore_CrushedMediumGreen : NashGore_CrushedMedium
+{
+translation "16:47=112:127","168:191=112:127"
+}
+
+actor NashGore_CrushedMediumBlue : NashGore_CrushedMedium
+{
+translation "16:47=192:207","168:191=192:207"
+}

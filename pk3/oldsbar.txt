@@ -1,0 +1,260 @@
+// Original statusbar code for reference
+height 23;
+completeborder true;
+
+statusbar normal
+{
+	//main stats
+	drawimage "MAINBAR", 0, 177;
+	drawimage "TOPBAR", 82, 166;
+	drawnumber 3, STATUSFONT, green, ammo1, 296, 181, 0, red, 0;
+	drawnumber 3, STATUSFONT, orange, ammo2, 315, 181, 0, red, 0, green, 2;
+	drawnumber 3, STATUSFONT, green, health, 29, 181, 0, red, 15, blue, 101;
+	drawnumber 3, STATUSFONT, green, armor, 59, 181, 0, red, 15, blue, 101;
+	drawselectedinventory INDEXFONT, 0, 144;
+	drawswitchableimage invulnerable, "SUCK", "", 4, 192;
+
+	//keys
+	DrawKeyBar 7, horizontal, 9, 64, 191;
+	
+	//Heretic keys
+	//drawswitchableimage KeyBlue, "nullimage", "BKEYICON", 64, 191;
+	//drawswitchableimage KeyGreen, "nullimage", "GKEYICON", 75, 191;
+	//drawswitchableimage KeyYellow, "nullimage", "YKEYICON", 86, 191;
+	
+	//backpack
+	drawswitchableimage Backpack, "nullimage", "HUDBKPK", 102, 168;
+	drawswitchableimage BagOfHolding, "nullimage", "HUDBKPK", 102, 168;
+	
+	//weapons
+	drawswitchableimage MartialArts, "nullimage", "WP1A", 90, 180; 
+	drawswitchableimage PsiAmp, "nullimage", "WP1B", 102, 180;
+	PlayerClass Hernandez
+	{
+		drawswitchableimage JudgmentPistol && JudgmentClip, "nullimage", "WP2AX", "nullimage", "WP2A", 114, 180;
+	}
+	PlayerClass Classic, Crimson, Connor
+	{
+		drawswitchableimage P50Handgun && P50Clip, "nullimage", "WP2AX", "nullimage", "WP2A", 114, 180;
+	}
+	drawswitchableimage Marteba && MagnumClip, "nullimage", "WP2BX", "nullimage", "WP2B", 126, 180;
+	drawswitchableimage MiniShotgun && ShotgunClip, "nullimage", "WP3AX", "nullimage", "WP3A", 138, 180;
+	drawswitchableimage MauserRifle && MauserClip, "nullimage", "WP3BX", "nullimage", "WP3B", 150, 180;
+	drawswitchableimage SMG37 && SMGClip, "nullimage", "WP4AX", "nullimage", "WP4A", 162, 180;
+	drawswitchableimage Skorpion && SkorClip, "nullimage", "WP4BX", "nullimage", "WP4B", 174, 180;
+	drawswitchableimage RPK && RPKClip, "nullimage", "WP5AX", "nullimage", "WP5A", 186, 180;
+	drawswitchableimage SlugRifle && ATClip, "nullimage", "WP5BX", "nullimage", "WP5B", 198, 180;
+	drawswitchableimage HandGrenade && HandGrenadeAmmo, "nullimage", "WP6AX", "nullimage", "WP6A", 210, 180;
+	drawswitchableimage RPG7 && RPGAmmo, "nullimage", "WP6BX", "nullimage", "WP6B", 222, 180;
+	drawswitchableimage Neutralizer && NeutAmmo, "nullimage", "WP7X", "nullimage", "WP7", 234, 180;
+	drawswitchableimage LanceDriver && NeutAmmo, "nullimage", "WP7BX", "nullimage", "WP7B", 254, 165;
+	
+	//lance driver charge bar
+	IsSelected LanceDriver
+	{
+		DrawBar "SUPERBAR", "", LevelCounter, horizontal, 267, 165, 1;
+		DrawNumber 2, TINYAMMOFONT, yellow, PowerLevel, 318, 167;
+	}
+	
+	//ammo
+	drawnumber 3, TINYAMMOFONT, orange, ammo P50Ammo, 121, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo ExtraMagnumAmmo, 133, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo ExtraShotgunAmmo, 145, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo MauserAmmo, 157, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo ExtraSMGAmmo, 169, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo SkorAmmo, 181, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo RPKAmmo, 193, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo ATAmmo, 205, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo HandGrenadeAmmo, 217, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo RPGAmmo, 229, 171, 1, red, 0, green, 2;
+	drawnumber 3, TINYAMMOFONT, orange, ammo NeutAmmo, 241, 171, 1, red, 0, green, 2;
+
+}
+
+statusbar fullscreen
+{
+	//main stats
+	drawnumber 3, STATUSFONT, white, health, drawshadow, 29, 181;
+	drawnumber 3, STATUSFONT, white, armor, drawshadow, 59, 181;
+	
+	//keys
+	DrawKeyBar 7, horizontal, 9, 64, 191;
+	
+	//crappy fullscreen icons
+	drawimage "HUDHLTH", 14, 191;
+	drawimage "HUDARMOR", 44, 191;
+	drawselectedinventory TINYAMMOFONT, 0, 144;
+	
+	//unique ammo bars (fullscreen only)
+	IsSelected "PsiAmp"
+	{
+		drawimage "BARBACK2", 236, 191;
+		drawbar "BLUEBAR", "BARBACK", PsiEnergy, horizontal, 237, 192;
+	}
+	IsSelected "PsiAmp2"
+	{
+		drawimage "BARBACK2", 236, 191;
+		drawbar "BLUEBAR", "BARBACK", PsiEnergy, horizontal, 237, 192;
+	}
+	IsSelected "P50Handgun"
+	{
+		drawbar "BPISFULL", "BPISEMPT", P50Clip, horizontal, reverse, 268, 184;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 174;
+	}
+	IsSelected "P50Handgun2"
+	{
+		drawbar "BPISFULL", "BPISEMPT", P50Clip, horizontal, reverse, 268, 184;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 174;
+	}
+	IsSelected "JudgmentPistol"
+	{
+		drawbar "BPISFULL", "BPISEMPT", JudgmentClip, horizontal, reverse, 268, 184;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 174;
+	}
+	IsSelected "JudgmentPistol2"
+	{
+		drawbar "BPISFULL", "BPISEMPT", JudgmentClip, horizontal, reverse, 268, 184;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 174;
+	}
+	IsSelected "Marteba"
+	{
+		drawbar "BMAGFULL", "BMAGEMPT", MagnumClip, horizontal, reverse, 277, 184;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 174;
+	}
+	IsSelected "Marteba2"
+	{
+		drawbar "BMAGFULL", "BMAGEMPT", MagnumClip, horizontal, reverse, 277, 184;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 174;
+	}
+	IsSelected "MiniShotgun"
+	{
+		drawbar "BSHTFULL", "BSHTEMPT", ShotgunClip, horizontal, reverse, 274, 173;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 163;
+	}
+	IsSelected "MiniShotgun2"
+	{
+		drawbar "BSHTFULL", "BSHTEMPT", ShotgunClip, horizontal, reverse, 274, 173;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 163;
+	}
+	IsSelected "MauserRifle"
+	{
+		drawbar "BMASFULL", "BMASEMPT", MauserClip, horizontal, reverse, 283, 175;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 166;
+	}
+	IsSelected "MauserRifle2"
+	{
+		drawbar "BMASFULL", "BMASEMPT", MauserClip, horizontal, reverse, 283, 175;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 166;
+	}
+	IsSelected "SMG37"
+	{
+		drawbar "BSMGFULL", "BSMGEMPT", SMGClip, horizontal, reverse, 194, 184;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 174;
+	}
+	IsSelected "SMG2"
+	{
+		drawbar "BSMGFULL", "BSMGEMPT", SMGClip, horizontal, reverse, 194, 184;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 174;
+	}
+	IsSelected "Skorpion"
+	{
+		drawbar "BSKRFULL", "BSKREMPT", SkorClip, horizontal, reverse, 246, 173;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 166;
+	}
+	IsSelected "Skorpion2"
+	{
+		drawbar "BSKRFULL", "BSKREMPT", SkorClip, horizontal, reverse, 246, 173;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 166;
+	}
+	IsSelected "RPK"
+	{
+		drawbar "BRPKFULL", "BRPKEMPT", RPKClip, horizontal, reverse, 140, 180;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 166;
+	}
+	IsSelected "RPK2"
+	{
+		drawbar "BRPKFULL", "BRPKEMPT", RPKClip, horizontal, reverse, 140, 180;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 166;
+	}
+	IsSelected "SlugRifle"
+	{
+		drawbar "BSLGFULL", "BSLGEMPT", ATClip, horizontal, reverse, 288, 175;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 166;
+	}
+	IsSelected "SlugRifle2"
+	{
+		drawbar "BSLGFULL", "BSLGEMPT", ATClip, horizontal, reverse, 288, 175;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 166;
+	}
+	IsSelected "HandGrenade"
+	{
+		drawnumber 2, STATUSFONT, white, ammo1, drawshadow, 317, 191;
+	}
+	IsSelected "RPG7"
+	{
+		drawnumber 2, STATUSFONT, white, ammo1, drawshadow, 317, 191;
+	}
+	IsSelected "RPG2"
+	{
+		drawnumber 2, STATUSFONT, white, ammo1, drawshadow, 317, 191;
+	}
+	IsSelected "Neutralizer"
+	{
+		drawnumber 2, STATUSFONT, white, ammo1, drawshadow, 317, 191;
+	}
+	IsSelected "LanceDriver"
+	{
+		drawbar "LANCEBAR", "LANCEMT", NeutClip, horizontal, reverse, 240, 189;
+		DrawBar "SUPERBAR", "", LevelCounter, horizontal, 267, 176, 1;
+		DrawNumber 2, TINYAMMOFONT, yellow, PowerLevel, 318, 178;
+		drawnumber 2, STATUSFONT, white, ammo2, drawshadow, 317, 167;
+	}
+}
+
+statusbar automap
+{
+	//main stats
+	drawimage "MAINBAR", 0, 177;
+	drawimage "TOPLINE", 82, 177;
+	drawnumber 3, STATUSFONT, green, ammo1, 296, 181, 0, red, 0;
+	drawnumber 3, STATUSFONT, orange, ammo2, 315, 181, 0, red, 0, green, 2;
+	drawnumber 3, STATUSFONT, green, health, 29, 181, 0, red, 15, blue, 101;
+	drawnumber 3, STATUSFONT, green, armor, 59, 181, 0, red, 15, blue, 101;
+	drawselectedinventory INDEXFONT, 0, 144;
+
+	//keys
+	DrawKeyBar 7, horizontal, 9, 64, 191;
+	
+	//Heretic keys
+	//drawswitchableimage KeyBlue, "nullimage", "BKEYICON", 64, 191;
+	//drawswitchableimage KeyGreen, "nullimage", "GKEYICON", 75, 191;
+	//drawswitchableimage KeyYellow, "nullimage", "YKEYICON", 86, 191;
+	
+	//weapons
+	drawswitchableimage MartialArts, "nullimage", "WP1A", 90, 180; 
+	drawswitchableimage PsiAmp, "nullimage", "WP1B", 102, 180;
+	drawswitchableimage P50Handgun && P50Clip, "nullimage", "WP2AX", "nullimage", "WP2A", 114, 180;
+	drawswitchableimage Marteba && MagnumClip, "nullimage", "WP2BX", "nullimage", "WP2B", 126, 180;
+	drawswitchableimage MiniShotgun && ShotgunClip, "nullimage", "WP3AX", "nullimage", "WP3A", 138, 180;
+	drawswitchableimage MauserRifle && MauserClip, "nullimage", "WP3BX", "nullimage", "WP3B", 150, 180;
+	drawswitchableimage SMG37 && SMGClip, "nullimage", "WP4AX", "nullimage", "WP4A", 162, 180;
+	drawswitchableimage Skorpion && SkorClip, "nullimage", "WP4BX", "nullimage", "WP4B", 174, 180;
+	drawswitchableimage RPK && RPKClip, "nullimage", "WP5AX", "nullimage", "WP5A", 186, 180;
+	drawswitchableimage SlugRifle && ATClip, "nullimage", "WP5BX", "nullimage", "WP5B", 198, 180;
+	drawswitchableimage HandGrenade && HandGrenadeAmmo, "nullimage", "WP6AX", "nullimage", "WP6A", 210, 180;
+	drawswitchableimage RPG7 && RPGAmmo, "nullimage", "WP6BX", "nullimage", "WP6B", 222, 180;
+	drawswitchableimage Neutralizer && NeutAmmo, "nullimage", "WP7X", "nullimage", "WP7", 234, 180;
+	
+}
+
+// inventory bar
+
+statusbar inventory
+{
+	drawinventorybar Heretic, noartibox, 6, INDEXFONT, 2, 147;
+}
+
+statusbar inventoryfullscreen
+{
+	drawinventorybar Heretic, noartibox, 6, INDEXFONT, 70, 170;
+}

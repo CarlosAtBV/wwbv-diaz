@@ -1,0 +1,133 @@
+
+ACTOR WeaselNaziRifleman
+{
+   Health 40
+   Radius 20
+   Height 56
+   Speed 8
+   PainChance 200
+   MONSTER 
+   +FLOORCLIP
+   SeeSound "nazi/sight"
+   PainSound "nazi/pain"
+   DeathSound "nazi/death"
+   AttackSound "mauser/enemyfire"
+   Obituary "%o was picked off."
+   MissileHeight 32
+   DropItem MauserRifle 96
+	DropItem MauserAmmo 168
+   States
+   {
+   Spawn:
+       NAZ5 AB 10 A_Look
+       Loop
+   See:
+   	NAZ5 A 0 A_JumpIfInventory("MauserClip",5,"Reload")
+       NAZ5 AABBCCDD 3 A_Chase
+       Loop
+   Missile:
+   	NAZ5 E 0 A_PlaySound("mauser/shoulder")
+       NAZ5 EEEEEEEEEE 2 A_FaceTarget
+	NAZ5 F 5 BRIGHT A_CustomBulletAttack(4,4,1,20)
+       NAZ5 E 8
+	   NAZ5 D 8 A_PlaySound("mauser/boltback")
+	   CPOS E 0 A_CustomMissile("DiazRifleCasing",32,10,random(260,280))
+	   NAZ5 D 8 A_GiveInventory("MauserClip",1)
+	   NAZ5 D 8 A_PlaySound("mauser/boltfwd")
+       Goto See
+	Reload:
+		NAZ5 E 0 A_TakeInventory("MauserClip",5)
+		NAZ5 E 8
+	   NAZ5 D 8 A_PlaySound("mauser/boltback")
+	   NAZ5 D 14
+	   NAZ5 E 8 A_PlaySound("mauser/insert")
+	   NAZ5 D 10
+	   NAZ5 D 8 A_PlaySound("mauser/boltfwd")
+	   NAZ5 D 8
+	   Goto See
+   Pain:
+       NAZ5 G 3
+       NAZ5 G 3 A_Pain
+       Goto See
+	   Death.Lightning:
+		LDTH A 2 BRIGHT A_PlaySoundEx("misc/lightningdeath","SoundSlot5",0)
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+		LDTH A 2 BRIGHT
+		LDTH A 2
+   Death:
+       NAZ5 H 5
+       NAZ5 I 5 A_Scream
+       NAZ5 J 5 A_Fall
+       NAZ5 K 5
+       NAZ5 L -1 A_PlaySound("misc/bodyfall")
+       Stop
+	Death.Fire:
+	BURN ABC 5 BRIGHT
+	BURN D 5 BRIGHT A_PlaySound("misc/naziflamedeath")
+	BURN EFGHIJKLMN 5 BRIGHT
+	BURN O 5 BRIGHT A_NoBlocking
+	BURN PQRSTU 5 BRIGHT
+	BURN V -1
+	Stop
+	Death.Neut:
+	DISR A 3 BRIGHT A_SetTranslucent(0.9,0)
+	DISR B 3 BRIGHT A_PlaySound("misc/disintdeath")
+	DISR C 3 BRIGHT A_SetTranslucent(0.8,0)
+	DISR D 3 BRIGHT A_SetTranslucent(0.7,0)
+	DISR E 3 BRIGHT A_SetTranslucent(0.6,0)
+	DISR F 3 BRIGHT A_SetTranslucent(0.5,0)
+	DISR G 3 BRIGHT A_SetTranslucent(0.4,0)
+	DISR H 3 BRIGHT A_SetTranslucent(0.3,0)
+	DISR I 3 BRIGHT A_SetTranslucent(0.2,0)
+	DISR J 3 BRIGHT A_SetTranslucent(0.1,0)
+	Stop
+	XDeath:
+		POSS M 0 A_SpawnDebris("NashGore_Gib9",0)
+	 	POSS M 0 A_SpawnDebris("NashGore_Gib10",0)
+	 	POSS M 0 A_SpawnDebris("NashGore_Gib11",0)
+ 	 	POSS M 0 A_SpawnDebris("NashGore_Gib11",0)
+	 	POSS M 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+		NAZ5 M 5
+		POSS M 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+    	NAZ5 N 5 A_XScream
+		POSS M 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+    	NAZ5 O 5
+		POSS M 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+    	NAZ5 P 5 A_NoBlocking
+		POSS M 0 A_SpawnItem("NashGore_GibGenerator",0,0,0,0)
+    	NAZ5 QRST 5
+    	NAZ5 U -1
+    	stop
+   Raise:
+       NAZ5 KJIH 5
+       Goto See
+   }
+}
+
+
+
+
+ACTOR WeaselSpecialNazi : WeaselNaziRifleman replaces WolfensteinSS
+{ // "Special" because he can't aim for shit anymore.
+	States
+	{
+	Missile:
+   		NAZ5 E 0 A_PlaySound("mauser/shoulder")
+       NAZ5 EEEEEEEEEE 2 A_FaceTarget
+		NAZ5 F 5 BRIGHT A_CustomBulletAttack(30,20,1,15)
+       NAZ5 E 8
+	   NAZ5 D 8 A_PlaySound("mauser/boltback")
+	   CPOS E 0 A_CustomMissile("DiazRifleCasing",32,10,random(260,280))
+	   NAZ5 D 8 A_GiveInventory("MauserClip",1)
+	   NAZ5 D 8 A_PlaySound("mauser/boltfwd")
+       Goto See
+	}
+}

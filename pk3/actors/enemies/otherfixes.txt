@@ -1,0 +1,15 @@
+
+ACTOR WeaselCaco : Cacodemon replaces Cacodemon
+{
+	BloodColor "00 00 FF"
+}
+
+ACTOR WeaselKnight : HellKnight replaces HellKnight
+{
+	BloodColor "00 66 00"
+}
+
+ACTOR WeaselBaron : BaronOfHell replaces BaronOfHell
+{
+	BloodColor "00 66 00"
+}

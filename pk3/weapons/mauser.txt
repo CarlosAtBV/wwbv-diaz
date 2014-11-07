@@ -1,0 +1,381 @@
+ACTOR MauserClip : Ammo
+{
+	Inventory.MaxAmount 5
+	Inventory.Icon MAUPA0
+}
+
+ACTOR MauserAmmo : Ammo 8414
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 7
+	Ammo.BackpackAmount 1
+	Ammo.BackpackMaxAmount 14
+	ConversationID 103
+	Inventory.Icon MAUAA0
+	Inventory.PickupSound "mauser/insert"
+	Inventory.PickupMessage "7.92mm Mauser Ammo"
+	Tag "7.92x57mm"
+	States
+	{
+	Spawn:
+		MAUA A -1
+		Stop
+	}
+}
+
+ACTOR MauserIronSight : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+ACTOR MauserIdle : Inventory
+{
+	Inventory.MaxAmount 30
+}
+
+ACTOR MauserRifle : Weapon replaces SuperShotgun
+{
+	Weapon.SelectionOrder 400
+	Inventory.PickupSound "mauser/boltfwd"
+	Inventory.PickupMessage "Mauser karabiner 98k (3)"
+	Tag "Kar 98K"
+	Obituary "%o was picked off Nazi-style by %k."
+	AttackSound "mauser/fire"
+	Weapon.AmmoType "MauserClip"
+	Weapon.AmmoGive 0
+	Weapon.AmmoUse 1
+	Weapon.AmmoType2 "MauserAmmo"
+	Weapon.AmmoGive2 2
+	Weapon.AmmoUse2 0
+	Weapon.Kickback 70
+	ConversationID 194
+	Scale 0.9
+	Weapon.SisterWeapon MauserRifle2
+	+AMMO_OPTIONAL
+	+NOEXTREMEDEATH
+	+NOALERT
+	+NOAUTOFIRE
+	States
+	{
+	Spawn:
+		MAUP A -1
+		Loop
+	Select:
+		TNT1 A 9 SetPlayerProperty(0,1,2)
+		MAUH D 1 A_PlaySound("weapon/select5")
+		MAUH CBA 1
+		MAUI A 1 A_Raise
+		Goto Select+5
+	Deselect:
+		MAUH A 0 A_JumpIfInventory("MauserIdle",1,"ReadyDeselect")
+		MAUH A 0 A_JumpIfInventory("MauserIronSight",1,"IronDeselect")
+		Goto DeselectAction
+	IronDeselect:
+		MAUI I 0 A_PlayWeaponSound("mauser/unshoulder")
+		MAUI I 0 ACS_Execute(357,0,100,0,0)
+		MAUI JIHGF 2
+		MAUI E 2 A_TakeInventory("MauserIronSight",1)
+	ReadyDeselect:
+		MAUI DCBA 2		
+	DeselectAction:
+		MAUH A 1 A_TakeInventory("MauserIdle",30)
+		MAUH B 1 A_PlaySound("weapon/deselect")
+		MAUH CD 1
+		TNT1 A 9 A_ZoomFactor(1)
+	DeselectLoop:
+		MAUI A 1 A_Lower
+		Goto DeselectLoop
+	Ready:
+		MAUI A 0 A_JumpIfInventory("MauserIdle",1,"ReadyReady")
+		MAUI A 0 A_JumpIfInventory("IsReloading",1,"Reload")
+		MAUI A 1 A_WeaponReady
+		Goto Ready
+	ReadyReady:
+		MAUI E 0 A_JumpIfInventory("IsReloading",1,"ReadyReload")
+		MAUI E 1 A_WeaponReady
+		MAUI E 0 A_TakeInventory("MauserIdle",1)
+		MAUI E 0 A_JumpIfInventory("MauserIdle",1,"ReadyReady")
+		MAUI DDCCBBAA 1 A_WeaponReady
+		Goto Ready
+	IronReady:
+		MAUS A 0 A_JumpIfInventory("IsReloading",1,"IronReload")
+		MAUS A 1 A_WeaponReady
+		Goto IronReady
+	Fire:
+		MAUI A 0 A_JumpIfInventory("MauserIronSight",1,"IronFire")
+		MAUI A 0 A_JumpIfInventory("MauserIdle",1,"ReadyFire")
+		MAUI AC 1
+	ReadyFire:
+		MAUI E 0 A_GiveInventory("MauserIdle",30)
+		MAUI E 0 A_JumpIfNoAmmo("DryFire")
+		MAUI E 1 A_AlertMonsters
+		MAUF A 2 BRIGHT A_FireBullets(7,4,-1,41,"BulletPuff",1)
+		MAUF B 0 BRIGHT A_SetPitch(pitch - 1.0)//ACS_Execute(287,0,180,random(20,44),0)
+		MAUF B 2 BRIGHT A_FireCustomMissile("ShotSmokeSpawner",0,0,6,8)
+		MAUI E 6
+		MAUC AB 3
+		MAUC C 3 A_PlaySound("mauser/boltback")
+		MAUC D 3
+		MAUC E 3 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+		MAUC FGHHGF 1
+		MAUC E 3 A_PlaySound("mauser/boltfwd")
+		MAUC DCBA 3
+		MAUI E 2
+		Goto Ready
+	DryFire:
+		MAUI E 1 A_PlayWeaponSound("mauser/empty")
+		MAUI E 4
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"ReadyReload")
+		Goto Ready
+	IronFire:
+		MAUS A 1 A_JumpIfNoAmmo("IronDryFire")
+		MAUS B 2 BRIGHT A_FireBullets(0,0,-1,70,"BulletPuff",1)
+		MAUS B 0 BRIGHT A_SetPitch(pitch - 3.0)//ACS_Execute(287,0,105,random(2,4),0)
+		MAUS C 2 BRIGHT A_FireCustomMissile("ShotSmokeSpawner",0,0,0,10)
+		MAUS A 6 A_AlertMonsters
+		MAUI J 1 A_ZoomFactor(1)
+		MAUI IHGGFFEEEE 1
+		MAUC A 3 ACS_Execute(357,0,100,0,0)
+		MAUC B 3
+		MAUC C 3 A_PlaySound("mauser/boltback")
+		MAUC D 3
+		MAUC E 3 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+		MAUC FGHHGF 1
+		MAUC E 3 A_PlaySound("mauser/boltfwd")
+		MAUC DCB 3
+		MAUC A 3 A_ZoomFactor(1.75)
+		MAUI E 1 ACS_Execute(357,0,35,0,0)
+		MAUI EEEGGHIJ 1
+		Goto IronReady
+	IronDryFire:
+		MAUS A 1 A_PlayWeaponSound("mauser/empty")
+		MAUS A 4
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"IronReload")
+		Goto IronReady
+	AltFire:
+		MAUI A 0 A_JumpIfInventory("MauserIronSight",1,"IronAltFire")
+		MAUI A 0 A_JumpIfInventory("MauserIdle",1,"AltFire2")
+		MAUI A 0 A_PlayWeaponSound("mauser/shoulder")
+		MAUI BCD 2
+	AltFire2:
+		MAUI E 2 A_TakeInventory("MauserIdle",30)
+		MAUI F 2 A_GiveInventory("MauserIronSight",1)
+		MAUI G 0 ACS_Execute(357,0,35,0,0)
+		MAUI GHI 2
+		MAUI J 2 A_ZoomFactor(1.75)
+		MAUS A 2
+		Goto IronReady
+	IronAltFire:
+		MAUI I 0 A_PlayWeaponSound("mauser/unshoulder")
+		MAUI I 0 ACS_Execute(357,0,100,0,0)
+		MAUI JIHGFE 2
+		MAUI D 2 A_ZoomFactor(1)
+		MAUI C 2 A_TakeInventory("MauserIronSight",1)
+		MAUI B 2
+		MAUI A 2
+		Goto Ready
+	IronReload:
+		TNT1 A 0 A_JumpIfInventory("MauserClip",5,2)
+		TNT1 A 0 A_JumpIfInventory("MauserAmmo",1,3)
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("IsReloading",1)
+		Goto IronReady
+		MAUI J 2 A_PlaySound("mauser/unshoulder")
+		MAUI I 2 A_ZoomFactor(1)
+		MAUI HGF 2
+		Goto ReadyReload
+	Reload:
+		TNT1 A 0 A_JumpIfInventory("MauserClip",5,2)
+		TNT1 A 0 A_JumpIfInventory("MauserAmmo",1,2)
+		TNT1 A 0 A_TakeInventory("IsReloading",1)
+		Goto Ready
+		MAUI ABCDE 2
+	ReadyReload:
+		TNT1 A 0 A_JumpIfInventory("MauserClip",5,2)
+		TNT1 A 0 A_JumpIfInventory("MauserAmmo",1,2)
+		TNT1 A 0 A_TakeInventory("isreloading",1)
+		Goto Ready
+		MAUC C 3 A_PlaySound("mauser/boltback")
+		MAUC D 3 ACS_Execute(357,0,100,0,0)
+		MAUC E 3
+		MAUC F 3
+		MAUR A 1
+		MAUR ABBCCCDDDEEFFFFGGG 1
+		MAUR H 0 A_TakeInventory("MauserAmmo",1)
+		MAUR H 0 A_GiveInventory("MauserClip",5)
+		MAUR H 4 A_PlayWeaponSound("mauser/insert")
+		MAUR IIIIJJJKKLMNNOOOPPP 1
+		MAUR Q 4 A_PlayWeaponSound("mauser/boltfwd")
+		MAUR RST 3
+		MAUR U 3
+		MAUR U 0 A_JumpIfInventory("MauserIronSight",1,"IronReloadFinish")
+		MAUI B 2 A_TakeInventory("MauserIdle",30)
+		MAUI A 2
+		Goto Ready
+	IronReloadFinish:
+		MAUI F 2 A_PlaySound("mauser/shoulder")
+		MAUI GHI 2
+		MAUI J 2 A_ZoomFactor(1.75)
+		MAUS A 2 ACS_Execute(357,0,35,0,0)
+		Goto IronReady
+	}
+}
+
+ACTOR MauserRifle2 : MauserRifle
+{
+	Weapon.SisterWeapon MauserRifle
+	Obituary "%o was out-sniped by %k's turbo reflexes."
+	Weapon.AmmoGive2 0
+	+POWERED_UP
+	States
+	{
+	IronDeselect:
+		MAUI I 0 A_PlayWeaponSound("mauser/unshoulder")
+		MAUI I 0 ACS_Execute(357,0,100,0,0)
+		MAUI JIHGF 1
+		MAUI E 1 A_TakeInventory("MauserIronSight",1)
+	ReadyDeselect:
+		MAUI DCBA 2		
+	DeselectAction:
+		MAUH A 1 A_TakeInventory("MauserIdle",30)
+		MAUH B 1 A_PlaySound("weapon/deselect")
+		MAUH CD 1
+		TNT1 A 9 A_ZoomFactor(1)
+	DeselectLoop:
+		MAUI A 1 A_Lower
+		Goto DeselectLoop
+	Ready:
+		MAUI A 0 A_JumpIfInventory("MauserIdle",1,"ReadyReady")
+		MAUI A 0 A_JumpIfInventory("IsReloading",1,"Reload")
+		MAUI A 1 A_WeaponReady
+		Goto Ready
+	ReadyReady:
+		MAUI E 0 A_JumpIfInventory("IsReloading",1,"ReadyReload")
+		MAUI E 1 A_WeaponReady
+		MAUI E 0 A_TakeInventory("MauserIdle",1)
+		MAUI E 0 A_JumpIfInventory("MauserIdle",1,"ReadyReady")
+		MAUI DCBA 1 A_WeaponReady
+		Goto Ready
+	IronReady:
+		MAUS A 0 A_JumpIfInventory("IsReloading",1,"IronReload")
+		MAUS A 1 A_WeaponReady
+		Goto IronReady
+	Fire:
+		MAUI A 0 A_JumpIfInventory("MauserIronSight",1,"IronFire")
+		MAUI A 0 A_JumpIfInventory("MauserIdle",1,"ReadyFire")
+		MAUI AC 1
+	ReadyFire:
+		MAUI E 0 A_GiveInventory("MauserIdle",30)
+		MAUI E 0 A_JumpIfNoAmmo("DryFire")
+		MAUI E 1 A_AlertMonsters
+		MAUF A 2 BRIGHT A_FireBullets(7,0,-1,41,"BulletPuff",1,6502)
+		MAUF B 0 BRIGHT A_SetPitch(pitch - 0.8)//ACS_Execute(287,0,180,random(20,44),0)
+		MAUF B 2 BRIGHT A_FireCustomMissile("ShotSmokeSpawner",0,0,6,8)
+		MAUI E 4
+		MAUC AB 2
+		MAUC C 2 A_PlaySound("mauser/boltback")
+		MAUC D 2
+		MAUC E 2 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+		MAUC FGHGF 1
+		MAUC E 2 A_PlaySound("mauser/boltfwd")
+		MAUC DCBA 2
+		MAUI E 1
+		Goto Ready
+	DryFire:
+		MAUI E 1 A_PlayWeaponSound("mauser/empty")
+		MAUI E 4
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"ReadyReload")
+		Goto Ready
+	IronFire:
+		MAUS A 1 A_JumpIfNoAmmo("IronDryFire")
+		MAUS B 2 BRIGHT A_FireBullets(0,0,-1,70,"BulletPuff",1)
+		MAUS B 0 BRIGHT A_SetPitch(pitch - 3.0)//ACS_Execute(287,0,105,random(2,4),0)
+		MAUS C 2 BRIGHT A_FireCustomMissile("ShotSmokeSpawner",0,0,0,10)
+		MAUS A 4 A_AlertMonsters
+		MAUI J 1 A_ZoomFactor(1)
+		MAUI IHGFEE 1
+		MAUC A 2 ACS_Execute(357,0,100,0,0)
+		MAUC B 2
+		MAUC C 2 A_PlaySound("mauser/boltback")
+		MAUC D 2
+		MAUC E 2 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+		MAUC FGHGF 1
+		MAUC E 2 A_PlaySound("mauser/boltfwd")
+		MAUC DCB 2
+		MAUC A 2 A_ZoomFactor(1.75)
+		MAUI E 1 ACS_Execute(357,0,35,0,0)
+		MAUI EEGHIJ 1
+		Goto IronReady
+	IronDryFire:
+		MAUS A 1 A_PlayWeaponSound("mauser/empty")
+		MAUS A 2
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"IronReload")
+		Goto IronReady
+	AltFire:
+		MAUI A 0 A_JumpIfInventory("MauserIronSight",1,"IronAltFire")
+		MAUI A 0 A_JumpIfInventory("MauserIdle",1,"AltFire2")
+		MAUI A 0 A_PlayWeaponSound("mauser/shoulder")
+		MAUI BCD 1
+	AltFire2:
+		MAUI E 1 A_TakeInventory("MauserIdle",30)
+		MAUI F 1 A_GiveInventory("MauserIronSight",1)
+		MAUI G 0 ACS_Execute(357,0,35,0,0)
+		MAUI GHI 1
+		MAUI J 1 A_ZoomFactor(1.75)
+		MAUS A 1
+		Goto IronReady
+	IronAltFire:
+		MAUI I 0 A_PlayWeaponSound("mauser/unshoulder")
+		MAUI I 0 ACS_Execute(357,0,100,0,0)
+		MAUI JIHGFE 1
+		MAUI D 1 A_ZooMFactor(1)
+		MAUI C 1 A_TakeInventory("MauserIronSight",1)
+		MAUI B 1
+		MAUI A 1
+		Goto Ready
+	IronReload:
+		TNT1 A 0 A_JumpIfInventory("MauserClip",5,2)
+		TNT1 A 0 A_JumpIfInventory("MauserAmmo",1,3)
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("IsReloading",1)
+		Goto IronReady
+		MAUI J 1 A_PlaySound("mauser/unshoulder")
+		MAUI I 1 A_ZoomFactor(1)
+		MAUI HGF 1
+		Goto ReadyReload
+	Reload:
+		TNT1 A 0 A_JumpIfInventory("MauserClip",5,2)
+		TNT1 A 0 A_JumpIfInventory("MauserAmmo",1,2)
+		TNT1 A 0 A_TakeInventory("IsReloading",1)
+		Goto Ready
+		MAUI ABCDE 1
+	ReadyReload:
+		TNT1 A 0 A_JumpIfInventory("MauserClip",5,2)
+		TNT1 A 0 A_JumpIfInventory("MauserAmmo",1,2)
+		TNT1 A 0 A_TakeInventory("isreloading",1)
+		Goto Ready
+		MAUC C 2 A_PlaySound("mauser/boltback")
+		MAUC D 2 ACS_Execute(357,0,100,0,0)
+		MAUC E 2
+		MAUC F 2
+		MAUR A 1
+		MAUR ABCCDDEFFFGG 1
+		MAUR H 0 A_TakeInventory("MauserAmmo",1)
+		MAUR H 0 A_GiveInventory("MauserClip",5)
+		MAUR H 2 A_PlayWeaponSound("mauser/insert")
+		MAUR IIJJKLMNOOPP 1
+		MAUR Q 2 A_PlayWeaponSound("mauser/boltfwd")
+		MAUR RST 2
+		MAUR U 2
+		MAUR U 0 A_JumpIfInventory("MauserIronSight",1,"IronReloadFinish")
+		MAUI B 1 A_TakeInventory("MauserIdle",30)
+		MAUI A 1
+		Goto Ready
+	IronReloadFinish:
+		MAUI F 1 A_PlaySound("mauser/shoulder")
+		MAUI GHI 1
+		MAUI J 1 A_ZoomFactor(1.75)
+		MAUS A 1 ACS_Execute(357,0,35,0,0)
+		Goto IronReady
+	}
+}

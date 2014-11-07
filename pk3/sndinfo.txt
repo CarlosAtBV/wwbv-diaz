@@ -1,0 +1,907 @@
+njmt dsempty
+
+menu/backup menupick
+menu/prompt menuprmp
+menu/cursor menuhigh
+menu/change menuhigh
+menu/choose menupick
+menu/invalid menuinvl
+menu/activate menupick
+menu/dismiss menupick
+menu/clear menuinvl
+
+$playeralias	player	diaz	*crazydeath		diaz/deathhi
+$playeralias	player	diaz	*wimpydeath		diaz/deathlo
+$playeralias	player	diaz	*death		diaz/deathlo
+$playeralias	player	diaz	*xdeath		diaz/deathhi
+$playersound	player	diaz	*gibbed		diaz/deathhi
+$playersound	player	diaz	*pain100	diazp25
+$playersound	player	diaz	*pain75		diazp50
+$playersound	player	diaz	*pain50		diazp75
+$playersound	player	diaz	*pain25		diazp100
+$playersound    player	diaz	*land       diazland
+$playersound	player	diaz	*grunt		diazoof
+$playersound	player	diaz	*usefail	dsnoway
+$playersound	player	diaz	*jump		diazjump
+$playeralias	player	diaz	*melee		diaz/melee
+$playeralias	player	diaz	*taunt		diaz/taunt
+$playeralias	player	diaz	*disint		diaz/disint
+$playeralias	player	diaz	*falcon		diaz/falcon
+$playeralias	player	diaz	*paunch		diaz/paunch
+diaz/disint diazdist
+$random diaz/deathlo { dzldth1 dzldth2 dzldth3 dzldth4 }
+dzldth1 diazldt1
+dzldth2 diazldt2
+dzldth3 diazldt3
+dzldth4 duazldt4
+$random diaz/deathhi { dzhdth1 dzhdth2 dzhdth3 }
+dzhdth1 diazhdt1
+dzhdth2 diazhdt2
+dzhdth3 diazhdt3
+$random diaz/melee { dzm1 dzm2 dzm3 }
+dzm1 dzmelee1
+dzm2 dzmelee2
+dzm6 dsjump
+$random diaz/falcon { dzfalcon1 dzfalcon2 dzfalcon3 }
+dzfalcon1 dzfalc1
+dzfalcon2 dzfalc2
+dzfalcon3 dzfalc3
+$random diaz/paunch { dzpaunch1 dzpaunch2 dzpaunch3 }
+dzpaunch1 dzfpch1
+dzpaunch2 dzfpch2
+dzpaunch3 dzfpch3
+$random diaz/taunt { dztaunt1 dztaunt2 dztaunt3 dztaunt4 dztaunt5 }
+dztaunt1 dztaunt1
+dztaunt2 dztaunt2
+dztaunt3 dztaunt3
+dztaunt4 dztaunt4
+dztaunt5 dztaunt5
+
+$playersound	hernandez	male	*crazydeath		hdth1
+$playersound	hernandez	male	*wimpydeath		hdth1
+$playersound	hernandez	male	*death		hdth1
+$playersound	hernandez	male	*xdeath		hdth1
+$playersound	hernandez	male	*gibbed		hdth1
+$playersound	hernandez	male	*pain100	hp100
+$playersound	hernandez	male	*pain75		hp75
+$playersound	hernandez	male	*pain50		hp50
+$playersound	hernandez	male	*pain25		hp25
+$playersound	hernandez	male	*land       hland
+$playersound	hernandez	male	*grunt		hoof
+$playersound	hernandez	male	*usefail	dsnoway
+$playersound	hernandez	male	*jump		hjump
+$playeralias	hernandez	male	*melee		hernandez/melee
+$playeralias	hernandez	male	*psipain	hernandez/psipain
+$playeralias	hernandez	male	*disint		hernandez/disint
+$playeralias	hernandez	male	*flamed		misc/flamedeath
+$playeralias	hernandez	male	*breathe	hernandez/breathe
+$playeralias	hernandez	male	*taunt		hernandez/taunt
+$playeralias	hernandez	male	*falcon		hernandez/falcon
+$playeralias	hernandez	male	*paunch		hernandez/paunch
+
+$random hernandez/melee { hzm1 hzm4 }
+hzm1 hmelee1
+hzm4 hjump
+$random hernandez/psipain { null }
+hernandez/breathe hbrth1
+hernandez/disint hdisint
+$random hernandez/taunt { hztaunt1 hztaunt2 hztaunt3 }
+hztaunt1 hztaunt1
+hztaunt2 hztaunt2
+hztaunt3 hztaunt3
+$random hernandez/falcon { hfalcon1 hfalcon2 hfalcon3 }
+hfalcon1 hfalcon1
+hfalcon2 hfalcon2
+hfalcon3 hfalcon3
+$random hernandez/paunch { hpaunch1 hpaunch2 hpaunch3 }
+hpaunch1 hpaunch1
+hpaunch2 hpaunch2
+hpaunch3 hpaunch3
+
+misc/psiboost psiboost
+
+$random subject/sight { subject/sight1 subject/sight2 subject/sight3 subject/sight4 }
+$random subject/attack { subject/attack1 subject/attack2 subject/attack3 subject/attack4 subject/attack5 subject/attack6 subject/attack7 }
+$random subject/chargeattack { subject/charge1 subject/charge2 subject/charge3 subject/charge4 subject/charge5 }
+$random subject/death { subject/death1 subject/death2 subject/death3 subject/death4 }
+$random subject/pain { subject/pain1 subject/pain2 subject/pain3 subject/pain4 subject/pain5 subject/pain6 subject/pain7 subject/pain8 subject/pain9 subject/paina subject/painb }
+$random subject/tasered { subject/tasered1 subject/tasered2 subject/tasered3 subject/tasered4 subject/tasered5 subject/tasered6 }
+subject/sight1 subsit1
+subject/sight2 subsit2
+subject/sight3 subsit3
+subject/sight4 subsit4
+subject/attack1 subatk1
+subject/attack2 subatk2
+subject/attack3 subatk3
+subject/attack4 subatk4
+subject/attack5 subatk5
+subject/attack6 subatk6
+subject/attack7 subatk7
+subject/charge1 subchrg1
+subject/charge2 subchrg2
+subject/charge3 subchrg3
+subject/charge4 subchrg4
+subject/charge5 subchrg5
+subject/death1 subdth1
+subject/death2 subdth2
+subject/death3 subdth3
+subject/death4 subdth4
+subject/pain1 subpain1
+subject/pain2 subpain2
+subject/pain3 subpain3
+subject/pain4 subpain4
+subject/pain5 subpain5
+subject/pain6 subpain6
+subject/pain7 subpain7
+subject/pain8 subpain8
+subject/pain9 subpain9
+subject/paina subpaina
+subject/painb subpainb
+subject/tasered1 subtasr1
+subject/tasered2 subtasr2
+subject/tasered3 subtasr3
+subject/tasered4 subtasr4
+subject/tasered5 subtasr5
+subject/tasered6 subtasr6
+
+frost/fire FROSTFIR
+frost/hit FROSTHIT
+
+mauser/fire mausfire
+$random mauser/enemyfire { mausfire1 mausfire2 }
+mausfire1 mausnme1
+mausfire2 mausnme2
+mauser/boltback mausback
+mauser/boltfwd mausfwd
+mauser/insert mausins
+mauser/shoulder mausshld
+mauser/unshoulder mausunsh
+mauser/empty mausempt
+
+$random nazi/sight { nazisight1 nazisight2 nazisight3 nazisight4 nazisight5 nazisight6 nazisight7 nazisight8 nazisight9 }
+$random nazi/death { nazideath1 nazideath2 nazideath3 }
+$random nazi/pain { nazipain1 nazipain2 }
+nazisight1 nazisit1
+nazisight2 nazisit1
+nazisight3 nazisit2
+nazisight4 nazisit3
+nazisight5 nazisit4
+nazisight5 nazisit5
+nazisight6 nazisit6
+nazisight7 nazisit7
+nazisight8 nazisit8
+nazisight9 nazisit9
+nazideath1 nazidth1
+nazideath2 nazidth2
+nazideath3 nazidth3
+nazipain1 nazipn1
+nazipain2 nazipn2
+
+doors/open			door2op
+doors/slam          door2slm
+doors/openquick		door1op
+doors/closequick	door1cl
+doors/slamquick		door1slm
+
+plats/liftmove		lift1lp
+plats/liftstop		lift1st
+plats/slowmove		lift2lp
+plats/slowstop		lift2st
+
+switchon dsswtchn
+switchoff dsswtchx
+
+weapons/slugfire 	DSSLGFIR
+weapons/slugsplode	DSSLGSPD
+
+misc/keytry             dslocked
+misc/k_pkup             dskeyup
+misc/health_pkup        dshlthup
+misc/armor_pkup         dsarmup
+misc/armor_pkup2		armor2
+misc/armor_pkup3		armor3
+pickups/hypo dsheallg
+medi/small				dspatch
+medi/medium				gauzeup
+
+$random puff/ric {puff/ric1 puff/ric2 puff/ric3 puff/ric4 puff/ric5 puff/ric6 puff/ric7 puff/ric8 puff/ric9 puff/ric0 puff/rica puff/ricb puff/ricc puff/ricd puff/rice puff/ricf}
+puff/ric1				dspuff1
+puff/ric2				dspuff2
+puff/ric3				dspuff3
+puff/ric4				dspuff4
+puff/ric5				dsnull
+puff/ric6				dsnull
+puff/ric7				dsnull
+puff/ric8				dsnull
+puff/ric9				dsnull
+puff/ric0				dsnull
+puff/rica				dsnull
+puff/ricb				dsnull
+puff/ricc				dsnull
+puff/ricd				dsnull
+puff/rice				dsnull
+puff/ricf				dsnull
+
+$random weapons/shell  { weapons/shell1 weapons/shell2 weapons/shell3 weapons/shell4 }
+weapons/shell1			dsshell1
+weapons/shell2			dsshell2
+weapons/shell3			dsshell3
+weapons/shell4			dsshell4
+
+$random weapons/casing  { weapons/casing1 weapons/casing2 weapons/casing3 }
+weapons/casing1			dscasin1
+weapons/casing2			dscasin2
+weapons/casing3			dscasin3
+
+$random weapons/smallclip { sc1 sc2 sc3 sc4 sc5 sc6 }
+sc1 dsbounc1
+sc2 dsbounc2
+sc3 dsbounc3
+sc4 dsbounc4
+sc5 dsbounc5
+sc6 dsbounc6
+
+$random weapons/largeclip { lc1 lc2 lc3 lc4 lc5 lc6 }
+lc1 dsaounc1
+lc2 dsaounc2
+lc3 dsaounc3
+lc4 dsaounc4
+lc5 dsaounc5
+lc6 dsaounc6
+
+weapon/deselect weaponin
+
+weapon/select1 weapout1
+weapon/select2 weapout2
+weapon/select3 weapout3
+weapon/select4 weapout4
+weapon/select5 weapout5
+weapon/select6 weapout6
+
+fist/hit punchit
+fist/swing swing2
+fist/kickswing swing1
+$random fist/wall { wall1 wall2 }
+wall1 punchw1
+wall2 punchw2
+fist/kickwall footwall
+fist/kickgrunt dsjump
+$random fist/powerwall { powwall1 powwall2 }
+powwall1 powpwal1
+powwall2 powpwal2
+fist/powerkickwall powkwall
+fist/powerhit powhit
+
+$random melee/swing { mls1 mls2 }
+$random melee/hit { m1 m2 m3 m4 m5 m6 }
+$random melee/wall { mw1 mw2 mw3 }
+mls1 meleesw1
+mls2 meleesw2
+m1 melee1 
+m2 melee2
+m3 melee3
+m4 melee4
+m5 melee5
+m6 melee6
+mw1 meleewl1
+mw2 meleewl2
+mw3 meleewl3
+$random melee/powerwall { mpw1 mpw2 mpw3 }
+mpw1 powweap1
+mpw2 powweap2
+mpw3 powweap3
+$random melee/powerhit { mph1 mph2 }
+mph1 powweph1
+mph2 powweph2
+
+null dsempty
+
+enemy/smg mp40enem
+enemy/shot shotenem
+enemy/skor skorenem
+enemy/magnum webenem
+
+colt45/fire coltfire
+colt45/clipout coltout
+colt45/clipin coltin
+colt45/noammo coltempt
+colt45/cliphit colthit
+colt45/pickup COLTUP
+
+judgment/fire dsjdfire
+judgment/empty dsjdempt
+judgment/clipout dsjdout
+judgment/clipin dsjdin
+judgment/cliphit dsjdhit
+judgment/cock dsjdcock
+judgment/enemy DSJDENEM
+judgment/slide DSJDSLID
+judgment/slideback DSJDSBAK
+
+mp40/fire mp40fire
+$random mp40/trail { mp40off1 mp40off2 mp40off3 }
+mp40off1 mp40off1
+mp40off2 mp40off2
+mp40off3 mp40off3
+mp40/clipout mp40lod1
+mp40/clipin mp40lod2
+mp40/cock mp40lod3
+mp40/noammo MP40EMPT
+
+webfire webfire
+webammo webammo
+webpick webpick
+webempty webempty
+webopen webopen
+webeject webeject
+webins webins
+webclose webclose
+webspin webspin
+
+mini/fire minifire
+mini/cock minicock
+mini/uncock miniucck
+$random mini/load { minilod1 minilod2 minilod3 minilod4 }
+minilod1 minilod1
+minilod2 minilod2
+minilod3 minilod3
+minilod4 minilod4
+mini/pickup minipick
+shotgun/noammo shotempt
+
+$random skorpion/fire { skor1 skor2 skor3 skor4 skor5 }
+skor1 skor1
+skor2 skor2
+skor3 skor3
+skor4 skor4
+skor5 skor5
+skorpion/clipout skorout
+skorpion/clipin skorin
+skorpion/noammo skorempt
+skorpion/cock skorcock
+
+rpd/fire rpdfire
+rpd/decay rpddecay
+rpd/load rpdload
+rpd/pick rpdpick
+rpd/setup rpdsetup
+rpd/ammo rpdammo
+
+weapons/slugrifle SLUGRIFL
+weapons/slugout SLUGOUT
+weapons/slugin SLUGIN
+weapons/slugslap SLUGSLAP
+
+grenade/arm grnpin
+grenade/explode grnblast
+grenade/bounce grnbnce
+grenade/toss grntoss
+grenade/pickup grnpick
+
+rpg/fire rpgfire
+rpg/load rpgload
+rpg/pickup rpgpick
+rpg/ammo rpgammo
+rpg/explode rpgexplo
+rpg/active rpgactiv
+
+psiamp/pickup psipick
+$random psiamp/fireball { psiball1 psiball2 }
+psiball1 psifire1
+psiball2 psifire2
+$random psiamp/firehit { psifire1 psifire2 psifire3 psifire4 psifire5 }
+psifire1 psifhit1
+psifire2 psifhit2
+psifire3 psifhit3
+psifire4 psifhit4
+psifire5 psifhit5
+$random weapons/railgf { psilite1 psilite2 psilite3 }
+psilite1 psilite1
+psilite2 psilite2
+psilite3 psilite3
+psiamp/burnout psiburno
+
+neutralizer/pickup neutpick
+neutralizer/down neutdown
+neutralizer/ammo neutammo
+neutralizer/fire neutfire
+neutralizer/hit neuthit
+neutralizer/charge neutchrg
+
+lance/select ldselect
+lance/deselect lddesel
+lance/reload ldreload
+$random lance/fire { lance/fire1 lance/fire2 lance/fire3 }
+lance/fire1 ldfire1
+lance/fire2 ldfire2
+lance/fire3 ldfire3
+$random lance/explode { lance/explode1 lance/explode2 }
+lance/explode1 ldxplo1
+lance/explode2 ldxplo2
+lance/fly ldpjfly
+lance/charge LDCHARGE
+lance/level1 ldlevel1
+lance/level2 ldlevel2
+lance/level3 ldlevel3
+lance/exploburst LDEXPBST
+lance/failed LDFAILED
+lance/BEEP1 ldbeep1
+lance/beep2 ldbeep2
+lance/beep3 ldbeep3
+
+$random misc/combineidle { combine1 combine2 combine3 combine4 combine5 combine6 combine7 combine8 combine9 }
+combine1 dscgact1
+combine2 dscgact2
+combine3 dscgact3
+combine4 dscgact4
+combine5 dscgact5
+combine6 dscgact6
+combine7 dscgact7
+combine8 dscgact8
+combine9 dscgact9
+$random misc/combinesight { combinesight1 combinesight2 combinesight3 combinesight4 combinesight5 combinesight6 combinesight7 combinesight8 combinesight9 }
+combinesight1 dscgsit1
+combinesight2 dscgsit2
+combinesight3 dscgsit3
+combinesight4 dscgsit4
+combinesight5 dscgsit5
+combinesight6 dscgsit6
+combinesight7 dscgsit7
+combinesight8 dscgsit8
+combinesight9 dscgsit9
+$random misc/combinepain { combinepain1 combinepain2 combinepain3 combinepain4 }
+combinepain1 dscgpain
+combinepain2 dscgpn2
+combinepain3 dscgpn3
+combinepain4 dscgpn4
+$random misc/combinedeath { combinedeath1 combinedeath2 combinedeath3 combinedeath4 combinedeath5 combinedeath6 combinedeath7 }
+combinedeath1 dscgdth1
+combinedeath2 dscgdth2
+combinedeath3 dscgdth3
+combinedeath4 dscgdth4
+combinedeath5 dscgdth5
+combinedeath6 dscgdth6
+combinedeath7 dscgdth7
+$random misc/combineflame { cb1 cb2 cb3 cf1 cf2 cf3 cf4 cf5 cf6 cf7 cf8 cf9 cfa cfb cfc cfd cfe }
+cb1 dsbgbrn1
+cb2 dsbgbrn2
+cb3 dsbgbrn3
+cf1 dsbgflm1
+cf2 dsbgflm2
+cf3 dsbgflm3
+cf4 dsbgflm4
+cf5 dsbgflm5
+cf6 dsbgflm6
+cf7 dsbgflm7
+cf8 dsbgflm8
+cf9 dsbgflm9
+cfa dsbgflma
+cfb dsbgflmb
+cfc dsbgflmc
+cfd dsbgflmd 
+cfe dsbgflme
+
+$alias world/barrelx		weapons/rocklx
+$random weapons/rocklx		{ explosion1 explosion2 explosion3 explosion4 explosion5 explosion6 explosion7 }
+explosion1					dsbarex1
+explosion2					dsbarex2
+explosion3					dsbarex3
+explosion4					dsbarex4
+explosion5					dsbarex5
+explosion6					dsbarex6
+explosion7					dsbarex7
+
+$random lizardcommando/death { guydie01 guydie02 guydie03 guydie04 guydie05 guydie06 guydie07 guydie08 guydie09 guydie10 guydie11 guydie12 guydie13 guydie14 guydie15 guydie16 guydie17 guydie18 guydie19 guydie20 }
+guydie01 guydie01
+guydie02 guydie02
+guydie03 guydie03 
+guydie04 guydie04 
+guydie05 guydie05 
+guydie06 guydie06 
+guydie07 guydie07 
+guydie08 guydie08 
+guydie09 guydie09 
+guydie10 guydie10 
+guydie11 guydie11 
+guydie12 guydie12 
+guydie13 guydie13 
+guydie14 guydie14 
+guydie15 guydie15 
+guydie16 guydie16 
+guydie17 guydie17 
+guydie18 guydie18 
+guydie19 guydie19 
+guydie20 guydie20 
+$random lizardcommando/pain { guyhrt10 guyhrt11 guyhurt1 guyhurt2 guyhurt3 guyhurt4 guyhurt5 guyhurt6 guyhurt7 guyhurt8 guyhurt9 }
+guyhrt10 guyhrt10 
+guyhrt11 guyhrt11 
+guyhurt1 guyhurt1 
+guyhurt2 guyhurt2 
+guyhurt3 guyhurt3 
+guyhurt4 guyhurt4 
+guyhurt5 guyhurt5 
+guyhurt6 guyhurt6 
+guyhurt7 guyhurt7 
+guyhurt8 guyhurt8 
+guyhurt9 guyhurt9 
+$random lizardcommando/sight { guyrsit1 guyrsit2 guyrsit3 guyrsit4 guysit01 guysit02 guysit03 guysit04 guysit05 guysit06 guysit07 guysit08 guysit09 guysit10 guysit11 guysit12 guysit13 guysit14 guysit15 guysit16 guysit17 guysit18 guysit19 guysit20 guysit21 guysit22 guysit23 }
+guyrsit1 guyrsit1 
+guyrsit2 guyrsit2 
+guyrsit3 guyrsit3 
+guyrsit4 guyrsit4 
+guysit01 guysit01 
+guysit02 guysit02 
+guysit03 guysit03 
+guysit04 guysit04 
+guysit05 guysit05 
+guysit06 guysit06 
+guysit07 guysit07 
+guysit08 guysit08 
+guysit09 guysit09 
+guysit10 guysit10 
+guysit11 guysit11 
+guysit12 guysit12 
+guysit13 guysit13 
+guysit14 guysit14 
+guysit15 guysit15 
+guysit16 guysit16 
+guysit17 guysit17 
+guysit18 guysit18 
+guysit19 guysit19 
+guysit20 guysit20 
+guysit21 guysit21 
+guysit22 guysit22 
+guysit23 guysit23 
+lizardcommando/misc misc01
+
+$random vacbob/sight {vacbob/sight1 vacbob/sight2 vacbob/sight3 vacbob/sight4 vacbob/sight5 vacbob/sight6 vacbob/sight7}
+vacbob/sight1			dschsit1
+vacbob/sight2			dschsit2		
+vacbob/sight3			dschsit3
+vacbob/sight4			dschsit4
+vacbob/sight5			dschsit5
+vacbob/sight6			dschsit6
+vacbob/sight7			dschsit7
+$random vacbob/pain {vacbob/pain1 vacbob/pain2 vacbob/pain3}
+vacbob/pain1			dschpn1
+vacbob/pain2			dschpn2
+vacbob/pain3			dschpn3
+$random vacbob/death {vacbob/death1 vacbob/death2 vacbob/death3}
+vacbob/death1			dschdth1
+vacbob/death2			dschdth2
+vacbob/death3			dschdth3
+vacbob/getdown dschgdwn
+$random vacbob/chatter {vacbob/idle1 vacbob/idle2 vacbob/idle3 vacbob/idle4}
+vacbob/idle1			dschidl1
+vacbob/idle2			dschidl2
+vacbob/idle3			dschidl3
+vacbob/idle4			dschidl4
+
+$random bob/sight { bs1 bs2 bs3 bs4 bs6 bs7 bs9 bs12 bs14 bs15 }
+bs1 bobsit1
+bs2 bobsit2
+bs3 bobsit3
+bs4 bobsit4
+bs6 bobsit6
+bs7 bobsit7
+bs9 bobsit9
+bs12 bobsit12
+bs14 bobsit14
+bs15 bobsit15
+$random bob/pain { bp1 bp2 bp3 }
+bp1 bobpain1
+bp2 bobpain2
+bp3 bobpain3
+$random bob/death { bd1 bd2 bd3 bd4 bd5 bd6 bd7 bd8 bd9 bda bdb }
+bd1 bobdth1
+bd2 bobdth2
+bd3 bobdth3
+bd4 bobdth4
+bd5 bobdth5
+bd6 bobdth6
+bd7 bobdth7
+bd8 bobdth8
+bd9 bobdth9
+bda bobdtha
+bdb bobdthb
+
+weapons/shotgunflame dsfballf
+
+$random halomarine/sighted {ms1 ms2 ms3 ms4 ms5 ms6 ms7 ms8 ms9 msa msb}
+ms1 dshosit1
+ms2 dshosit2
+ms3 dshosit3
+ms4 dshosit4
+ms5 dshosit5
+ms6 dshosit6
+ms7 dshosit7
+ms8 dshosit8
+ms9 dshosit9
+msa dshosita
+msb dshositb
+$random halomarine/pain {mp1 mp2 mp3}
+mp1 dspopn1
+mp2 dspopn2
+mp3 dspopn3
+$random halomarine/death { ukdth1 ukdth2 ukdth3 ukdth4 ukdth5 ukdth6 ukdth7 }
+ukdth1 ukdth1
+ukdth2 ukdth2
+ukdth3 ukdth3
+ukdth4 ukdth4
+ukdth5 ukdth5
+ukdth6 ukdth6
+ukdth7 ukdth7
+
+$random shotgunner/sighted { sgs1 sgs2 sgs3 sgs4 sgs5 sgs6 }
+sgs1 sguysit1
+sgs2 sguysit2
+sgs3 sguysit3
+sgs4 sguysit4
+sgs5 sguysit5
+sgs6 sguysit6
+$random shotgunner/pain { sgp1 sgp2 sgp3 sgp4 sgp5 sgp6 }
+sgp1 sguypn1
+sgp2 sguypn2
+sgp3 sguypn3
+sgp4 sguypn4
+sgp5 sguypn5
+sgp6 sguypn6
+$random shotgunner/death { sgd1 sgd2 sgd3 sgd4 sgd5 sgd6 }
+sgd1 sguydth1
+sgd2 sguydth2
+sgd3 sguydth3
+sgd4 sguydth4
+sgd5 sguydth5
+sgd6 sguydth6
+
+$random misc/flamedeath { fd1 fd2 fd3 fd4 fd5 fd6 fd7 fd8 fd9 fda fdb fdc fdd fde fdf fdg }
+$random misc/naziflamedeath { fd1 fd2 fd4 fd5 fd7 fd8 fd9 fda fdb fdc fdd fde fdf fdg }
+fd1 dsfdth1
+fd2 dsfdth2
+fd3 dsfdth3
+fd4 dsfdth4
+fd5 dsfdth5
+fd6 dsfdth6
+fd7 dsfdth7
+fd8 dsfdth8
+fd9 dsfdth9
+fda dsfdtha
+fdb dsfdthb
+fdc dsfdthc
+fdd dsfdthd
+fde dsfdthe
+fdf dsfdthf
+fdg dsfdthg
+
+misc/lightningdeath dssparkn
+
+$random misc/disintdeath { disint1 disint2 disint3 }
+disint1 disint
+disint2 disint2
+disint3 disint3
+
+$random misc/bodyfall { bodyf1 bodyf2 bodyf3 bodyf4 bodyf5 bodyf6 bodyf7 bodyf8 bodyf9 bodyf10 bodyf11 bodyf12 bodyf13 }
+bodyf1 body01
+bodyf2 body02
+bodyf3 body03
+bodyf4 body04
+bodyf5 body05
+bodyf6 body06
+bodyf7 body07
+bodyf8 body08
+bodyf9 body09
+bodyf10 body10
+bodyf11 body11
+bodyf12 body12
+bodyf13 body13
+
+bloodsplat1 dsblud01
+bloodsplat2 dsblud02
+bloodsplat3 dsblud03
+
+$random bloodsplat { bloodsplat1 bloodsplat2 bloodsplat3 }
+$limit bloodsplat 1
+
+blood/impact impactfx
+
+$random cultist/death { cultist/death1 cultist/death2 cultist/death3 cultist/death4 cultist/death5 cultist/death6 }
+cultist/death1 cultdth1
+cultist/death2 cultdth2
+cultist/death3 cultdth3
+cultist/death4 cultdth4
+cultist/death5 cultdth5
+cultist/death6 cultdth6
+$random cultist/pain { cultist/pain1 cultist/pain2 cultist/pain3 }
+cultist/pain1 cultpn1
+cultist/pain2 cultpn2
+cultist/pain3 cultpn3
+$random cultist/idle { cultist/idle1 cultist/idle2 cultist/idle3 }
+cultist/idle1 cultidl1
+cultist/idle2 cultidl2
+cultist/idle3 cultidl3
+$random cultist/sight { cultist/sight1 cultist/sight2 cultist/sight3 cultist/sight4 cultist/sight5 }
+cultist/sight1 cultsit1
+cultist/sight2 cultsit2
+cultist/sight3 cultsit3
+cultist/sight4 cultsit4
+cultist/sight5 cultsit5
+
+$random mecha/step { mechstp1 mechstp2 mechstp3 mechstp4 }
+mechstp1 mechstp1
+mechstp2 mechstp2
+mechstp3 mechstp3
+mechstp4 mechstp4
+mecha/leg1 mechleg1
+mecha/leg2 mechleg2
+$random mecha/rocket { nebel1 nebel2 nebel3 }
+nebel1 dsnebel1
+nebel2 dsnebel2
+nebel3 dsnebel3
+$random mecha/rocketexplode { nebelx1 nebelx2 nebelx3 }
+nebelx1 dsrxplo1
+nebelx2 dsrxplo2
+nebelx3 dsrxplo3
+mecha/plasma dswplas
+$random mecha/see { mechsit1 mechsit2 mechsit3 mechsit4 mechsit5 }
+mechsit1 mechsit1
+mechsit2 mechsit2
+mechsit3 mechsit3
+mechsit4 mechsit4
+mechsit5 mechsit5
+mecha/pain mechpn2
+mecha/death mechdie1
+$random mecha/mgun { mechamg1 mechamg2 }
+mechamg1 mechamg1
+mechamg2 mechamg2
+
+$random russian/sight { russit1 russit2 russit3 russit4 russit5 russit6 }
+$random russian/pain { ruspain1 ruspain2 ruspain3 ruspain4 ruspain5 }
+$random russian/death { rusdth1 rusdth2 }
+$random russian/burn { rusbrn1 rusbrn2 rusbrn3 null null null null null null }
+russit1 russit1
+russit2 russit2
+russit3 russit3
+russit4 russit4
+russit5 russit5
+russit6 russit6
+rusdth1 rusdth1
+rusdth2 rusdth2
+ruspain1 ruspain1
+ruspain2 ruspain2
+ruspain3 ruspain3
+ruspain4 ruspain4
+ruspain5 ruspain5
+rusbrn1 rusbrn1
+rusbrn2 rusbrn2
+rusbrn3 rusbrn3
+
+$random swat/sight { swatsit1 swatsit2 swatsit3 swatsit4 swatsit5 swatsit6 swatsit7 swatsit8 swatsit9 swatsita }
+$random swat/pain { swatpn1 swatpn2 swatpn3 swatpn4 swatpn5 swatpn6 swatpn7 swatpn8 swatpn9 swatpna }
+$random swat/death { swatdth1 swatdth2 swatdth3 swatdth4 swatdth5 swatdth6 swatdth7 swatdth8 swatdth9 swatdtha }
+swatsit1 swatsit1
+swatsit2 swatsit2
+swatsit3 swatsit3
+swatsit4 swatsit4
+swatsit5 swatsit5
+swatsit6 swatsit6
+swatsit7 swatsit7
+swatsit8 swatsit8
+swatsit9 swatsit9
+swatsita swatsita
+swatpn1 swatpn1
+swatpn2 swatpn2
+swatpn3 swatpn3
+swatpn4 swatpn4
+swatpn5 swatpn5
+swatpn6 swatpn6
+swatpn7 swatpn7
+swatpn8 swatpn8
+swatpn9 swatpn9
+swatpna swatpna
+swatdth1 swatdth1
+swatdth2 swatdth2
+swatdth3 swatdth3
+swatdth4 swatdth4
+swatdth5 swatdth5
+swatdth6 swatdth6
+swatdth7 swatdth7
+swatdth8 swatdth8
+swatdth9 swatdth9
+swatdtha swatdtha
+
+// From Enjay's NJSPLASH.wad...
+
+world/drip			dsempty
+world/watersplash		dssplash
+world/watersplashsmall		dssplsml
+world/sludgegloop		dsploosh
+world/sludgegloopsmall		dsplosml
+world/lavasizzle		dslvsiz
+world/lavsiz2			dslvsiz2
+world/lavasizzlesmall		dslavsml
+
+//Enjay's floor sounds
+
+//Carpet - soft ground
+$random floor/carpet		{ floor/carpet01  floor/carpet02 floor/carpet03 }
+floor/carpet01	dscarp1
+floor/carpet02	dscarp2
+floor/carpet03	dscarp3
+
+//Dirt
+$random floor/dirt		{ floor/dirt01  floor/dirt02 floor/dirt03 floor/dirt04  floor/dirt05 floor/dirt06 }
+floor/dirt01	dsdirt1
+floor/dirt02	dsdirt2
+floor/dirt03	dsdirt3
+floor/dirt04	dsdirt4
+floor/dirt05	dsdirt5
+floor/dirt06	dsdirt6
+
+//Gravel - loose crunchy surface
+$random floor/gravel		{ floor/grav01  floor/grav02 floor/grav03 floor/grav04 }
+floor/grav01	dsgrav1
+floor/grav02	dsgrav2
+floor/grav03	dsgrav3
+floor/grav04	dsgrav4
+
+//Metal - hard metal
+$random floor/metal		{ floor/metl01  floor/metl02 floor/metl03 floor/metl04  floor/metl05 floor/metl06 }
+floor/metl01	dsmet01
+floor/metl02	dsmet02
+floor/metl03	dsmet03
+floor/metl04	dsmet04
+floor/metl05	dsmet05
+floor/metl06	dsmet06
+
+//Metal2 - clanky metal
+$random floor/met2		{ floor/met201  floor/met202 floor/met203 floor/met204 }
+floor/met201	dsmet201
+floor/met202	dsmet202
+floor/met203	dsmet203
+floor/met204	dsmet204
+
+//Rock - Hard outdoor type floor
+$random floor/rock		{ floor/rock01  floor/rock02 floor/rock03 floor/rock04 }
+floor/rock01	dsrock1
+floor/rock02	dsrock2
+floor/rock03	dsrock3
+floor/rock04	dsrock4
+
+//Hard - generic hard floor
+$random floor/hard		{ floor/hard01  floor/hard02 floor/hard03 floor/hard04  floor/hard05 floor/hard06 }
+floor/hard01	dshard1
+floor/hard02	dshard2
+floor/hard03	dshard3
+floor/hard04	dshard4
+floor/hard05	dshard5
+floor/hard06	dshard6
+
+//Tile - Hard indoor floor
+$random floor/tile		{ floor/tile01  floor/tile02 floor/tile03 floor/tile04  floor/tile05 floor/tile06 }
+floor/tile01	dstile01
+floor/tile02	dstile02
+floor/tile03	dstile03
+floor/tile04	dstile04
+floor/tile05	dstile05
+floor/tile06	dstile06
+
+//Tile2 - More echoey traditional tile
+$random floor/tile2		{ floor/tile201  floor/tile202 floor/tile203 floor/tile204 }
+floor/tile201	dstile21
+floor/tile202	dstile22
+floor/tile203	dstile23
+floor/tile204	dstile24
+
+//Wood
+$random floor/wood		{ floor/wood01  floor/wood02 floor/wood03 floor/wood04 }
+floor/wood01	dswood1
+floor/wood02	dswood2
+floor/wood03	dswood3
+floor/wood04	dswood4
+
+//Slimy - for the Doom snake floors
+$random floor/slimy		{ floor/slimy01  floor/slimy02 floor/slimy03 floor/slimy04 }
+floor/slimy01	dsslimy1
+floor/slimy02	dsslimy2
+floor/slimy03	dsslimy3
+floor/slimy04	dsslimy4

@@ -1,0 +1,388 @@
+ACTOR RPKClip : Ammo
+{
+	Inventory.MaxAmount 100
+	Inventory.Icon RPDPA0
+}
+
+ACTOR RPKSetup : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+ACTOR RPKAmmo : Ammo replaces Cell
+{
+	//$Category ammunition
+	Inventory.MaxAmount 2
+	Inventory.PickupMessage "5.45mm RPK Ammo Drum"
+	Tag "5.45x39mm"
+	Inventory.Amount	1
+	Inventory.PickupSound "rpd/ammo"
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 4
+	Scale 0.25
+	States
+	{
+	Spawn:
+	    	RPDA A -1
+	    	LOOP
+	}
+}
+
+ACTOR RPK : Weapon replaces PlasmaRifle
+{
+	Inventory.PickupMessage "ruchnoy pulemyot kalashnikova (rpk-74) (5)"
+	Tag "RPK-74"
+	Inventory.PickupSound "rpd/pick"
+	Obituary "%o was machine-gunned Russian-style by %k."
+	Weapon.AmmoType		"RPKClip"
+	Weapon.AmmoGive		0
+	Weapon.AmmoUse		1
+	Weapon.AmmoType2	"RPKAmmo"
+	Weapon.AmmoGive2	1
+	Weapon.AmmoUse2		0
+	Weapon.SisterWeapon RPK2
+	Radius				12
+	Height				12
+	+AMMO_OPTIONAL
+	+NOEXTREMEDEATH
+	+NOALERT
+	+NOAUTOFIRE
+	scale 0.75
+	States
+	{
+	Spawn:
+		RPDP A 1
+		LOOP
+    Select:
+		TNT1 A 19 SetPlayerProperty(0,1,2)
+		RPDH C 1
+		RPDH B 1 A_PlaySound("weapon/select2")
+		RPDH A 1
+    	RPDD A 1 A_Raise
+    	Goto Select+4
+    Deselect:
+		RPDG A 0 A_StopSoundEx("Weapon")
+    	RPDD A 0 A_JumpIfInventory("RPKSetup",1,6)
+		RPDH A 1 A_PlaySound("weapon/deselect")
+		RPDH BC 1
+		TNT1 A 19 ACS_Execute(357,0,100,0,0)
+		TNT1 A 1 A_Lower
+    	Goto Deselect+5
+		RPDC J 3
+    	RPDC I 3 A_PlaySound("rpd/setup")
+        RPDC HGFEDC 3
+        RPDC B 3 SetPlayerProperty(0,0,0)
+        RPDC A 3 A_TakeInventory("RPKSetup",1)
+        Goto Deselect
+    Ready:
+    	RPDD A 0 A_JumpIfInventory("IsReloading",1,"ReloadCheck")
+    	RPDD A 0 A_JumpIfInventory("RPKSetup",1,"ReadyReady")
+    	RPDD A 1 A_WeaponReady
+    	Loop
+	ReloadCheck:
+    	RPDC A 0 A_JumpIfInventory("RPKSetup",1,"ReadyReload")
+        Goto Reload
+	ReadyReady:
+    	RPDG A 0 A_JumpIfInventory("IsReloading",1,"ReadyReload")
+    	RPDG A 1 A_WeaponReady
+    	Loop
+    Fire:
+    	RPDD A 0 A_JumpIfInventory("RPKSetup",1,"ReadyFire")
+    	RPDC ABCD 3
+		RPDU A 2 ACS_Execute(357,0,50,0,0)
+		RPDU B 5
+		RPDU B 1 A_Refire
+		RPDU A 2 ACS_Execute(357,0,100,0,0)
+		RPDC DCBA 2 A_WeaponReady
+    	Goto Ready
+	Hold:
+		RPDU B 0 A_JumpIfInventory("RPKSetup",1,"ReadyHold")
+		RPDU B 0 A_JumpIfNoAmmo("DryFireHold")
+		RPDU B 0 A_PlaySoundEx("rpd/fire","Weapon",1)
+		RPF2 B 0 A_AlertMonsters
+    	RPF2 B 0 BRIGHT A_GunFlash
+		RPF2 B 0 BRIGHT A_SetPitch(pitch - 4.0)//ACS_Execute(287,0,50,random(2,4),0)
+    	RPF2 A 1 Bright A_FireBullets(4,3,-1,10,"BulletPuff",1)
+    	RPF2 B 0 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+    	RPF2 B 1 Bright A_FireCustomMissile("ChainSmokeSpawner",0,0,6,8)
+    	RPF2 B 0 BRIGHT A_GunFlash
+		RPF2 B 0 BRIGHT A_SetPitch(pitch - 4.0)//ACS_Execute(287,0,50,random(2,4),0)
+    	RPF2 C 1 Bright A_FireBullets(4,3,-1,10,"BulletPuff",1)
+    	RPF2 D 0 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+    	RPF2 D 1 Bright A_FireCustomMissile("ChainSmokeSpawner",0,0,6,8)
+		RPF2 D 0 A_Refire
+		RPDU B 0 A_StopSoundEx("Weapon")
+		RPDU B 0 A_PlayWeaponSound("rpd/decay")
+		RPDU A 2 ACS_Execute(357,0,100,0,0)
+		RPDC DCBA 2
+    	Goto Ready
+	ReadyFire:
+	ReadyHold:
+    	RPDG A 0 A_JumpIfNoAmmo("ReadyDryFire")
+		RPDG A 0 ACS_Execute(357,0,20,0,0)
+		RPDG A 0 A_PlaySoundEx("rpd/fire","Weapon",1)
+		RPDF B 0 A_AlertMonsters
+    	RPDF B 0 BRIGHT A_GunFlash
+		RPF2 B 0 BRIGHT A_SetPitch(pitch - 1.5)//ACS_Execute(287,0,25,random(2,4),0)
+    	RPDF A 1 Bright A_FireBullets(2,1,-1,10,"BulletPuff",1)
+    	RPDF B 0 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+    	RPDF B 1 Bright A_FireCustomMissile("ChainSmokeSpawner",0,0,6,8)
+    	RPDF B 0 BRIGHT A_GunFlash
+		RPF2 B 0 BRIGHT A_SetPitch(pitch - 1.5)//ACS_Execute(287,0,25,random(2,4),0)
+    	RPDF C 1 Bright A_FireBullets(2,1,-1,10,"BulletPuff",1)
+    	RPDF D 0 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+    	RPDF D 1 Bright A_FireCustomMissile("ChainSmokeSpawner",0,0,6,8)
+		RPDF D 0 A_Refire
+		RPDG A 0 A_StopSoundEx("Weapon")
+		RPDG A 0 ACS_Execute(357,0,50,0,0)
+		RPDG A 0 A_PlayWeaponSound("rpd/decay")
+    	Goto Ready
+	DryFire:
+		RPDG A 0 A_StopSoundEx("Weapon")
+		RPDC ABCD 3
+		RPDU A 2
+		RPDU B 5
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"Reload")
+		RPDU B 1 A_Refire
+	DryFireHold:
+		RPDG A 0 A_StopSoundEx("Weapon")
+		RPDU B 2
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"HoldReload")
+		RPDU B 1 A_Refire
+		RPDU B 2 ACS_Execute(357,0,100,0,0)
+		RPDC DCBA 2
+		Goto Ready
+	ReadyDryFire:
+		RPDG A 0 A_StopSoundEx("Weapon")
+    	RPDG A 2
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"ReadyReload")
+    	RPDG A 1 A_PlaySound("skorpion/noammo")
+		RPDG A 0 ACS_Execute(357,0,50,0,0)
+    	Goto Ready
+	HoldReload:
+    	TNT1 A 0 A_JumpIfInventory("RPKClip",100,"HoldReloadNevermind")
+    	TNT1 A 0 A_JumpIfInventory("RPKAmmo",1,"HoldReloadStart")
+	HoldReloadNevermind:
+      	TNT1 A 0 A_TakeInventory("IsReloading",1)
+		RPDC DCBA 2
+      	Goto Ready
+	HoldReloadStart:
+		RPDU B 0 A_StopSoundEx("Weapon")
+		RPDC ABCD 3
+	Reload:
+    	TNT1 A 0 A_JumpIfInventory("RPKClip",100,2)
+    	TNT1 A 0 A_JumpIfInventory("RPKAmmo",1,2)
+      	TNT1 A 0 A_TakeInventory("IsReloading",1)
+      	Goto Ready
+		RPDU B 0 A_StopSoundEx("Weapon")
+		RPDC ABCD 3
+	ReloadWorking:
+		RPDU A 2
+		RPDU B 5
+    	RPR2 A 3 A_PlaySound("rpd/load")
+    	RPR2 B 3
+    	RPR2 C 12
+    	RPR2 D 3 A_TakeInventory("RPKClip",100)
+    	RPR2 E 3
+    	RPR2 D 8
+    	RPR2 F 0 A_TakeInventory("RPKAmmo",1)
+    	RPR2 F 3 A_GiveInventory("RPKClip",100)
+    	RPR2 GF 3
+    	RPR2 D 18
+		RPR2 IJ 2
+		RPR2 K 10
+		RPR2 L 2
+		RPDU B 1
+		RPDU A 2
+		RPDC DCB 2
+		RPDC A 2 A_Refire
+    	Goto Ready 
+    ReadyReload:
+    	TNT1 A 0 A_JumpIfInventory("RPKClip",100,2)
+    	TNT1 A 0 A_JumpIfInventory("RPKAmmo",1,2)
+      	TNT1 A 0 A_TakeInventory("IsReloading",1)
+      	Goto Ready
+		RPDG A 0 A_StopSoundEx("Weapon")
+    	RPDR A 3 A_PlaySound("rpd/load")
+    	RPDR B 3
+    	RPDR C 12
+    	RPDR D 3 A_TakeInventory("RPKClip",150)
+    	RPDR E 3
+    	RPDR D 8
+    	RPDR F 0 A_TakeInventory("RPKAmmo",1)
+    	RPDR F 3 A_GiveInventory("RPKClip",150)
+    	RPDR GF 3
+    	RPDR D 18
+		RPDR IJ 2
+		RPDR K 10
+		RPDR L 2
+		RPDG A 1 A_Refire
+    	Goto Ready    	
+    Altfire:
+		RPDG A 0 A_StopSoundEx("Weapon")
+    	RPDC A 0 A_JumpIfInventory("RPKSetup",1,12)
+        RPDC A 2 A_PlaySound("rpd/setup")
+        RPDC B 3 ACS_Execute(357,0,50,0,0)
+        RPDC CDEFGHIJ 3
+        RPDG A 4 A_GiveInventory("RPKSetup",1)
+        Goto Ready
+		RPDG A 0 A_StopSoundEx("Weapon")
+		RPDC J 3
+        RPDC I 3 A_PlaySound("rpd/setup")
+        RPDC HGFEDC 3
+        RPDC B 3 ACS_Execute(357,0,100,0,0)
+        RPDC A 3 A_TakeInventory("RPKSetup",1)
+        Goto Ready
+       Flash:
+      	TNT1 A 0
+      	TNT1 A 2 A_Light2
+      	TNT1 A 2 A_Light1
+      	TNT1 A 1 A_Light0
+      	Stop
+    }
+}
+
+ACTOR RPK2 : RPK
+{
+	Weapon.SisterWeapon RPK
+	Weapon.AmmoGive2 0
+	+POWERED_UP
+	Obituary "There is nothing left of %o, now that %k is done with %h."
+	States
+	{
+	Deselect:
+		RPDG A 0 A_StopSoundEx("Weapon")
+    	RPDD A 0 A_JumpIfInventory("RPKSetup",1,6)
+		RPDH A 1 A_PlaySound("weapon/deselect")
+		RPDH BC 1
+		TNT1 A 10 ACS_Execute(357,0,100,0,0)
+		TNT1 A 1 A_Lower
+    	Goto Deselect+5
+		RPDC J 2
+    	RPDC I 2 A_PlaySound("rpd/setup")
+        RPDC HGFEDC 2
+        RPDC B 2 SetPlayerProperty(0,0,0)
+        RPDC A 2 A_TakeInventory("RPKSetup",1)
+        Goto Deselect
+    Ready:
+    	RPDD A 0 A_JumpIfInventory("IsReloading",1,"ReloadCheck")
+    	RPDD A 0 A_JumpIfInventory("RPKSetup",1,"ReadyReady")
+    	RPDD A 1 A_WeaponReady
+    	Loop
+	ReloadCheck:
+    	RPDC A 0 A_JumpIfInventory("RPKSetup",1,"ReadyReload")
+        Goto Reload
+	ReadyReady:
+    	RPDG A 0 A_JumpIfInventory("IsReloading",1,"ReadyReload")
+    	RPDG A 1 A_WeaponReady
+    	Loop
+    Fire:
+    	RPDD A 0 A_JumpIfInventory("RPKSetup",1,"ReadyFire")
+    	RPDC ABCD 1
+		RPDU A 1 ACS_Execute(357,0,50,0,0)
+		RPDU B 3
+		RPDU B 1 A_Refire
+    	Goto Ready
+	Hold:
+		RPDU B 0 A_JumpIfInventory("RPKSetup",1,"ReadyHold")
+		RPDU B 0 A_JumpIfNoAmmo("DryFireHold")
+		RPDU B 0 A_PlaySoundEx("rpd/fire","Weapon",1)
+		RPF2 B 0 A_AlertMonsters
+    	RPF2 B 0 BRIGHT A_GunFlash
+		RPF2 B 0 BRIGHT A_SetPitch(pitch - 4.0)//ACS_Execute(287,0,50,random(2,4),0)
+    	RPF2 A 1 Bright A_FireBullets(4,3,-1,10,"BulletPuff",1)
+    	RPF2 B 0 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+    	RPF2 B 1 Bright A_FireCustomMissile("ChainSmokeSpawner",0,0,6,8)
+    	RPF2 B 0 BRIGHT A_GunFlash
+		RPF2 B 0 BRIGHT A_SetPitch(pitch - 4.0)//ACS_Execute(287,0,50,random(2,4),0)
+    	RPF2 C 1 Bright A_FireBullets(4,3,-1,10,"BulletPuff",1)
+    	RPF2 D 0 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
+    	RPF2 D 1 Bright A_FireCustomMissile("ChainSmokeSpawner",0,0,6,8)
+		RPF2 D 0 A_Refire
+		RPDU B 0 A_StopSoundEx("Weapon")
+		RPDU B 0 A_PlayWeaponSound("rpd/decay")
+		RPDU A 2 ACS_Execute(357,0,100,0,0)
+		RPDC DCBA 1
+    	Goto Ready
+	DryFireHold:
+		RPDG A 0 A_StopSoundEx("Weapon")
+		RPDU B 2
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"HoldReload")
+		RPDU B 1 A_Refire
+		RPDU B 1 ACS_Execute(357,0,100,0,0)
+		RPDC DCBA 1
+		Goto Ready
+	ReadyDryFire:
+		RPDG A 0 A_StopSoundEx("Weapon")
+    	RPDG A 2
+    	RPDG A 1 A_PlaySound("skorpion/noammo")
+		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"ReadyReload")
+		RPDG A 0 ACS_Execute(357,0,50,0,0)
+    	Goto Ready
+	Reload:
+    	TNT1 A 0 A_JumpIfInventory("RPKClip",100,2)
+    	TNT1 A 0 A_JumpIfInventory("RPKAmmo",1,2)
+      	TNT1 A 0 A_TakeInventory("IsReloading",1)
+      	Goto Ready
+		RPDU B 0 A_StopSoundEx("Weapon")
+		RPDC ABCD 2
+	HoldReload:
+		RPDU A 1
+		RPDU B 3
+    	RPR2 A 2 A_PlaySound("rpd/load")
+    	RPR2 B 2
+    	RPR2 C 8
+    	RPR2 D 2 A_TakeInventory("RPKClip",100)
+    	RPR2 E 2
+    	RPR2 D 6
+    	RPR2 F 0 A_TakeInventory("RPKAmmo",1)
+    	RPR2 F 2 A_GiveInventory("RPKClip",100)
+    	RPR2 GF 2
+    	RPR2 D 9
+		RPR2 IJ 1
+		RPR2 K 7
+		RPR2 L 1
+		RPDU B 1
+		RPDU A 1
+		RPDC DCB 1
+		RPDC A 1 A_Refire
+    	Goto Ready 
+    ReadyReload:
+    	TNT1 A 0 A_JumpIfInventory("RPKClip",100,2)
+    	TNT1 A 0 A_JumpIfInventory("RPKAmmo",1,2)
+      	TNT1 A 0 A_TakeInventory("IsReloading",1)
+      	Goto Ready
+		RPDG A 0 A_StopSoundEx("Weapon")
+    	RPDR A 2 A_PlaySound("rpd/load")
+    	RPDR B 2
+    	RPDR C 8
+    	RPDR D 2 A_TakeInventory("RPKClip",100)
+    	RPDR E 2
+    	RPDR D 6
+    	RPDR F 0 A_TakeInventory("RPKAmmo",1)
+    	RPDR F 2 A_GiveInventory("RPKClip",100)
+    	RPDR GF 2
+    	RPDR D 9
+		RPDR IJ 1
+		RPDR K 7
+		RPDR L 1
+		RPDG A 1 A_Refire
+    	Goto Ready    	
+    Altfire:
+		RPDG A 0 A_StopSoundEx("Weapon")
+    	RPDC A 0 A_JumpIfInventory("RPKSetup",1,12)
+        RPDC A 1 A_PlaySound("rpd/setup")
+        RPDC B 2 ACS_Execute(357,0,50,0,0)
+        RPDC CDEFGHIJ 2
+        RPDG A 3 A_GiveInventory("RPKSetup",1)
+        Goto Ready
+		RPDG A 0 A_StopSoundEx("Weapon")
+		RPDC J 2
+        RPDC I 2 A_PlaySound("rpd/setup")
+        RPDC HGFEDC 2
+        RPDC B 2 ACS_Execute(357,0,100,0,0)
+        RPDC A 2 A_TakeInventory("RPKSetup",1)
+        Goto Ready
+	}
+}
+

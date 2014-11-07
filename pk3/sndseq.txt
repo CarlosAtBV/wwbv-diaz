@@ -1,0 +1,37 @@
+:DoorOpenNormal
+	playrepeat	doors/open
+	stopsound	doors/slam
+end
+
+:DoorCloseNormal
+	playrepeat	doors/open
+	stopsound	doors/slam
+end
+
+:DoorOpenBlazing
+	play		doors/openquick
+	stopsound	doors/slamquick
+end
+
+:DoorCloseBlazing
+	play		doors/closequick
+	stopsound	doors/slamquick
+end	
+
+:Floor
+	playrepeat	plats/liftmove
+	stopsound	plats/liftstop
+end
+
+:Platform
+	playrepeat	plats/slowmove
+	stopsound	plats/slowstop
+end
+
+:CeilingNormal
+	playrepeat	plats/slowmove
+end
+
+:CeilingSemiSilent
+	stopsound	plats/slowstop
+end
