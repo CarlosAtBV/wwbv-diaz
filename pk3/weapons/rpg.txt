@@ -98,7 +98,7 @@ ACTOR RPG7 : Weapon replaces RocketLauncher
 		TNT1 A 0 A_Raise
 		Loop
     Ready2:
-		RPG7 A 0 A_JumpIfInventory("RPGLoaded",1,1)
+		RPG7 A 0 A_JumpIfInventory("RPGLoaded",1,2)
     	RPG7 C 1 A_WeaponReady(WRF_ALLOWRELOAD)
     	Loop
 		RPG7 A 1 A_WeaponReady
