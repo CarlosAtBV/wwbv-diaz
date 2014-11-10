@@ -1,37 +1,33 @@
 ACTOR HandGrenadeAmmo : AMMO
 {
-Tag "Grenades"
-Inventory.MaxAmount 15
-Ammo.BackpackAmount 1
-Ammo.BackpackMaxAmount 30
+	Tag "Grenades"
+	Inventory.MaxAmount 15
+	Ammo.BackpackAmount 1
+	Ammo.BackpackMaxAmount 30
 }
 
-ACTOR HandGrenadePile : CustomInventory replaces RocketBox
+ACTOR HandGrenadePile : WeaponGiver replaces RocketBox
 {
-	Inventory.PickupSound "grenade/pickup" 
+	Inventory.PickupSound "grenade/pickup"
 	Inventory.PickupMessage "mk.ii a1 Hand Grenades (6)"
-	ConversationID 187
 	Radius 18
 	Scale 0.25
+	DropItem HandGrenade
 	States
 	{
-	Spawn: 
-        GRNP A -1 
+	Spawn:
+        GRNP A -1
         LOOP
-	Pickup:
-		TNT1 A 0
-		TNT1 A 0 A_GiveInventory("HandGrenade",1)
-		Stop
 	}
 }
 
 ACTOR HandGrenade : Weapon
-{ 
+{
 	Weapon.SelectionOrder 50
 	Weapon.AmmoType HandGrenadeAmmo
 	Weapon.AmmoType2 HandGrenadeAmmo
-	Weapon.AmmoGive 3 
-	Weapon.AmmoUse 1 
+	Weapon.AmmoGive 3
+	Weapon.AmmoUse 1
 	Weapon.AmmoUse2 1
 	Inventory.Icon GRNDC0
 	Obituary "%k yelled ''Think fast!''. %o didn't think fast."
@@ -39,53 +35,52 @@ ACTOR HandGrenade : Weapon
 	Scale 0.25
 	+NOALERT
 	+NOAUTOFIRE
-     States 
-     { 
-     Spawn: 
-        GRNP A -1 
-        LOOP 
-   Ready:
-      GRNG A 0 A_JumpIfNoAmmo("ReadyEmpty")
-      GRNG A 1 A_WeaponReady
-      Loop
-	ReadyEmpty:
-      TNT1 A 1 A_WeaponReady
-      Loop 
-   Deselect:
-      GRNG A 0 A_JumpIfNoAmmo("EmptyDeselect")
-	  GRNH ABCD 1
+	States
+	{
+	Spawn:
+		GRNP A -1
+        LOOP
+	Ready:
+		TNT1 A 6
+		GRNH DCBA 1
+	Ready2:
+		GRNG A 0 A_JumpIfNoAmmo(2)
+		GRNG A 1 A_WeaponReady
+		Loop
+		TNT1 A 1 A_WeaponReady
+		Loop
+	Deselect:
+		GRNG A 0 A_JumpIfNoAmmo("EmptyDeselect")
+		GRNH ABCD 1
 	EmptyDeselect:
-	  TNT1 A 6
-	  TNT1 A 1 A_Lower
-      Goto Deselect+6
-      TNT1 A 1 A_Lower
-      Goto Deselect+7
-   Select:
-   	TNT1 A 6 SetPlayerProperty(0,1,2)
-	GRNH DCBA 1
-      GRNG A 1 A_Raise 
-      Goto Select+5
-   Fire: 
-      GRNG A 2 A_PlaySound("grenade/arm")
-      GRNG BCD 2
-      TNT1 A 10
-      TNT1 A 0 A_FireCustomMissile("HandGrenadeProjectile",0,1,0,0)
-      GRNG E 1 A_PlaySound("grenade/toss")
-      GRNG FGHIJK 1
-      TNT1 A 10 A_JumpIfNoAmmo("ReadyEmpty")
-      GRNG DCB 2
-      Goto Ready
-	AltFire: 
-		TNT1 A 0 A_JumpIfNoAmmo("ReadyEmpty")
-      GRNG A 2 A_PlaySound("grenade/arm")
-      GRNG BCD 2
-      TNT1 A 10
-	  TNT1 A 0 A_TakeInventory("HandGrenadeAmmo",1)
-      TNT1 A 0 A_SpawnItemEx("HandGrenadeProjectile",0,0,0,0,2,0,0,8)
-      TNT1 A 15 A_JumpIfNoAmmo("ReadyEmpty")
-      GRNG DCB 2
-      Goto Ready
-   } 
+		TNT1 A 6
+		TNT1 A 0 A_Lower
+		Wait
+	Select:
+		TNT1 A 0 A_Raise
+		Loop
+	Fire:
+		GRNG A 2 A_PlaySound("grenade/arm")
+		GRNG BCD 2
+		TNT1 A 10
+		TNT1 A 0 A_FireCustomMissile("HandGrenadeProjectile",0,1,0,0)
+		GRNG E 1 A_PlaySound("grenade/toss")
+		GRNG FGHIJK 1
+		TNT1 A 0 A_CheckReload
+		TNT1 A 10 A_JumpIfNoAmmo("Ready2")
+		GRNG DCB 2
+		Goto Ready2
+	AltFire:
+		GRNG A 2 A_PlaySound("grenade/arm")
+		GRNG BCD 2
+		TNT1 A 10
+		TNT1 A 0 A_TakeInventory("HandGrenadeAmmo",1)
+		TNT1 A 0 A_SpawnItemEx("HandGrenadeProjectile",0,0,0,0,2,0,0,8)
+		TNT1 A 0 A_CheckReload
+		TNT1 A 15 A_JumpIfNoAmmo("Ready2")
+		GRNG DCB 2
+		Goto Ready2
+	}
 }
 
 ACTOR GrenadeExplosion
@@ -93,11 +88,9 @@ ACTOR GrenadeExplosion
 	Health 4
 	radius 3
 	height 6
-	speed 0
-	Scale		.75
+	Scale .75
 	Renderstyle Add
 	Decal Scorch
-	Alpha 1
 	+missile
 	+FLOORCLIP
 	+NOCLIP
@@ -105,159 +98,97 @@ ACTOR GrenadeExplosion
 	States
 	{
 	Spawn:
-		GRNX A 5 BRIGHT
-		GRNX BCD 5 BRIGHT
+		GRNX ABCD 5 BRIGHT
 		Stop
 	}
-}	
-
+}
 
 ACTOR HandGrenadeProjectile
-{  
+{
 	Speed 26
 	Height 2
 	Radius 5
 	Mass 9
-	Damage 0
 	PROJECTILE
-	+ DoomBounce
+	BounceType Doom
 	+BOUNCEONACTORS
 	+BLOODLESSIMPACT
 	+NOEXPLODEFLOOR
-	- NOGRAVITY
+	-NOGRAVITY
 	-NOTELEPORT
-	RenderStyle NORMAL
-	SeeSound  "grenade/bounce"
+	SeeSound "grenade/bounce"
 	DeathSound "grenade/explode"
 	Scale 0.25
 	BounceFactor 0.3
 	States
-   {
-   Spawn:
-      GRND A 0
-      GRND A 0 ThrustThingZ(0,5,0,1)
-	  GRND A 0 A_JumpIfInventory("GrenadeTimer",2,"Death")
-      GRND ABCDEFABCDEFABCDE 2
-      GRND F 1 A_GiveInventory("GrenadeTimer",1)
-      Goto Spawn+2       
-   Death: 
-      GRNX C 0
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX C 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
-      GRNX a 0 A_AlertMonsters
-      GRNX A 0 A_Scream
-      GRNX B 0 A_Explode(110,168,1)
-	  GRNX B 0 Radius_Quake(10,10,0,120,0)
-      GRNX C 0 A_CustomMissile("GrenadeExplosion",8,0,0,1)
-      TNT1 A 1
-      STOP
+	{
+	Spawn:
+		GRND A 0 NODELAY ThrustThingZ(0,5,0,1)
+		GRND ABCDEFABCDEFABCDE 2
+		GRND F 1
+		GRND ABCDEFABCDEFABCDE 2
+		GRND F 1
+	Death:
+		GRNX CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 0 A_CustomMissile("GrenFrags", 24 , 0, random(0, 360), 2, random(5, 45))
+		GRNX a 0 A_AlertMonsters
+		GRNX A 0 A_Scream
+		GRNX B 0 A_Explode(110,168,1)
+		GRNX B 0 Radius_Quake(10,10,0,120,0)
+		TNT1 A 1 A_CustomMissile("GrenadeExplosion",8,0,0,1)
+		STOP
 	}
 }
-	
+
 ACTOR GrenFrags
 {
 	Health 4
 	radius 3
 	height 6
 	speed 20
-	Scale		.5
-	Mass		0
+	Scale .5
+	Mass 0
 	Damage 5
 	ReactionTime 3
 	PROJECTILE
-	+doombounce
+	BounceType Doom
 	+DONTSPLASH
 	-NOGRAVITY
 	States
-	{   
+	{
 	Spawn:
-		FRG2 A 0 BRIGHT A_Explode(2,1,1)
+		FRG2 A 0 A_Explode(2,1,1)
 		FRG2 A 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 A 0 BRIGHT A_Explode(2,1,1)
+		FRG2 A 0 A_Explode(2,1,1)
 		FRG2 A 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 A 0 BRIGHT A_Explode(2,1,1)
+		FRG2 A 0 A_Explode(2,1,1)
 		FRG2 A 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 A 0 BRIGHT A_Explode(2,1,1)
+		FRG2 A 0 A_Explode(2,1,1)
 		FRG2 A 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 B 0 BRIGHT A_Explode(2,1,1)
+		FRG2 B 0 A_Explode(2,1,1)
 		FRG2 B 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 B 0 BRIGHT A_Explode(2,1,1)
+		FRG2 B 0 A_Explode(2,1,1)
 		FRG2 B 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 B 0 BRIGHT A_Explode(2,1,1)
+		FRG2 B 0 A_Explode(2,1,1)
 		FRG2 B 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 B 0 BRIGHT A_Explode(2,1,1)
+		FRG2 B 0 A_Explode(2,1,1)
 		FRG2 B 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 C 0 BRIGHT A_Explode(2,1,1)
+		FRG2 C 0 A_Explode(2,1,1)
 		FRG2 C 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 C 0 BRIGHT A_Explode(2,1,1)
+		FRG2 C 0 A_Explode(2,1,1)
 		FRG2 C 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 C 0 BRIGHT A_Explode(2,1,1)
+		FRG2 C 0 A_Explode(2,1,1)
 		FRG2 C 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 C 0 BRIGHT A_Explode(2,1,1)
+		FRG2 C 0 A_Explode(2,1,1)
 		FRG2 C 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 D 0 BRIGHT A_Explode(2,1,1)
+		FRG2 D 0 A_Explode(2,1,1)
 		FRG2 D 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 D 0 BRIGHT A_Explode(2,1,1)
+		FRG2 D 0 A_Explode(2,1,1)
 		FRG2 D 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 D 0 BRIGHT A_Explode(2,1,1)
+		FRG2 D 0 A_Explode(2,1,1)
 		FRG2 D 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
-		FRG2 D 0 BRIGHT A_Explode(2,1,1)
+		FRG2 D 0 A_Explode(2,1,1)
 		FRG2 D 1 BRIGHT A_CustomMissile("FlakSmokeTrail",0,0,0)
 		TNT1 A 0 A_CountDown
-		Loop 
+		Loop
 	}
 }

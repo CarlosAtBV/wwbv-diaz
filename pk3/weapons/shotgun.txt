@@ -1,39 +1,33 @@
-
-ACTOR ExtraShotgunAmmo : Ammo 3415
+ACTOR ExtraShotgunAmmo : Ammo
 {
 	//$Category ammunition
 	Inventory.MaxAmount 24
 	Inventory.PickupMessage "00 buckshot ammo"
 	Tag "Shells"
-	Inventory.Amount	4
+	Inventory.Amount 4
 	Inventory.PickupSound "mini/load"
 	Inventory.Icon SSHLA0
 	Ammo.BackpackAmount 4
-	Ammo.BackpackMaxAmount 48 
+	Ammo.BackpackMaxAmount 48
 	Scale 0.5
 	States
 	{
 	Spawn:
-	    	SSHL A -1
-	    	LOOP
+		SSHL A -1
+		LOOP
 	}
 }
 
 ACTOR ShotgunClip : Ammo
 {
+	+IGNORESKILL
 	Inventory.MaxAmount 4
 	Inventory.Icon MSHPA0
 }
 
-ACTOR MiniShotgunReloading : Inventory
-{
-	Inventory.MaxAmount 1
-}
+ACTOR MiniShotgunReloading : Inventory{}
 
-ACTOR ShotgunSeq : Inventory
-{
-	Inventory.MaxAmount 1
-}
+ACTOR ShotgunSeq : Inventory{}
 
 ACTOR MiniShotgun : Weapon replaces Shotgun
 {
@@ -42,109 +36,107 @@ ACTOR MiniShotgun : Weapon replaces Shotgun
 	Tag "Makoto 305"
 	Inventory.PickupSound "mini/pickup"
 	Obituary "%o can no longer be considered lead-free, thanks to %k."
-	Weapon.AmmoType1	"ShotgunClip"
-	Weapon.AmmoUse1		1
-	Weapon.AmmoGive1	0
-	Weapon.AmmoType2	"ExtraShotgunAmmo"
-	Weapon.AmmoGive2	6
-	Weapon.AmmoUse2		0
-	Radius				24
-	Height				12
+	Weapon.AmmoType1 "ShotgunClip"
+	Weapon.AmmoUse1 1
+	Weapon.AmmoType2 "ExtraShotgunAmmo"
+	Weapon.AmmoGive2 6
+	Weapon.AmmoUse2 1
+	Radius 24
+	Height 12
 	Scale 0.75
 	Weapon.SisterWeapon MiniShotgun2
 	+NOEXTREMEDEATH
 	+NOAUTOFIRE
-	+AMMO_OPTIONAL
+	+AMMO_CHECKBOTH
 	+NOALERT
 	States
 	{
 	Spawn:
-		MSHP A 1
+		MSHP A -1
 		LOOP
-    Select:
-		TNT1 A 16 SetPlayerProperty(0,1,2)
-		MSHH ED 1
-		MSHH C 1 A_PlaySound("weapon/select4")
-		MSHH BA 1
-    	MSHT A 1 A_Raise
-    	Goto Select+6
-    Deselect:
+	Deselect:
 		MSHH A 0 A_JumpIfInventory("MiniShotgunReloading",1,"ReloadFinish2")
 		MSHH AB 1
 		MSHH C 1 A_PlaySound("weapon/deselect")
 		MSHH DE 1
 		TNT1 A 16
-    	TNT1 A 1 A_Lower
-    	Goto Deselect+6
-    Ready:
-		MSHT A 0 A_JumpIfInventory("IsReloading",1,"Reload")
-    	MSHT A 1 A_WeaponReady
-    	Loop
-    Fire:
+		TNT1 A 0 A_Lower
+		Wait
+	Select:
+		TNT1 A 0 A_Raise
+		Loop
+	Ready:
+		TNT1 A 16
+		MSHH ED 1
+		MSHH C 1 A_PlaySound("weapon/select4")
+		MSHH BA 1
+	Ready2:
+		MSHT A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		Loop
+	Fire:
 		MSHT A 0 A_JumpIfInventory("MiniShotgunReloading",1,"ReloadFinish")
 		MSHT A 0 A_JumpIfInventory("ShotgunSeq",1,"Pump")
-    	MSHT A 0 A_JumpIfNoAmmo("DryFire")
-    	MSHF A 0 BRIGHT A_GunFlash
-    	MSHF A 0 BRIGHT A_PlayWeaponSound("mini/fire")
-    	MSHF A 1 BRIGHT A_FireBullets(5,3,12,4,"ShotPuff",1)
+		MSHT A 0 A_JumpIfInventory("ShotgunClip",1,1)
+		Goto DryFire
+		MSHF A 0 BRIGHT A_GunFlash
+		MSHF A 0 BRIGHT A_PlayWeaponSound("mini/fire")
+		MSHF A 1 BRIGHT A_FireBullets(5,3,12,4,"ShotPuff",1)
 		MSHF A 1 A_SetPitch(pitch - 4.0)
 		MSHF A 0 A_SetAngle(angle + (frandom(0.2,0.4)))
-    	MSHT C 1 A_FireCustomMissile("ShotSmokeSpawner",0,0,4,2)
-		MSHT C 0 A_SetPitch(pitch - 4.0)
-    	MSHT B 1
-    	MSHT A 3 A_AlertMonsters
-		MSHT A 0 A_GiveInventory("ShotgunSeq",1)
-		Goto Ready
+		MSHT C 1 A_FireCustomMissile("ShotSmokeSpawner",0,0,4,2)
+		MSHT B 1 A_SetPitch(pitch - 4.0)
+		MSHT A 3 A_AlertMonsters
+		MSHT A 0 A_GiveInventory("ShotgunSeq")
+		TNT1 A 0 A_CheckReload
+		Goto Ready2
 	Pump:
 		MSHT B 1 A_PlaySound("mini/cock")
 		MSHT C 1
 		MSHT D 5 A_FireCustomMissile("ShellCasingSpawner",-3,0,8,-6)
 		MSHT C 1 A_PlaySound("mini/uncock")
 		MSHT B 1
-		MSHT A 3 A_TakeInventory("ShotgunSeq",1)
-		Goto Ready
+		MSHT A 3 A_TakeInventory("ShotgunSeq")
+		Goto Ready2
 	DryFire:
 		MSHT A 1
-		MSHT A 1 A_PlayWeaponSound("shotgun/noammo")
-		MSHT A 3
-		TNT1 A 0 A_JumpIfInventory("EnableAutoReload",1,"Reload")
-	Goto Ready
+		MSHT A 4 A_PlayWeaponSound("shotgun/noammo")
+		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"Reload")
+		Goto Ready2
 	Reload:
-		TNT1 A 0 A_JumpIfInventory("ShotgunClip",4,2)
+		TNT1 A 0 A_JumpIfInventory("ShotgunClip",0,2)
 		TNT1 A 0 A_JumpIfInventory("ExtraShotgunAmmo",1,2)
-		MSHT A 1
-	Goto Ready
-		MSHT A 0 A_JumpIfInventory("ShotgunSeq",1,"AltReloadStart")
+		MSHT A 1 A_WeaponReady(WRF_NOFIRE)
+		Goto Ready2
 		MSHT A 0 A_GiveInventory("MiniShotgunReloading",1)
+		MSHT A 0 A_JumpIfInventory("ShotgunSeq",1,"AltReloadStart")
 		MSHT B 1 A_PlaySound("mini/cock")
 		MSHT CD 1
 		MSHT E 8
 		Goto ReloadWork
 	AltReloadStart:
-		MSHT A 0 A_GiveInventory("MiniShotgunReloading",1)
 		MSHT B 1 A_PlaySound("mini/cock")
 		MSHT C 1
 		MSHT D 1 A_FireCustomMissile("ShellCasingSpawner",-3,0,8,-6)
 		MSHT E 8
 	ReloadWork:
 		MSHT A 0 A_TakeInventory("ExtraShotgunAmmo",1)
-		MSHT A 0 A_GiveInventory("ShotgunClip",1)
+		MSHT A 0 A_GiveInventory("ShotgunClip")
 		MSHT B 0 A_PlayWeaponSound("mini/load")
 		MSHT FG 3
-		MSHT EEEEEEEE 1 A_WeaponReady
-		ASDS A 0 A_JumpIfInventory("ShotgunClip",4,"ReloadFinish")
+		MSHT E 8 A_WeaponReady(WRF_NOBOB)
+		ASDS A 0 A_JumpIfInventory("ShotgunClip",0,"ReloadFinish")
 		ASDS A 0 A_JumpIfInventory("ExtraShotgunAmmo",1,"ReloadWork")
 	ReloadFinish:
 		MSHT D 1 A_PlaySound("mini/uncock")
 		MSHT CB 1
-		MSHT A 3 A_TakeInventory("MiniShotgunReloading",999)
-		MSHT A 0 A_TakeInventory("ShotgunSeq",1)
-		Goto Ready
+		MSHT A 3 A_TakeInventory("MiniShotgunReloading")
+		MSHT A 0 A_TakeInventory("ShotgunSeq")
+		Goto Ready2
 	ReloadFinish2:
 		MSHT D 1 A_PlaySound("mini/uncock")
 		MSHT CB 1
-		MSHT A 3 A_TakeInventory("MiniShotgunReloading",999)
-		MSHT A 0 A_TakeInventory("ShotgunSeq",1)
+		MSHT A 3 A_TakeInventory("MiniShotgunReloading")
+		MSHT A 0 A_TakeInventory("ShotgunSeq")
 		Goto Deselect
 	AltFire:
 		MSHM A 3
@@ -153,13 +145,11 @@ ACTOR MiniShotgun : Weapon replaces Shotgun
 		MSHM D 1 A_CustomPunch(6,0,0,"hitpuff")
 		MSHM EFG 1
 		MSHM HIJKA 2
-		Goto Ready
+		Goto Ready2
 	Flash:
-      	TNT1 A 0
-      	TNT1 A 2 A_Light2
-      	TNT1 A 2 A_Light1
-      	TNT1 A 1 A_Light0
-      	Stop
+		TNT1 A 2 A_Light2
+		TNT1 A 2 A_Light1
+		Goto LightDone
 	}
 }
 
@@ -178,44 +168,43 @@ ACTOR MiniShotgun2 : MiniShotgun
 		MSHT C 1 A_PlaySound("mini/uncock")
 		MSHT B 1
 		MSHT A 2 A_TakeInventory("ShotgunSeq",1)
-		Goto Ready
-	Goto Ready
+		Goto Ready2
 	Reload:
-		TNT1 A 0 A_JumpIfInventory("ShotgunClip",4,2)
+		TNT1 A 0 A_JumpIfInventory("ShotgunClip",0,2)
 		TNT1 A 0 A_JumpIfInventory("ExtraShotgunAmmo",1,2)
-		MSHT A 1
-	Goto Ready
+		MSHT A 1 A_WeaponReady(WRF_NOFIRE)
+		Goto Ready2
 		MSHT A 0 A_JumpIfInventory("ShotgunSeq",1,"AltReloadStart")
-		MSHT A 0 A_GiveInventory("MiniShotgunReloading",1)
+		MSHT A 0 A_GiveInventory("MiniShotgunReloading")
 		MSHT B 1 A_PlaySound("mini/cock")
 		MSHT CD 1
 		MSHT E 5
 		Goto ReloadWork
 	AltReloadStart:
-		MSHT A 0 A_GiveInventory("MiniShotgunReloading",1)
+		MSHT A 0 A_GiveInventory("MiniShotgunReloading")
 		MSHT B 1 A_PlaySound("mini/cock")
 		MSHT C 1
 		MSHT D 1 A_FireCustomMissile("ShellCasingSpawner",-3,0,8,-6)
 		MSHT E 5
 	ReloadWork:
 		MSHT A 0 A_TakeInventory("ExtraShotgunAmmo",1)
-		MSHT A 0 A_GiveInventory("ShotgunClip",1)
+		MSHT A 0 A_GiveInventory("ShotgunClip")
 		MSHT B 0 A_PlayWeaponSound("mini/load")
 		MSHT FG 2
-		MSHT EEEEEE 1 A_WeaponReady
+		MSHT E 6 A_WeaponReady(WRF_NOBOB)
 		ASDS A 0 A_JumpIfInventory("ShotgunClip",4,"ReloadFinish")
 		ASDS A 0 A_JumpIfInventory("ExtraShotgunAmmo",1,"ReloadWork")
 	ReloadFinish:
 		MSHT D 1 A_PlaySound("mini/uncock")
 		MSHT CB 1
-		MSHT A 2 A_TakeInventory("MiniShotgunReloading",999)
-		MSHT A 0 A_TakeInventory("ShotgunSeq",1)
-		Goto Ready
+		MSHT A 2 A_TakeInventory("MiniShotgunReloading")
+		MSHT A 0 A_TakeInventory("ShotgunSeq")
+		Goto Ready2
 	ReloadFinish2:
 		MSHT D 1 A_PlaySound("mini/uncock")
 		MSHT CB 1
-		MSHT A 2 A_TakeInventory("MiniShotgunReloading",999)
-		MSHT A 0 A_TakeInventory("ShotgunSeq",1)
+		MSHT A 2 A_TakeInventory("MiniShotgunReloading")
+		MSHT A 0 A_TakeInventory("ShotgunSeq")
 		Goto Deselect
 	AltFire:
 		MSHM A 3
@@ -224,6 +213,6 @@ ACTOR MiniShotgun2 : MiniShotgun
 		MSHM D 1 A_CustomPunch(24,0,0,"powerhitpuff")
 		MSHM EFG 1
 		MSHM HIJKA 2
-		Goto Ready
+		Goto Ready2
 	}
 }

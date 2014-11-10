@@ -1,15 +1,14 @@
 ACTOR WeaselSuperMecha replaces ArchVile
 {
-    Health 1200
-    Speed 2
-    Radius 20
-    Height 56
-    Mass 1000
-    PainChance 50
+	Health 1200
+	Speed 2
+	Height 56
+	Mass 1000
+	PainChance 50
 	DropItem LanceDriver 64
 	Damagefactor Mecharocket, 0
-    MONSTER
-    +FLOORCLIP
+	MONSTER
+	+FLOORCLIP
 	+NOBLOOD
 	DamageFactor "Lightning", 2.5
 	DamageFactor "Ice", 0.75
@@ -17,13 +16,13 @@ ACTOR WeaselSuperMecha replaces ArchVile
 	PainSound "mecha/pain"
 	DeathSound "mecha/death"
 	Obituary "%o was bashed against the wall by a rogue automaton."
-    States
-    {
-    Spawn:
-        ROB2 AB 10 A_Look
-        Loop
-    See:
-        ROB2 DDDDDDDD 1 A_Chase
+	States
+	{
+	Spawn:
+		ROB2 AB 10 A_Look
+		Loop
+	See:
+		ROB2 DDDDDDDD 1 A_Chase
 		Rob2 D 0 A_PlaySound ("mecha/leg1")
 		ROB2 AAAAAAAA 1 A_Chase
 		RFPO A 0 A_PlaySound ("mecha/step")
@@ -31,20 +30,20 @@ ACTOR WeaselSuperMecha replaces ArchVile
 		Rob2 B 0 A_PlaySound ("mecha/leg2")
 		ROB2 CCCCCCCC 1 A_Chase
 		RFPO C 0 A_PlaySound ("mecha/step")
-        Loop
+		Loop
 	Missile:
-        ROB2 D 10 A_FaceTarget
-        ROB2 D 1 A_Jump(192,"Missile2")
-        ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
-        ROB2 E 4 A_FaceTarget
-        ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
-        ROB2 E 4 A_FaceTarget
-        ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
-        ROB2 E 4 A_FaceTarget
-        ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
-        ROB2 E 4 A_FaceTarget
-        ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
-        ROB2 E 4
+		ROB2 D 10 A_FaceTarget
+		ROB2 D 1 A_Jump(192,"Missile2")
+		ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
+		ROB2 E 4 A_FaceTarget
+		ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
+		ROB2 E 4 A_FaceTarget
+		ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
+		ROB2 E 4 A_FaceTarget
+		ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
+		ROB2 E 4 A_FaceTarget
+		ROB2 F 4 BRIGHT A_CustomMissile("MechaRocket", 35, -40, 0)
+		ROB2 E 4
 		Goto See
 	Missile2:
 		ROB2 D 0 A_Jump(128,"Missile3")
@@ -61,7 +60,7 @@ ACTOR WeaselSuperMecha replaces ArchVile
 		ROB2 GGGG 1 A_CustomMissile ("MechaPlasmaBall", 34, 14, 0)
 		Goto See
 	Missile3:
-		ROB2 I 0 A_PlaySoundEx("mecha/mgun","Weapon",0)
+		ROB2 I 0 A_PlaySound("mecha/mgun",CHAN_WEAPON)
 		ROB2 I 1 BRIGHT A_CustomBulletAttack(4,4,1,2,"BulletPuff",2048,1)
 		ROB2 E 2
 		ROB2 I 1 BRIGHT A_CustomBulletAttack(4,4,1,2,"BulletPuff",2048,1)
@@ -79,17 +78,17 @@ ACTOR WeaselSuperMecha replaces ArchVile
 		ROB2 I 1 BRIGHT A_CustomBulletAttack(4,4,1,2,"BulletPuff",2048,1)
 		Goto See
 	Pain:
-        ROB2 J 1
-        ROB2 J 1 A_Pain
-        Goto See
-    Death:
+		ROB2 J 1
+		ROB2 J 1 A_Pain
+		Goto See
+	Death:
 		ROB2 K 2 A_Scream
-		ROB2 KLMNOP 4 BRIGHT A_PlaySoundEx("weapons/rocklx","SoundSlot5",0)
+		ROB2 KLMNOP 4 BRIGHT A_PlaySound("weapons/rocklx",5)
 		ROB2 Q 5 BRIGHT A_CustomMissile ("DIExplosion", 24, 0, 0)
 		ROB2 R 5 BRIGHT A_NoBlocking
 		ROB2 S -1
 		Stop
-    }
+	}
 }
 
 ACTOR MechaPlasmaBall
@@ -97,7 +96,6 @@ ACTOR MechaPlasmaBall
 	Scale 0.4
 	Speed 30
 	Damage 1
-	SeeSound "empty"
 	Obituary "%o was more laser absorbent that %g thought."
 	RenderStyle Add
 	Alpha 0.7
@@ -133,42 +131,42 @@ ACTOR MechaRocket : RPG7Rocket
 	SeeSound "mecha/rocket"
 	DeathSound "mecha/rocketexplode"
 	DamageType Mecharocket
-  	PROJECTILE
+	PROJECTILE
 	-NOTELEPORT
-  	states
-  	{
+	states
+	{
 	Death:
 		RPGR A 1 A_Explode(10,64,0)
 		BFS1 A 0 A_Scream
 		BFS1 A 0 A_AlertMonsters
-		BFS1 A 0 A_CustomMissile("RPG7Explosion",8,0,0,1) 
+		BFS1 A 0 A_CustomMissile("RPG7Explosion",8,0,0,1)
 		Stop
-  	}
+	}
 }
 
 /*ACTOR RPG7Rocket
 {
- Radius 5
- Height 6
- Speed 40
- PROJECTILE
- -NOTELEPORT
- Damage 100
- SCALE 0.15
- Decal BigScorch
- ActiveSound "rpg/active"
- DeathSound "rpg/explode"
- States
- {
- Spawn:
-  RPGR A 1 BRIGHT A_LoopActiveSound
-  RPGR A 1 A_CustomMissile("RPGSmokeTrail",0,0,0)
-  Goto Spawn+1
- Death:
-  RPGR A 1 A_Explode(192,192,1)
-  BFS1 A 0 A_Scream
-  BFS1 A 0 A_AlertMonsters
-  BFS1 A 0 A_CustomMissile("RPG7Explosion",8,0,0,1) 
-  Stop
-  }
+	Radius 5
+	Height 6
+	Speed 40
+	PROJECTILE
+	-NOTELEPORT
+	Damage 100
+	SCALE 0.15
+	Decal BigScorch
+	ActiveSound "rpg/active"
+	DeathSound "rpg/explode"
+	States
+	{
+	Spawn:
+		RPGR A 1 BRIGHT A_LoopActiveSound
+		RPGR A 1 A_CustomMissile("RPGSmokeTrail",0,0,0)
+		Wait
+	Death:
+		RPGR A 1 A_Explode(192,192,1)
+		BFS1 A 0 A_Scream
+		BFS1 A 0 A_AlertMonsters
+		BFS1 A 0 A_CustomMissile("RPG7Explosion",8,0,0,1)
+		Stop
+	}
 }*/

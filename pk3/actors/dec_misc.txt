@@ -72,19 +72,19 @@ ACTOR DiazBerserk : ArtiTomeOfPower
 		Loop
 	}
 }
-		
+
 
 ACTOR CombatBoost : CustomInventory replaces Berserk
 {
 	inventory.pickupsound "pickups/hypo"
-   inventory.pickupmessage "Medicorp Combatboost Hypo"
-   Translation "162:166=179:185"
-   States
-   {
-   Spawn:
-       HYPO A 10 BRIGHT
-       HYPO A 10
-       Loop
+	inventory.pickupmessage "Medicorp Combatboost Hypo"
+	Translation "162:166=179:185"
+	States
+	{
+	Spawn:
+		HYPO A 10 BRIGHT
+		HYPO A 10
+		Loop
 	Pickup:
 		TNT1 A 0 A_GiveInventory("HealthBonus",100)
 		TNT1 A 0 A_GiveInventory("DiazBerserk",1)
@@ -93,19 +93,10 @@ ACTOR CombatBoost : CustomInventory replaces Berserk
 	}
 }
 
-ACTOR ShellAmmoSpawner replaces Shell
+ACTOR ShellAmmoSpawner : RandomSpawner replaces Shell
 {
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(128,"ShellDrop")
-		TNT1 A 1 A_SpawnItem("ExtraMagnumAmmo",1,0)
-		Stop
-	ShellDrop:
-		TNT1 A 1 A_SpawnItem("ExtraShotgunAmmo",1,0)
-		Stop
-	}
+	DropItem ExtraMagnumAmmo
+	DropItem ExtraShotgunAmmo
 }
 
 ACTOR ShellBoxAmmoSpawner replaces ShellBox
@@ -114,90 +105,33 @@ ACTOR ShellBoxAmmoSpawner replaces ShellBox
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_Jump(128,"ShellDrop")
-		TNT1 A 0 A_SpawnItem("ExtraMagnumAmmo",1,0)
-		TNT1 A 0 A_Jump(128,"ShellDrop2")
-		TNT1 A 0 A_SpawnItem("ExtraMagnumAmmo",1,0)
-		Stop
-	ShellDrop:
-		TNT1 A 0 A_SpawnItem("ExtraShotgunAmmo",1,0)
-		TNT1 A 0 A_Jump(128,"ShellDrop2")
-		TNT1 A 0 A_SpawnItem("ExtraMagnumAmmo",1,0)
-		Stop
-	ShellDrop2:
-		TNT1 A 0 A_SpawnItem("ExtraShotgunAmmo",1,0)
+		TNT1 AA 0 A_SpawnItemEx("Shell")
 		Stop
 	}
 }
 
-ACTOR ChaingunGuySpawner replaces ChaingunGuy
+ACTOR ChaingunGuySpawner : RandomSpawner replaces ChaingunGuy
 {
-	+ISMONSTER
-   States
-   {
-      Spawn:
-         TNT1 A 0
-         TNT1 A 0 A_Jump(128,"Nazi")
-         TNT1 A 1 A_SpawnItemEx("WeaselChaingunner",0,0,0,0,0,0,0,288)
-         Stop
-		Nazi:
-         TNT1 A 1 A_SpawnItemEx("WeaselNaziRifleman",0,0,0,0,0,0,0,288)
-         Stop
-   }
-} 
+	DropItem WeaselChaingunner
+	DropItem WeaselNaziRifleman
+}
 
-ACTOR ShotgunGuySpawner replaces ShotgunGuy
+ACTOR ShotgunGuySpawner : RandomSpawner replaces ShotgunGuy
 {
-	+ISMONSTER
-   States
-   {
-      Spawn:
-         TNT1 A 0
-         TNT1 A 0 A_Jump(128,"Magnum")
-         TNT1 A 1 A_SpawnItemEx("WeaselShotgunner",0,0,0,0,0,0,0,288)
-         Stop
-		Magnum:
-         TNT1 A 1 A_SpawnItemEx("WeaselMagnumer",0,0,0,0,0,0,0,288)
-         Stop
-   }
-} 
+	DropItem WeaselShotgunner
+	DropItem WeaselMagnumer
+}
 
-ACTOR PistolGuySpawner replaces ZombieMan
+ACTOR PistolGuySpawner : RandomSpawner replaces ZombieMan
 {
-	+ISMONSTER
-   States
-   {
-      Spawn:
-         TNT1 A 0
-         TNT1 A 0 A_Jump(255,"SMG","Pistol2","Pistol1")
-		 Pistol1:
-         TNT1 A 1 A_SpawnItemEx("WeaselPistolZombie",0,0,0,0,0,0,0,288)
-         Stop
-		SMG:
-         TNT1 A 1 A_SpawnItemEx("WeaselSMGZombie",0,0,0,0,0,0,0,288)
-         Stop
-		Pistol2:
-         TNT1 A 1 A_SpawnItemEx("WeaselJudgmentZombie",0,0,0,0,0,0,0,288)
-         Stop
-   }
-} 
+	DropItem WeaselPistolZombie
+	DropItem WeaselSMGZombie
+	DropItem WeaselJudgmentZombie
+}
 
-ACTOR ImpSpawner replaces DoomImp
+ACTOR ImpSpawner : RandomSpawner replaces DoomImp
 {
-	+ISMONSTER
-   States
-   {
-      Spawn:
-         TNT1 A 0
-         TNT1 A 0 A_Jump(128,"Cult")
-		 TNT1 A 0 A_Jump(96,"SMG")
-		 TNT1 A 1 A_SpawnItemEx("NewDiazImp",0,0,0,0,0,0,0,288)
-         Stop
-		SMG:
-         TNT1 A 1 A_SpawnItemEx("WeaselPsiTestSubject",0,0,0,0,0,0,0,288)
-         Stop
-		 Cult:
-         TNT1 A 1 A_SpawnItemEx("WeaselCultist",0,0,0,0,0,0,0,288)
-         Stop
-   }
-} 
+	DropItem NewDiazImp,255,80
+	DropItem WeaselPsiTestSubject,255,48
+	DropItem WeaselCultist,255,128
+}

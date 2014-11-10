@@ -8,9 +8,7 @@ ACTOR PsiStimulant : Ammo
 	Inventory.PickupMessage "PSI Stimulant"
 	Tag "PSI Stims"
 	Inventory.PickupSound "misc/psiboost"
-	Inventory.Amount 1
 	Inventory.MaxAmount 5
-	Ammo.BackpackAmount 0
 	Ammo.BackpackMaxAmount 10
 	Scale 0.25
 	States
@@ -32,74 +30,67 @@ ACTOR PsiAmp : Weapon replaces BlurSphere
 	Weapon.SisterWeapon PsiAmp2
 	Weapon.AmmoType PsiEnergy
 	Weapon.AmmoType2 PsiStimulant
-	Weapon.AmmoUse 0
-	Weapon.AmmoGive 0
-	Weapon.AmmoUse2 0
+	Weapon.AmmoUse 5
+	Weapon.AmmoUse2 1
 	Weapon.AmmoGive2 2
 	Scale 0.3
 	+NOAUTOFIRE
 	+NOALERT
-	+AMMO_OPTIONAL
+	+AMMO_CHECKBOTH
 	States
 	{
 	Spawn:
 		PSIP A -1
 		Loop
-	Select:
-		TNT1 A 8
-		PSIH DCBA 1
-		PSIA A 1 A_Raise
-		Goto Select+5
 	Deselect:
 		PSIH ABCD 1
-		TNT1 A 8 A_PlayWeaponSound("weapon/deselect")
+		TNT1 A 8 A_PlaySound("weapon/deselect",CHAN_WEAPON)
 		TNT1 A 1 A_Lower
-		Goto Deselect+5
+		Wait
+	Select:
+		TNT1 A 0 A_Raise
+		Loop
 	Ready:
-		PSIA A 1 A_WeaponReady
-		PSIA A 0 A_JumpIfInventory("IsReloading",1,"Reload")
+		TNT1 A 8
+		PSIH DCBA 1
+	Ready2:
+		PSIA A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		Loop
 	Fire:
 		PSIA A 0 A_JumpIfInventory("PsiEnergy",5,"TrueFire")
 		PSIA A 1 A_SetBlend("FF FF FF",1,20)
 		PSIA A 0 A_SpawnItemEx("PsiBurnout", 0, 0, 10, VelX, VelY, VelZ, 0, SXF_ABSOLUTEMOMENTUM)
-		PSIA A 0 A_PlayWeaponSound("psiamp/burnout")
-		PSIA A 1 A_PlaySoundEx("*psipain","Voice",0)
-		PSIA A 35
-		Goto Ready
+		PSIA A 0 A_PlaySound("psiamp/burnout",CHAN_WEAPON)
+		PSIA A 36 A_PlaySound("*psipain",CHAN_VOICE)
+		TNT1 A 0 A_CheckReload
+		Goto Ready2
 	TrueFire:
 		PSIA A 1
 		PSIF ABC 1
-		PSIF D 0 A_TakeInventory("PsiEnergy",5)
-		PSIF D 0 A_PlayWeaponSound("psiamp/fireball")
-		PSIF D 2 BRIGHT A_FireCustomMissile("PsiFireBall",0,0,-4)
+		PSIF D 0 A_PlaySound("psiamp/fireball",CHAN_WEAPON)
+		PSIF D 2 BRIGHT A_FireCustomMissile("PsiFireBall",0,1,-4)
 		PSIF C 8
 		PSIF CBA 2
-		Goto Ready
+		TNT1 A 0 A_CheckReload
+		Goto Ready2
 	AltFire:
 		PSIA A 0 A_JumpIfInventory("PsiEnergy",20,"TrueAltFire")
-		PSIA A 1 A_SetBlend("FF FF FF",1,20)
-		PSIA A 0 A_SpawnItemEx("PsiBurnout", 0, 0, 10, VelX, VelY, VelZ, 0, SXF_ABSOLUTEMOMENTUM)
-		PSIA A 0 A_PlayWeaponSound("psiamp/burnout")
-		PSIA A 1 A_PlaySoundEx("*psipain","Voice",0)
-		PSIA A 35
-		Goto Ready
+		Goto Fire+1
 	TrueAltFire:
 		PSIA A 1
-		PSIL AB 1
-		PSIL C 1
+		PSIL ABC 1
 		PSIL D 0 A_TakeInventory("PsiEnergy",20)
 		PSIL D 0 A_RailAttack(0,-16,1,none,"00 99 FF",0,3)
 		PSIL D 2 BRIGHT A_FireBullets(6,6,7,10,"LightningPuff",0)
 		PSIL C 8
 		PSIL CBA 2
-		Goto Ready
+		TNT1 A 0 A_CheckReload
+		Goto Ready2
 	Reload:
 		TNT1 A 0 A_JumpIfInventory("PsiEnergy",100,2)
 		TNT1 A 0 A_JumpIfInventory("PsiStimulant",1,2)
-		PSIA A 1
-		Goto Ready
-	ReloadWork:
+		PSIA A 1 A_WeaponReady(WRF_NOFIRE)
+		Goto Ready2
 		PSIA A 1 Offset(0,35)
 		PSIA A 1 Offset(0,38)
 		PSIA A 1 Offset(0,44)
@@ -109,8 +100,7 @@ ACTOR PsiAmp : Weapon replaces BlurSphere
 		PSIA A 1 Offset(0,82)
 		TNT1 A 4 A_PlaySound("*pain100",CHAN_VOICE)
 		TNT1 A 0 A_TakeInventory("PsiStimulant",1)
-		TNT1 A 0 A_GiveInventory("PsiEnergy",100)
-		TNT1 A 4
+		TNT1 A 4 A_GiveInventory("PsiEnergy",100)
 		PSIA A 1 Offset(0,82)
 		PSIA A 1 Offset(0,72) A_PlaySound("misc/psiboost",CHAN_WEAPON)
 		PSIA A 1 Offset(0,62)
@@ -119,66 +109,48 @@ ACTOR PsiAmp : Weapon replaces BlurSphere
 		PSIA A 1 Offset(0,38)
 		PSIA A 1 Offset(0,35)
 		PSIA A 1 Offset(0,32)
-		Goto Ready
+		Goto Ready2
 	}
 }
 
 ACTOR PsiAmp2 : PsiAmp
 {
+	Weapon.AmmoUse 15
 	Weapon.SisterWeapon PsiAmp
 	+POWERED_UP
 	States
 	{
-	Ready:
-		Select:
-		TNT1 A 8
-		PSIH DCBA 1
-		PSIA A 1 A_Raise
-		Goto Select+5
-	Deselect:
-		PSIH ABCD 1
-		TNT1 A 8 A_PlayWeaponSound("weapon/deselect")
-		TNT1 A 1 A_Lower
-		Goto Deselect+5
-	Ready:
-		PSIA A 0 A_GiveInventory("PsiEnergy",1)
+	Ready2:
+		PSIA A 0 A_GiveInventory("PsiEnergy")
 		PSIA A 1 A_WeaponReady
 		Loop
 	Fire:
 		PSIA A 0 A_JumpIfInventory("PsiEnergy",15,"TrueFire")
 		PSIA A 1 A_SetBlend("FF FF FF",1,20)
 		PSIA AA 0 DamageThing(30)
-		PSIA A 0 A_PlayWeaponSound("psiamp/burnout")
-		PSIA A 1 A_PlaySoundEx("*psipain","Voice",0)
-		PSIA A 35
-		Goto Ready
+		PSIA A 0 A_PlaySound("psiamp/burnout",CHAN_WEAPON)
+		PSIA A 36 A_PlaySound("*psipain",CHAN_VOICE)
+		Goto Ready2
 	TrueFire:
 		PSIA A 1
 		PSIF ABC 1
-		PSIF E 0 A_TakeInventory("PsiEnergy",15)
-		PSIF E 0 A_PlayWeaponSound("frost/fire")
-		PSIF E 2 BRIGHT A_FireCustomMissile("PlayerPsiIceBall",0,0,-4)
+		PSIF E 0 A_PlaySound("frost/fire",CHAN_WEAPON)
+		PSIF E 2 BRIGHT A_FireCustomMissile("PlayerPsiIceBall",0,1,-4)
 		PSIF C 8
 		PSIF CBA 2
-		Goto Ready
+		Goto Ready2
 	AltFire:
 		PSIA A 0 A_JumpIfInventory("PsiEnergy",40,"TrueAltFire")
-		PSIA A 1 A_SetBlend("FF FF FF",1,20)
-		PSIA AA 0 DamageThing(30)
-		PSIA A 0 A_PlayWeaponSound("psiamp/burnout")
-		PSIA A 1 A_PlaySoundEx("*psipain","Voice",0)
-		PSIA A 35
-		Goto Ready
+		Goto Fire+1
 	TrueAltFire:
 		PSIA A 1
-		PSIL AB 1
-		PSIL C 1
+		PSIL ABC 1
 		PSIL D 0 A_TakeInventory("PsiEnergy",40)
 		PSIL D 0 A_RailAttack(0,-16,1,none,"00 99 FF",0,3)
 		PSIL D 2 BRIGHT A_FireBullets(6,6,7,10,"LightningPuff",0)
 		PSIL C 8
 		PSIL CBA 2
-		Goto Ready
+		Goto Ready2
 	}
 }
 
