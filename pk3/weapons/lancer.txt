@@ -8,7 +8,7 @@ ACTOR LanceDriver : Weapon
 	Weapon.AmmoUse 1
 	Weapon.AmmoType2 "NeutAmmo"
 	Weapon.AmmoGive2 2
-	Weapon.AmmoUse2 1
+	Weapon.AmmoUse2 6
 	Radius 12
 	Height 12
 	Weapon.Kickback 250
