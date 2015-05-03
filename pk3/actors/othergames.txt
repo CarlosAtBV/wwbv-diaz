@@ -1,0 +1,252 @@
+// Heretic Replacers - Makes the mod work with Heretic
+
+ACTOR HereticPistolAmmo : P50Ammo replaces GoldWandAmmo{}
+ACTOR HereticMagnumAmmo : ExtraMagnumAmmo replaces GoldWandHefty{}
+ACTOR HereticShotgunAmmo : ExtraShotgunAmmo replaces CrossbowAmmo{}
+ACTOR HereticMauserAmmo : MauserAmmo replaces CrossbowHefty{}
+ACTOR HereticSMGAmmo : ExtraSMGAmmo replaces BlasterAmmo{}
+ACTOR HereticSkorAmmo : SkorAmmo replaces BlasterHefty{}
+ACTOR HereticRPGAmmo : RPGAmmo replaces PhoenixRodAmmo{}
+ACTOR HereticGrenades : MGHandGrenadePile replaces PhoenixRodHefty{}
+ACTOR HereticRPKAmmo : RPKAmmo replaces SkullRodHefty{}
+ACTOR HereticNeutAmmo : NeutAmmo replaces SkullRodAmmo{}
+
+ACTOR HereticAmmoPileSmall replaces MaceAmmo
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0 NODELAY A_SpawnItemEx("P50Ammo",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("ExtraMagnumAmmo",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("ExtraShotgunAmmo",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("MauserAmmo",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("ExtraSMGAmmo",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("SkorAmmo",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("HandGrenadePile",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		Stop
+	}
+}
+
+ACTOR HereticAmmoPileLarge : HereticAmmoPileSmall replaces MaceHefty
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0 NODELAY A_SpawnItemEx("RPGAmmo",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("RPKAmmo",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("NeutAmmo",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
+		Goto Super::Spawn
+	}
+}
+
+ACTOR HereticPsiAmp : WeaponGiver replaces ArtiInvisibility
+{
+	DropItem PsiAmp
+	Inventory.PickupMessage "Psionic Amplifier (1)"
+	Inventory.PickupSound "psiamp/pickup"
+	Scale 0.3
+	States
+	{
+	Spawn:
+		PSIP A -1
+		Stop
+	}
+}
+
+ACTOR HereticShotgun : WeaponGiver replaces Crossbow
+{
+	DropItem MiniShotgun
+	Inventory.PickupMessage "makoto type 305 Mini-Shotgun (3)"
+	Inventory.PickupSound "mini/pickup"
+	Height 12
+	Radius 24
+	Scale 0.75
+	States
+	{
+	Spawn:
+		MSHP A -1
+		Stop
+	}
+}
+
+ACTOR HereticRPG : WeaponGiver replaces PhoenixRod
+{
+	DropItem RPG7
+	Inventory.PickupMessage "RPG-7 (6)"
+	Inventory.PickupSound "rpg/pickup"
+	Height 12
+	Radius 18
+	Scale 0.25
+	States
+	{
+	Spawn:
+		RPGP A -1
+		Stop
+	}
+}
+
+ACTOR HereticSkorpion : WeaponGiver replaces Blaster
+{
+	DropItem Skorpion
+	Inventory.PickupMessage "Bloc AN-41 Assault Rifle (4)"
+	Inventory.PickupSound "skorpion/clipin"
+	Scale 0.75
+	States
+	{
+	Spawn:
+		SKPP A -1
+		Stop
+	}
+}
+
+ACTOR HereticSMG : WeaponGiver replaces Gauntlets
+{
+	DropItem SMG37
+	Inventory.PickupMessage "heckler & koch MP7 (4)"
+	Inventory.PickupSound "mp40/cock"
+	Radius 12
+	Height 12
+	Scale 0.75
+	States
+	{
+	Spawn:
+		MP7P A -1
+		Stop
+	}
+}
+
+ACTOR HereticRPK : WeaponGiver replaces SkullRod
+{
+	DropItem RPK
+	Inventory.PickupMessage "ruchnoy pulemyot kalashnikova (rpk-74) (5)"
+	Inventory.PickupSound "rpd/pick"
+	Radius 12
+	Height 12
+	Scale 0.75
+	States
+	{
+	Spawn:
+		RPDP A -1
+		Stop
+	}
+}
+
+ACTOR HereticNeutralizer : WeaponGiver replaces Mace
+{
+	DropItem Neutralizer
+	Inventory.PickupMessage "Compressed Energy Neutralizer (7)"
+	Inventory.PickupSound "neutralizer/pickup"
+	Radius 12
+	Height 12
+	States
+	{
+	Spawn:
+		NEUP A -1
+		Stop
+	}
+}
+
+ACTOR DiazKnight : Knight replaces Knight
+{
+	DropItem MauserRifle 64
+	DropItem MauserAmmo 48
+}
+
+ACTOR DiazKnightGhost : KnightGhost replaces KnightGhost
+{
+	DropItem MauserRifle 64
+	DropItem MauserAmmo 48
+}
+
+ACTOR DiazBeast : Beast replaces Beast
+{
+	DropItem ExtraMagnumAmmo 84
+}
+
+ACTOR DiazMummy : Mummy replaces Mummy
+{
+	DropItem P50Ammo 84 1
+}
+
+ACTOR DiazMummyGhost : MummyGhost replaces MummyGhost
+{
+	DropItem P50Ammo 84 1
+}
+
+ACTOR DiazMummyLeader : MummyLeader replaces MummyLeader
+{
+	DropItem Marteba 84
+}
+
+ACTOR DiazMummyLeaderGhost : MummyLeaderGhost replaces MummyLeaderGhost
+{
+	DropItem Marteba 84
+	DropItem ExtraMagnumAmmo 84
+}
+
+ACTOR DiazClink : Clink replaces Clink
+{
+	DropItem SkorAmmo 84
+}
+
+// Strife Replacers - Makes the mod work with Strife
+
+ACTOR StrifeMauserAmmo : MauserAmmo replaces PoisonBolts{}
+
+ACTOR StrifeMarteba : WeaponGiver replaces StrifeCrossbow
+{
+	DropItem Marteba
+	Inventory.PickupMessage "MarTeba m2042 Revolver (2)"
+	Inventory.PickupSound "webpick"
+	Radius 12
+	Height 12
+	scale 0.35
+	States
+	{
+	Spawn:
+		REVP A -1
+		Stop
+	}
+}
+
+ACTOR StrifeMartebaAmmo : ExtraMagnumAmmo replaces ElectricBolts
+{
+	ConversationID 179
+}
+
+ACTOR StrifeRPG : HereticRPG replaces MiniMissileLauncher{}
+
+ACTOR StrifeRPGAmmo : RPGAmmo replaces MiniMissiles
+{
+	ConversationID 181
+}
+
+ACTOR StrifeRPKAmmo : RPKAmmo replaces CrateofMissiles
+{
+	ConversationID 182
+}
+
+ACTOR StrifeHandGrenade : HandGrenadePile replaces AmmoSatchel{}
+
+ACTOR StrifeSMGAmmo : ExtraSMGAmmo replaces BoxOfBullets
+{
+	ConversationID 180
+}
+
+ACTOR StrifeSMG : HereticSMG replaces AssaultGun{}
+
+ACTOR StrifeSMGStanding : StrifeSMG replaces AssaultGunStanding
+{
+	ConversationID 189
+	/*States
+	{
+	Spawn:
+		MP7P B -1
+		Loop
+	}*/
+}
+
+ACTOR StrifeColtAmmo : P50Ammo replaces ElectricBolts	//already replaced?
+{
+	ConversationID 186
+}
