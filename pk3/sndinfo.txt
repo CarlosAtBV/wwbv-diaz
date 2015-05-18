@@ -26,6 +26,7 @@ $playersound	diaz	male	*jump		diazjump
 $playeralias	diaz	male	*melee		diaz/melee
 $playeralias	diaz	male	*taunt		diaz/taunt
 $playeralias	diaz	male	*disint		diaz/disint
+$playeralias	diaz	male	*flamed		diaz/deathhi
 $playeralias	diaz	male	*falcon		diaz/falcon
 $playeralias	diaz	male	*paunch		diaz/paunch
 diaz/disint diazdist
