@@ -195,7 +195,7 @@ switchoff dsswtchx
 weapons/slugfire 	DSSLGFIR
 weapons/slugsplode	DSSLGSPD
 
-misc/keytry             dslocked
+misc/keytry             dskeytry
 misc/k_pkup             dskeyup
 misc/health_pkup        dshlthup
 misc/armor_pkup         dsarmup
