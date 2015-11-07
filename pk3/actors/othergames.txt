@@ -7,7 +7,7 @@ ACTOR HereticMauserAmmo : MauserAmmo replaces CrossbowHefty{}
 ACTOR HereticSMGAmmo : ExtraSMGAmmo replaces BlasterAmmo{}
 ACTOR HereticSkorAmmo : SkorAmmo replaces BlasterHefty{}
 ACTOR HereticRPGAmmo : RPGAmmo replaces PhoenixRodAmmo{}
-ACTOR HereticGrenades : MGHandGrenadePile replaces PhoenixRodHefty{}
+ACTOR HereticGrenades : HandGrenadePile replaces PhoenixRodHefty{}
 ACTOR HereticRPKAmmo : RPKAmmo replaces SkullRodHefty{}
 ACTOR HereticNeutAmmo : NeutAmmo replaces SkullRodAmmo{}
 
