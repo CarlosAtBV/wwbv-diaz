@@ -1,7 +1,7 @@
 @echo off
 color F
 
-set NAME=ww-diaz-v3-dev
+set NAME=wwbv-diaz-ee-dev
 set /p TYPE="Would you like to build a pk3 or pk7? (default pk3): " % = %
 
 cd pk3
