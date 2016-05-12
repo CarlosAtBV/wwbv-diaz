@@ -1,0 +1,2 @@
+STARTUPTITLE = "Agent Diaz (Enhanced Edition)"
+STARTUPCOLORS = "cba288", "3a3225"
