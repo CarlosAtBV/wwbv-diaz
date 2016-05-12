@@ -20,6 +20,32 @@ QUITMSG12 = "i hate you.";
 QUITMSG13 = "if you're gonna go, then\njust go already.";
 QUITMSG14 = "i'm not speaking to you again.\never.";
 
+DOSY = "\cd[Press the Y Key to exit]";
+
 NIGHTMARE = "This weapon mod is certainly\nnot for noobs. But if you're\nstill of the opinion that weapon\nmods are only for those whose Dooming\nskills are very lacking...\nthen be my guest.\n\njust don't complain if you can't\nbeat the first level.\n\n(press y to accept my challenge)";
 
-MNU_CHOOSECLASS		= "CHOOSE COSTUME:";
+//Boom Key Pickup Messages
+PD_BLUEC = "\chBlue card\c- required to open this door";
+PD_REDC = "\cgRed card\c- required to open this door";
+PD_YELLOWC = "\ckYellow card\c- required to open this door";
+PD_BLUES = "\chBlue skull\c- required to open this door";
+PD_REDS = "\cgRed skull\c- required to open this door";
+PD_YELLOWS = "\ckYellow skull\c- required to open this door";
+PD_ANY = "Any key will open this door";
+PD_ANYOBJ = "\cdAny key\c- will activate this object";
+PD_ALL3 = "You need all three keys to open this door";
+PD_ALL3O = "You need all three keys to activate this object";
+PD_ALL6 = "You need all six keys to open this door";
+PD_ALL6O = "You need all six keys to activate this object";
+PD_ALLKEYS = "You need all the keys";
+
+SECRETMESSAGE = "\cjYou've discovered a\c- \cksecret area\c-\cj!\c-";
+
+//Menu Junk
+MNU_CHOOSECLASS		= "Character Select";
+MNU_CHOOSESKILL		= "Difficulty Select";
+
+//Startup
+STARTUP1 = "\cdWelcome to \cbAgent Diaz: Enhanced Edition\c-";
+STARTUP2 = "Report bugs to \ceMarty Kirra\c-/\cnBlue Vertigo\c-!";
+STARTUP3 = "Chat with us at \cd#tsp on irc.zandronum.net";
