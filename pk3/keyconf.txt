@@ -1,0 +1,3 @@
+defaultbind q +WV_Melee
+alias +WV_Melee "use StartMelee" //"give Melee"
+alias -WV_Melee "use StopMelee" //"give Melee"
