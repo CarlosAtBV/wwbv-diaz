@@ -48,7 +48,7 @@ MNU_CHOOSESKILL		= "Difficulty Select";
 //Startup
 //Startup
 STARTUP1 = "\ccWelcome to\c- \ciAgent Diaz\cc: \cjEnhanced Edition!";
-STARTUP2 = "\cpVersion: 0.1 - \ciRabbit Hole";
+STARTUP2 = "\cpVersion 0.1 - \ciRabbit Hole";
 STARTUP3 = "Chat with us at \cdhttps://discord.gg/discord.gg/wDDCWT9";
 STARTUP4 = "\cuMISSION START";
 
