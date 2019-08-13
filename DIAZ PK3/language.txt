@@ -46,6 +46,9 @@ MNU_CHOOSECLASS		= "Character Select";
 MNU_CHOOSESKILL		= "Difficulty Select";
 
 //Startup
-STARTUP1 = "\cdWelcome to \cbAgent Diaz: Enhanced Edition\c-";
-STARTUP2 = "Report bugs to \ceMarty Kirra\c-/\cnBlue Vertigo\c-!";
-STARTUP3 = "Chat with us at \cd#tsp on irc.zandronum.net";
+//Startup
+STARTUP1 = "\ccWelcome to\c- \ciAgent Diaz\cc: \cjEnhanced Edition!";
+STARTUP2 = "\cpVersion: 0.1 - \ciRabbit Hole";
+STARTUP3 = "Chat with us at \cdhttps://discord.gg/discord.gg/wDDCWT9";
+STARTUP4 = "\cuMISSION START";
+
