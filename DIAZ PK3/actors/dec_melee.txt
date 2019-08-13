@@ -1,0 +1,72 @@
+ACTOR DiazPrimaryCombo : Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+ACTOR ComboCooldown: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+/////////////////////
+//DEFAULT MELEE PUFFS
+/////////////////////
+
+ACTOR BasicMeleePuff
+{ 
+  ActiveSound ""
+  AttackSound "basicmelee/wall"
+  SeeSound "basicmelee/contact"
+  DamageType Melee
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  Decal "none"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Crash:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Melee:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  }
+}
+
+ACTOR StrongMeleePuff : BasicMeleePuff
+{ 
+  AttackSound "strongmelee/wall"
+  SeeSound "strongmelee/contact"
+  DamageType Melee
+  DamageType StrongMelee
+}
+
+ACTOR UppercutMeleePuff : StrongMeleePuff
+{ 
+  SeeSound "uppercutmelee/contact"
+  DamageType Uppercut
+}
+
+///////////////////
+//DUMMY MELEE PUFFS
+///////////////////
+
+ACTOR BlankMeleePuff : BasicMeleePuff
+{ 
+  ActiveSound ""
+  AttackSound ""
+  SeeSound ""
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  -BLOODSPLATTER
+  Decal "none"
+}

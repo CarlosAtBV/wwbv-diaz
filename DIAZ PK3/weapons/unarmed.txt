@@ -20,7 +20,7 @@ ACTOR MartialArts : Weapon
 	Inventory.PickupMessage "i kno kungfu lol"
 	Weapon.Kickback 40
 	Weapon.SisterWeapon MartialArts2
-	AttackSound "fist/hit"
+	AttackSound "basicmelee/contact"
 	Tag "Unarmed"
 	+NOAUTOFIRE
 	+NOALERT
@@ -57,7 +57,7 @@ ACTOR MartialArts : Weapon
 		MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
 		MART A 0 A_JumpIfInventory("FinalFist",1,"Fire3")
 		MART A 0 A_JumpIfInventory("FistSeq",1,"Fire2")
-		MART A 0 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MART A 0 A_PlaySound("basicmelee/miss",CHAN_WEAPON)
 		MART B 1 A_GiveInventory("FistSeq")
 		MART C 1
 		MART D 1 A_CustomPunch(18,1,0,"FistPuff")
@@ -66,7 +66,7 @@ ACTOR MartialArts : Weapon
 	Fire2:
 		MART H 0 A_GiveInventory("FinalFist")
 		MART H 1 A_GiveInventory("FistSeq")
-		MART I 1 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MART I 1 A_PlaySound("basicmelee/miss",CHAN_WEAPON)
 		MART J 1
 		MART K 1 A_CustomPunch(18,1,0,"FistPuff")
 		MART LMNOPPAAA 1 A_WeaponReady
@@ -81,7 +81,7 @@ ACTOR MartialArts : Weapon
 		MART VW 1
 		TNT1 A 3 A_GiveInventory("FistSeq")
 		MAR3 ABCD 1
-		MAR3 E 1 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MAR3 E 1 A_PlaySound("basicmelee/miss",CHAN_WEAPON)
 		MAR3 F 1 A_CustomPunch(22,1,0,"FistPuff")
 		MAR3 G 1
 	Fire3part1:								 //for ease of sequencing- not needed
@@ -125,7 +125,7 @@ ACTOR MartialArts : Weapon
 		Goto Ready2
 	Finisher1:
 		TNT1 A 5 A_PlaySound("*melee")
-		MAR6 A 0 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MAR6 A 0 A_PlaySound("strongmelee/miss",CHAN_WEAPON)
 		MAR6 AB 1
 		MAR6 C 3 A_CustomPunch(36,1,0,"FistPuff")
 		MAR6 D 1
@@ -138,7 +138,7 @@ ACTOR MartialArts : Weapon
 		TNT1 A 6 SetPlayerProperty(0,1,PROP_FROZEN)
 		MAR2 J 1 A_PlaySound("*melee")
 		MAR2 KL 1
-		MAR2 M 1 A_PlaySound("fist/kickswing",CHAN_WEAPON)
+		MAR2 M 1 A_PlaySound("strongmelee/miss",CHAN_WEAPON)
 		MAR2 N 1 A_CustomPunch(32,1,0,"KickPuff")
 		MAR2 OP 1
 		TNT1 A 6
@@ -154,7 +154,7 @@ ACTOR MartialArts : Weapon
 		TNT1 A 12 ThrustThingZ(0,30,0,1)
 		MAR4 AB 1
 		MAR4 C 1 A_PlaySound("*melee")
-		MAR4 D 1 A_PlaySound("fist/kickswing",CHAN_WEAPON)
+		MAR4 D 1 A_PlaySound("strongmelee/miss",CHAN_WEAPON)
 		MAR4 E 1 A_CustomPunch(64,1,0,"KickPuff")
 		MAR4 FGH 1
 		TNT1 A 12 SetPlayerProperty(0,0,PROP_FROZEN)
@@ -176,7 +176,7 @@ ACTOR MartialArts2 : MartialArts
 		MART A 0 A_JumpIfInventory("FinalFistCooldown",1,"Fire3part7")
 		MART A 0 A_JumpIfInventory("FinalFist",1,"Fire3")
 		MART A 0 A_JumpIfInventory("FistSeq",1,"Fire2")
-		MART A 0 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MART A 0 A_PlaySound("basicmelee/miss",CHAN_WEAPON)
 		MART B 1 A_GiveInventory("FistSeq",1)
 		MART C 1
 		MART D 1 A_CustomPunch(72,1,0,"PowerFistPuff")
@@ -187,7 +187,7 @@ ACTOR MartialArts2 : MartialArts
 	Fire2:
 		MART H 0 A_GiveInventory("FinalFist")
 		MART H 1 A_GiveInventory("FistSeq",1)
-		MART I 1 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MART I 1 A_PlaySound("basicmelee/miss",CHAN_WEAPON)
 		MART J 1
 		MART K 1 A_CustomPunch(72,1,0,"PowerFistPuff")
 		MART LMNOPPAAA 1 A_WeaponReady
@@ -203,7 +203,7 @@ ACTOR MartialArts2 : MartialArts
 		MART VW 1
 		TNT1 A 3 A_GiveInventory("FistSeq")
 		MAR3 ABCD 1
-		MAR3 E 1 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MAR3 E 1 A_PlaySound("basicmelee/miss",CHAN_WEAPON)
 		MAR3 F 1 A_CustomPunch(88,1,0,"PowerFistPuff")
 		MAR3 G 1
 	Fire3part1:								 //for ease of sequencing- not needed
@@ -250,7 +250,7 @@ ACTOR MartialArts2 : MartialArts
 		Goto Ready2
 	Finisher1:
 		TNT1 A 5 A_PlaySound("*melee")
-		MAR6 A 0 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MAR6 A 0 A_PlaySound("strongmelee/miss",CHAN_WEAPON)
 		MAR6 A 1
 		MAR6 B 1
 		MAR6 C 3 A_CustomPunch(144,1,0,"PowerFistPuff")
@@ -264,7 +264,7 @@ ACTOR MartialArts2 : MartialArts
 		TNT1 A 6 SetPlayerProperty(0,1,PROP_FROZEN)
 		MAR2 J 1 A_PlaySound("*melee")
 		MAR2 KL 1
-		MAR2 M 1 A_PlaySound("fist/kickswing",CHAN_WEAPON)
+		MAR2 M 1 A_PlaySound("strongmelee/miss",CHAN_WEAPON)
 		MAR2 N 1 A_CustomPunch(128,1,0,"PowerKickPuff")
 		MAR2 O 1
 		MAR2 P 1
@@ -281,7 +281,7 @@ ACTOR MartialArts2 : MartialArts
 		MAR4 IIJJKL 1
 		MAR4 M 15
 		MAR4 K 1
-		MAR4 I 1 A_PlaySound("fist/swing",CHAN_WEAPON)
+		MAR4 I 1 A_PlaySound("strongmelee/miss",CHAN_WEAPON)
 		MAR5 A 1
 		MAR5 B 1 A_PlaySound("*paunch")
 		MAR5 C 1 A_FireCustomMissile("FalconPanch",0,0,0)

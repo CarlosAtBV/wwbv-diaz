@@ -33,6 +33,7 @@
 #include "actors/enemies/otherfixes.txt"
 #include "actors/barrels.txt"
 #include "actors/DEC_SFXS.txt" // Special Effects and Puffs
+#include "actors/DEC_MELEE.txt" // Melee Stuff (Enhanced Edition)
 #include "actors/nashgore/gibs.txt" // Gibs from Nashgore
 #include "actors/nashgore/blood.txt" // Blood from Nashgore
 #include "actors/nashgore/crushed.txt" // Dead bodies from Nashgore

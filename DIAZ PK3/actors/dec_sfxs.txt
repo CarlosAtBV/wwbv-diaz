@@ -794,7 +794,7 @@ ACTOR PowerHitPuff : HitPuff
 
 ACTOR FistPuff
 { 
-   DeathSound "fist/wall"
+   DeathSound "basicmelee/wall"
    Obituary "%k scores a knock-out on %o."
    DamageType Fist
    +NOGRAVITY
@@ -835,6 +835,6 @@ ACTOR PowerKickPuff : PowerFistPuff
 
 ACTOR KickPuff : FistPuff
 { 
-   DeathSound "fist/kickwall"
+   DeathSound "strongmelee/wall"
    Obituary "%o receives a roundhouse kick to the face from %k."
 }
