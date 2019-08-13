@@ -39,3 +39,4 @@
 #include "actors/nashgore/crushed.txt" // Dead bodies from Nashgore
 #include "actors/DEC_MISC.txt" // Uncategorized
 #include "actors/othergames.txt" // Heretic/Strife item replacers
+
