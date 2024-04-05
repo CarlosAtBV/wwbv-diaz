@@ -38,7 +38,7 @@ ACTOR JudgmentPistol : Weapon
 		JDGH AB 1
 		JDGH C 1 A_PlaySound("weapon/select3")
 		JDGC ABCD 1
-		JDGC E 1 A_PlayWeaponSound("judgment/cock")
+		JDGC E 1 A_StartSound("judgment/reload/slide", CHAN_AUTO)
 		JDGC FFGGHIJK 1
     Ready2:
 		JDGG E 0 A_JumpIfInventory("JudgmentClip",1,2)
@@ -51,7 +51,7 @@ ACTOR JudgmentPistol : Weapon
 		Goto DryFire
 		JDGF A 1 A_AlertMonsters
 		JDGF B 0 A_SetPitch(pitch - 1.0)
-		JDGF B 0 A_PlayWeaponSound("judgment/fire")
+		JDGF B 0 A_StartSound("judgment/fire", CHAN_AUTO)
 		JDGF B 1 BRIGHT A_FireBullets(1,1,-1,6.5,"BulletPuff",1)
 		JDGF C 1 BRIGHT A_FireCustomMissile("PistolSmokeSpawner",0,0,3,8)
     	JDGG D 1 BRIGHT A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
@@ -62,11 +62,11 @@ ACTOR JudgmentPistol : Weapon
 		TNT1 A 0 A_CheckReload
 		Goto Ready2
 	Dryfire:
-		JDGG E 2 A_PlayWeaponSound("judgment/empty")
+		JDGG E 2 A_StartSound("judgment/empty", CHAN_AUTO)
 		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"Reload")
 		Goto Ready2
 	Slideback:
-		JDGG E 2 A_PlaySound("judgment/slideback")
+		JDGG E 2 A_StartSound("judgment/reload/slide/out", CHAN_AUTO)
 		TNT1 A 0 A_CheckReload
 		Goto Ready2
 	Reload:
@@ -75,27 +75,27 @@ ACTOR JudgmentPistol : Weapon
       	JDGG "#" 1 A_WeaponReady(WRF_NOFIRE)
       	Goto Ready2
 		JDGR A 0 A_JumpIfInventory("JudgmentClip",1,"ReloadFull")
-		JDGR A 0 A_PlayWeaponSound("judgment/clipout")
+		JDGR A 0 A_StartSound("judgment/reload/eject", CHAN_AUTO)
 		JDGR A 1 A_FireCustomMissile("SpentClip1",3,0,5,0)
 		JDGR BCCCCCCCCCCCCCCCDDE 1
 		TNT1 A 0 A_TakeInventory("P50Ammo",1)
 		TNT1 A 0 A_GiveInventory("JudgmentClip",12)
-		JDGR F 1 A_PlayWeaponSound("judgment/clipin")
+		JDGR F 1 A_StartSound("judgment/reload/in", CHAN_AUTO)
 		JDGR GHIJ 1
-		JDGR K 1 A_PlayWeaponSound("judgment/cliphit")
+		JDGR K 1 A_StartSound("judgment/reload/tap", CHAN_AUTO)
 		JDGR LMNO 1
-		JDGR P 1 A_PlaySound("judgment/slide",5)
+		JDGR P 1 A_StartSound("judgment/reload/slide/in", CHAN_AUTO)
 		JDGR QRST 1
 		Goto Ready2
 	ReloadFull:
-		JDGG A 3 A_PlayWeaponSound("judgment/clipout")
+		JDGG A 3 A_StartSound("judgment/reload/eject", CHAN_AUTO)
 		JDGS A 1 A_FireCustomMissile("SpentClip1",3,0,5,0)
 		JDGS BCCCCCCCCCCCCCCCDDE 1
 		JDGS E 0 A_TakeInventory("P50Ammo",1)
 		JDGS E 0 A_GiveInventory("JudgmentClip",12)
-		JDGS F 1 A_PlayWeaponSound("judgment/clipin")
+		JDGS F 1 A_StartSound("judgment/reload/in", CHAN_AUTO)
 		JDGS GHH 1
-		JDGS K 1 A_PlayWeaponSound("judgment/cliphit")
+		JDGS K 1 A_StartSound("judgment/reload/tap", CHAN_AUTO)
 		JDGS LMRST 1
 		Goto Ready2
 	AltFire:

@@ -25,7 +25,7 @@ ACTOR P50Handgun : Weapon
 		KNSP A -1
 		Loop
 	Deselect:
-		KNSH A 1 A_PlaySound("weapon/deselect")
+		KNSH A 1 A_StartSound("weapon/deselect", CHAN_AUTO)
 		KNSH BCD 1
 		TNT1 A 4
 		TNT1 A 0 A_Lower
@@ -36,9 +36,9 @@ ACTOR P50Handgun : Weapon
 	Ready:
 		TNT1 A 4
 		KNSH DCB 1
-		KNSH A 1 A_PlaySound("weapon/select3")
+		KNSH A 1 A_StartSound("weapon/select3", CHAN_AUTO)
 		KNR2 QPONEFG 1
-		KNR2 H 1 A_PlaySound("colt45/pickup",CHAN_WEAPON)
+		KNR2 H 1 A_StartSound("p50/reload/slide", CHAN_AUTO)
 		KNR2 IJKLMNOPQ 1
 	Ready2:
 		KNSG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
@@ -46,7 +46,7 @@ ACTOR P50Handgun : Weapon
 	Fire:
 		KNSG A 0 A_JumpIfInventory("P50Clip",1,1)
 		Goto DryFire
-		KNSG A 0 A_PlaySound("colt45/fire",CHAN_WEAPON)
+		KNSG A 0 A_StartSound("p50/fire", CHAN_AUTO)
 		KNSG A 0 A_GunFlash
 		KNSF A 1 BRIGHT A_FireBullets(2.5,2,-1,7,"BulletPuff",1)
 		KNSG A 0 A_SetPitch(pitch - 1.6)
@@ -58,7 +58,7 @@ ACTOR P50Handgun : Weapon
 		TNT1 A 0 A_CheckReload
 		Goto Ready2
 	DryFire:
-		KNSG C 1 A_PlaySound("colt45/noammo",CHAN_WEAPON)
+		KNSG C 1 A_StartSound("p50/empty", CHAN_AUTO)
 		KNSG EDB 1
 		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"Reload")
 		Goto Ready2
@@ -68,17 +68,17 @@ ACTOR P50Handgun : Weapon
 		KNSG A 1 A_WeaponReady(WRF_NOFIRE)
 		Goto Ready2
 		KNSR ABCDEF 1
-		KNSR G 1 A_PlaySound("colt45/clipout")
+		KNSR G 1 A_StartSound("p50/reload/eject", CHAN_AUTO)
 		KNSR I 3 A_FireCustomMissile("SpentClip1",3,0,5,0)
 		KNSR JJJKKLL 1
-		KNSR M 1 A_PlaySound("colt45/cliphit")
+		KNSR M 1 A_StartSound("p50/reload/in", CHAN_AUTO)
 		KNSR NNNOOPQRRSSSTTT 1
 		KNSR U 0 A_TakeInventory("P50Ammo",1)
 		KNSR U 0 A_GiveInventory("P50Clip",12)
-		KNSR U 1 A_PlaySound("colt45/clipin")
+		KNSR U 1 A_StartSound("p50/reload/tap", CHAN_AUTO)
 		KNSR UVWXYYZZ 1
 		KNR2 ABCDEFG 1
-		KNR2 H 1 A_PlaySound("colt45/pickup")
+		KNR2 H 1 A_StartSound("p50/reload/slide", CHAN_AUTO)
 		KNR2 IJKLMNOPQ 1
 		Goto Ready2
 	AltFire:

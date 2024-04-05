@@ -44,3 +44,33 @@ strongmelee/wall4 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_wall04.ogg
 $random uppercutmelee/contact { uppercutmelee/contact1 uppercutmelee/contact2 }
 uppercutmelee/contact1 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_contact01.ogg"
 uppercutmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_contact02.ogg"
+
+// P50
+// SOUND CREDITS/SOURCES:
+// - Carlos Sanchez
+$random p50/fire { p50/fire1 p50/fire2 p50/fire3 }
+p50/fire1 "sounds/weapons/p50/sfx_p50_fire_01.ogg"
+p50/fire2 "sounds/weapons/p50/sfx_p50_fire_02.ogg"
+p50/fire3 "sounds/weapons/p50/sfx_p50_fire_03.ogg"
+p50/reload/eject "sounds/weapons/p50/sfx_p50_reload_eject.ogg"
+p50/reload/in "sounds/weapons/p50/sfx_p50_reload_in.ogg"
+p50/reload/tap "sounds/weapons/p50/sfx_p50_reload_tap.ogg"
+p50/reload/slide "sounds/weapons/p50/sfx_p50_reload_slide.ogg"
+p50/reload/slide/in "sounds/weapons/p50/sfx_p50_reload_slide_in.ogg"
+p50/reload/slide/out "sounds/weapons/p50/sfx_p50_reload_slide_out.ogg"
+p50/empty "sounds/weapons/p50/sfx_p50_empty.ogg"
+
+// JUDGMENT
+// SOUND CREDITS/SOURCES:
+// - Carlos Sanchez
+$random judgment/fire { judgment/fire1 judgment/fire2 judgment/fire3 }
+judgment/fire1 "sounds/weapons/judgment/sfx_judgment_fire_01.ogg"
+judgment/fire2 "sounds/weapons/judgment/sfx_judgment_fire_02.ogg"
+judgment/fire3 "sounds/weapons/judgment/sfx_judgment_fire_03.ogg"
+judgment/reload/eject "sounds/weapons/judgment/sfx_judgment_reload_eject.ogg"
+judgment/reload/in "sounds/weapons/judgment/sfx_judgment_reload_in.ogg"
+judgment/reload/tap "sounds/weapons/judgment/sfx_judgment_reload_tap.ogg"
+judgment/reload/slide "sounds/weapons/judgment/sfx_judgment_reload_slide.ogg"
+judgment/reload/slide/in "sounds/weapons/judgment/sfx_judgment_reload_slide_in.ogg"
+judgment/reload/slide/out "sounds/weapons/judgment/sfx_judgment_reload_slide_out.ogg"
+judgment/empty "sounds/weapons/judgment/sfx_judgment_empty.ogg"
