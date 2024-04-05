@@ -20,7 +20,12 @@ QUITMSG12 = "i hate you.";
 QUITMSG13 = "if you're gonna go, then\njust go already.";
 QUITMSG14 = "i'm not speaking to you again.\never.";
 
-DOSY = "\cd[Press the Y Key to exit]";
+DOSY = "\cc[\c-\cuPress the\c- \cdY\c- \cuKey to exit\c-\cc]\c-";
+TXT_YES = "\cc[\c-\cdYes\c-\cc]\c-";
+TXT_NO = "\cc[\c-\cgNo\c-\cc]\c-";
+OPTVAL_ON = "\cc[\c-\cdOn\c-\cc]\c-";
+OPTVAL_OFF = "\cc[\c-\cgOff\c-\cc]\c-";
+OPTVAL_AUTO = "\cc[\c-\cuAuto\c-\cc]\c-";
 
 NIGHTMARE = "This weapon mod is certainly\nnot for noobs. But if you're\nstill of the opinion that weapon\nmods are only for those whose Dooming\nskills are very lacking...\nthen be my guest.\n\njust don't complain if you can't\nbeat the first level.\n\n(press y to accept my challenge)";
 
@@ -45,7 +50,6 @@ SECRETMESSAGE = "\cjYou've discovered a\c- \cksecret area\c-\cj!\c-";
 MNU_CHOOSECLASS		= "Character Select";
 MNU_CHOOSESKILL		= "Difficulty Select";
 
-//Startup
 //Startup
 STARTUP1 = "\ccWelcome to\c- \ciAgent Diaz\cc: \cjEnhanced Edition!";
 STARTUP2 = "\cpVersion 0.1 - \ciRabbit Hole";

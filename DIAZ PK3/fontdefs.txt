@@ -28,8 +28,3 @@ TINYAMMOFONT
 		8 NUM8
 		9 NUM9
 	}
-	
-SMALLFONT
-{
-	Template STCFN%03d
-}

@@ -1,6 +1,6 @@
 DEFAULTLISTMENU
 {
-	Font "DBIGFONT", "ORANGE" //Font "MENUFNT", "DarkGreen"
+	Font "BIGFONT", "ORANGE" //Font "MENUFNT", "DarkGreen"
 	Selector "M_ADSEL", -34, -8
 	Linespacing 16
 }

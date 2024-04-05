@@ -1,1 +1,1 @@
-user bool autoreload = false;
+user bool autoreload = true;
