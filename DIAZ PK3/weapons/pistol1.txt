@@ -36,7 +36,7 @@ ACTOR P50Handgun : Weapon
 	Ready:
 		TNT1 A 4
 		KNSH DCB 1
-		KNSH A 1 A_StartSound("weapon/select3", CHAN_AUTO)
+		KNSH A 1 A_PlaySound("weapon/select3")
 		KNR2 QPONEFG 1
 		KNR2 H 1 A_StartSound("p50/reload/slide", CHAN_AUTO)
 		KNR2 IJKLMNOPQ 1

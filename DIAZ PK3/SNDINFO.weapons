@@ -59,6 +59,7 @@ p50/reload/slide "sounds/weapons/p50/sfx_p50_reload_slide.ogg"
 p50/reload/slide/in "sounds/weapons/p50/sfx_p50_reload_slide_in.ogg"
 p50/reload/slide/out "sounds/weapons/p50/sfx_p50_reload_slide_out.ogg"
 p50/empty "sounds/weapons/p50/sfx_p50_empty.ogg"
+p50/equip "sounds/weapons/p50/sfx_p50_equip.ogg"
 
 // JUDGMENT
 // SOUND CREDITS/SOURCES:
@@ -74,3 +75,22 @@ judgment/reload/slide "sounds/weapons/judgment/sfx_judgment_reload_slide.ogg"
 judgment/reload/slide/in "sounds/weapons/judgment/sfx_judgment_reload_slide_in.ogg"
 judgment/reload/slide/out "sounds/weapons/judgment/sfx_judgment_reload_slide_out.ogg"
 judgment/empty "sounds/weapons/judgment/sfx_judgment_empty.ogg"
+judgment/equip "sounds/weapons/judgment/sfx_judgment_equip.ogg"
+
+// MINI-SHOTGUN
+// SOUND CREDITS/SOURCES:
+// - Carlos Sanchez
+$random minishotgun/fire { minishotgun/fire01 minishotgun/fire02 minishotgun/fire03 }
+minishotgun/fire01 "sounds/weapons/minishotgun/sfx_minishotgun_fire_01.ogg"
+minishotgun/fire02 "sounds/weapons/minishotgun/sfx_minishotgun_fire_02.ogg"
+minishotgun/fire03 "sounds/weapons/minishotgun/sfx_minishotgun_fire_03.ogg"
+minishotgun/cock/in "sounds/weapons/minishotgun/sfx_minishotgun_cock_in.ogg"
+minishotgun/cock/out "sounds/weapons/minishotgun/sfx_minishotgun_cock_out.ogg"
+$random minishotgun/load { minishotgun/load01 minishotgun/load02 minishotgun/load03 minishotgun/load04 }
+minishotgun/load01 "sounds/weapons/minishotgun/sfx_minishotgun_load_01.ogg"
+minishotgun/load02 "sounds/weapons/minishotgun/sfx_minishotgun_load_02.ogg"
+minishotgun/load03 "sounds/weapons/minishotgun/sfx_minishotgun_load_03.ogg"
+minishotgun/load04 "sounds/weapons/minishotgun/sfx_minishotgun_load_04.ogg"
+minishotgun/empty "sounds/weapons/minishotgun/sfx_minishotgun_empty.ogg"
+minishotgun/equip "sounds/weapons/minishotgun/sfx_minishotgun_equip.ogg"
+minishotgun/pickup "sounds/weapons/minishotgun/sfx_minishotgun_pickup.ogg"
