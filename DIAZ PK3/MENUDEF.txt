@@ -8,6 +8,7 @@ DEFAULTLISTMENU
 LISTMENU "MainMenu"
 {
 	//StaticPatch 74, -30, "AD_NWG1"
+	Size Clean
 	Position 84, 9
 	Linespacing 28
 		
