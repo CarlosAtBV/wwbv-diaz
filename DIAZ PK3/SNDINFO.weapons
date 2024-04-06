@@ -94,3 +94,18 @@ minishotgun/load04 "sounds/weapons/minishotgun/sfx_minishotgun_load_04.ogg"
 minishotgun/empty "sounds/weapons/minishotgun/sfx_minishotgun_empty.ogg"
 minishotgun/equip "sounds/weapons/minishotgun/sfx_minishotgun_equip.ogg"
 minishotgun/pickup "sounds/weapons/minishotgun/sfx_minishotgun_pickup.ogg"
+
+// MAUSER 98K
+// SOUND CREDITS/SOURCES:
+// - Carlos Sanchez
+$random mauser/fire { mauser/fire01 mauser/fire02 mauser/fire03 }
+mauser/fire01 "sounds/weapons/mauser/sfx_mauser_fire_01.ogg"
+mauser/fire02 "sounds/weapons/mauser/sfx_mauser_fire_02.ogg"
+mauser/fire03 "sounds/weapons/mauser/sfx_mauser_fire_03.ogg"
+mauser/bolt/back "sounds/weapons/mauser/sfx_mauser_bolt_back.ogg"
+mauser/bolt/forward "sounds/weapons/mauser/sfx_mauser_bolt_forward.ogg"
+$volume mauser/load 0.5
+mauser/load "sounds/weapons/mauser/sfx_mauser_load.ogg"
+mauser/shoulder "sounds/weapons/mauser/sfx_mauser_shoulder.ogg"
+mauser/unshoulder "sounds/weapons/mauser/sfx_mauser_unshoulder.ogg"
+mauser/empty  "sounds/weapons/mauser/sfx_mauser_empty.ogg"

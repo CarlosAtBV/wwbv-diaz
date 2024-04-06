@@ -31,11 +31,11 @@ ACTOR MauserIdle : Inventory
 ACTOR MauserRifle : Weapon replaces SuperShotgun
 {
 	Weapon.SelectionOrder 400
-	Inventory.PickupSound "mauser/boltfwd"
+	Inventory.PickupSound "mauser/bolt/forward"
 	Inventory.PickupMessage "Mauser karabiner 98k (3)"
 	Tag "Kar 98K"
-	Obituary "%o was picked off Nazi-style by %k."
-	AttackSound "mauser/fire"
+	Obituary "%o was picked off Nazi-style by %k." //note to change this whenever code is rewritten lmao - cs
+	AttackSound "mauser/fire01"
 	Weapon.AmmoType "MauserClip"
 	Weapon.AmmoUse 1
 	Weapon.AmmoType2 "MauserAmmo"
@@ -58,7 +58,7 @@ ACTOR MauserRifle : Weapon replaces SuperShotgun
 		MAUH A 0 A_JumpIfInventory("MauserIronSight",1,"IronDeselect")
 		Goto DeselectAction
 	IronDeselect:
-		MAUI I 0 A_PlayWeaponSound("mauser/unshoulder")
+		MAUI I 0 A_StartSound("mauser/unshoulder", CHAN_AUTO)
 		MAUI I 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		MAUI JIHGF 2
 		MAUI E 2 A_TakeInventory("MauserIronSight")
@@ -106,17 +106,17 @@ ACTOR MauserRifle : Weapon replaces SuperShotgun
 		MAUF B 2 BRIGHT A_FireCustomMissile("ShotSmokeSpawner",0,0,6,8)
 		MAUI E 6
 		MAUC AB 3
-		MAUC C 3 A_PlaySound("mauser/boltback")
+		MAUC C 3 A_StartSound("mauser/bolt/back", CHAN_AUTO)
 		MAUC D 3
 		MAUC E 3 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
 		MAUC FGHHGF 1
-		MAUC E 3 A_PlaySound("mauser/boltfwd")
+		MAUC E 3 A_StartSound("mauser/bolt/forward", CHAN_AUTO)
 		MAUC DCBA 3
 		MAUI E 2
 		TNT1 A 0 A_CheckReload
 		Goto Ready2
 	DryFire:
-		MAUI E 1 A_PlayWeaponSound("mauser/empty")
+		MAUI E 1 A_StartSound("mauser/empty", CHAN_AUTO)
 		MAUI E 4
 		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"ReadyReload")
 		Goto Ready2
@@ -131,11 +131,11 @@ ACTOR MauserRifle : Weapon replaces SuperShotgun
 		MAUI IHGGFFEEEE 1
 		MAUC A 3 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		MAUC B 3
-		MAUC C 3 A_PlaySound("mauser/boltback")
+		MAUC C 3 A_StartSound("mauser/bolt/back", CHAN_AUTO)
 		MAUC D 3
 		MAUC E 3 A_FireCustomMissile("DiazRifleCasingSpawner",-3,0,0,0)
 		MAUC FGHHGF 1
-		MAUC E 3 A_PlaySound("mauser/boltfwd")
+		MAUC E 3 A_StartSound("mauser/bolt/forward", CHAN_AUTO)
 		MAUC DCB 3
 		MAUC A 3 A_ZoomFactor(1.75)
 		MAUI E 1 ACS_NamedExecute("PlayerSpeed",0,35,0,0)
@@ -143,14 +143,14 @@ ACTOR MauserRifle : Weapon replaces SuperShotgun
 		TNT1 A 0 A_CheckReload
 		Goto Ready2
 	IronDryFire:
-		MAUS A 1 A_PlayWeaponSound("mauser/empty")
+		MAUS A 1 A_StartSound("mauser/empty", CHAN_AUTO)
 		MAUS A 4
 		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"IronReload")
 		Goto Ready2
 	AltFire:
 		MAUI A 0 A_JumpIfInventory("MauserIronSight",1,"IronAltFire")
 		MAUI A 0 A_JumpIfInventory("MauserIdle",1,"AltFire2")
-		MAUI B 2 A_PlayWeaponSound("mauser/shoulder")
+		MAUI B 2 A_StartSound("mauser/shoulder", CHAN_AUTO)
 		MAUI CD 2
 	AltFire2:
 		MAUI E 2 A_TakeInventory("MauserIdle")
@@ -161,7 +161,7 @@ ACTOR MauserRifle : Weapon replaces SuperShotgun
 		MAUS A 2
 		Goto IronReady
 	IronAltFire:
-		MAUI I 0 A_PlayWeaponSound("mauser/unshoulder")
+		MAUI I 0 A_StartSound("mauser/unshoulder", CHAN_AUTO)
 		MAUI I 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		MAUI JIHGFE 2
 		MAUI D 2 A_ZoomFactor(1)
@@ -183,16 +183,16 @@ ACTOR MauserRifle : Weapon replaces SuperShotgun
 		MAUI A 0 A_JumpIfInventory("MauserIdle",1,"ReadyReload")
 		MAUI ABCDE 2
 	ReadyReload:
-		MAUC C 3 A_PlaySound("mauser/boltback")
+		MAUC C 3 A_StartSound("mauser/bolt/back", CHAN_AUTO)
 		MAUC D 3 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		MAUC EF 3
 		MAUR A 1
 		MAUR ABBCCCDDDEEFFFFGGG 1
 		MAUR H 0 A_TakeInventory("MauserAmmo",1)
 		MAUR H 0 A_GiveInventory("MauserClip",5)
-		MAUR H 4 A_PlayWeaponSound("mauser/insert")
+		MAUR H 4 A_StartSound("mauser/load", CHAN_AUTO)
 		MAUR IIIIJJJKKLMNNOOOPPP 1
-		MAUR Q 4 A_PlayWeaponSound("mauser/boltfwd")
+		MAUR Q 4 A_StartSound("mauser/bolt/forward", CHAN_AUTO)
 		MAUR RST 3
 		MAUR U 3
 		MAUR U 0 A_JumpIfInventory("MauserIronSight",1,"IronReloadFinish")
@@ -217,7 +217,7 @@ ACTOR MauserRifle2 : MauserRifle
 	States
 	{
 	IronDeselect:
-		MAUI I 0 A_PlayWeaponSound("mauser/unshoulder")
+		MAUI I 0 A_StartSound("mauser/unshoulder", CHAN_AUTO)
 		MAUI I 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		MAUI JIHGF 1
 		MAUI E 1 A_TakeInventory("MauserIronSight")
@@ -251,7 +251,7 @@ ACTOR MauserRifle2 : MauserRifle
 		MAUI E 1
 		Goto Ready2
 	DryFire:
-		MAUI E 1 A_PlayWeaponSound("mauser/empty")
+		MAUI E 1 A_StartSound("mauser/empty", CHAN_AUTO)
 		MAUI E 2
 		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"ReadyReload")
 		Goto Ready2
@@ -277,14 +277,14 @@ ACTOR MauserRifle2 : MauserRifle
 		MAUI EEGHIJ 1
 		Goto IronReady
 	IronDryFire:
-		MAUS A 1 A_PlayWeaponSound("mauser/empty")
+		MAUS A 1 A_StartSound("mauser/empty", CHAN_AUTO)
 		MAUS A 2
 		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"IronReload")
 		Goto IronReady
 	AltFire:
 		MAUI A 0 A_JumpIfInventory("MauserIronSight",1,"IronAltFire")
 		MAUI A 0 A_JumpIfInventory("MauserIdle",1,"AltFire2")
-		MAUI B 1 A_PlayWeaponSound("mauser/shoulder")
+		MAUI B 1 A_StartSound("mauser/shoulder", CHAN_AUTO)
 		MAUI CD 1
 	AltFire2:
 		MAUI E 1 A_TakeInventory("MauserIdle",30)
@@ -295,7 +295,7 @@ ACTOR MauserRifle2 : MauserRifle
 		MAUS A 1
 		Goto IronReady
 	IronAltFire:
-		MAUI I 0 A_PlayWeaponSound("mauser/unshoulder")
+		MAUI I 0 A_StartSound("mauser/unshoulder", CHAN_AUTO)
 		MAUI I 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		MAUI JIHGFE 1
 		MAUI D 1 A_ZooMFactor(1)
