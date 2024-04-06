@@ -4,48 +4,79 @@ gameinfo
 }
 
 clearskills
-skill Diaz1
+skill MegamixCasual
 {
-	DamageFactor=0.5
-	Aggressiveness=-0.5
-	SpawnFilter=Easy
-	EasyBossBrain
-	ACSReturn=0
-	Key=1
-	Name="One-Armed Boxer"
+	PlayerClassName = "Hernandez", "Mostly Harmless"
+	PlayerClassName = "Diaz", "Kung Fu Panda"
+	PlayerClassName = "Molinero", "Civil Dispute"
+	PlayerClassName = "Cortes", "Enjoy the Silence"
+	PlayerClassName = "Random", "Nerf Dart"
+		Name = "Casual"
+		TextColor = Megamix_Blue
+		SpawnFilter = Baby
+		ACSReturn = 0
+		Key = "1"
+		DamageFactor = 0.5
+		EasyBossBrain
+		MonsterHealth = 0.5
 }
-skill Diaz2
+
+skill MegamixNormal
 {
-	DamageFactor=0.75
-	SpawnFilter=Easy
-	ACSReturn=1
-	Key=2
-	Name="Assault on Precinct 13"
+	PlayerClassName = "Hernandez", "Snow Crash"
+	PlayerClassName = "Diaz", "One Armed Boxer"
+	PlayerClassName = "Molinero", "Misdemeanor"
+	PlayerClassName = "Cortes", "Presence of the Lord"
+	PlayerClassName = "Random", "9mm Parabellum"
+		Name = "Normal"
+		TextColor = Megamix_Green
+		DefaultSkill
+		SpawnFilter = Normal
+		ACSReturn = 1
+		Key = "2"
 }
-skill Diaz3
+
+skill MegamixHard
 {
-	SpawnFilter=Normal
-	ACSReturn=2
-	Key=3
-	Name="On Deadly Ground"
+	PlayerClassName = "Hernandez", "Neuromancer"
+	PlayerClassName = "Diaz", "Fist of Fury"
+	PlayerClassName = "Molinero", "Felony"
+	PlayerClassName = "Cortes", "Don't Fear The Reaper"
+	PlayerClassName = "Random", ".50 BMG"
+		Name = "Hard"
+		TextColor = Megamix_HardOrange
+		SpawnFilter = Hard
+		ACSReturn = 2
+		Key = "3"
 }
-skill Diaz4
+
+skill MegamixExtreme
 {
-	Aggressiveness=0.5
-	SpawnFilter=Hard
-	ACSReturn=3
-	Key=4
-	Name="Reservoir Dogs"
+	PlayerClassName = "Hernandez", "Blade Runner"
+	PlayerClassName = "Diaz", "The Big Boss"
+	PlayerClassName = "Molinero", "Federal Offense"
+	PlayerClassName = "Cortes", "Sympathy for the Devil"
+	PlayerClassName = "Random", "Cruise Missile"
+		Name = "Extreme"
+		TextColor = Megamix_Red
+		SpawnFilter = Hard
+		ACSReturn = 3
+		Key = "4"
+		Aggressiveness = 0.5
+		InstantReaction
+		MonsterHealth =  1.5
 }
-skill Diaz5
+
+skill MegamixUltimate
 {
-	DamageFactor=2.0
-	Aggressiveness=1
-	SpawnFilter=Hard
-	ACSReturn=4
-	Key=5
-	DisableCheats
-	MustConfirm
-	FastMonsters
-	Name="Wepon modz r 4 noobs!!1"
+		Name = "Game of Death" //All classes have the same ultimate skill name
+		TextColor = Megamix_UltimatePurple
+		SpawnFilter = Hard
+		ACSReturn = 4
+		Key = "5"
+		Aggressiveness = 1.0
+		DamageFactor = 2.0
+		InstantReaction
+		MonsterHealth =  2.0
+		NoInfighting
 }
