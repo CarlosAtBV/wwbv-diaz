@@ -85,8 +85,11 @@ minishotgun/fire01 "sounds/weapons/minishotgun/sfx_minishotgun_fire_01.ogg"
 minishotgun/fire02 "sounds/weapons/minishotgun/sfx_minishotgun_fire_02.ogg"
 minishotgun/fire03 "sounds/weapons/minishotgun/sfx_minishotgun_fire_03.ogg"
 minishotgun/cock/in "sounds/weapons/minishotgun/sfx_minishotgun_cock_in.ogg"
+$volume minishotgun/cock/in 0.7
 minishotgun/cock/out "sounds/weapons/minishotgun/sfx_minishotgun_cock_out.ogg"
+$volume minishotgun/cock/out 0.6
 $random minishotgun/load { minishotgun/load01 minishotgun/load02 minishotgun/load03 minishotgun/load04 }
+$volume minishotgun/load 0.5
 minishotgun/load01 "sounds/weapons/minishotgun/sfx_minishotgun_load_01.ogg"
 minishotgun/load02 "sounds/weapons/minishotgun/sfx_minishotgun_load_02.ogg"
 minishotgun/load03 "sounds/weapons/minishotgun/sfx_minishotgun_load_03.ogg"
@@ -103,9 +106,29 @@ mauser/fire01 "sounds/weapons/mauser/sfx_mauser_fire_01.ogg"
 mauser/fire02 "sounds/weapons/mauser/sfx_mauser_fire_02.ogg"
 mauser/fire03 "sounds/weapons/mauser/sfx_mauser_fire_03.ogg"
 mauser/bolt/back "sounds/weapons/mauser/sfx_mauser_bolt_back.ogg"
+$volume mauser/bolt/back 0.5
 mauser/bolt/forward "sounds/weapons/mauser/sfx_mauser_bolt_forward.ogg"
-$volume mauser/load 0.5
+$volume mauser/bolt/forward 0.5
 mauser/load "sounds/weapons/mauser/sfx_mauser_load.ogg"
+$volume mauser/load 0.5
 mauser/shoulder "sounds/weapons/mauser/sfx_mauser_shoulder.ogg"
 mauser/unshoulder "sounds/weapons/mauser/sfx_mauser_unshoulder.ogg"
 mauser/empty  "sounds/weapons/mauser/sfx_mauser_empty.ogg"
+
+// BLOC AN-41
+// SOUND CREDITS/SOURCES:
+// - Carlos Sanchez
+$random bloc/fire { bloc/fire01 bloc/fire02 bloc/fire03 bloc/fire04 bloc/fire05 bloc/fire06 }
+bloc/fire01 "sounds/weapons/bloc/sfx_bloc_fire_01.ogg"
+bloc/fire02 "sounds/weapons/bloc/sfx_bloc_fire_02.ogg"
+bloc/fire03 "sounds/weapons/bloc/sfx_bloc_fire_03.ogg"
+bloc/fire04 "sounds/weapons/bloc/sfx_bloc_fire_04.ogg"
+bloc/fire05 "sounds/weapons/bloc/sfx_bloc_fire_05.ogg"
+bloc/fire06 "sounds/weapons/bloc/sfx_bloc_fire_06.ogg"
+bloc/reload/out "sounds/weapons/bloc/sfx_bloc_reload_out.ogg"
+$volume bloc/reload/out 0.6
+bloc/reload/in "sounds/weapons/bloc/sfx_bloc_reload_in.ogg"
+$volume bloc/reload/in 0.6
+bloc/cock "sounds/weapons/bloc/sfx_bloc_cock.ogg"
+$volume bloc/cock 0.6
+bloc/empty "sounds/weapons/bloc/sfx_bloc_empty.ogg"
