@@ -132,3 +132,10 @@ $volume bloc/reload/in 0.6
 bloc/cock "sounds/weapons/bloc/sfx_bloc_cock.ogg"
 $volume bloc/cock 0.6
 bloc/empty "sounds/weapons/bloc/sfx_bloc_empty.ogg"
+
+// NEUTRALIZER
+// SOUND CREDITS/SOURCES:
+// - Carlos Sanchez
+$random neutralizer/fire { neutralizer/fire01 neutralizer/fire02 neutralizer/fire03 }
+neutralizer/fire01 "sounds/weapons/neutralizer/sfx_neutralizer_fire_01.ogg" 
+neutralizer/charge "sounds/weapons/neutralizer/sfx_neutralizer_charge.ogg" 

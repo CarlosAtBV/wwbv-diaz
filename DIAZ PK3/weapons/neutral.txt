@@ -51,7 +51,7 @@ ACTOR Neutralizer : Weapon replaces BFG9000
 		Loop
 	Fire:
 		NEUC ABCDEFG 1
-		NEUT A 0 A_PlaySound("neutralizer/fire",CHAN_WEAPON)
+		NEUT A 0 A_StartSound("neutralizer/fire01", CHAN_AUTO)
 		NEUT B 0 A_FireCustomMissile("SwarmBolt",12,0,15,5)
 		NEUT B 0 A_FireCustomMissile("SwarmBolt",-12,0,15,5)
 		NEUT B 0 A_FireCustomMissile("SwarmBolt",6,0,15,5)
@@ -68,7 +68,7 @@ ACTOR Neutralizer : Weapon replaces BFG9000
 		NEUT B 0 A_FireCustomMissile("SwarmBolt",-6,0,15,-5)
 		NEUF A 2 BRIGHT A_FireCustomMissile("SwarmBolt",0,1,15,-5)
 		NEUF BC 2 BRIGHT
-		NEUI A 3 A_PlaySound("neutralizer/charge",5)
+		NEUI A 3 A_StartSound("neutralizer/charge", CHAN_AUTO)
 		NEUI BCDEFGH 3
 		TNT1 A 0 A_CheckReload
 		Goto Ready2
