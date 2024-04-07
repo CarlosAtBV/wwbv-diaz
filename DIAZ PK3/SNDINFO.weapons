@@ -147,6 +147,19 @@ bloc/cock "sounds/weapons/bloc/sfx_bloc_cock.ogg"
 $volume bloc/cock 0.6
 bloc/empty "sounds/weapons/bloc/sfx_bloc_empty.ogg"
 
+// SLUGTHROWER
+// SOUND CREDITS/SOURCES:
+// - Carlos Sanchez
+$random slugthrower/fire { slugthrower/fire01 slugthrower/fire02 slugthrower/fire03 }
+slugthrower/fire01 "sounds/weapons/slugthrower/sfx_slugthrower_fire_01.ogg" 
+slugthrower/fire02 "sounds/weapons/slugthrower/sfx_slugthrower_fire_02.ogg" 
+slugthrower/fire03 "sounds/weapons/slugthrower/sfx_slugthrower_fire_03.ogg" 
+slugthrower/reload/out "sounds/weapons/slugthrower/sfx_slugthrower_reload_out.ogg" 
+slugthrower/reload/in "sounds/weapons/slugthrower/sfx_slugthrower_reload_in.ogg" 
+slugthrower/reload/slap "sounds/weapons/slugthrower/sfx_slugthrower_reload_slap.ogg" 
+slugthrower/empty "sounds/weapons/slugthrower/sfx_slugthrower_empty.ogg" 
+
+
 // NEUTRALIZER
 // SOUND CREDITS/SOURCES:
 // - Carlos Sanchez
