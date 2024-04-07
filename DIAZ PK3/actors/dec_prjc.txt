@@ -11,7 +11,7 @@ ACTOR FalconPanch
  Damage 40
  Scale 1.5
  SeeSound ""
- DeathSound "psiamp/firehit"
+ DeathSound "psiamp/fire/impact"
  Obituary "%o witnesses the majestic glory of %k's Falcon PAAUUNCH!"
  RenderStyle Add
  Decal Scorch
@@ -50,7 +50,7 @@ ACTOR PsiFireBall
  Damage 10
  Scale 1.5
  SeeSound ""
- DeathSound "psiamp/firehit"
+ DeathSound "psiamp/fire/impact"
  Obituary "%o has a brain overload, thanks to %k's psionic fireball."
  RenderStyle Add
  Decal Scorch
@@ -84,7 +84,7 @@ ACTOR ImpPsiFireBall : PsiFireBall replaces DoomImpBall
 	-STRIFEDAMAGE
 	-NOTELEPORT
 	Scale 1.0
-	SeeSound "psiamp/fireball"
+	SeeSound "psiamp/fire/throw"
 	Speed 10
 	Decal DoomImpScorch
 	States
@@ -125,8 +125,8 @@ ACTOR TestPsiIceBall
 	TRANSLATION Ice
  	Damage 3
  	Scale 1.5
- 	SeeSound "frost/fire"
- 	DeathSound "frost/hit"
+ 	SeeSound "psiamp/ice/throw"
+ 	DeathSound "psiamp/ice/impact"
  	RenderStyle Add
  	Decal IceScorch
  	Alpha 0.9

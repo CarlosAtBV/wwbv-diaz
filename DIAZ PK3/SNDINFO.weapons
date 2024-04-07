@@ -45,6 +45,36 @@ $random uppercutmelee/contact { uppercutmelee/contact1 uppercutmelee/contact2 }
 uppercutmelee/contact1 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_contact01.ogg"
 uppercutmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_contact02.ogg"
 
+// PSI-AMP
+// SOUND CREDITS/SOURCES:
+// - Carlos Sanchez
+$random psiamp/fire/throw { psiamp/fire/throw01 psiamp/fire/throw02 psiamp/fire/throw03 }
+$volume psiamp/fire/throw 0.6
+psiamp/fire/throw01 "sounds/weapons/psiamp/sfx_psiamp_fire_throw_01.ogg"
+psiamp/fire/throw02 "sounds/weapons/psiamp/sfx_psiamp_fire_throw_02.ogg"
+psiamp/fire/throw03 "sounds/weapons/psiamp/sfx_psiamp_fire_throw_03.ogg"
+$random psiamp/fire/impact { psiamp/fire/impact01 psiamp/fire/impact02 psiamp/fire/impact03 }
+psiamp/fire/impact01 "sounds/weapons/psiamp/sfx_psiamp_fire_impact_01.ogg"
+psiamp/fire/impact02 "sounds/weapons/psiamp/sfx_psiamp_fire_impact_02.ogg"
+psiamp/fire/impact03 "sounds/weapons/psiamp/sfx_psiamp_fire_impact_03.ogg"
+$random psiamp/ice/throw { psiamp/ice/throw01 psiamp/ice/throw02 psiamp/ice/throw03 }
+$volume psiamp/ice/throw 0.7
+psiamp/ice/throw01 "sounds/weapons/psiamp/sfx_psiamp_ice_throw_01.ogg"
+psiamp/ice/throw02 "sounds/weapons/psiamp/sfx_psiamp_ice_throw_02.ogg"
+psiamp/ice/throw03 "sounds/weapons/psiamp/sfx_psiamp_ice_throw_03.ogg"
+$random psiamp/ice/impact { psiamp/ice/impact01 psiamp/ice/impact02 psiamp/ice/impact03 }
+psiamp/ice/impact01 "sounds/weapons/psiamp/sfx_psiamp_ice_impact_01.ogg"
+psiamp/ice/impact02 "sounds/weapons/psiamp/sfx_psiamp_ice_impact_02.ogg"
+psiamp/ice/impact03 "sounds/weapons/psiamp/sfx_psiamp_ice_impact_03.ogg"
+$random psiamp/shock/throw { psiamp/shock/throw01 psiamp/shock/throw02 psiamp/shock/throw03 }
+$volume psiamp/shock/throw 0.6
+psiamp/shock/throw01 "sounds/weapons/psiamp/sfx_psiamp_shock_throw_01.ogg"
+psiamp/shock/throw02 "sounds/weapons/psiamp/sfx_psiamp_shock_throw_02.ogg"
+psiamp/shock/throw03 "sounds/weapons/psiamp/sfx_psiamp_shock_throw_03.ogg"
+psiamp/burnout "sounds/weapons/psiamp/sfx_psiamp_burnout.ogg"
+psiamp/empty "sounds/weapons/psiamp/sfx_psiamp_empty.ogg"
+psiamp/pickup "sounds/weapons/psiamp/sfx_psiamp_pickup.ogg"
+
 // P50
 // SOUND CREDITS/SOURCES:
 // - Carlos Sanchez
