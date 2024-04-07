@@ -115,6 +115,20 @@ mauser/shoulder "sounds/weapons/mauser/sfx_mauser_shoulder.ogg"
 mauser/unshoulder "sounds/weapons/mauser/sfx_mauser_unshoulder.ogg"
 mauser/empty  "sounds/weapons/mauser/sfx_mauser_empty.ogg"
 
+// SMG39
+// SOUND CREDITS/SOURCES:
+// - Carlos Sanchez
+$random smg/fire { smg/fire01 smg/fire02 smg/fire03 smg/fire04 }
+smg/fire01 "sounds/weapons/smg/sfx_smg39_fire_01.ogg"
+smg/fire02 "sounds/weapons/smg/sfx_smg39_fire_02.ogg"
+smg/fire03 "sounds/weapons/smg/sfx_smg39_fire_03.ogg"
+smg/fire04 "sounds/weapons/smg/sfx_smg39_fire_04.ogg"
+smg/reload/out "sounds/weapons/smg/sfx_smg39_reload_out.ogg"
+$volume smg/reload/out 0.8
+smg/reload/in "sounds/weapons/smg/sfx_smg39_reload_in.ogg"
+smg/reload/cock "sounds/weapons/smg/sfx_smg39_reload_cock.ogg"
+smg/empty "sounds/weapons/smg/sfx_smg39_empty.ogg"
+
 // BLOC AN-41
 // SOUND CREDITS/SOURCES:
 // - Carlos Sanchez
