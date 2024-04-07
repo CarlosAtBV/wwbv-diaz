@@ -1,10 +1,10 @@
 @echo off
 color F
 
-set NAME=wwbv-diaz-dev
+set NAME=wwbv-wverse-dev
 set /p TYPE="Would you like to build a pk3 or pk7? (default pk3): " % = %
 
-cd DIAZ PK3
+cd WVERSE PK3
 
 if (%TYPE%) == (pk7) (goto PK7) else (goto PK3)
 
