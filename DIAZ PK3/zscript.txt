@@ -1,0 +1,27 @@
+version 4.2.4
+
+// This token is given after each melee attack and certain other animations.
+// When deselecting with this token in your inventory, switching to a weapon
+// in-between melee attacks will skip the melee deselect animation. Certain
+// weapons will also use a faster select animation.
+class ComboCooldown : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}
+
+// CHARACTERS
+#include "zscript/characters/char_diaz.zsc"
+#include "zscript/characters/char_hernandez.zsc"
+#include "zscript/characters/char_molinero.zsc"
+#include "zscript/characters/char_cortes.zsc"
+
+// WEAPONS
+#include "zscript/weapons/diaz/weapon_diaz_melee.zsc"
+
+// CORE
+#include "zscript/core/fx.zsc"
+#include "zscript/core/melee.zsc"
+#include "zscript/core/thinkers.zsc"

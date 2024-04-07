@@ -1,0 +1,23 @@
+Class Megamix_CortesPlayer : DoomPlayer
+{
+	Default
+	{
+		Health 75;
+		Player.MaxHealth 75;
+		Player.ForwardMove 1.3;
+		Player.SideMove 1.3;
+		Player.ViewHeight 46;
+		Player.AttackZOffset 14;
+		Player.StartItem "MeleeButtonActor", 1;
+		Player.StartItem "IsCortes", 1;	
+		Player.SoundClass "Diaz";
+		Player.DisplayName "Cortes";
+		Player.StartItem "P50Handgun";
+		Player.StartItem "Weapon_Diaz_Melee";
+		Player.WeaponSlot 1, "Weapon_Diaz_Melee", "PsiAmp";
+		Player.WeaponSlot 2, "P50Handgun", "Marteba";
+		Species "Player";
+		+THRUSPECIES
+		+PLAYERPAWN.NOTHRUSTWHENINVUL
+	}
+}

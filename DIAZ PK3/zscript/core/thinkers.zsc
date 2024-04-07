@@ -1,0 +1,62 @@
+Class Megamix_EnemyHandler_Freezer : Thinker
+{
+	int timeleft;
+	Vector3 oldPos;
+	int oldTics;
+	Actor owner;
+	bool wasHit;
+	
+	override void PostBeginPlay()
+	{
+		if(owner==null)
+		{
+			Destroy();
+			return;
+		}
+		
+		oldPos = owner.pos;
+		oldTics = owner.CurState.Tics;
+		owner.A_SetTics(-1);
+		
+		super.PostBeginPlay();
+	}
+	
+	override void Tick(void)
+	{
+		if(owner==null)
+		{
+			Destroy();
+			return;
+		}
+		
+		if(timeleft>0)
+		{
+			timeleft--;
+			owner.SetOrigin(oldPos,false);
+			if ( wasHit )
+			{
+				int shakeAngle = random(0,360);
+				owner.SpriteOffset = (cos(shakeAngle), sin(shakeAngle)) * 3;
+			}
+		}
+		else
+		{
+			if ( oldTics == -1 )
+			{
+				owner.A_SetTics(1);
+			}
+			else
+			{
+				owner.A_SetTics(oldTics);
+			}
+			
+			if ( wasHit )
+			{
+				owner.SpriteOffset = (0, 0);
+			}
+			Destroy();
+		}
+
+		Super.Tick();
+	}
+}

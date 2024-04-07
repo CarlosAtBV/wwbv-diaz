@@ -40,3 +40,80 @@
 #include "actors/DEC_MISC.txt" // Uncategorized
 #include "actors/othergames.txt" // Heretic/Strife item replacers
 
+///////////////////////////////////////////////////////
+
+Actor Boolean : Inventory
+{
+	Inventory.MaxAmount 1
+	+UNDROPPABLE
+	-INVBAR
+}
+
+//Melee Button Press
+Actor MeleePressed : Boolean {}
+Actor TauntPressed : Boolean {}
+Actor PlayingPickupSound : Boolean {}
+
+ACTOR IsDiaz : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+ACTOR IsHernandez : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+ACTOR IsMolinero : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+ACTOR IsCortes : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+// Weapon Select Memory was adapted from mkww-ah, by WildWeasel and Cardboard Marty
+// This makes things less clustered for the select state on weapons
+
+ACTOR WeaponSelectMemory : Inventory
+{
+	// Mel Weapons
+	// 310 = Trait
+	// 311 = Bare Knuckle
+	// 321 = 919M
+	Inventory.MaxAmount 999
+}
+
+Actor MeleeButtonActor : CustomInventory
+{
+	-INVBAR
+	+UNDROPPABLE
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	States
+	{
+	Use:
+		TNT1 A 0 A_JumpIfInventory("IsMel",1,"MelMeleeButton")
+		Fail
+	MelMeleeButton:
+		TNT1 A 0 A_JumpIfInventory("MeleeSelected",1,"MelMeleeSwitch")
+		TNT1 A 0 A_SelectWeapon("MelBareKnuckle")
+		Fail
+	MelChargeSwitch:
+		TNT1 A 0 A_SelectWeapon("MelChargeStyle")
+		Fail
+	MelMeleeSwitch:
+		TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",131,"MelSMGSwitch")
+		TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",121,"MelPistolSwitch")
+		Goto MelPistolSwitch
+	MelPistolSwitch:
+		TNT1 A 0 A_SelectWeapon("MelPistol")
+		TNT1 A 0 A_SelectWeapon("MelPistolA")
+		Fail
+	}
+}
+
+Actor MeleeSelected : Boolean {}
+

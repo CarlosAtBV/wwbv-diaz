@@ -1,0 +1,23 @@
+Class Megamix_MolineroPlayer : DoomPlayer
+{
+	Default
+	{
+		Health 125;
+		Player.MaxHealth 125;
+		Player.ForwardMove 0.8;
+		Player.SideMove 0.8;
+		Player.ViewHeight 49;
+		Player.AttackZOffset 17;
+		Player.StartItem "MeleeButtonActor", 1;
+		Player.StartItem "IsMolinero", 1;	
+		Player.SoundClass "Hernandez";
+		Player.DisplayName "Molinero";
+		Player.StartItem "P50Handgun";
+		Player.StartItem "Weapon_Diaz_Melee";
+		Player.WeaponSlot 1, "Weapon_Diaz_Melee", "PsiAmp";
+		Player.WeaponSlot 2, "P50Handgun", "Marteba";
+		Species "Player";
+		+THRUSPECIES
+		+PLAYERPAWN.NOTHRUSTWHENINVUL
+	}
+}

@@ -1,0 +1,210 @@
+//------------------------------------------------------------------------------
+// Taken and modified from The Space Pirate, code by DrPyspy
+//------------------------------------------------------------------------------
+
+Class Megamix_Weapon_Core : DoomWeapon
+{
+	const HITLAG_BASE = 2;//1;
+	const HITLAG_MULT = 0;//0.2;
+
+	int wv_curclip;
+	int wv_clipsize;
+	
+	Property ClipSize : wv_clipsize;
+	
+	Default
+	{
+		Megamix_Weapon_Core.ClipSize 16;
+	}
+	
+	bool canReload()
+	{
+		return ( owner.CountInv(ammo1.GetClass()) > 0 );
+	}
+	
+	/*
+	==========================================================================
+	A_Megamix_CheckReload
+		
+	Returns:
+		Nothing technically. It just jumps to the reload state.
+	==========================================================================
+	*/
+	
+	action state A_Megamix_CheckReload()
+	{
+		if ( invoker.wv_curclip < invoker.ammouse1 )
+		{
+			if ( invoker.canReload() )
+			{
+				return resolveState("Reload");
+			}
+		}
+		return resolveState(null);
+	}
+	
+	/*
+	==========================================================================
+	A_Megamix_ReloadAmmo
+		
+	Parameters:
+		amt (int)
+			Amount of ammo to reload when this action is called. Anything below 1 will reload as much as possible in one call, like when you're chuckin' a clip into the gun.
+	==========================================================================
+	*/
+	
+	action void A_Megamix_ReloadAmmo(int amt = 0)
+	{
+		bool chuckItIn = ( amt < 1 );
+		while ( ( chuckItIn || amt > 0 ) && invoker.wv_curclip < invoker.wv_clipsize && invoker.canReload() )
+		{
+			amt--;
+			invoker.wv_curclip++;
+			invoker.owner.TakeInventory(invoker.ammo1.GetClass(), 1);
+		}
+	}
+	
+	/*
+	==========================================================================
+	A_Megamix_Melee
+		
+	Parameters:
+		mDamage (int)
+			Damage dealt to foes
+		mRange (int)
+			Affective range of melee
+		mPuff (string)
+			Bullet puff to use when hitting a wall OR nobody is hit
+		mThrustHorz
+		mThrustVert
+		mThrustUp
+		mMaxAngle (int)
+			Enemies within this angle are hit
+		mMaxPitch (int)
+			does nothing atm LMAo fuck u!!!
+		flags (int)
+			yuh
+	==========================================================================
+	*/
+	
+		action void A_Megamix_Melee(int mDamage, int mRange = 72, string mPuff = "BasicMeleePuff", double mThrustHorz = 0, double mThrustVert = 0, double mThrustUp = 0, int mAngle = 45, int mPitch = 45, int flags = 0)
+		{
+			bool hasHit = false;
+			bool hasKilled = false;
+			bool hitStasis = false;
+			
+			int baseAddon = HITLAG_BASE*floor(mDamage/20);
+			int baseHitlag = (mDamage * 0.05 + 4);
+			BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(self,512,0);
+			
+			Actor mo;
+			Array<Actor > freezeUs;
+			Array<Actor > hitFreezeUs;
+			freezeUs.Clear();
+			hitFreezeUs.Clear();
+			
+			Class<Actor > bulletPuffToSpawn = mPuff;
+			string bulletPuffToSpawn_sound = GetDefaultByType(bulletPuffToSpawn).seeSound;
+			
+			while (MonsterFinder.Next())
+			{
+				mo = Actor(MonsterFinder.thing);
+				
+				if ( mo == invoker.owner ) continue;
+				
+				if ( (invoker.owner.Distance3D(mo)-mo.radius<mRange) && mo.Health>0
+				&& (mo.bShootable) && !mo.bNoDamage && CheckSight(mo)
+				&& abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle )
+				{
+					Vector3 spawnPos = mo.pos+(0,0,mo.Height/2);
+					Actor shine1 = Spawn("Megamix_HitSpark_Shine", spawnPos);
+					shine1.roll = random(0,360);
+					Actor shine2 = Spawn("Megamix_HitSpark_Shine", spawnPos);
+					shine2.roll = shine1.roll + random(80,100);
+					Actor wave = Spawn("Megamix_HitSpark_Wave", spawnPos);
+					
+					shine1.scale *= mDamage/20;
+					shine2.scale *= mDamage/20;
+					wave.scale *= mDamage/20;
+					
+					int damageamount = mDamage;
+					int myMaxHealth = mo.GetSpawnHealth();
+					double stuntime;
+					stuntime = baseHitlag;
+					
+					double fugSin = sin(angle);
+					double fugCos = cos(angle);
+					
+					if(!mo.bBoss)
+					{
+						mo.vel.X = mThrustVert * fugCos + mThrustHorz * fugSin;
+						mo.vel.Y = mThrustVert * fugSin - mThrustHorz * fugCos;
+						mo.vel.Z = mThrustUp;
+					}
+					
+					int funnyDamage = mo.DamageMobj(invoker.owner, invoker.owner, damageamount, 'Melee', DMG_THRUSTLESS);
+					//mo.A_Quake(2,4,0,750);
+					if(!mo.bNoPain&&mo.resolveState("Pain")!=null&&mo.Health>0)
+					{
+						mo.SetStateLabel("Pain");
+						mo.A_SetTics(stuntime); //keep an eye on this conflicting with the freeze code
+					}
+					if(!mo.bNoBlood)
+					{
+						for(int i = 0;i<3;i++)
+						{
+							Actor blood = mo.Spawn("Blood",mo.pos+(0,0,mo.Height/2));
+							blood.vel = (frandom(-2,2),frandom(-2,2),frandom(2,6));
+						}
+					}
+					mo.A_PlaySound(bulletPuffToSpawn_sound, CHAN_BODY);
+					
+					if ( mo.health <= 0 )
+					{
+						hasKilled = true;
+					}
+					
+					hashit = true;
+					hitFreezeUs.Push(mo);
+				}
+				else if ( mo.Health > 0 && ( mo.bShootable || mo.bMissile ) )
+				{
+					freezeUs.Push(mo);
+				}
+			}
+			
+			int baseHitlagFinal = baseHitlag;//( hasKilled ? baseHitlag + 3 : baseHitlag );
+			
+			if ( hashit )
+			{
+				A_SetTics(baseHitlag);
+				//(invoker.owner).pp_punchWarp = mDamage/10.0;
+				//Megamix_PlayerPawn_ZSCBase(invoker.owner).pp_hitFreeze = baseHitlagFinal;
+				//Megamix_PlayerPawn_ZSCBase(invoker.owner).pp_hitVel = invoker.owner.vel;
+			
+				for ( int i = 0; i < freezeUs.Size(); i++ )
+				{
+					Megamix_EnemyHandler_Freezer handlerFreezer = Megamix_EnemyHandler_Freezer(new("Megamix_EnemyHandler_Freezer"));
+					handlerFreezer.owner = freezeUs[i];
+					handlerFreezer.timeleft = baseHitlagFinal + 2;
+				}
+				for ( int i = 0; i < hitFreezeUs.Size(); i++ )
+				{
+					Megamix_EnemyHandler_Freezer handlerFreezer = Megamix_EnemyHandler_Freezer(new("Megamix_EnemyHandler_Freezer"));
+					handlerFreezer.owner = hitFreezeUs[i];
+					handlerFreezer.timeleft = baseHitlagFinal + 2;
+					handlerFreezer.wasHit = true;
+				}
+				
+			}
+			else
+			{
+				A_FireBullets(0,0,1,0,mPuff,0,mRange);
+			}
+			
+			if ( hasKilled )
+			{
+				invoker.owner.A_StartSound("misc/meleekill", CHAN_BODY, CHANF_OVERLAP);
+			}
+	}
+}

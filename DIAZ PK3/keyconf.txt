@@ -1,5 +1,12 @@
-defaultbind q +BV_Melee
-alias +BV_Melee "use StartMelee" //"give Melee"
-alias -BV_Melee "use StopMelee" //"give Melee"
+defaultbind q BV_Melee
+alias BV_Melee "give meleepressed; wait 5; take meleepressed"
+
+defaultbind f BV_Taunt
+alias BV_Taunt "give tauntpressed; wait 15; take tauntpressed"
 
 alias BV_MSwitch "use MeleeButtonActor" 
+
+addkeysection "Diaz Binds" "DiazEE"
+addmenukey "Taunt" "BV_Taunt"
+addmenukey "Melee" "BV_Melee"
+addmenukey "Quick Switch Melee" "BV_MSwitch"

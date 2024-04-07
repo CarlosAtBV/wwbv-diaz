@@ -1,6 +1,6 @@
 gameinfo
 {
-	playerclasses="DiazPlayer","HernandezPlayer"
+	playerclasses="Megamix_DiazPlayer","Megamix_HernandezPlayer", "Megamix_MolineroPlayer", "Megamix_CortesPlayer"
 }
 
 clearskills

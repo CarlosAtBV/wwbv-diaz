@@ -175,5 +175,3 @@ ACTOR PlayerStep
 		Stop
 	}
 }
-
-ACTOR IsHernandez : Inventory{}
