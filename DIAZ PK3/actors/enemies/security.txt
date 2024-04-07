@@ -17,6 +17,7 @@ ACTOR WeaselSMGZombie
 	ActiveSound "combine/idle"
 	Obituary "%o was pelted with tiny little bullets."
 	Decal BulletChip
+	Tag "Military Police"
 	States
 	{
 	Spawn:

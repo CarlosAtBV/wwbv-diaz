@@ -16,6 +16,7 @@ ACTOR WeaselSuperMecha replaces ArchVile
 	PainSound "mecha/pain"
 	DeathSound "mecha/death"
 	Obituary "%o was bashed against the wall by a rogue automaton."
+	Tag "Assault Mecha V9"
 	States
 	{
 	Spawn:

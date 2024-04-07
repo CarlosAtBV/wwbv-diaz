@@ -30,7 +30,7 @@ Megamix_Green
 }
 
 // YELLOW
-Megamix_Yellow
+Yellow
 {
 	#000000  #000000    0  1
 	#68431e  #68431e    2  150
@@ -135,7 +135,7 @@ MegamixBHGrad // OUTLINE
 }
 
 // MENU (OPTIONS)
-MegamixModGold // OUTLINE
+Gold // OUTLINE
 {
 	#000000  #000000    0  1
 	#7f5f28  #7f5f28    2  127

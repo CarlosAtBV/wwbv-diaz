@@ -14,6 +14,7 @@ ACTOR WeaselSlugCombine : Zombieman replaces Revenant
 	TRANSLATION 1
 	DropItem SlugRifle 64
 	DropItem ATAmmo 84
+	Tag "Slugthrower Trooper"
 	States
 	{
 	Spawn:

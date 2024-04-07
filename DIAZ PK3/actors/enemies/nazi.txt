@@ -14,6 +14,7 @@ ACTOR WeaselNaziRifleman
 	MissileHeight 32
 	DropItem SuperShotgun 96//MauserRifle 96
 	DropItem MauserAmmo 168
+	Tag "Nazi Rifleman"
 	States
 	{
 	Spawn:
@@ -112,6 +113,7 @@ ACTOR WeaselNaziRifleman
 
 ACTOR WeaselSpecialNazi : WeaselNaziRifleman replaces WolfensteinSS
 { // "Special" because he can't aim for shit anymore.
+	Tag "Nazi Rifleman (Alt)"
 	States
 	{
 	Missile:

@@ -11,6 +11,7 @@ ACTOR WeaselJudgmentZombie : WeaselPistolZombie
 	DropItem JudgmentPistol 64
 	Decal BulletChip
 	Speed 9
+	Tag "Military Police S.W.A.T."
 	States
 	{
 	Spawn:

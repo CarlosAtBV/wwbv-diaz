@@ -16,6 +16,7 @@ ACTOR FlameZombie replaces Spectre
 	DeathSound "russian/death"
 	Obituary "%o feels the burn."
 	Decal Scorch
+	Tag "\"Pest Control\" Technician"
 	States
 	{
 	Spawn:

@@ -15,6 +15,7 @@ actor WeaselPistolZombie
 	activesound "combine/idle"
 	dropitem Clip 128//P50Ammo 128
 	DropItem P50Handgun 64
+	Tag "Possessed Civilian"
 	MONSTER
 	+FLOORCLIP
 	states

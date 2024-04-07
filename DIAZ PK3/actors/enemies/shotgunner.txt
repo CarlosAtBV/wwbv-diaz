@@ -12,6 +12,7 @@ ACTOR WeaselShotgunner : ShotgunGuy
 	DropItem Shotgun 96//MiniShotgun 96
 	DropItem ExtraShotgunAmmo 96
 	Decal BulletChip
+	Tag "Security Response Team"
 	States
 	{
 	Spawn:

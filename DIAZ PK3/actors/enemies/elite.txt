@@ -14,6 +14,7 @@ ACTOR WeaselMagnumer : ShotgunGuy
 	Decal BulletChip
 	+FASTER
 	Speed 10
+	Tag "SRT Elite Unit"
 	States
 	{
 	Spawn:

@@ -12,6 +12,7 @@ ACTOR WeaselPsiTestSubject
 	//dropitem PsiEnergyDropped 128
 	dropitem BlurSphere 42//PsiAmp 42
 	Scale 1.15
+	Tag "Unstable Test Subject"
 	MONSTER
 	+FLOORCLIP
 	+QUICKTORETALIATE

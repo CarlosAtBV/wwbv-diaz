@@ -15,6 +15,7 @@ ACTOR WeaselChaingunner
 	painchance 170
 	MONSTER
 	+FLOORCLIP
+	Tag "Red Berets"
 	States
 	{
 	Spawn:
