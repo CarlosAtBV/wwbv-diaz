@@ -17,26 +17,10 @@
 #include "weapons/grenade.txt"
 #include "weapons/lancer.txt"
 #include "actors/DEC_PRJC.txt" // Projectiles
-#include "actors/enemies/mecha.txt"
-#include "actors/enemies/cultist.txt"
-#include "actors/enemies/subject.txt"
-#include "actors/enemies/civilian.txt"
-#include "actors/enemies/swat.txt"
-#include "actors/enemies/security.txt"
-#include "actors/enemies/elite.txt"
-#include "actors/enemies/shotgunner.txt"
-#include "actors/enemies/imp.txt"
-#include "actors/enemies/flamer.txt"
-#include "actors/enemies/nazi.txt"
-#include "actors/enemies/assault.txt"
-#include "actors/enemies/slugger.txt"
-#include "actors/enemies/otherfixes.txt"
+
 #include "actors/barrels.txt"
 #include "actors/DEC_SFXS.txt" // Special Effects and Puffs
 #include "actors/DEC_MELEE.txt" // Melee Stuff (Enhanced Edition)
-#include "actors/nashgore/gibs.txt" // Gibs from Nashgore
-#include "actors/nashgore/blood.txt" // Blood from Nashgore
-#include "actors/nashgore/crushed.txt" // Dead bodies from Nashgore
 #include "actors/DEC_MISC.txt" // Uncategorized
 #include "actors/othergames.txt" // Heretic/Strife item replacers
 

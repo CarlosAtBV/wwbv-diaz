@@ -108,29 +108,3 @@ ACTOR ShellBoxAmmoSpawner replaces ShellBox
 		Stop
 	}
 }
-
-ACTOR ChaingunGuySpawner : RandomSpawner replaces ChaingunGuy
-{
-	DropItem WeaselChaingunner
-	DropItem WeaselNaziRifleman
-}
-
-ACTOR ShotgunGuySpawner : RandomSpawner replaces ShotgunGuy
-{
-	DropItem WeaselShotgunner
-	DropItem WeaselMagnumer
-}
-
-ACTOR PistolGuySpawner : RandomSpawner replaces ZombieMan
-{
-	DropItem WeaselPistolZombie
-	DropItem WeaselSMGZombie
-	DropItem WeaselJudgmentZombie
-}
-
-ACTOR ImpSpawner : RandomSpawner replaces DoomImp
-{
-	DropItem NewDiazImp,255,80
-	DropItem WeaselPsiTestSubject,255,48
-	DropItem WeaselCultist,255,128
-}
