@@ -1,0 +1,28 @@
+// Menu Cursor, apparently can't be animated but hey...!
+texture WVCURS01
+    pic WVCURS01 tics 60
+    pic WVCURS02 tics 2
+    pic WVCURS03 tics 2
+    pic WVCURS04 tics 10
+    pic WVCURS03 tics 2
+	pic WVCURS02 tics 2
+
+
+// Menu Selector
+texture WVSELA01
+    pic WVSELA01 tics 60
+    pic WVSELA02 tics 2
+    pic WVSELA03 tics 2
+    pic WVSELA04 tics 10
+    pic WVSELA03 tics 2
+	pic WVSELA02 tics 2
+	
+// Character Select Overlay
+texture MENUCHA0
+    pic MENUCHA0 tics 60
+    pic MENUCHA1 tics 2
+    pic MENUCHA2 tics 2
+    pic MENUCHA3 tics 10
+    pic MENUCHA2 tics 2
+	pic MENUCHA1 tics 2
+

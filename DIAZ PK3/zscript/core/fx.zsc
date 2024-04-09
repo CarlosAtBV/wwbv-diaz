@@ -1,4 +1,4 @@
-Class Megamix_HitSpark_Shine : Actor
+Class DiazEE_HitSpark_Shine : Actor
 {
 	Default
 	{
@@ -26,7 +26,7 @@ Class Megamix_HitSpark_Shine : Actor
 	}
 }
 
-Class Megamix_HitSpark_Wave : Actor
+Class DiazEE_HitSpark_Wave : Actor
 {
 	Default
 	{

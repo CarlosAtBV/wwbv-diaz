@@ -1,0 +1,26 @@
+[enu default]
+
+DIAZEEMNU_MENU_STARTGAME = "\c[Megamix_Green]New Game";
+DIAZEEMNU_MENU_OPTIONS = "\c[Megamix_Yellow]Options";
+DIAZEEMNU_MENU_CODEX = "\c[Megamix_Blue]Codex";
+DIAZEEMNU_MENU_LOAD = "\c[DIAZEELoadGreen]Load Game";
+DIAZEEMNU_MENU_SAVE = "\c[DIAZEELoadGreen]Save Game";
+DIAZEEMNU_MENU_QUIT = "\c[Megamix_Red]Shut Down";
+
+DIAZEEMNU_MNU_MODIFIERS = "\c[DIAZEEModGold]Modifiers";
+DIAZEEMNU_MNU_MODIFIERS_SUB = "Tweak gameplay options and parameters.";
+DIAZEEMNU_MNU_CONFIG = "\c[DIAZEEOrange]Config";
+DIAZEEMNU_MNU_CONFIG_SUB = "Configure key bindings.";
+DIAZEEMNU_MNU_VIDEO = "\c[DIAZEEVideoBlue]Video";
+DIAZEEMNU_MNU_VIDEO_SUB = "Adjust video options and set screen resolution.";
+DIAZEEMNU_MNU_VIDEO_HEAD = "\c[DIAZEEVideoBlue]VIDEO SETTINGS";
+DIAZEEMNU_MNU_AUDIO = "\c[DIAZEEAudioGreen]Audio";
+DIAZEEMNU_MNU_AUDIO_SUB = "Adjust audio settings.";
+DIAZEEMNU_MNU_AUDIO_HEAD = "\c[DIAZEEAudioGreen]AUDIO SETTINGS";
+DIAZEEMNU_MNU_OTHERMODOPTIONS = "\c[DIAZEEOtherModsPurple]Other Mod Options";
+DIAZEEMNU_MNU_GZDOOMMENU = "\c[DIAZEEGZDoomOptionsGray]GZDOOM Options";
+
+// DIFFICULTY SETTINGS
+MNU_CHOOSESKILL		= "\c[Megamix_Yellow]DIFFICULTY SELECT";
+
+// CHARACTER SELECT

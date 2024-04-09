@@ -1,4 +1,4 @@
-Class Megamix_DiazPlayer : DoomPlayer
+Class DiazEE_DiazPlayer : DoomPlayer
 {
 	Default
 	{

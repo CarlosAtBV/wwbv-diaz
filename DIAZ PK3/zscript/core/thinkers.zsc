@@ -1,4 +1,4 @@
-Class Megamix_EnemyHandler_Freezer : Thinker
+Class DiazEE_EnemyHandler_Freezer : Thinker
 {
 	int timeleft;
 	Vector3 oldPos;

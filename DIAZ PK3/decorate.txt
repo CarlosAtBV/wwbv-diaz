@@ -36,6 +36,7 @@ Actor Boolean : Inventory
 //Melee Button Press
 Actor MeleePressed : Boolean {}
 Actor TauntPressed : Boolean {}
+Actor ThrowablePressed : Boolean {}
 Actor PlayingPickupSound : Boolean {}
 
 ACTOR IsDiaz : Inventory

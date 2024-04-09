@@ -1,10 +1,16 @@
 gameinfo
 {
-	playerclasses="Megamix_DiazPlayer","Megamix_HernandezPlayer", "Megamix_MolineroPlayer", "Megamix_CortesPlayer"
+	ForceTextInMenus = true
+	PlayerClasses="DiazEE_DiazPlayer","DiazEE_HernandezPlayer", "DiazEE_MolineroPlayer", "DiazEE_CortesPlayer"
+	
+	CursorPic = "WVCURS01"
+	MenuBackButton = "MENUBACK"
+	
+	NoMergePickupMsg = true
 }
 
 clearskills
-skill MegamixCasual
+skill DiazEECasual
 {
 	PlayerClassName = "Hernandez", "Mostly Harmless"
 	PlayerClassName = "Diaz", "Kung Fu Panda"
@@ -12,7 +18,7 @@ skill MegamixCasual
 	PlayerClassName = "Cortes", "Enjoy the Silence"
 	PlayerClassName = "Random", "Nerf Dart"
 		Name = "Casual"
-		TextColor = Megamix_Blue
+		TextColor = DiazEE_Blue
 		SpawnFilter = Baby
 		ACSReturn = 0
 		Key = "1"
@@ -21,7 +27,7 @@ skill MegamixCasual
 		MonsterHealth = 0.5
 }
 
-skill MegamixNormal
+skill DiazEENormal
 {
 	PlayerClassName = "Hernandez", "Snow Crash"
 	PlayerClassName = "Diaz", "One Armed Boxer"
@@ -29,14 +35,14 @@ skill MegamixNormal
 	PlayerClassName = "Cortes", "Presence of the Lord"
 	PlayerClassName = "Random", "9mm Parabellum"
 		Name = "Normal"
-		TextColor = Megamix_Green
+		TextColor = DiazEE_Green
 		DefaultSkill
 		SpawnFilter = Normal
 		ACSReturn = 1
 		Key = "2"
 }
 
-skill MegamixHard
+skill DiazEEHard
 {
 	PlayerClassName = "Hernandez", "Neuromancer"
 	PlayerClassName = "Diaz", "Fist of Fury"
@@ -44,13 +50,13 @@ skill MegamixHard
 	PlayerClassName = "Cortes", "Don't Fear The Reaper"
 	PlayerClassName = "Random", ".50 BMG"
 		Name = "Hard"
-		TextColor = Megamix_HardOrange
+		TextColor = DiazEE_HardOrange
 		SpawnFilter = Hard
 		ACSReturn = 2
 		Key = "3"
 }
 
-skill MegamixExtreme
+skill DiazEEExtreme
 {
 	PlayerClassName = "Hernandez", "Blade Runner"
 	PlayerClassName = "Diaz", "The Big Boss"
@@ -58,7 +64,7 @@ skill MegamixExtreme
 	PlayerClassName = "Cortes", "Sympathy for the Devil"
 	PlayerClassName = "Random", "Cruise Missile"
 		Name = "Extreme"
-		TextColor = Megamix_Red
+		TextColor = DiazEE_Red
 		SpawnFilter = Hard
 		ACSReturn = 3
 		Key = "4"
@@ -67,10 +73,10 @@ skill MegamixExtreme
 		MonsterHealth =  1.5
 }
 
-skill MegamixUltimate
+skill DiazEEUltimate
 {
 		Name = "Game of Death" //All classes have the same ultimate skill name
-		TextColor = Megamix_UltimatePurple
+		TextColor = DiazEE_UltimatePurple
 		SpawnFilter = Hard
 		ACSReturn = 4
 		Key = "5"

@@ -2,7 +2,7 @@
 // Taken and modified from The Space Pirate, code by DrPyspy
 //------------------------------------------------------------------------------
 
-Class Megamix_Weapon_Core : DoomWeapon
+Class DiazEE_Weapon_Core : DoomWeapon
 {
 	const HITLAG_BASE = 2;//1;
 	const HITLAG_MULT = 0;//0.2;
@@ -14,7 +14,7 @@ Class Megamix_Weapon_Core : DoomWeapon
 	
 	Default
 	{
-		Megamix_Weapon_Core.ClipSize 16;
+		DiazEE_Weapon_Core.ClipSize 16;
 	}
 	
 	bool canReload()
@@ -24,14 +24,14 @@ Class Megamix_Weapon_Core : DoomWeapon
 	
 	/*
 	==========================================================================
-	A_Megamix_CheckReload
+	A_DiazEE_CheckReload
 		
 	Returns:
 		Nothing technically. It just jumps to the reload state.
 	==========================================================================
 	*/
 	
-	action state A_Megamix_CheckReload()
+	action state A_DiazEE_CheckReload()
 	{
 		if ( invoker.wv_curclip < invoker.ammouse1 )
 		{
@@ -45,7 +45,7 @@ Class Megamix_Weapon_Core : DoomWeapon
 	
 	/*
 	==========================================================================
-	A_Megamix_ReloadAmmo
+	A_DiazEE_ReloadAmmo
 		
 	Parameters:
 		amt (int)
@@ -53,7 +53,7 @@ Class Megamix_Weapon_Core : DoomWeapon
 	==========================================================================
 	*/
 	
-	action void A_Megamix_ReloadAmmo(int amt = 0)
+	action void A_DiazEE_ReloadAmmo(int amt = 0)
 	{
 		bool chuckItIn = ( amt < 1 );
 		while ( ( chuckItIn || amt > 0 ) && invoker.wv_curclip < invoker.wv_clipsize && invoker.canReload() )
@@ -66,7 +66,7 @@ Class Megamix_Weapon_Core : DoomWeapon
 	
 	/*
 	==========================================================================
-	A_Megamix_Melee
+	A_DiazEE_Melee
 		
 	Parameters:
 		mDamage (int)
@@ -87,7 +87,7 @@ Class Megamix_Weapon_Core : DoomWeapon
 	==========================================================================
 	*/
 	
-		action void A_Megamix_Melee(int mDamage, int mRange = 72, string mPuff = "BasicMeleePuff", double mThrustHorz = 0, double mThrustVert = 0, double mThrustUp = 0, int mAngle = 45, int mPitch = 45, int flags = 0)
+		action void A_DiazEE_Melee(int mDamage, int mRange = 72, string mPuff = "BasicMeleePuff", double mThrustHorz = 0, double mThrustVert = 0, double mThrustUp = 0, int mAngle = 45, int mPitch = 45, int flags = 0)
 		{
 			bool hasHit = false;
 			bool hasKilled = false;
@@ -117,11 +117,11 @@ Class Megamix_Weapon_Core : DoomWeapon
 				&& abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle )
 				{
 					Vector3 spawnPos = mo.pos+(0,0,mo.Height/2);
-					Actor shine1 = Spawn("Megamix_HitSpark_Shine", spawnPos);
+					Actor shine1 = Spawn("DiazEE_HitSpark_Shine", spawnPos);
 					shine1.roll = random(0,360);
-					Actor shine2 = Spawn("Megamix_HitSpark_Shine", spawnPos);
+					Actor shine2 = Spawn("DiazEE_HitSpark_Shine", spawnPos);
 					shine2.roll = shine1.roll + random(80,100);
-					Actor wave = Spawn("Megamix_HitSpark_Wave", spawnPos);
+					Actor wave = Spawn("DiazEE_HitSpark_Wave", spawnPos);
 					
 					shine1.scale *= mDamage/20;
 					shine2.scale *= mDamage/20;
@@ -179,18 +179,18 @@ Class Megamix_Weapon_Core : DoomWeapon
 			{
 				A_SetTics(baseHitlag);
 				//(invoker.owner).pp_punchWarp = mDamage/10.0;
-				//Megamix_PlayerPawn_ZSCBase(invoker.owner).pp_hitFreeze = baseHitlagFinal;
-				//Megamix_PlayerPawn_ZSCBase(invoker.owner).pp_hitVel = invoker.owner.vel;
+				//DiazEE_PlayerPawn_ZSCBase(invoker.owner).pp_hitFreeze = baseHitlagFinal;
+				//DiazEE_PlayerPawn_ZSCBase(invoker.owner).pp_hitVel = invoker.owner.vel;
 			
 				for ( int i = 0; i < freezeUs.Size(); i++ )
 				{
-					Megamix_EnemyHandler_Freezer handlerFreezer = Megamix_EnemyHandler_Freezer(new("Megamix_EnemyHandler_Freezer"));
+					DiazEE_EnemyHandler_Freezer handlerFreezer = DiazEE_EnemyHandler_Freezer(new("DiazEE_EnemyHandler_Freezer"));
 					handlerFreezer.owner = freezeUs[i];
 					handlerFreezer.timeleft = baseHitlagFinal + 2;
 				}
 				for ( int i = 0; i < hitFreezeUs.Size(); i++ )
 				{
-					Megamix_EnemyHandler_Freezer handlerFreezer = Megamix_EnemyHandler_Freezer(new("Megamix_EnemyHandler_Freezer"));
+					DiazEE_EnemyHandler_Freezer handlerFreezer = DiazEE_EnemyHandler_Freezer(new("DiazEE_EnemyHandler_Freezer"));
 					handlerFreezer.owner = hitFreezeUs[i];
 					handlerFreezer.timeleft = baseHitlagFinal + 2;
 					handlerFreezer.wasHit = true;

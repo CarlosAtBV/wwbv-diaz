@@ -1,9 +1,10 @@
-Class Megamix_MolineroPlayer : DoomPlayer
+Class DiazEE_MolineroPlayer : DoomPlayer
 {
 	Default
 	{
 		Health 125;
 		Player.MaxHealth 125;
+		Player.MugShotMaxHealth 125;
 		Player.ForwardMove 0.8;
 		Player.SideMove 0.8;
 		Player.ViewHeight 49;
