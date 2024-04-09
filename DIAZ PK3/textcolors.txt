@@ -29,8 +29,16 @@ DiazEE_Green
 	#3aa000  #58f000	151  256
 }
 
+
+DiazEE_Teal
+{
+	#000000  #000000    0  1
+	#055738  #055738    2  127
+	#0f9662  #16c17f  128  256
+}
+
 // YELLOW
-Yellow
+DiazEE_Yellow
 {
 	#000000  #000000    0  1
 	#68431e  #68431e    2  150
@@ -112,12 +120,6 @@ DiazEEMenuGreen // OUTLINE
 	#205563  #34c597  128  255
 }
 
-DiazEELoadGreen // OUTLINE
-{
-	#000000  #000000    0  1
-	#1e3925  #1e3925    2  127
-	#21402c  #b2c495  128  256
-}
 
 //MENU (GAME MODES)
 DiazEEStandardGrad // OUTLINE
