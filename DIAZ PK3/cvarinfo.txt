@@ -1,1 +1,4 @@
 user bool autoreload = true;
+server noarchive bool diazee_fistsstart = false;
+server noarchive bool diazee_meleesupreme = false;
+server noarchive bool diazee_magpool = false;

@@ -1,0 +1,302 @@
+DEFAULTLISTMENU
+{
+	Size 320, 240
+	
+	Font "BigUpper", DiazEE_Yellow, DiazEE_BrightYellow
+	Selector "WVSELA01", -12, -6
+	Linespacing 27
+	
+	Class "DiazEE_ListMenu"
+}
+
+LISTMENU "MainMenuTextOnly"
+{
+	Position 25, 32
+	
+	Linespacing 27
+	// [Py] new arguments dictate padding
+	DiazEE_ListBackground -1, 24, "MENUBAR1", 26, 8
+	
+	AnimatedTransition
+		
+		Font "BigUpper", "DIAZEE_Green", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "New Game", "MENU01", "n", "PlayerclassMenu"
+		Font "BigUpper", "DIAZEE_Yellow", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Options", "MENU02", "o", "DiazEE_Options"
+		Font "BigUpper", "DIAZEE_Blue", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Library", "MENU03", "h", "ReadThisMenu"
+		Font "BigUpper", "DIAZEE_Teal", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Load", "MENU04", "l", "LoadGameMenu"
+		Font "BigUpper", "DIAZEE_Teal", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Save", "MENU05", "s", "SaveGameMenu"
+		Font "BigUpper", "DIAZEE_Red", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Shut Down", "MENU06", "q", "QuitMenu"
+
+	//StaticPatch  15, 191,	"MENUBARV"
+	//Font "TinyFont"
+	//StaticText 28, 197, "$VERSION"
+}
+
+LISTMENU "PlayerClassMenu"
+{
+	NetgameMessage "$NEWGAME"
+	PlayerDisplay 150, 25, "20 00 00", "80 00 40"
+	//StaticPatch  -1, 24,	"MENUBAR3"
+	
+	StaticPatch  150, 144,	"MENUCHA0"
+	DiazEE_ListBackground -1, 24, "MENUBAR3", 26, 8
+	
+	Linespacing 27
+	
+	DiazEE_SetBelowAsTextCombos
+		//StaticPatch  25,  45,	"SKILL01"
+		StaticPatch 25, 45, "DIAZSUB"
+		StaticPatch 25, 81, "HERNSUB"
+		StaticPatch 25, 117, "MELCSUB"
+		StaticPatch 25, 153, "RANDSUB"
+		StaticPatch 25, 189, "RANDSUB"
+		
+		Font "BigUpper", "DIAZEE_Red", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Shut Down", "MENU06", "q", "QuitMenu"
+		
+	AnimatedTransition
+}
+
+/*
+ListMenu "EpisodeMenu"
+{
+	NetgameMessage "$NEWGAME"
+	Font "BigUpper", "DiazEE_Yellow"
+	Position 25, 32
+	Linespacing 27
+	AnimatedTransition
+}
+*/
+
+LISTMENU "SkillMenu"
+{
+	ForceList
+	Selector "WVSELA01", -12, -3
+	
+	DiazEE_ListBackground -1, 24, "MENUBAR2", 26, 8
+	
+	Position 25, 64
+	Linespacing 36
+	
+	DiazEE_SetBelowAsTextCombos
+		StaticPatch  25,  45,	"SKILL01"
+		StaticPatch  25,  81, 	"SKILL02"
+		StaticPatch  25,  117, 	"SKILL03"
+		StaticPatch  25,  153, 	"SKILL04"
+		StaticPatch  25,  189,	"SKILL05"
+	
+	AnimatedTransition
+}
+
+LISTMENU "DiazEE_Options"
+{
+	Position 25, 32
+	Linespacing 27
+	// [Py] new arguments dictate padding
+	DiazEE_ListBackground -1, 24, "MENUBAR4", 26, 8
+	
+		Font "BigUpper", "DIAZEE_Yellow", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Configuration", "MENU01", "n", "PlayerclassMenu"
+		Font "BigUpper", "DIAZEE_Green", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Modifiers", "MENU01", "n", "PlayerclassMenu"
+		Font "BigUpper", "DIAZEE_Yellow", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Visual", "MENU02", "o", "DiazEE_Options"
+		Font "BigUpper", "DIAZEE_Blue", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Audio", "MENU03", "h", "ReadThisMenu"
+		Font "BigUpper", "DIAZEE_Teal", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Other Mod Options", "MENU04", "l", "LoadGameMenu"
+		Font "BigUpper", "DIAZEE_Teal", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "GZDoom Options Menu", "MENU05", "s", "SaveGameMenu"
+	
+	AnimatedTransition
+}
+
+//=============
+// Config Menu
+//=============
+OptionMenu "DiazEE_ConfigMenu"
+{
+    Title "$CONFIGHEADER"
+	
+	StaticText "Bindings and Controls", 1
+    Submenu "Customize Controls",                   "TSP_AbridgedControls"
+    Submenu "Mouse Options",                        "MouseOptions"
+    Submenu "Controller Options",                     "JoystickOptions"
+    Submenu "Character Setup",                      "TSPPlayerMenu"
+}
+
+//==================
+// Video Menu
+//==================
+OptionMenu "TSP_VideoMenu"
+{
+    Title "$TSPMNU_MNU_VIDEO_HEAD"
+	StaticText "Adjust video settings"
+	StaticText ""
+	ScaleSlider "$HUDMNU_UISCALE",					"uiscale", 0.0, 8.0, 1.0, "$SCALEMNU_ADAPT"
+	Submenu "Hud Options",							"HUDOptions"
+	Submenu "Display Options",                      "VideoOptions"
+    Submenu "Set Video Mode",                       "VideoModeMenu"
+	SubMenu "Font Debug Menu",						"TSP_DebugFontMenu"
+}
+
+//==================
+//TSP CUSTOM OPTIONS
+//==================
+OptionMenu "TSP_Modifiers"
+{
+    Title "$TSPMENU2"
+	
+	SubMenu "Enemies Menu (WIP)",						"TSP_EnemiesMenu"
+    //StaticText      ""
+    StaticText      "$TSPGAMEPLAY1"
+	//StaticText      "$TSPGAMEPLAY2"
+	Option "$GMPLYMNU_ALLOWJUMP",				"sv_jump", "JumpCrouchFreeLook"
+	Option "$GMPLYMNU_ALLOWCROUCH",				"sv_crouch", "JumpCrouchFreeLook"
+	Option "$GMPLYMNU_ALLOWFREELOOK",			"sv_freelook", "JumpCrouchFreeLook"
+	Option "Auto-Assist",						"tsp_easyauto", "TSPEasyAutoOnOff"
+	//Option "Action! Mode",        "tsp_actionmode", "OnOff"
+    //StaticText      ""
+	StaticText "$TSPMELHUDMOD1"
+	Option "$TSPMNU_MELMUGOVERRIDE", "tsp_melhudmod", "TSPMelHudMod" // MEL HUD FACE MODIFIER
+    //StaticText      ""
+	Option "$TSPMNU_MELEESTART",          	"tsp_fistsstart", "OnOff"
+	Option "Melee Supreme!",                 	"tsp_meleesupreme", "TSPMeleeSupremeOnOff", "tsp_fistsstart"
+    //StaticText      ""
+    StaticText      "$TSPCHEATS1"
+	//StaticText      "$TSPCHEATS2"
+	Option "Start with Golden Pistol",        	"tsp_goldenpistol", "OnOff"
+	//Option "WOG Beam Infinite Mode",         	"tsp_beaminf", "OnOff"
+	Option "Kano Transformations",           	"tsp_supersecret", "OnOff"
+}
+
+OptionValue TSPEasyAutoOnOff
+{
+	0, "$OPTVAL_OFF"
+	1, "$TSPEASYAUTO_ON"
+}
+
+OptionValue TSPMeleeSupremeOnOff
+{
+	0, "$OPTVAL_OFF"
+	1, "$TSPMELEESUPREME_ON"
+}
+    
+//==================
+//Other Mod Options!
+//==================
+
+OptionMenu "OtherModOptions"
+{
+	Title "$TSPMNU_MNU_OTHERMODOPTIONS"
+	StaticText "Options for other compatible mods"
+	StaticText ""
+	SubMenu "Champions Options", "mk_ChampionMenu"
+	SubMenu "Colourful Hell Options",		"Colourful Hell"
+	Submenu "DamNums Options",				"DamNumsOptions"
+	SubMenu "LegenDoomLite Options",		"LegenDoomLite"
+	SubMenu "Legion of Bones Options",		"Legion of Bones"
+	Submenu "No Ultra-Violence Options", 	"Monster Deaths"
+	SubMenu "Rampancy Options",				"Rampancy"
+	Submenu "Shades of Doom Settings",		"CyanMenu"
+	Submenu "WVerse Options",				"WVerse Options"
+	//SubMenu "Bratwurst Options", "BratwurstSettings"
+
+}
+
+//=======================
+//Customize Controls Menu
+//=======================
+OptionMenu "TSP_AbridgedControls"
+{
+	Title "$CUSTOMERCONTROLS1"
+	ScrollTop 2
+	StaticTextSwitchable 	"$CONFIGCONTROLS1", "$CONFIGCONTROLS2", "ControlMessage"
+	StaticText 	""
+	StaticText "$MOVEMENTCONTROL"
+	Control 	"Move forward",			"+forward"
+	Control 	"Move backward",		"+back"
+	Control 	"Strafe left",			"+moveleft"
+	Control 	"Strafe right",			"+moveright"
+	Control 	"Use / Open",			"+use"
+	Control 	"Jump",				"+jump"
+	Control 	"Run",					"+speed"
+	Control 	"Crouch",			"+crouch"
+	Control 	"Crouch Toggle",		"crouch"
+    StaticText  ""	
+	StaticText "$WEAPON1CONTROL"
+	StaticText "$WEAPON2CONTROL"
+	Control 	"Fire",				"+attack"
+	Control 	"Altfire",			"+altattack"
+	Control 	"Reload",			"+reload"
+	Control 	"Melee",    "BV_Melee"
+	Control 	"Character Trait",    "+USER1"
+	Control		"Switch Weapon Mod",	"BV_SwitchMod"
+	Control     "Quick Switch Melee",  "BV_MSwitch"
+	Control		"Taunt",            "BV_Taunt"
+	Control     "Open Shop Menu",	"BV_OpenShop"
+	StaticText 	""
+	StaticText 	"$WEAPONSCONTROL"
+	Control 	"Next weapon",			"weapnext"
+	Control 	"Previous weapon",		"weapprev"
+	StaticText 	""
+	Control		"Weapon Slot 1",		"slot 1"
+	Control		"Weapon Slot 2",		"slot 2"
+	Control		"Weapon Slot 3",		"slot 3"
+	Control		"Weapon Slot 4",		"slot 4"
+	Control		"Weapon Slot 5",		"slot 5"
+	Control		"Weapon Slot 6",		"slot 6"
+	Control		"Weapon Slot 7",		"slot 7"
+	Control		"Weapon Slot 8",		"slot 8"
+	Control		"Weapon Slot 9",		"slot 9"
+	Control		"Weapon Slot 0",		"slot 0"
+	StaticText 	""
+	StaticText 	"$INVENTORYCONTROL"
+	Control 	"Activate item",		"invuse"
+	Control 	"Activate all items",	"invuseall"
+	Control 	"Next item",			"invnext"
+	Control 	"Previous item",		"invprev"
+	Control 	"Drop item",			"invdrop"
+	Control     "Drop weapon",          "weapdrop"
+	StaticText 	""
+	StaticText 	"$CHATCONTROL"
+	Control 	"Say",					"messagemode"
+	Control 	"Team say",				"messagemode2"
+	StaticText 	""
+	StaticText 	"$MISCELLANEOUSCONTROL"
+	Control 	"Toggle automap",		"togglemap"
+	Control 	"Chasecam",				"chase"
+	Control 	"Coop spy",				"spynext"
+	Control 	"Screenshot",			"screenshot"
+	Control  	"Open console",			"toggleconsole"
+	StaticText 	""
+	StaticText 	"$OTHERMOVEMENTCONTROL"
+	Control 	"Turn left",			"+left"
+	Control 	"Turn right",			"+right"
+	Control 	"Swim up",				"+moveup"
+	Control 	"Swim down",			"+movedown"
+	Control 	"Stop flying",			"land"
+	Control 	"Mouse look",			"+mlook"
+	Control 	"Keyboard look",		"+klook"
+	Control 	"Look up",				"+lookup"
+	Control 	"Look down",			"+lookdown"
+	Control 	"Center view",			"centerview"
+	Control 	"Strafe",				"+strafe"
+	Control 	"Show Scoreboard",		"+showscores"
+}
+
+//==================
+//DIAZ CUSTOM OPTIONS
+//==================
+OptionMenu "DiazOptions"
+{
+    Title "AGENT DIAZ OPTIONS"
+    StaticText      ""
+    StaticText      "Gameplay Modifiers", 2
+	Option "Auto-Reload","autoreload","OnOff"
+}
