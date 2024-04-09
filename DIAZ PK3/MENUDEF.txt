@@ -1,37 +1,36 @@
 DEFAULTLISTMENU
 {
+	Size 320, 240
+	
 	Font "BigUpper", DiazEE_Yellow, DiazEE_BrightYellow
 	Selector "WVSELA01", -12, -6
 	Linespacing 27
+	
+	Class "DiazEE_ListMenu"
 }
 
 LISTMENU "MainMenuTextOnly"
 {
-	Size Clean
 	Position 25, 32
+	
 	Linespacing 27
-	//StaticPatch  12, 24,	"MENUBAR1"
-	StaticPatch  -1, 24,	"MENUBAR1"
+	// [Py] new arguments dictate padding
+	DiazEE_ListBackground -1, 24, "MENUBAR1", 26, 8
+	
 	AnimatedTransition
 		
 		Font "BigUpper", "DIAZEE_Green", "DiazEE_BrightYellow"
-		TextItem "New Game",	"n",	"PlayerclassMenu"
-		StaticPatch  25,  45,	"MENU01"
+		DiazEE_TextImageCombo "New Game", "MENU01", "n", "PlayerclassMenu"
 		Font "BigUpper", "DIAZEE_Yellow", "DiazEE_BrightYellow"
-		TextItem "Options",		"o",	"OptionsMenu"
-		StaticPatch  25,  72, 	"MENU02"
+		DiazEE_TextImageCombo "Options", "MENU02", "o", "OptionsMenu"
 		Font "BigUpper", "DIAZEE_Blue", "DiazEE_BrightYellow"
-		TextItem "Library",		"h",	"ReadThisMenu"
-		StaticPatch  25,  98, 	"MENU03"
+		DiazEE_TextImageCombo "Library", "MENU03", "h", "ReadThisMenu"
 		Font "BigUpper", "DIAZEE_Teal", "DiazEE_BrightYellow"
-		TextItem "Load",		"l",	"LoadGameMenu"
-		StaticPatch  25,  126, 	"MENU04"
+		DiazEE_TextImageCombo "Load", "MENU04", "l", "LoadGameMenu"
 		Font "BigUpper", "DIAZEE_Teal", "DiazEE_BrightYellow"
-		TextItem "Save",		"s",	"SaveGameMenu"
-		StaticPatch  25,  153,	"MENU05"
+		DiazEE_TextImageCombo "Save", "MENU05", "s", "SaveGameMenu"
 		Font "BigUpper", "DIAZEE_Red", "DiazEE_BrightYellow"
-		TextItem "Shut Down",		"q",	"QuitMenu"
-		StaticPatch  25,  180,	"MENU06"
+		DiazEE_TextImageCombo "Shut Down", "MENU06", "q", "QuitMenu"
 
 	//StaticPatch  15, 191,	"MENUBARV"
 	//Font "TinyFont"
@@ -40,20 +39,23 @@ LISTMENU "MainMenuTextOnly"
 
 ListMenu "PlayerClassMenu"
 {
-	Size Clean
 	NetgameMessage "$NEWGAME"
 	Selector "WVSELA01", -12, -3
 	//PlayerDisplay 150, 25, "20 00 00", "80 00 40"
-	StaticPatch  -1, 24,	"MENUBAR3"
+	//StaticPatch  -1, 24,	"MENUBAR3"
+	
 	StaticPatch  150, 144,	"MENUCHA0"
-	Position 25, 28
+	DiazEE_ListBackground -1, 24, "MENUBAR3", 26, 8
+	
 	Linespacing 36
 	
-		StaticPatch  25,  45,	"SKILL01"
-		StaticPatch  25,  81, 	"SKILL02"
-		StaticPatch  25,  117, 	"SKILL03"
-		StaticPatch  25,  153, 	"SKILL04"
-		StaticPatch  25,  189,	"SKILL05"
+	DiazEE_SetBelowAsTextCombos
+		//StaticPatch  25,  45,	"SKILL01"
+		StaticPatch 25, 45, "DIAZSUB"
+		StaticPatch 25, 81, "HERNSUB"
+		StaticPatch 25, 117, "MELCSUB"
+		StaticPatch 25, 153, "RANDSUB"
+		StaticPatch 25, 189, "RANDSUB"
 		
 	AnimatedTransition
 }
@@ -61,7 +63,6 @@ ListMenu "PlayerClassMenu"
 /*
 ListMenu "EpisodeMenu"
 {
-	Size Clean
 	NetgameMessage "$NEWGAME"
 	Font "BigUpper", "DiazEE_Yellow"
 	Position 25, 32
@@ -73,21 +74,24 @@ ListMenu "EpisodeMenu"
 ListMenu "SkillMenu"
 {
 	ForceList
-	Size Clean
 	Selector "WVSELA01", -12, -3
 	//StaticText 54, 13, "$MNU_CHOOSESKILL"
 	//Font "TinyFont"
 	//StaticText 54, 24, "THIS IS WHERE YOU CHOOSE A SKILL DUMMY!"	
 	//StaticPatch  -1, 38,	"MENUBAR2"
+	
+	DiazEE_ListBackground -1, 24, "MENUBAR2", 26, 8
+	
 	Position 25, 64
 	Linespacing 36
-	/*
+	
+	DiazEE_SetBelowAsTextCombos
 		StaticPatch  25,  45,	"SKILL01"
 		StaticPatch  25,  81, 	"SKILL02"
 		StaticPatch  25,  117, 	"SKILL03"
 		StaticPatch  25,  153, 	"SKILL04"
 		StaticPatch  25,  189,	"SKILL05"
-	*/
+	
 	AnimatedTransition
 }
 

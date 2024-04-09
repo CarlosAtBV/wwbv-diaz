@@ -25,3 +25,4 @@ Default
 #include "zscript/core/fx.zsc"
 #include "zscript/core/melee.zsc"
 #include "zscript/core/thinkers.zsc"
+#include "zscript/diazee/menus.zsc"

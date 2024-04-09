@@ -1,0 +1,148 @@
+Class DiazEE_ListMenu : ListMenu
+{
+	ListMenuItemDiazEE_ListBackground listAnchor;
+	
+	Array<int> yOffs;
+	
+	/*virtual void ModifyItems (desc)
+	{
+	}*/
+	
+	override void Init (Menu parent, ListMenuDescriptor desc)
+	{
+		super.Init(parent, desc);
+		
+		yOffs.Clear();
+		
+		//ModifyItems(desc);
+		
+		ListMenuItem lastActive;
+		int x = 0;
+		int y = 0;
+		
+		for ( int i = 0; i < mDesc.mItems.Size(); i++ )
+		{
+			let item = mDesc.mItems[i];
+			if ( item is "ListMenuItemDiazEE_ListBackground" )
+			{
+				listAnchor = ListMenuItemDiazEE_ListBackground(item);
+				x = listAnchor.GetX()+listAnchor.xOffset;
+				y = listAnchor.GetY()+listAnchor.yOffset;
+				continue;
+			}
+			
+			if ( !listAnchor ) continue;
+			
+			if ( item is "ListMenuItemTextItem" )
+			{
+				Console.Printf(""..ListMenuItemTextItem(item).mText);
+				if ( lastActive ) y += desc.mLinespacing;
+				lastActive = item;
+				item.SetX(x);
+				item.SetY(y);
+				//yOff = ListMenuItemTextItem(item).mFont.GetHeight();
+				yOffs.Push(y+ListMenuItemTextItem(item).mFont.GetHeight());
+				continue;
+			}
+			
+			//item.SetY(y+yOff);
+		}
+			
+		if ( !listAnchor ) return; // [Py] don't continue if we ain't that type of menu...
+		
+		int getY;
+		bool doTextCombos;
+		
+		for ( int i = 0; i < mDesc.mItems.Size(); i++ )
+		{
+			let item = mDesc.mItems[i];
+			
+			if ( item is "ListMenuItemDiazEE_SetBelowAsTextCombos" )
+			{
+				doTextCombos = true;
+				continue;
+			}
+			
+			if ( !doTextCombos ) continue;
+			
+			Console.Printf("ALIGN ME");
+			
+			if ( item is "ListMenuItemStaticPatch" )
+			{
+				item.SetX(x);
+				item.SetY(yOffs[getY]);
+				getY++;
+			}
+			
+			//item.SetY(y+yOff);
+		}
+	}
+}
+
+/*Class DiazEE_SkillMenu : ListMenu
+{
+	override void ModifyItems (desc)
+	{
+		for ( int i = 0; i < mDesc.mItems.Size(); i++ )
+		{
+			let item = mDesc.mItems[i];
+			
+			if ( item is "ListMenuItemTextItem" )
+			{
+				let newItem = new("ListMenuItemDiazEE_TextImageCombo");
+				newItem.mXpos = item.GetX();
+				newItem.mYpos = item.GetY();
+				newItem.mText = item.mText;
+				newItem.tex = item.tex;
+			}
+		}
+	}
+}*/
+
+Class ListMenuItemDiazEE_SetBelowAsTextCombos : ListMenuItem
+{
+	void Init(ListMenuDescriptor desc)
+	{
+		Super.Init();
+	}
+	
+	override void Draw (bool selected, ListMenuDescriptor desc)
+	{
+	}
+}
+
+Class ListMenuItemDiazEE_ListBackground : ListMenuItem
+{
+	TextureID tex;
+	int xOffset, yOffset;
+	
+	void Init(ListMenuDescriptor desc, double x, double y, TextureID patch, int xOff = 0, int yOff = 0)
+	{
+		Super.Init(x, y);
+		tex = patch;
+		xOffset = xOff;
+		yOffset = yOff;
+	}
+	
+	override void Draw (bool selected, ListMenuDescriptor desc)
+	{
+		DrawTexture(desc, tex, mXpos, mYpos, false);
+	}
+}
+
+Class ListMenuItemDiazEE_TextImageCombo : ListMenuItemTextItem
+{
+	TextureID tex;
+	
+	void Init (ListMenuDescriptor desc, String text, TextureID tex, String hotkey, Name child, int param = 0)
+	{
+		Super.Init(desc, text, hotkey, child, param);
+		self.tex = tex;
+	}
+	
+	override void Draw (bool selected, ListMenuDescriptor desc)
+	{
+		super.Draw(selected, desc);
+		DrawTexture(desc, tex, mXpos, mYpos + mFont.GetHeight(), false);
+	}
+}
