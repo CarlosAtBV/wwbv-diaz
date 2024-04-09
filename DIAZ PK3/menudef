@@ -22,7 +22,7 @@ LISTMENU "MainMenuTextOnly"
 		Font "BigUpper", "DIAZEE_Green", "DiazEE_BrightYellow"
 		DiazEE_TextImageCombo "New Game", "MENU01", "n", "PlayerclassMenu"
 		Font "BigUpper", "DIAZEE_Yellow", "DiazEE_BrightYellow"
-		DiazEE_TextImageCombo "Options", "MENU02", "o", "OptionsMenu"
+		DiazEE_TextImageCombo "Options", "MENU02", "o", "DiazEE_Options"
 		Font "BigUpper", "DIAZEE_Blue", "DiazEE_BrightYellow"
 		DiazEE_TextImageCombo "Library", "MENU03", "h", "ReadThisMenu"
 		Font "BigUpper", "DIAZEE_Teal", "DiazEE_BrightYellow"
@@ -37,11 +37,11 @@ LISTMENU "MainMenuTextOnly"
 	//StaticText 28, 197, "$VERSION"
 }
 
-ListMenu "PlayerClassMenu"
+LISTMENU "PlayerClassMenu"
 {
 	NetgameMessage "$NEWGAME"
 	Selector "WVSELA01", -12, -3
-	//PlayerDisplay 150, 25, "20 00 00", "80 00 40"
+	PlayerDisplay 150, 25, "20 00 00", "80 00 40"
 	//StaticPatch  -1, 24,	"MENUBAR3"
 	
 	StaticPatch  150, 144,	"MENUCHA0"
@@ -71,14 +71,10 @@ ListMenu "EpisodeMenu"
 }
 */
 
-ListMenu "SkillMenu"
+LISTMENU "SkillMenu"
 {
 	ForceList
 	Selector "WVSELA01", -12, -3
-	//StaticText 54, 13, "$MNU_CHOOSESKILL"
-	//Font "TinyFont"
-	//StaticText 54, 24, "THIS IS WHERE YOU CHOOSE A SKILL DUMMY!"	
-	//StaticPatch  -1, 38,	"MENUBAR2"
 	
 	DiazEE_ListBackground -1, 24, "MENUBAR2", 26, 8
 	
@@ -91,6 +87,29 @@ ListMenu "SkillMenu"
 		StaticPatch  25,  117, 	"SKILL03"
 		StaticPatch  25,  153, 	"SKILL04"
 		StaticPatch  25,  189,	"SKILL05"
+	
+	AnimatedTransition
+}
+
+LISTMENU "DiazEE_Options"
+{
+	Selector "WVSELA01", -12, -3
+
+	DiazEE_ListBackground -1, 24, "MENUBAR4", 26, 8
+	
+	Position 25, 64
+	Linespacing 36
+	
+		Font "BigUpper", "DIAZEE_Green", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "New Game", "MENU01", "n", "PlayerclassMenu"
+		Font "BigUpper", "DIAZEE_Yellow", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Options", "MENU02", "o", "DiazEE_Options"
+		Font "BigUpper", "DIAZEE_Blue", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Library", "MENU03", "h", "ReadThisMenu"
+		Font "BigUpper", "DIAZEE_Teal", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Load", "MENU04", "l", "LoadGameMenu"
+		Font "BigUpper", "DIAZEE_Teal", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Save", "MENU05", "s", "SaveGameMenu"
 	
 	AnimatedTransition
 }

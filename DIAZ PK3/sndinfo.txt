@@ -1,14 +1,41 @@
-njmt dsempty
+// MENU
+menu/activate "sounds/general/menu/ui_menu_activate.ogg" // ESM_Holographic_SlideTransition_Robotic_Technology_Hi_Tech_Game_Tone_Science_UFO_Space_Processed_Menu from "Hybrid Game Sounds"
+//menu/advance "sounds/general/menu/ui_menu_advance.ogg" // ff_ukh_synth_one_shot_bobcat_Fmin from "UK House"
+menu/backup "sounds/general/menu/ui_menu_backup.ogg" // KASTLE_synth_stab_01_C from "Kastle's Garage and 2-Step Pack"
+menu/prompt "sounds/general/menu/ui_menu_prompt.ogg" // AU_LFS_chord_one_shot_brass_Dm9 from "Lush Future Soul 5"
+menu/change "sounds/general/menu/ui_menu_change.ogg"  // ad4_typewriter_04_r02 from "Antidrum 4"
+menu/choose "sounds/general/menu/ui_menu_choose.ogg"  // RDTH_Synth_Hit_03_Fm9 from "Raw Deep Tech House"
+menu/cursor "sounds/general/menu/ui_menu_cursor.ogg" // gh_chst_clone_B from "Garage House"
+menu/clear "sounds/general/menu/ui_menu_clear.ogg" // ad4_typewriter_23_r11 from "Antidrum 4"
+menu/invalid "sounds/general/menu/ui_menu_invalid.ogg" // PMVM_Cm_Chord_27 from "Vorm - Techno"
 
-menu/backup menupick
-menu/prompt menuprmp
-menu/cursor menuhigh
-menu/change menuhigh
-menu/choose menupick
-menu/invalid menuinvl
-menu/activate menupick
-menu/dismiss menupick
-menu/clear menuinvl
+menu/quit1 "sounds/general/menu/ui_menu_quit.ogg" // AndrewHuang_fx_one_shot_stab_analog_memory_moog_shut_down from "Space Slime"
+menu/quit2 "sounds/general/menu/ui_menu_quit.ogg" // AndrewHuang_fx_one_shot_stab_analog_memory_moog_shut_down from "Space Slime"
+
+// INTERMISSION
+intermission/tick "sounds/general/menu/ui_intermission_tick.ogg" // TA_USC_TECH_STAB_WOODY_C from "Ultimate Stabs and Chords"
+$alias                intermission/cooptotal        menu/cursor
+$alias                intermission/nextstage        menu/cursor
+$alias                intermission/paststats        menu/cursor
+$alias                intermission/pastcoopstats    menu/cursor
+$alias                intermission/pastdmstats      menu/cursor
+
+misc/meleekill "sounds/weapon fx/meleekill.ogg"
+
+// GENERAL
+$random general/land { general/land01 general/land02 general/land03 general/land04 general/land05 }
+general/land01 "sounds/general/player/sfx_general_land01.ogg" 
+general/land02 "sounds/general/player/sfx_general_land02.ogg" 
+general/land03 "sounds/general/player/sfx_general_land03.ogg" 
+general/land04 "sounds/general/player/sfx_general_land04.ogg" 
+general/land05 "sounds/general/player/sfx_general_land05.ogg"
+
+$random general/landb { general/landb01 general/landb02 general/landb03 general/landb04 general/landb05 }
+general/landb01 "sounds/general/player/sfx_general_landb01.ogg" 
+general/landb02 "sounds/general/player/sfx_general_landb02.ogg" 
+general/landb03 "sounds/general/player/sfx_general_landb03.ogg" 
+general/landb04 "sounds/general/player/sfx_general_landb04.ogg" 
+general/landb05 "sounds/general/player/sfx_general_landb05.ogg" 
 
 $playeralias	diaz	male	*crazydeath	diaz/deathhi
 $playeralias	diaz	male	*wimpydeath	diaz/deathlo
@@ -19,7 +46,7 @@ $playersound	diaz	male	*pain100	diazp25
 $playersound	diaz	male	*pain75		diazp50
 $playersound	diaz	male	*pain50		diazp75
 $playersound	diaz	male	*pain25		diazp100
-$playersound   	diaz	male	*land       diazland
+$playersound   	diaz	male	*land       general/land
 $playersound	diaz	male	*grunt		diazoof
 $playersound	diaz	male	*usefail	dsnoway
 $playersound	diaz	male	*jump		diazjump
@@ -67,7 +94,7 @@ $playersound	hernandez	male	*pain100	hp100
 $playersound	hernandez	male	*pain75		hp75
 $playersound	hernandez	male	*pain50		hp50
 $playersound	hernandez	male	*pain25		hp25
-$playersound	hernandez	male	*land       hland
+$playersound	hernandez	male	*land       general/landb
 $playersound	hernandez	male	*grunt		hoof
 $playersound	hernandez	male	*usefail	dsnoway
 $playersound	hernandez	male	*jump		hjump

@@ -22,7 +22,7 @@ Class DiazEE_DiazPlayer : DoomPlayer
 		Player.SoundClass "Diaz";
 		Player.DisplayName "Diaz";
 		//Player.Face "MC1";
-		//Player.Portrait "DIAZPORT";
+		Player.Portrait "DIAZPORT";
 		Player.WeaponSlot 1, "Weapon_Diaz_Melee", "PsiAmp";
 		Player.WeaponSlot 2, "P50Handgun", "Marteba";
 		Player.WeaponSlot 3, "MauserRifle" , "MiniShotgun";
