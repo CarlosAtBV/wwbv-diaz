@@ -48,12 +48,12 @@ Class DiazEE_ListMenu : ListMenu
 		for ( int i = 0; i < resorted.Size(); i++ )
 		{
 			mDesc.mItems.Push(resorted[i]);
-			COnsole.Printf(""..resorted[i].GetClassName());
+			//COnsole.Printf(""..resorted[i].GetClassName());
 		}
 		for ( int i = 0; i < forceToTop.Size(); i++ )
 		{
 			mDesc.mItems.Push(forceToTop[i]);
-			COnsole.Printf(""..resorted[i].GetClassName());
+			//COnsole.Printf(""..resorted[i].GetClassName());
 		}
 		
 		for ( int i = 0; i < mDesc.mItems.Size(); i++ )
@@ -101,8 +101,6 @@ Class DiazEE_ListMenu : ListMenu
 			
 			if ( !doTextCombos ) continue;
 			
-			Console.Printf("ALIGN ME");
-			
 			if ( item is "ListMenuItemStaticPatch" )
 			{
 				item.SetX(x);
@@ -118,13 +116,18 @@ Class DiazEE_ListMenu : ListMenu
 			if ( item is "ListMenuItemDiazEE_SetDefaultSelection" )
 			{
 				int iter = 0;
-				for ( int i = 0; i < mDesc.mItems.Size(); i++ )
+				int toSelect = ListMenuItemDiazEE_SetDefaultSelection(item).toSelect;
+				for ( int g = 0; g < mDesc.mItems.Size(); g++ )
 				{
+					let item = mDesc.mItems[g];
+					
+					//Console.Printf("%i equal to %i is %i", iter, toSelect, (iter == toSelect));
 					if ( item is "ListMenuItemSelectable" )
 					{
-						if ( iter == ListMenuItemDiazEE_SetDefaultSelection(item).toSelect )
+						if ( (iter == toSelect) )
 						{
-							mDesc.mSelectedItem = i;
+							//Console.Printf("YOOOOO");
+							mDesc.mSelectedItem = g;
 							return;
 						}
 						iter++;
