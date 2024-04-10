@@ -9,6 +9,8 @@ gameinfo
 	CursorPic = "WVCURS01"
 	MenuBackButton = "MENUBACK"
 	
+	AddQuitMessages = "$QUITMSG15", "$QUITMSG16", "$QUITMSG17", "$QUITMSG18", "$QUITMSG19", "$QUITMSG20", "$QUITMSG21", "$QUITMSG22", "$QUITMSG23", "$QUITMSG24", "$QUITMSG25", "$QUITMSG26", "$QUITMSG27", "$QUITMSG28"
+	
 	NoMergePickupMsg = true
 }
 
