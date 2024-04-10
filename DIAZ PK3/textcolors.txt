@@ -6,12 +6,6 @@ DiazEE_Purple
 	#43176b  #8834d8  151  256
 }
 
-DiazEE_UltimatePurple
-{
-	#000000  #000000    0  1
-	#4c0d67  #4c0d67    2  150
-	#8200b8  #b200fc  151  256
-}
 
 // BLUE
 DiazEE_Blue
@@ -19,6 +13,13 @@ DiazEE_Blue
 	#000000  #000000	0  1
 	#001b38  #001b38	2  150
 	#004ca0  #0072f0	151  256
+}
+
+DiazEE_LightBlue
+{
+	#000000  #000000	0  1
+	#00456b  #00456b	2  150
+	#006590  #01b5f7	151  256
 }
 
 // GREEN
@@ -29,6 +30,12 @@ DiazEE_Green
 	#3aa000  #58f000	151  256
 }
 
+DiazEE_LimeGreen
+{
+	#000000  #000000	0  1
+	#47670d  #47670d	2  150
+	#6a8d0a  #c1f700	151  256
+}
 
 DiazEE_Teal
 {
@@ -144,14 +151,14 @@ Gold // OUTLINE
 	#9e8538  #f9f5b3  128  256
 }
 
-DiazEEVideoBlue // OUTLINE
+DiazEE_VideoBlue // OUTLINE
 {
 	#000000  #000000    0  1
 	#257fa9  #257fa9   2  127
 	#3289b0  #aae3ef 128  256
 }
 
-DiazEEAudioGreen // OUTLINE
+DiazEE_AudioGreen // OUTLINE
 {
 	#000000  #000000    0  1
 	#1a3d21  #1a3d21    2  127
@@ -181,7 +188,7 @@ DiazEEModGold // OUTLINE
 }
 
 
-DiazEEGray // OUTLINE
+DiazEE_Gray // OUTLINE
 {
 	#000000  #000000    0  1    // BLACK OUTLINE
 	#5a5a5a  #5a5a5a    2  127  // DARKEST PART OF THE GRADIENT

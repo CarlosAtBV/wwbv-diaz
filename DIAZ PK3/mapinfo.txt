@@ -1,5 +1,8 @@
 gameinfo
 {
+	dimcolor = "#221410"
+	dimamount = "0.8"
+	bluramount = "0.8"
 	ForceTextInMenus = true
 	PlayerClasses="DiazEE_DiazPlayer","DiazEE_HernandezPlayer", "DiazEE_MolineroPlayer", "DiazEE_CortesPlayer"
 	

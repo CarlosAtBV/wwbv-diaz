@@ -1,5 +1,5 @@
 // MENU
-menu/activate "sounds/general/menu/ui_menu_activate.ogg" // ESM_Holographic_SlideTransition_Robotic_Technology_Hi_Tech_Game_Tone_Science_UFO_Space_Processed_Menu from "Hybrid Game Sounds"
+menu/activate "sounds/general/menu/ui_menu_activate.ogg" // ESM_Holographic_SlideTransition_Robotic_Technology_Hi_Tech_Game_Tone_Science_UFO_Space_Processed_Menu from "Hybrid Game Sounds" + MO_FN_synth_fm_glacialwhip_textural_C from "Field Notes, a Holly Waxwing moment"
 //menu/advance "sounds/general/menu/ui_menu_advance.ogg" // ff_ukh_synth_one_shot_bobcat_Fmin from "UK House"
 menu/backup "sounds/general/menu/ui_menu_backup.ogg" // KASTLE_synth_stab_01_C from "Kastle's Garage and 2-Step Pack"
 menu/prompt "sounds/general/menu/ui_menu_prompt.ogg" // AU_LFS_chord_one_shot_brass_Dm9 from "Lush Future Soul 5"
@@ -9,8 +9,8 @@ menu/cursor "sounds/general/menu/ui_menu_cursor.ogg" // gh_chst_clone_B from "Ga
 menu/clear "sounds/general/menu/ui_menu_clear.ogg" // ad4_typewriter_23_r11 from "Antidrum 4"
 menu/invalid "sounds/general/menu/ui_menu_invalid.ogg" // PMVM_Cm_Chord_27 from "Vorm - Techno"
 
-menu/quit1 "sounds/general/menu/ui_menu_quit.ogg" // AndrewHuang_fx_one_shot_stab_analog_memory_moog_shut_down from "Space Slime"
-menu/quit2 "sounds/general/menu/ui_menu_quit.ogg" // AndrewHuang_fx_one_shot_stab_analog_memory_moog_shut_down from "Space Slime"
+menu/quit1 "sounds/general/menu/ui_menu_quit.ogg" // DBM_BTX_164_Chord_Swell_Oneshot_Catchin_Gmin from "BLXST OFF"
+menu/quit2 "sounds/general/menu/ui_menu_quit.ogg" // DBM_BTX_164_Chord_Swell_Oneshot_Catchin_Gmin from "BLXST OFF"
 
 // INTERMISSION
 intermission/tick "sounds/general/menu/ui_intermission_tick.ogg" // TA_USC_TECH_STAB_WOODY_C from "Ultimate Stabs and Chords"

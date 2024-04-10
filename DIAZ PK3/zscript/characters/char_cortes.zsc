@@ -15,6 +15,7 @@ Class DiazEE_CortesPlayer : DoomPlayer
 		Player.DisplayName "Cortes";
 		Player.StartItem "P50Handgun";
 		Player.StartItem "Weapon_Diaz_Melee";
+		Player.Portrait "DIAZPORT";
 		Player.WeaponSlot 1, "Weapon_Diaz_Melee", "PsiAmp";
 		Player.WeaponSlot 2, "P50Handgun", "Marteba";
 		Species "Player";
