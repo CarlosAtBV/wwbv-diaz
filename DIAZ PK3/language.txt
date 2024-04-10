@@ -3,38 +3,38 @@
 QUITMSG = "It's over. It's all over.";
 
 // QuitDoom1 messages
-QUITMSG1 = "I can't stop now.\nI must keep moving forward!";
-QUITMSG2 = "There is every reason to continue.";
-QUITMSG3 = "I didn't become a special agent\nthrough acts of cowardice!";
-QUITMSG4 = "I'm not abandoning this mission.";
-QUITMSG5 = "the director won't be happy.";
-QUITMSG6 = "I've got to keep moving...if\nnot for Hernandez's sake, then...";
+QUITMSG1 = "I can't stop now.\n\c[Yellow]I must keep moving forward\c-!";
+QUITMSG2 = "There is \c[Red]every reason\c- to continue.";
+QUITMSG3 = "I didn't become a special agent\nthrough \c[Red]acts of cowardice\c-!";
+QUITMSG4 = "I'm not \c[Red]abandoning\c- this mission.";
+QUITMSG5 = "the \c[Purple]director\c- won't be happy.";
+QUITMSG6 = "I've got to keep moving...\nif not for \c[DiazEE_LightBlue]Hernandez\c-'\c[DiazEE_LightBlue]s\c- sake, then...";
 QUITMSG7 = "fine then! get out of my way!";
 
 // QuitDOOM II messages
 QUITMSG8 = "Oh no you don't.";
-QUITMSG9 = "The future of mankind\nwill be put in jeopardy.";
-QUITMSG10 = "no! don't stop now, you fool!";
-QUITMSG11 = "oh, is there some other crisis\nyou need to deal with?";
+QUITMSG9 = "The future of mankind\nwill be put in \c[Red]jeopardy\c-.";
+QUITMSG10 = "no! don't stop now, \c[Red]you fool\c-!";
+QUITMSG11 = "oh, is there some other \c[Yellow]crisis\c-\nyou need to deal with?";
 QUITMSG12 = "i hate you.";
-QUITMSG13 = "if you're gonna go, then\njust go already.";
-QUITMSG14 = "i'm not speaking to you again.\never.";
+QUITMSG13 = "if you're gonna go, then\n\c[Red]just go already\c-.";
+QUITMSG14 = "i'm not speaking to you again.\n\c[Red]ever\c-.";
 
 // Messages from Agent Hernandez
-QUITMSG15 = "Abandoning the mission will\ncompromise your status within RCPA.";
-QUITMSG16 = "The RCPA will disavow all knowledge\nof your involvement.";
+QUITMSG15 = "Abandoning the mission will\ncompromise your status within \c[Green]R\c-.\c[Green]C\c-.\c[Green]P\c-.\c[Green]A\c-.";
+QUITMSG16 = "The \c[Green]R\c-.\c[Green]C\c-.\c[Green]P\c-.\c[Green]A\c-. will disavow all knowledge\nof your involvement.";
 QUITMSG17 = "This is in violation of several\ninternational treaties.";
-QUITMSG18 = "Article 15, section D, paragraph 2:\nDefecting agents are placed\non the RCPA's ''Person of Interest'' list.";
-QUITMSG19 = "Fission mailed.";
+QUITMSG18 = "\c[Green]Article 15\c-, \c[Yellow]section D\c-, \c[Orange]paragraph 2\c-:\nDefecting agents are placed\non the \c[Green]R\c-.\c[Green]C\c-.\c[Green]P\c-.\c[Green]A\c-.'s \"\c[Red]Person of Interest\c-\" list.";
+QUITMSG19 = "\c[Red]F\c[Orange]i\c[Blue]ss\c[Green]i\c[Cyan]o\c[Purple]n \c[LightBlue]m\c[DarkGray]ai\c[Red]l\c[Brown]e\c[OliveGreen]d\c[Brick].";
 QUITMSG20 = "Agents are required to stay on-site\nuntil their assignment is completed.";
-QUITMSG21 = "Truancy will result in a\ndemerit point being added to your\npermanent record.";
-QUITMSG22 = "Abandonment of an agent's post\nmay result in termination.";
-QUITMSG23 = "Internal Affairs would like\nto have a word with you, Agent.";
-QUITMSG24 = "Agents are prohibited from\ncommitting acts of\nself-termination.";
-QUITMSG25 = "If you proceed,\nthe RCPA may be forced to take\ndisciplinary action.";
-QUITMSG26 = "Agent: Diaz\nStatus: Liquidated\nNotes: Agent failed to prevent\nextra-planar invasion.";
-QUITMSG27 = "Agent: Hernandez\nStatus: Placed on P.O.I. List\nNotes: Agent apparently gone\nrogue; bring in for questioning.";
-QUITMSG28 = "Agent: Diaz\nStatus: M.I.A.\nNotes: Last contact on Deimos,\n1500 hrs, area codenamed\n''Tower of Babel.''";
+QUITMSG21 = "Truancy will result in a\ndemerit point being added to your\n\c[Red]permanent record\c-.";
+QUITMSG22 = "Abandonment of an agent's post\nmay result in \c[Red]termination\c-.";
+QUITMSG23 = "\c[Yellow]Internal Affairs\- would like\nto have a word with you, Agent.";
+QUITMSG24 = "Agents are prohibited from\ncommitting acts of\n\c[Red]self-termination\c-.";
+QUITMSG25 = "If you proceed,\nthe \c[Green]R\c-.\c[Green]C\c-.\c[Green]P\c-.\c[Green]A\c-. may be forced to take\n\c[Red]disciplinary action\c-.";
+QUITMSG26 = "Agent: \c[Orange]Diaz\c-\nStatus: \c[Red]Liquidated\c-\n\c[DarkGray]Notes\c-: Agent failed to prevent\nextra-planar invasion.";
+QUITMSG27 = "Agent: \c[DiazEE_LightBlue]Hernandez\c-\nStatus: \c[Red]Placed on P.O.I. List\c-\n\c[DarkGray]Notes\c-: Agent apparently gone\nrogue; bring in for questioning.";
+QUITMSG28 = "Agent: \c[Orange]Diaz\c-\nStatus: \c[Red]M.I.A.\c-\n\c[DarkGray]Notes\c-: Last contact on Deimos,\n1500 hrs, area codenamed\n\"\c[Red]Tower of Babel\c-.\"";
 
 DOSY = "\cc[\c-\cuPress the\c- \cdY\c- \cuKey to exit\c-\cc]\c-";
 TXT_YES = "\cc[\c-\cdYes\c-\cc]\c-";
