@@ -1,3 +1,16 @@
+/*
+	NEW MENU ELEMENTS:
+	
+	DiazEE_ListBackground <x>, <y>, <graphic>, <padding_x>, <padding_y>
+		Inserts a graphic that proceeding elements will latch onto. Cannot be disabled at the moment.
+	
+	DiazEE_ToggleForceToEnd
+		Toggles whether or not proceeding elements are forced to the end of the element list.
+	
+	DiazEE_SetDefaultSelection <index>
+		Sets the default selection for a menu. Goes off of selectable elements, and does not include static elements.
+*/
+
 DEFAULTLISTMENU
 {
 	Size 320, 240
