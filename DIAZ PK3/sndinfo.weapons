@@ -45,6 +45,8 @@ $random uppercutmelee/contact { uppercutmelee/contact1 uppercutmelee/contact2 }
 uppercutmelee/contact1 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_contact01.ogg"
 uppercutmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_contact02.ogg"
 
+misc/meleekill "sounds/weapon fx/meleekill.ogg"
+
 // PSI-AMP
 // SOUND CREDITS/SOURCES:
 // - Carlos Sanchez
