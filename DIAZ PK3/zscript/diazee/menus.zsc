@@ -109,8 +109,28 @@ Class DiazEE_ListMenu : ListMenu
 				item.SetY(yOffs[getY]);
 				getY++;
 			}
+		}
+		
+		for ( int i = 0; i < mDesc.mItems.Size(); i++ )
+		{
+			let item = mDesc.mItems[i];
 			
-			//item.SetY(y+yOff);
+			if ( item is "ListMenuItemDiazEE_SetDefaultSelection" )
+			{
+				int iter = 0;
+				for ( int i = 0; i < mDesc.mItems.Size(); i++ )
+				{
+					if ( item is "ListMenuItemSelectable" )
+					{
+						if ( iter == ListMenuItemDiazEE_SetDefaultSelection(item).toSelect )
+						{
+							mDesc.mSelectedItem = i;
+							return;
+						}
+						iter++;
+					}
+				}
+			}
 		}
 	}
 }
@@ -152,6 +172,21 @@ Class ListMenuItemDiazEE_ToggleForceToEnd : ListMenuItem
 	void Init(ListMenuDescriptor desc)
 	{
 		Super.Init();
+	}
+	
+	override void Draw (bool selected, ListMenuDescriptor desc)
+	{
+	}
+}
+
+Class ListMenuItemDiazEE_SetDefaultSelection : ListMenuItem
+{
+	int toSelect;
+	
+	void Init(ListMenuDescriptor desc, int i)
+	{
+		Super.Init();
+		toSelect = i;
 	}
 	
 	override void Draw (bool selected, ListMenuDescriptor desc)

@@ -72,6 +72,8 @@ LISTMENU "PlayerClassMenu"
 		StaticPatch 25, 153, "RANDSUB"
 		StaticPatch 25, 189, "RANDSUB"
 		
+	DiazEE_SetDefaultSelection 0
+		
 	AnimatedTransition
 }
 
