@@ -45,26 +45,43 @@ OPTVAL_AUTO = "\cc[\c-\cuAuto\c-\cc]\c-";
 
 NIGHTMARE = "This weapon mod is certainly\nnot for noobs. But if you're\nstill of the opinion that weapon\nmods are only for those whose Dooming\nskills are very lacking...\nthen be my guest.\n\njust don't complain if you can't\nbeat the first level.\n\n(press y to accept my challenge)";
 
+//Key Pickup Messages
+GOTBLUECARD = "Acquired a \c[Blue]blue keycard\c-!";
+GOTYELWCARD = "Acquired a \c[Yellow]yellow keycard\c-!";
+GOTREDCARD = "Acquired a \c[Red]red keycard\c-!";
+GOTBLUESKUL = "Acquired a \c[Blue]blue skull\c- key!";
+GOTYELWSKUL = "Acquired a \c[Yellow]yellow skull key\c-!";
+GOTREDSKUL = "Acquired a \c[Red]red skull key\c-!";
+
+PD_BLUEO = "\c[Blue]Blue key\c- required to activate this object";
+PD_REDO = "\c[Red]Red key\c- required to activate this object";
+PD_YELLOWO = "\c[Yellow]Yellow key\c- required to activate this object";
+PD_BLUEK = "\c[Blue]Blue key\c- required to open this door";
+PD_REDK = "\c[Red]Red key\c- required to open this door";
+PD_YELLOWK = "\c[Yellow]Yellow key\c- required to open this door";
+PD_BLUECO = "\c[Blue]Blue card\c- required to activate this object";
+PD_REDCO = "\c[Red]Red card\c- required to activate this object";
+PD_YELLOWCO = "\c[Yellow]Yellow card\c- required to activate this object";
+PD_BLUESO = "\c[Blue]Blue skull\c- required to activate this object";
+PD_REDSO = "\c[Red]Red skull\c- required to activate this object";
+PD_YELLOWSO = "\c[Yellow]Yellow skull\- required to activate this object";
+
 //Boom Key Pickup Messages
-PD_BLUEC = "\chBlue card\c- required to open this door";
-PD_REDC = "\cgRed card\c- required to open this door";
-PD_YELLOWC = "\ckYellow card\c- required to open this door";
-PD_BLUES = "\chBlue skull\c- required to open this door";
-PD_REDS = "\cgRed skull\c- required to open this door";
-PD_YELLOWS = "\ckYellow skull\c- required to open this door";
-PD_ANY = "Any key will open this door";
-PD_ANYOBJ = "\cdAny key\c- will activate this object";
+PD_BLUEC = "\c[Blue]Blue card\c- required to open this door";
+PD_REDCO = "\c[Red]Red card\c- required to open this door";
+PD_YELLOWC = "\c[Yellow]Yellow card\c- required to open this door";
+PD_BLUES = "\c[Blue]Blue skull\c- required to open this door";
+PD_REDS = "\c[Red]Red skull\c- required to open this door";
+PD_YELLOWS = "\c[Yellow]Yellow skull\c- required to open this door";
+PD_ANY = "\c[Green]Any key\c- will open this door";
+PD_ANYOBJ = "\c[Green]Any key\c- will activate this object";
 PD_ALL3 = "You need all three keys to open this door";
 PD_ALL3O = "You need all three keys to activate this object";
 PD_ALL6 = "You need all six keys to open this door";
 PD_ALL6O = "You need all six keys to activate this object";
 PD_ALLKEYS = "You need all the keys";
 
-SECRETMESSAGE = "\cjYou've discovered a\c- \cksecret area\c-\cj!\c-";
-
-//Menu Junk
-MNU_CHOOSECLASS		= "Character Select";
-MNU_CHOOSESKILL		= "Difficulty Select";
+SECRETMESSAGE = "\c[White]You've discovered a\c- \c[DiazEE_BrightYellow]secret area\c-\c[White]!\c-";
 
 //Startup
 STARTUP1 = "\ccWelcome to\c- \ciAgent Diaz\cc: \cjEnhanced Edition!";
