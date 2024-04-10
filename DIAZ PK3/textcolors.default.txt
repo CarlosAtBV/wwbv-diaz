@@ -1,0 +1,309 @@
+// Because the new fonts have a black outline/shadow, this helps keep everything cohesive visually
+
+Brick
+{
+	#000000  #000000    0  1
+	#6b0008  #6b0008    2  150
+	#d02c2c  #fa7372  151  256
+Console:
+	#470000  #A35C5C    0 127
+	#800000  #FFFEFE  128 256
+Flat:
+	#CC3333
+}
+
+Tan
+{
+	#000000  #000000    0  1
+	#70604f  #70604f    2  150
+	#b69c81  #edc9a4  151  256
+Console:
+	#332B13  #998B79    0 127
+	#998B79  #FFFFFF  128 256
+Flat:
+	#D2B48C
+}
+
+Gray Grey
+{
+	#000000  #000000    0  1
+	#373737  #373737    2  150
+	#9f9f9f  #efefef  151  256
+Console:
+	#272727  #8B8B8B    0 127
+	#505050  #FFFFFF  128 256
+Flat:
+	#CCCCCC
+}
+
+Green
+{
+	#000000  #000000    0  1
+	#004700  #004700    2  150
+	#009200  #00f700  151  256
+Console:
+	#000000  #007F00    0 127
+	#00FF00  #FEFFFE  128 256
+Flat:
+	#00CC00
+}
+
+Brown
+{
+	#000000  #000000    0  1
+	#3e2417  #3e2417    2  150
+	#734834  #ba8066  151  256
+Console:
+	#000000  #7F4000    0 127
+	#432F1F  #FFE7CF  128 256
+Flat:
+	#996633
+}
+
+Gold
+{
+	#000000  #000000    0  1
+	#99712a  #99712a    2  150
+	#c6bc79  #f3e9cb  151  256
+Console:
+	#000000  #7FC040    0 127
+	#DFBF00  #DFFFFE  128 256
+Flat:
+	#FFCC00
+}
+
+Red
+{
+	#000000  #000000    0  1
+	#7f000d  #7f000d    2  150
+	#c10614  #ff1819  151  256
+Console:
+	#000000  #7F0000    0 127
+	#FF0000  #FFFEFE  128 256
+Flat:
+	#FF5566
+}
+
+Blue
+{
+	#000000  #000000    0  1
+	#000099  #000099    2  150
+	#1320e2  #4749fc  151  256
+Console:
+	#000000  #00007F    0 127
+	#4040FF  #DEDEFF  128 256
+Flat:
+	#9999FF
+}
+
+Orange
+{
+	#000000  #000000    0  1
+	#543800  #543800    2  150
+	#c28100  #f8a600  151  256
+Console:
+	#200000  #904000    0 127
+	#FF7F00  #FFFEFE  128 256
+Flat:
+	#FFAA00
+}
+
+// This is designed to match the white Heretic/Hexen font.
+// It is close to the gray BOOM font, but not quite the same.
+White
+{
+	#000000  #000000    0  1
+	#7b7b7b  #7b7b7b    2  150
+	#c2c2c2  #eeeeee  151  256
+Console:
+	#000000  #7F7F7F    0 127
+	#808080  #FFFFFF  128 256
+Flat:
+	#DFDFDF
+}
+
+// This is designed to match the yellow Hexen font, which has a
+// gray outline filled with shades of yellow.
+Yellow
+{
+	#000000  #000000    0  1
+	#7e7700  #7e7700    2  150
+	#bfb504  #f8eb18  151  256
+Console:
+	#000000  #7F7F00    0 127
+	#FFFF00  #FFFFFF  128 256
+Flat:
+	#EEEE33
+}
+
+Untranslated
+{
+}
+
+Black
+{
+	#000000  #000000    0  1
+	#161616  #161616    2  150
+	#232323  #323232  151  256
+Console:
+	#000000  #323232    0 127
+	#0A0A0A  #505050  128 256
+Flat:
+	#000000
+}
+
+LightBlue "Light Blue"
+{
+	#000000  #000000    0  1
+	#0a5158  #0a5158    2  150
+	#1cacb9  #31e7f7  151  256
+Console:
+	#00003C  #5050FF    0 127
+	#8080FF  #FFFFFF  128 256
+Flat:
+	#33EEFF
+}
+
+Cream
+{
+	#000000  #000000    0  1
+	#815c37  #815c37    2  150
+	#cea275  #fac795  151  256
+Console:
+	#2B230F  #BF7B4B    0 127
+	#FFB383  #FFFFFF  128 256
+Flat:
+	#FFCC99
+}
+
+Olive
+{
+	#000000  #000000    0  1
+	#545a34  #545a34    2  150
+	#9fa674  #ccd3a2  151  256
+Console:
+	#373F27  #7B7F63    0 127
+	#676B4F  #D1D8A8  128 256
+Flat:
+	#D1D8A8
+}
+
+DarkGreen "Dark Green"
+{
+	#000000  #000000    0  1
+	#003500  #003500    2  150
+	#005f00  #008700  151  256
+Console:
+	#000000  #005800    0 127
+	#008C00  #DCFFDC  128 256
+Flat:
+	#008C00
+}
+
+DarkRed "Dark Red"
+{
+	#000000  #000000    0  1
+	#330000  #330000    2  150
+	#560000  #8d0000  151  256
+Console:
+	#000000  #730000    0 127
+	#800000  #FFDCDC  128 255
+Flat:
+	#800000
+}
+
+DarkBrown "Dark Brown"
+{
+	#000000  #000000    0  1
+	#472d1e  #472d1e    2  150
+	#593e2d  #7c5b48  151  256
+Console:
+	#2B230F  #773000    0 127
+	#735743  #F7BD58  128 256
+Flat:
+	#663333
+}
+
+Purple
+{
+	#000000  #000000    0  1
+	#3b1460  #3b1460    2  150
+	#43176b  #8834d8  151  256
+Console:
+	#000000  #9F009B    0 127
+	#FF00FF  #FFFFFF  128 256
+Flat:
+	#9966CC
+}
+
+DarkGray DarkGrey "Dark Gray" "Dark Grey"
+{
+	#000000  #000000    0  1
+	#272727  #272727    2  150
+	#4b4b4b  #818181  151  256
+Console:
+	#000000  #646464    0 127
+	#404040  #B4B4B4  128 256
+Flat:
+	#808080
+}
+
+Cyan
+{
+	#000000  #000000    0  1
+	#005858  #005858    2  150
+	#00b2b2  #00dddd  151  256
+Console:
+	#000000 #007F7F     0 127
+	#00FFFF #FEFFFF   128 256
+Flat:
+	#00DDDD
+}
+
+Ice
+{
+	#000000  #000000    0  1
+	#4c4c69  #4c4c69    2  150
+	#9595ac  #d8d8da  151  256
+Console:
+	#343450  #7C7C98    0 127
+	#7C7C98  #E0E0E0  128 256
+Flat:
+	#7C7C98
+}
+
+Fire
+{
+	#000000  #000000    0  1
+	#963001  #963001    2  150
+	#e79904  #fdf401  151  256
+Console:
+	#6F0000  #D57604    0 127
+	#D57604  #FFFF00  128 256
+Flat:
+	#D57604
+}
+
+Sapphire
+{
+	#000000  #000000    0  1
+	#1d29a2  #1d29a2    2  150
+	#578fff  #51e3fe  151  256
+Console:
+	#000468  #506CFC    0 127
+	#506CFC  #50ECFC  128 256
+Flat:
+	#506CFC
+}
+
+Teal
+{
+	#000000  #000000    0  1
+	#05383c  #05383c    2  150
+	#397b89  #74adbd  151  256
+Console:
+	#001F1F  #236773    0 127
+	#236773  #7BB3C3  128 256
+Flat:
+	#236773
+}

@@ -6,6 +6,12 @@ DiazEE_Purple
 	#43176b  #8834d8  151  256
 }
 
+DiazEE_UltimatePurple
+{
+	#000000  #000000    0  1
+	#4c0d67  #4c0d67    2  150
+	#8200b8  #b200fc  151  256
+}
 
 // BLUE
 DiazEE_Blue
@@ -111,145 +117,7 @@ DiazEE_White
 }
 
 
-
-//MENU (MAIN)
-DiazEEStartGreen // OUTLINE
-{
-	#000000  #000000    0  1
-	#396649  #396649    2  127
-	#48714c  #d6d562  128  256
-}
-
-DiazEEMenuGreen // OUTLINE
-{
-	#000000  #000000    0  1    // BLACK OUTLINE
-	#1b485b  #1b485b  2  127
-	#205563  #34c597  128  255
-}
-
-
-//MENU (GAME MODES)
-DiazEEStandardGrad // OUTLINE
-{
-	#000000  #000000    0  1
-	#34701d  #34701d    2  127
-	#448118  #b4d94d  128  256
-}
-
-DiazEEBHGrad // OUTLINE
-{
-	#000000  #000000    0  1
-	#60003c  #60003c    2  127
-	#780040  #e3a574  128  256
-}
-
-// MENU (OPTIONS)
-Gold // OUTLINE
-{
-	#000000  #000000    0  1
-	#7f5f28  #7f5f28    2  127
-	#9e8538  #f9f5b3  128  256
-}
-
-DiazEE_VideoBlue // OUTLINE
-{
-	#000000  #000000    0  1
-	#257fa9  #257fa9   2  127
-	#3289b0  #aae3ef 128  256
-}
-
-DiazEE_AudioGreen // OUTLINE
-{
-	#000000  #000000    0  1
-	#1a3d21  #1a3d21    2  127
-	#1a4622  #b7c756  128  256
-}
-
-DiazEEGZDoomOptionsGray // OUTLINE
-{
-	#000000  #000000    0  1
-	#262626  #262626    2  127
-	#343434  #afafaf  128  256
-}
-
-//MENU (DIFFICULTY)
-DiazEESkillBlue // OUTLINE
-{
-	#000000  #000000    0  1
-	#1c4768  #1c4768    2  127
-	#27577c  #b6dfff	128  256
-}
-
-DiazEEModGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#7f5f28  #7f5f28    2  127
-	#9e8538  #f9f5b3  128  256
-}
-
-
-DiazEE_Gray // OUTLINE
-{
-	#000000  #000000    0  1    // BLACK OUTLINE
-	#5a5a5a  #5a5a5a    2  127  // DARKEST PART OF THE GRADIENT
-	#7e7e7e  #eeeeee  128  256
-Console:
-	#272727  #8B8B8B    0 127
-	#505050  #FFFFFF  128 256
-Flat:
-	#CCCCCC
-}
-
-
-DiazEEHudRed
-{
-	#000000  #000000    0  1
-	#3F0000  #FF0000    2  256
-}
-
-DiazEEBlue // OUTLINE
-{
-	#000000  #000000    0  1
-	#1e3b69  #1e3b69    2  127
-	#244273  #5d8ede  128  256
-}
-DiazEEHealthBlue // OUTLINE
-{
-	#000000  #000000    0  1
-	#004c5e  #007490    2  127
-	#007f9d  #53cfed  128  256
-}
 DiazEEVantaBlack
 {
 	#000000  #000000
-}
-DiazEELimeGreen 
-{
-	#172702  #B9DE7F
-}
-DiazEELimeGreen1 // OUTLINE
-{
-	#000000  #000000    0  1
-	#172702  #B9DE7F   2  256
-}
-
-
-DiazEEHudYellow // OUTLINE
-{
-	#000000  #000000    0  1
-	#68431e  #68431e    2  127
-	#735024  #e6c77a  128  256
-}
-
-
-DiazEEHealthGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#732B00  #FFFF73    2  256
-}
-
-DiazEEShieldOrange // OUTLINE
-{
-	#000000  #000000    0  1
-	#b25f04  #ffd381    2  256
 }
