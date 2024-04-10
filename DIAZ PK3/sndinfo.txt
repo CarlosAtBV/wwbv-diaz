@@ -6,7 +6,7 @@ menu/prompt "sounds/general/menu/ui_menu_prompt.ogg" // AU_LFS_chord_one_shot_br
 menu/change "sounds/general/menu/ui_menu_change.ogg"  // ad4_typewriter_04_r02 from "Antidrum 4"
 menu/choose "sounds/general/menu/ui_menu_choose.ogg"  // RDTH_Synth_Hit_03_Fm9 from "Raw Deep Tech House"
 menu/cursor "sounds/general/menu/ui_menu_cursor.ogg" // gh_chst_clone_B from "Garage House"
-menu/clear "sounds/general/menu/ui_menu_clear.ogg" // ad4_typewriter_23_r11 from "Antidrum 4"
+menu/clear "sounds/general/menu/ui_menu_clear.ogg" // vhc2_golden_Fm from "Vintage House Chords 2" + ad4_typewriter_23_r11 from "Antidrum 4"
 menu/invalid "sounds/general/menu/ui_menu_invalid.ogg" // PMVM_Cm_Chord_27 from "Vorm - Techno"
 
 menu/quit1 "sounds/general/menu/ui_menu_quit.ogg" // DBM_BTX_164_Chord_Swell_Oneshot_Catchin_Gmin from "BLXST OFF"
