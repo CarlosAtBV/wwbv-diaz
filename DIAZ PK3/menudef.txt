@@ -47,6 +47,14 @@ LISTMENU "PlayerClassMenu"
 	DiazEE_ListBackground -1, 24, "MENUBAR3", 26, 8
 	
 	Linespacing 27
+		
+	DiazEE_ToggleForceToEnd
+		Font "BigUpper", "DIAZEE_Red", "DiazEE_BrightYellow"
+		DiazEE_TextImageCombo "Shut Down", "MENU06", "q", "QuitMenu"
+	DiazEE_ToggleForceToEnd
+	
+	// for the actual player class options
+	Font "BigUpper", "DIAZEE_Yellow", "DiazEE_BrightYellow"
 	
 	DiazEE_SetBelowAsTextCombos
 		//StaticPatch  25,  45,	"SKILL01"
@@ -55,9 +63,6 @@ LISTMENU "PlayerClassMenu"
 		StaticPatch 25, 117, "MELCSUB"
 		StaticPatch 25, 153, "RANDSUB"
 		StaticPatch 25, 189, "RANDSUB"
-		
-		Font "BigUpper", "DIAZEE_Red", "DiazEE_BrightYellow"
-		DiazEE_TextImageCombo "Shut Down", "MENU06", "q", "QuitMenu"
 		
 	AnimatedTransition
 }

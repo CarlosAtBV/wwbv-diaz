@@ -20,6 +20,42 @@ Class DiazEE_ListMenu : ListMenu
 		int x = 0;
 		int y = 0;
 		
+		Array<ListMenuItem> resorted;
+		bool meForcing;
+		Array<ListMenuItem> forceToTop;
+		
+		for ( int i = 0; i < mDesc.mItems.Size(); i++ )
+		{
+			let item = mDesc.mItems[i];
+			if ( item is "ListMenuItemDiazEE_ToggleForceToEnd" )
+			{
+				meForcing = !meForcing;
+			}
+			else
+			{
+				if ( meForcing )
+				{
+					forceToTop.Push(item);
+				}
+				else
+				{
+					resorted.Push(item);
+				}
+			}
+		}
+		
+		mDesc.mItems.Clear();
+		for ( int i = 0; i < resorted.Size(); i++ )
+		{
+			mDesc.mItems.Push(resorted[i]);
+			COnsole.Printf(""..resorted[i].GetClassName());
+		}
+		for ( int i = 0; i < forceToTop.Size(); i++ )
+		{
+			mDesc.mItems.Push(forceToTop[i]);
+			COnsole.Printf(""..resorted[i].GetClassName());
+		}
+		
 		for ( int i = 0; i < mDesc.mItems.Size(); i++ )
 		{
 			let item = mDesc.mItems[i];
@@ -100,6 +136,18 @@ Class DiazEE_ListMenu : ListMenu
 }*/
 
 Class ListMenuItemDiazEE_SetBelowAsTextCombos : ListMenuItem
+{
+	void Init(ListMenuDescriptor desc)
+	{
+		Super.Init();
+	}
+	
+	override void Draw (bool selected, ListMenuDescriptor desc)
+	{
+	}
+}
+
+Class ListMenuItemDiazEE_ToggleForceToEnd : ListMenuItem
 {
 	void Init(ListMenuDescriptor desc)
 	{
