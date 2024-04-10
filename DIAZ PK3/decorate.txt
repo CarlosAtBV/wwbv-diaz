@@ -80,22 +80,11 @@ Actor MeleeButtonActor : CustomInventory
 	States
 	{
 	Use:
-		TNT1 A 0 A_JumpIfInventory("IsMel",1,"MelMeleeButton")
+		TNT1 A 0 A_JumpIfInventory("IsDiaz",1,"DiazMeleeButton")
 		Fail
-	MelMeleeButton:
-		TNT1 A 0 A_JumpIfInventory("MeleeSelected",1,"MelMeleeSwitch")
-		TNT1 A 0 A_SelectWeapon("MelBareKnuckle")
-		Fail
-	MelChargeSwitch:
-		TNT1 A 0 A_SelectWeapon("MelChargeStyle")
-		Fail
-	MelMeleeSwitch:
-		TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",131,"MelSMGSwitch")
-		TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",121,"MelPistolSwitch")
-		Goto MelPistolSwitch
-	MelPistolSwitch:
-		TNT1 A 0 A_SelectWeapon("MelPistol")
-		TNT1 A 0 A_SelectWeapon("MelPistolA")
+	DiazMeleeButton:
+		TNT1 A 0 A_JumpIfInventory("MeleeSelected",1,"DiazMeleeSwitch")
+		TNT1 A 0 A_SelectWeapon("Weapon_Diaz_Melee")
 		Fail
 	}
 }

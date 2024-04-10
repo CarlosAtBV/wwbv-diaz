@@ -75,7 +75,7 @@ LISTMENU "PlayerClassMenu"
 	DiazEE_ToggleForceToEnd
 	
 	// for the actual player class options
-	Font "BigUpper", "DIAZEE_Gray", "DiazEE_BrightYellow"
+	Font "BigUpper", "DarkGray", "DiazEE_BrightYellow"
 	
 	DiazEE_SetBelowAsTextCombos
 		//StaticPatch  25,  45,	"SKILL01"
