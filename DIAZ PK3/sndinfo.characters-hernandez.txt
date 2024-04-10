@@ -1,0 +1,40 @@
+$playersound	hernandez	male	*crazydeath	hdth1
+$playersound	hernandez	male	*wimpydeath	hdth1
+$playersound	hernandez	male	*death		hdth1
+$playersound	hernandez	male	*xdeath		hdth1
+$playersound	hernandez	male	*gibbed		hdth1
+$playersound	hernandez	male	*pain100	hp100
+$playersound	hernandez	male	*pain75		hp75
+$playersound	hernandez	male	*pain50		hp50
+$playersound	hernandez	male	*pain25		hp25
+$playeralias	hernandez	male	*land       general/landb
+$playersound	hernandez	male	*grunt		hoof
+$playersound	hernandez	male	*usefail	dsnoway
+$playersound	hernandez	male	*jump		hjump
+$playeralias	hernandez	male	*melee		hernandez/melee
+$playeralias	hernandez	male	*psipain	hernandez/psipain
+$playeralias	hernandez	male	*disint		hernandez/disint
+$playeralias	hernandez	male	*flamed		misc/flamedeath
+$playeralias	hernandez	male	*breathe	hernandez/breathe
+$playeralias	hernandez	male	*taunt		hernandez/taunt
+$playeralias	hernandez	male	*falcon		hernandez/falcon
+$playeralias	hernandez	male	*paunch		hernandez/paunch
+
+$random hernandez/melee { hzm1 hzm4 }
+hzm1 hmelee1
+hzm4 hjump
+$random hernandez/psipain { null }
+hernandez/breathe hbrth1
+hernandez/disint hdisint
+$random hernandez/taunt { hztaunt1 hztaunt2 hztaunt3 }
+hztaunt1 hztaunt1
+hztaunt2 hztaunt2
+hztaunt3 hztaunt3
+$random hernandez/falcon { hfalcon1 hfalcon2 hfalcon3 }
+hfalcon1 hfalcon1
+hfalcon2 hfalcon2
+hfalcon3 hfalcon3
+$random hernandez/paunch { hpaunch1 hpaunch2 hpaunch3 }
+hpaunch1 hpaunch1
+hpaunch2 hpaunch2
+hpaunch3 hpaunch3
