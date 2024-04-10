@@ -22,3 +22,4 @@ Fatso
 Archvile
 SpiderMastermind
 Cyberdemon
+WVerse_LostSoul_Red

@@ -1,0 +1,25 @@
+// Lost Soul
+// SOUND CREDITS/SOURCES:
+// - id Software (Doom 3)
+
+$random lostsoul/sight { lostsoul/sight01 lostsoul/sight02 lostsoul/sight03 }
+lostsoul/sight01	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_sight_01.ogg" 
+lostsoul/sight02	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_sight_02.ogg" 
+lostsoul/sight03	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_sight_03.ogg" 
+$random lostsoul/active { lostsoul/active01 lostsoul/active02 lostsoul/active03 lostsoul/active04 }
+lostsoul/active01	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_active_01.ogg" 
+lostsoul/active02	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_active_02.ogg" 
+lostsoul/active03	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_active_03.ogg" 
+lostsoul/active04	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_active_04.ogg" 
+$random lostsoul/pain { lostsoul/pain01 lostsoul/pain02 lostsoul/pain03 }
+lostsoul/pain01	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_pain_01.ogg" 
+lostsoul/pain02	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_pain_02.ogg" 
+lostsoul/pain03	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_pain_03.ogg" 
+$random lostsoul/death { lostsoul/death01 lostsoul/death02 lostsoul/death03 }
+lostsoul/death01	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_death_01.ogg" 
+lostsoul/death02	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_death_02.ogg" 
+lostsoul/death03	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_death_03.ogg" 
+$random lostsoul/explode { lostsoul/explosion01 lostsoul/explosion02 lostsoul/explosion03 }
+lostsoul/explosion01	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_sfx_explosion_01.ogg" 
+lostsoul/explosion02	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_sfx_explosion_02.ogg" 
+lostsoul/explosion03	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_sfx_explosion_03.ogg" 

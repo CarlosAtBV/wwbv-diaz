@@ -1,0 +1,4 @@
+version 4.2.4
+
+// CHARACTERS
+#include "zscript/enemies/lostsoul/wverse_lostsoul_red.zsc"

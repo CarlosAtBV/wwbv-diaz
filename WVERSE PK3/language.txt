@@ -1,0 +1,8 @@
+[enu default]
+
+WVERSEMNU_OPTIONS = "WVerse Options";
+
+// LOST SOUL
+WVERSE_LOSTSOUL_RED_OBIT = "%o was haunted by a wandering \c[Red]Lost Soul\c-.";
+WVERSE_LOSTSOUL_GREEN_OBIT = "%o was possessed by an angry \c[Green]Lost Soul\c-.";
+WVERSE_LOSTSOUL_BLUE_OBIT = "%o had %p body seized by a dismal \c[Blue]Lost Soul\c-.";
