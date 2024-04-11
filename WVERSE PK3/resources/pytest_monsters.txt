@@ -23,3 +23,5 @@ Archvile
 SpiderMastermind
 Cyberdemon
 WVerse_LostSoul_Red
+WVerse_LostSoul_Green
+WVerse_LostSoul_Blue

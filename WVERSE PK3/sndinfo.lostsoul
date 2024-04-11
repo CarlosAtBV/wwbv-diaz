@@ -20,6 +20,7 @@ lostsoul/death01	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_death_01
 lostsoul/death02	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_death_02.ogg" 
 lostsoul/death03	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_vo_death_03.ogg" 
 $random lostsoul/explode { lostsoul/explosion01 lostsoul/explosion02 lostsoul/explosion03 }
+$volume lostsoul/explode 0.7
 lostsoul/explosion01	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_sfx_explosion_01.ogg" 
 lostsoul/explosion02	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_sfx_explosion_02.ogg" 
 lostsoul/explosion03	"sounds/enemies/lostsoul/lostsoul_variants/lostsoul_sfx_explosion_03.ogg" 

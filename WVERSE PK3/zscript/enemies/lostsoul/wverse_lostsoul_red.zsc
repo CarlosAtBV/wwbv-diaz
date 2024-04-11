@@ -4,11 +4,11 @@
 // A lost soul with minimal behavior changes.
 // Originally featured in The Space Pirate
 //
-// CODE: Cardboard Marty, adapted from code by Ghastly_Death
+// CODE: Cardboard Marty, adapted from code by Ghastly_dragon
 // SPRITES: Captain Toenail
 //
 //===========================================================================
-class WVerse_LostSoul_Red : Actor
+class WVerse_LostSoul : Actor
 {
 	Default
 	{
@@ -28,11 +28,17 @@ class WVerse_LostSoul_Red : Actor
 		+NOICEDEATH
 		+ZDOOMTRANS
 		+RETARGETAFTERSLAM
-		AttackSound "lostsoul/sight";
 		SeeSound "lostsoul/sight";
 		PainSound "lostsoul/pain";
 		DeathSound "lostsoul/death";
 		ActiveSound "lostsoul/active";
+	}
+}
+
+class WVerse_LostSoul_Red : WVerse_LostSoul
+{
+	Default
+	{
 		Obituary "$WVERSE_LOSTSOUL_RED_OBIT";
 		Tag "Lost Soul (Red)";
 	}
@@ -42,7 +48,7 @@ class WVerse_LostSoul_Red : Actor
 		1FOR AB 10 BRIGHT A_Look;
 		1FOR A 0 BRIGHT A_Jump(16, 1);
 		Loop;
-		2FOR A 0 BRIGHT A_StartSound("lostsoul/active", CHAN_AUTO);
+		1FOR A 0 BRIGHT A_StartSound("lostsoul/active", CHAN_AUTO);
 		Loop;
 	See:
 		1FOR AB 6 BRIGHT A_Chase;
