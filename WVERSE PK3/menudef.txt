@@ -1,0 +1,20 @@
+AddOptionMenu "OptionsMenu"
+{
+	StaticText ""
+	Submenu "WVerse Options", "WVerse Options"
+}
+
+OptionMenu "WVerse Options"
+{
+    Title "Wverse Options"
+
+    StaticText      "replace me with something cool"
+	Option "lost soul matrix juice",					"wverse_lostsoulhealth", "lostsoulhealthOnOff"
+
+}
+
+OptionValue lostsoulhealthOnOff
+{
+	0, "Healthy Boy"
+	1, "Ah fuck my health"
+}

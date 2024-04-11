@@ -1,6 +1,4 @@
 version 4.2.4
 
-// CHARACTERS
-#include "zscript/enemies/lostsoul/wverse_lostsoul_red.zsc"
-#include "zscript/enemies/lostsoul/wverse_lostsoul_green.zsc"
-#include "zscript/enemies/lostsoul/wverse_lostsoul_blue.zsc"
+// LOST SOUL
+#include "zscript/enemies/lostsoul/wverse_lostsoul.zsc"

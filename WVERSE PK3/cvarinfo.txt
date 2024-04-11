@@ -1,0 +1,1 @@
+server noarchive bool wverse_lostsoulhealth = false;
