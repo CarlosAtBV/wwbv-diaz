@@ -109,8 +109,13 @@ class WVerse_LostSoul : Actor
 		1FOR E 3 BRIGHT A_Pain;
 		Goto See;
 	Death:
-		1FOR G 0 BRIGHT A_StartSound("lostsoul/explode", CHAN_AUTO);
-		1FOR EF 4 BRIGHT;
+		1FOR E 4 BRIGHT
+		{
+			A_StartSound("lostsoul/explode", CHAN_AUTO);
+			A_Quake(3, 16, 0, 300);
+			A_RadiusThrust(1000, 300, RTF_NOTMISSILE|RTF_NOIMPACTDAMAGE);
+		}
+		1FOR F 4 BRIGHT;
 		1FOR G 6 BRIGHT A_Scream;
 		1FOR H 6 BRIGHT;
 		1FOR I 6 BRIGHT A_NoBlocking;
