@@ -102,22 +102,22 @@ LISTMENU "DiazEE_Options"
 	DiazEE_ListBackground 0, 36, "MENUBAR4", 26, 8
 	
 		Font "BigUpper", "DIAZEE_Yellow", "DiazEE_BrightYellow"
-		DiazEE_TextImageCombo "Configuration", "MENU01", "c", "DiazEE_Config"
+		DiazEE_TextImageCombo "Configuration", "OPTION01", "c", "DiazEE_Config"
 		
 		Font "BigUpper", "DIAZEE_Orange", "DiazEE_BrightYellow"
 		DiazEE_TextImageCombo "Modifiers", "OPTION02", "m", "DiazEE_Modifiers"
 	
 		Font "BigUpper", "DIAZEE_LimeGreen", "DiazEE_BrightYellow"
-		DiazEE_TextImageCombo "Audio", "MENU03", "s", "SoundOptions"
+		DiazEE_TextImageCombo "Audio", "OPTION03", "s", "SoundOptions"
 		
 		Font "BigUpper", "DIAZEE_LightBlue", "DiazEE_BrightYellow"
-		DiazEE_TextImageCombo "Video", "MENU02", "v", "DiazEE_Video"
+		DiazEE_TextImageCombo "Video", "OPTION04", "v", "DiazEE_Video"
 	
 		Font "BigUpper", "DIAZEE_Purple", "DiazEE_BrightYellow"
-		DiazEE_TextImageCombo "Other Mod Options", "MENU04", "o", "OtherModOptions"
+		DiazEE_TextImageCombo "Other Mod Options", "OPTION05", "o", "OtherModOptions"
 		
 		Font "BigUpper", "DIAZEE_Gray", "DiazEE_BrightYellow"
-		DiazEE_TextImageCombo "GZDoom Options Menu", "MENU05", "g", "OptionsMenu"
+		DiazEE_TextImageCombo "GZDoom Options Menu", "OPTION06", "g", "OptionsMenu"
 	
 	AnimatedTransition
 }
