@@ -1,4 +1,7 @@
 version 4.2.4
 
+// IMP
+//#include "zscript/enemies/lostsoul/wverse_imp.zsc"
+
 // LOST SOUL
 #include "zscript/enemies/lostsoul/wverse_lostsoul.zsc"
