@@ -1,0 +1,109 @@
+//===========================================================================
+//
+// Imp (Default, Spikeless, Slender, Beefy, Mature)
+// The imp with lots of different visual variations.
+// Originally featured in The Space Pirate
+//
+// CODE: Cardboard Marty, DrPyspy
+// SPRITES:
+// Default
+// - Revenant100 (fixes from "Doom 2 Minor Sprite Fixing Project")
+// Beefy, Slender versions
+// - Vader, ItsNatureToDie
+// Spikeless
+// - Unknown author, additional rotation edits by Cardboard Marty
+// Mature
+// - Amuscaria
+//
+//===========================================================================
+class WVerse_Imp : Actor
+{
+    int impType;
+    
+    override void PostBeginPlay()
+    {
+	
+        super.PostBeginPlay();
+        impType = random(0,5);
+        
+        // randomize da sprite
+        switch (impType)
+        {
+            case 0:
+                sprite = GetSpriteIndex('IMVO');
+                SetTag("Imp (Common)");
+                break;
+            case 1:
+                sprite = GetSpriteIndex('IMV1');
+                SetTag("Imp (Slender)");
+                break;
+            case 2:
+                sprite = GetSpriteIndex('IMV2');
+                SetTag("Imp (Beefy)");
+                break;
+            case 3:
+                sprite = GetSpriteIndex('IMV3');
+                SetTag("Imp (Juvenile)");
+                break;
+            case 4:
+                sprite = GetSpriteIndex('IMV4');
+                SetTag("Imp (Mature)");
+                break;
+        }
+    }
+	Default
+	{
+		Health 60;
+		Radius 20;
+		Height 56;
+		Mass 100;
+		Speed 8;
+		PainChance 200;
+		Monster;
+		+FLOORCLIP
+		SeeSound "imp/sight";
+		PainSound "imp/pain";
+		DeathSound "imp/death";
+		ActiveSound "imp/active";
+		HitObituary "$OB_IMPHIT";
+		Obituary "$OB_IMP";
+		Tag "$FN_IMP";
+	}
+	States
+	{
+	Spawn:
+		IMV0 AB 10 A_Look;
+		Loop;
+	See:
+		IMV0 AABBCCDD 3 A_Chase;
+		Loop;
+	Melee:
+	Missile:
+		IMV0 EF 8 A_FaceTarget;
+		IMV0 G 6 A_TroopAttack;
+		Goto See;
+	Pain:
+		IMV0 H 2;
+		IMV0 H 2 A_Pain;
+		Goto See;
+	Death:
+		IMV0 I 8;
+		IMV0 J 8 A_Scream;
+		IMV0 K 6;
+		IMV0 L 6 A_NoBlocking;
+		IMV0 M -1;
+		Stop;
+	XDeath:
+		IMV0 N 5;
+		IMV0 O 5 A_XScream;
+		IMV0 P 5;
+		IMV0 Q 5 A_NoBlocking;
+		IMV0 RST 5;
+		IMV0 U -1;
+		Stop;
+	Raise:
+		IMV0 ML 8;
+		IMV0 KJI 6;
+		Goto See;
+	}
+}

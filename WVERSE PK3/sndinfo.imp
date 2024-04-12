@@ -1,0 +1,49 @@
+// Imp
+// SOUND CREDITS/SOURCES:
+// - id Software (Doom 3 Alpha)
+// - Trent Reznor
+
+$random imp/sight { imp/sight01 imp/sight02 imp/sight03 imp/sight04 imp/sight05 imp/sight06 imp/sight07 imp/sight08 }
+imp/sight01	"sounds/enemies/imp/imp_variants/imp_vo_sight_01.ogg" 
+imp/sight02	"sounds/enemies/imp/imp_variants/imp_vo_sight_02.ogg" 
+imp/sight03	"sounds/enemies/imp/imp_variants/imp_vo_sight_03.ogg"
+imp/sight04	"sounds/enemies/imp/imp_variants/imp_vo_sight_04.ogg"
+imp/sight05	"sounds/enemies/imp/imp_variants/imp_vo_sight_05.ogg"
+imp/sight06	"sounds/enemies/imp/imp_variants/imp_vo_sight_06.ogg"
+imp/sight07	"sounds/enemies/imp/imp_variants/imp_vo_sight_07.ogg"
+imp/sight08	"sounds/enemies/imp/imp_variants/imp_vo_sight_08.ogg"
+$random imp/active { imp/active01 imp/active02 imp/active03 imp/active04 imp/active05 imp/active06 imp/active07 imp/active08 imp/active09 imp/active10 imp/active11 imp/active12 }
+imp/active01	"sounds/enemies/imp/imp_variants/imp_vo_active_01.ogg" 
+imp/active02	"sounds/enemies/imp/imp_variants/imp_vo_active_02.ogg" 
+imp/active03	"sounds/enemies/imp/imp_variants/imp_vo_active_03.ogg" 
+imp/active04	"sounds/enemies/imp/imp_variants/imp_vo_active_04.ogg" 
+imp/active05	"sounds/enemies/imp/imp_variants/imp_vo_active_05.ogg"
+imp/active06	"sounds/enemies/imp/imp_variants/imp_vo_active_06.ogg"
+imp/active07	"sounds/enemies/imp/imp_variants/imp_vo_active_07.ogg"
+imp/active08	"sounds/enemies/imp/imp_variants/imp_vo_active_08.ogg"
+imp/active09	"sounds/enemies/imp/imp_variants/imp_vo_active_09.ogg"
+imp/active10	"sounds/enemies/imp/imp_variants/imp_vo_active_10.ogg"
+imp/active11	"sounds/enemies/imp/imp_variants/imp_vo_active_11.ogg"
+imp/active12	"sounds/enemies/imp/imp_variants/imp_vo_active_12.ogg"
+$random imp/pain { imp/pain01 imp/pain02 imp/pain03 imp/pain04 imp/pain05 imp/pain06 imp/pain07 imp/pain08 imp/pain09 }
+imp/pain01	"sounds/enemies/imp/imp_variants/imp_vo_pain_01.ogg" 
+imp/pain02	"sounds/enemies/imp/imp_variants/imp_vo_pain_02.ogg" 
+imp/pain03	"sounds/enemies/imp/imp_variants/imp_vo_pain_03.ogg" 
+imp/pain04	"sounds/enemies/imp/imp_variants/imp_vo_pain_04.ogg" 
+imp/pain05	"sounds/enemies/imp/imp_variants/imp_vo_pain_05.ogg" 
+imp/pain06	"sounds/enemies/imp/imp_variants/imp_vo_pain_06.ogg" 
+imp/pain07	"sounds/enemies/imp/imp_variants/imp_vo_pain_07.ogg" 
+imp/pain08	"sounds/enemies/imp/imp_variants/imp_vo_pain_08.ogg" 
+imp/pain09	"sounds/enemies/imp/imp_variants/imp_vo_pain_09.ogg" 
+$random imp/death { imp/death01 imp/death02 imp/death03 imp/death04 imp/death05 imp/death06 imp/death07 imp/death08 imp/death09 imp/death10 imp/death11 }
+imp/death01	"sounds/enemies/imp/imp_variants/imp_vo_death_01.ogg" 
+imp/death02	"sounds/enemies/imp/imp_variants/imp_vo_death_02.ogg" 
+imp/death03	"sounds/enemies/imp/imp_variants/imp_vo_death_03.ogg"
+imp/death04 "sounds/enemies/imp/imp_variants/imp_vo_death_04.ogg"
+imp/death05	"sounds/enemies/imp/imp_variants/imp_vo_death_05.ogg"
+imp/death06	"sounds/enemies/imp/imp_variants/imp_vo_death_06.ogg"
+imp/death07	"sounds/enemies/imp/imp_variants/imp_vo_death_07.ogg"
+imp/death08	"sounds/enemies/imp/imp_variants/imp_vo_death_08.ogg"
+imp/death09	"sounds/enemies/imp/imp_variants/imp_vo_death_09.ogg"
+imp/death10	"sounds/enemies/imp/imp_variants/imp_vo_death_10.ogg"
+imp/death11	"sounds/enemies/imp/imp_variants/imp_vo_death_11.ogg"
