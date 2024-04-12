@@ -1,13 +1,13 @@
 [enu default]
 
-QUITMSG = "It's over. It's all over.";
+QUITMSG = "It's over. \c[Red]It's all over\c-.";
 
 // QuitDoom1 messages
 QUITMSG1 = "I can't stop now.\n\c[Yellow]I must keep moving forward\c-!";
 QUITMSG2 = "There is \c[Red]every reason\c- to continue.";
 QUITMSG3 = "I didn't become a special agent\nthrough \c[Red]acts of cowardice\c-!";
 QUITMSG4 = "I'm not \c[Red]abandoning\c- this mission.";
-QUITMSG5 = "the \c[Purple]director\c- won't be happy.";
+QUITMSG5 = "the \c[Gold]director\c- won't be happy.";
 QUITMSG6 = "I've got to keep moving...\nif not for \c[DiazEE_LightBlue]Hernandez\c-'\c[DiazEE_LightBlue]s\c- sake, then...";
 QUITMSG7 = "fine then! get out of my way!";
 
@@ -25,11 +25,11 @@ QUITMSG15 = "Abandoning the mission will\ncompromise your status within \c[Green
 QUITMSG16 = "The \c[Green]R\c-.\c[Green]C\c-.\c[Green]P\c-.\c[Green]A\c-. will disavow all knowledge\nof your involvement.";
 QUITMSG17 = "This is in violation of several\ninternational treaties.";
 QUITMSG18 = "\c[Green]Article 15\c-, \c[Yellow]section D\c-, \c[Orange]paragraph 2\c-:\nDefecting agents are placed\non the \c[Green]R\c-.\c[Green]C\c-.\c[Green]P\c-.\c[Green]A\c-.'s \"\c[Red]Person of Interest\c-\" list.";
-QUITMSG19 = "\c[Red]F\c[Orange]i\c[Blue]ss\c[Green]i\c[Cyan]o\c[Purple]n \c[LightBlue]m\c[DarkGray]ai\c[Red]l\c[Brown]e\c[OliveGreen]d\c[Brick].";
+QUITMSG19 = "\c[Red]F\c[Orange]i\c[Blue]ss\c[Green]i\c[Cyan]o\c[Purple]n \c[LightBlue]m\c[Yellow]ai\c[Red]l\c[Gold]e\c[LightGreen]d\c[Brick].";
 QUITMSG20 = "Agents are required to stay on-site\nuntil their assignment is completed.";
 QUITMSG21 = "Truancy will result in a\ndemerit point being added to your\n\c[Red]permanent record\c-.";
 QUITMSG22 = "Abandonment of an agent's post\nmay result in \c[Red]termination\c-.";
-QUITMSG23 = "\c[Yellow]Internal Affairs\- would like\nto have a word with you, Agent.";
+QUITMSG23 = "\c[Yellow]Internal Affairs\c- would like\nto have a word with you, Agent.";
 QUITMSG24 = "Agents are prohibited from\ncommitting acts of\n\c[Red]self-termination\c-.";
 QUITMSG25 = "If you proceed,\nthe \c[Green]R\c-.\c[Green]C\c-.\c[Green]P\c-.\c[Green]A\c-. may be forced to take\n\c[Red]disciplinary action\c-.";
 QUITMSG26 = "Agent: \c[Orange]Diaz\c-\nStatus: \c[Red]Liquidated\c-\n\c[DarkGray]Notes\c-: Agent failed to prevent\nextra-planar invasion.";

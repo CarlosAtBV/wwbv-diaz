@@ -81,8 +81,8 @@ LISTMENU "PlayerClassMenu"
 		//StaticPatch  25,  45,	"SKILL01"
 		StaticPatch 25, 45, "DIAZSUB"
 		StaticPatch 25, 81, "HERNSUB"
-		StaticPatch 25, 117, "MELCSUB"
-		StaticPatch 25, 153, "RANDSUB"
+		StaticPatch 25, 117, "MOLISUB"
+		StaticPatch 25, 153, "CORTSUB"
 		StaticPatch 25, 189, "RANDSUB"
 		
 	DiazEE_SetDefaultSelection 0
