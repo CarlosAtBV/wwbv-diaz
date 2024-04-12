@@ -30,7 +30,7 @@ class WVerse_Imp : Actor
         switch (impType)
         {
             case 0:
-                sprite = GetSpriteIndex('IMVO');
+                sprite = GetSpriteIndex('IMV0');
                 SetTag("Imp (Common)");
                 break;
             case 1:
@@ -67,10 +67,17 @@ class WVerse_Imp : Actor
 		ActiveSound "imp/active";
 		HitObituary "$OB_IMPHIT";
 		Obituary "$OB_IMP";
-		Tag "$FN_IMP";
+		Tag "Imp";
 	}
 	States
 	{
+    SpriteCache:
+		IMV0 A 0;
+		IMV1 A 0;
+		IMV2 A 0;
+		IMV3 A 0;
+		IMV4 A 0;
+		Stop;
 	Spawn:
 		IMV0 AB 10 A_Look;
 		Loop;
