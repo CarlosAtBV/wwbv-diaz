@@ -1,3 +1,4 @@
+Zombieman
 WeaselPistolZombie
 WeaselSMGZombie
 WeaselJudgmentZombie

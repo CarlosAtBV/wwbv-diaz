@@ -1,0 +1,4 @@
+GameInfo
+{
+	AddEventHandlers = "WVERSE_SpawnHandler"
+}

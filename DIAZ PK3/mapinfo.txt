@@ -4,7 +4,9 @@ gameinfo
 	dimamount = "0.8"
 	bluramount = "0.8"
 	ForceTextInMenus = true
-	PlayerClasses="DiazEE_DiazPlayer","DiazEE_HernandezPlayer", "DiazEE_MolineroPlayer", "DiazEE_CortesPlayer"
+
+	PlayerClasses="DiazEE_DiazPlayer","DiazEE_HernandezPlayer", "DiazEE_MolineroPlayer", "DiazEE_CortesPlayer", "DiazEE_MelPlayer"
+	NoRandomPlayerClass = true
 	
 	CursorPic = "WVCURS01"
 	MenuBackButton = "MENUBACK"
@@ -21,6 +23,7 @@ skill DiazEECasual
 	PlayerClassName = "Diaz", "Kung Fu Panda"
 	PlayerClassName = "Molinero", "Civil Dispute"
 	PlayerClassName = "Cortes", "Enjoy the Silence"
+	PlayerClassName = "Crosswell", "Rope A Dope"
 	PlayerClassName = "Random", "Nerf Dart"
 		Name = "Casual"
 		TextColor = DiazEE_Blue
@@ -38,6 +41,7 @@ skill DiazEENormal
 	PlayerClassName = "Diaz", "One Armed Boxer"
 	PlayerClassName = "Molinero", "Misdemeanor"
 	PlayerClassName = "Cortes", "Presence of the Lord"
+	PlayerClassName = "Crosswell", "Never Back Down"
 	PlayerClassName = "Random", "9mm Parabellum"
 		Name = "Normal"
 		TextColor = DiazEE_Green
@@ -53,6 +57,7 @@ skill DiazEEHard
 	PlayerClassName = "Diaz", "Fist of Fury"
 	PlayerClassName = "Molinero", "Felony"
 	PlayerClassName = "Cortes", "Don't Fear The Reaper"
+	PlayerClassName = "Crosswell", "Undisputed"
 	PlayerClassName = "Random", ".50 BMG"
 		Name = "Hard"
 		TextColor = DiazEE_HardOrange
@@ -67,6 +72,7 @@ skill DiazEEExtreme
 	PlayerClassName = "Diaz", "The Big Boss"
 	PlayerClassName = "Molinero", "Federal Offense"
 	PlayerClassName = "Cortes", "Sympathy for the Devil"
+	PlayerClassName = "Crosswell", "Blood and Bone"
 	PlayerClassName = "Random", "Cruise Missile"
 		Name = "Extreme"
 		TextColor = DiazEE_Red

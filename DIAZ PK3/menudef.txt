@@ -51,9 +51,9 @@ LISTMENU "MainMenuTextOnly"
 		DiazEE_TextImageCombo "Shut Down", "MENU06", "q", "QuitMenu"
 
 	//Maybe implement this if the option for DEV mode is turned on?
-	//StaticPatch  15, 191,	"MENUBARV"
-	//Font "SmallFont"
-	//StaticText 28, 197, "$VERSION"
+	/*StaticPatch  15, 191,	"MENUBARV"
+	Font "SmallFont"
+	StaticText 28, 197, "$VERSION"*/
 }
 
 
@@ -83,7 +83,7 @@ LISTMENU "PlayerClassMenu"
 		StaticPatch 25, 81, "HERNSUB"
 		StaticPatch 25, 117, "MOLISUB"
 		StaticPatch 25, 153, "CORTSUB"
-		StaticPatch 25, 189, "RANDSUB"
+		StaticPatch 25, 189, "MELCSUB"
 		
 	DiazEE_SetDefaultSelection 0
 		

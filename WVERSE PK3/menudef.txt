@@ -9,8 +9,20 @@ OptionMenu "WVerse Options"
     Title "Wverse Options"
 
     StaticText      "replace me with something cool"
+	Option "Zombieman",									"wverse_zombieman_spawn", "EnemyRosterSpawn"
+	
 	Option "lost soul matrix juice",					"wverse_lostsoulhealth", "lostsoulhealthOnOff"
 
+}
+
+OptionValue EnemyRosterSpawn
+{
+	0, "Disabled"
+	1, "Diaz"
+	2, "Hernandez"
+	3, "The Space Pirate"
+	4, "Megamix"
+	5, "Random"
 }
 
 OptionValue lostsoulhealthOnOff

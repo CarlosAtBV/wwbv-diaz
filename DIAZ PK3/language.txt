@@ -84,8 +84,8 @@ PD_ALLKEYS = "You need all the keys";
 SECRETMESSAGE = "\c[White]You've discovered a\c- \c[DiazEE_BrightYellow]secret area\c-\c[White]!\c-";
 
 //Startup
-STARTUP1 = "\ccWelcome to\c- \ciAgent Diaz\cc: \cjEnhanced Edition!";
-STARTUP2 = "\cpVersion 0.1 - \ciRabbit Hole";
-STARTUP3 = "Chat with us at \cdhttps://discord.gg/discord.gg/wDDCWT9";
-STARTUP4 = "\cuMISSION START";
+STARTUP1 = "\cuARCHIVED MATERIAL\c-: \c[YELLOW]RCPA CASE FILE #2008\c- \cg(UPDATED FOR MODERN SYSTEMS)\c-.";
+STARTUP2 = "\ciAgent Diaz\cc: \cjDeclassified\c-!";
+STARTUP3 = "\cpVersion 0.1 - \ciRabbit Hole";
+STARTUP4 = "Chat with us at \cdhttps://www.bluevertigo.org/discord";
 

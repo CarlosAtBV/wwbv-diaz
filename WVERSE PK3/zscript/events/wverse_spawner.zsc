@@ -1,0 +1,52 @@
+class WVERSE_SpawnHandler : EventHandler
+{
+    override void CheckReplacement(ReplaceEvent e)
+    {
+        // Define the list of monster names and their corresponding CVARs
+        string monsterNames[] = { 
+            "Zombieman", "ShotgunGuy", "ChaingunGuy", "DoomImp", "Demon"
+        };
+
+        string cvarNames[] = { 
+            "wverse_zombieman_spawn", "wverse_shotgunguy_spawn", 
+            "wverse_chaingunguy_spawn", "wverse_doomimp_spawn", 
+            "wverse_demon_spawn" 
+        };
+
+        // Define the variants as a flat array, using offsets to access them correctly
+        string variants[] = {
+            "WVERSE_DZ_Zombieman", "WVERSE_AH_Zombieman", "WVERSE_TSP_Zombieman", "WVERSE_MM_Zombieman",
+            "WVERSE_DZ_ShotgunGuy", "WVERSE_AH_ShotgunGuy", "WVERSE_TSP_ShotgunGuy", "WVERSE_MM_ShotgunGuy",
+            "WVERSE_DZ_ChaingunGuy", "WVERSE_AH_ChaingunGuy", "WVERSE_TSP_ChaingunGuy", "WVERSE_MM_ChaingunGuy",
+            "WVERSE_DZ_DoomImp", "WVERSE_AH_DoomImp", "WVERSE_TSP_DoomImp", "WVERSE_MM_DoomImp",
+            "WVERSE_DZ_Demon", "WVERSE_AH_Demon", "WVERSE_TSP_Demon", "WVERSE_MM_Demon"
+        };
+
+        // Loop through each monster type
+        for (int i = 0; i < monsterNames.Size(); i++)
+        {
+            // Check if the current monster matches the one being spawned
+            if (e.Replacee == monsterNames[i])
+            {
+                // Get the CVAR value properly
+                int spawnOption = CVar.GetCVar(cvarNames[i]).GetInt();
+
+                // Calculate the base index in the flat array
+                int baseIndex = i * 4;
+
+                // If spawnOption is between 1-4, use a specific variant
+                if (spawnOption >= 1 && spawnOption <= 4)
+                {
+                    e.Replacement = variants[baseIndex + (spawnOption - 1)];
+                }
+                // If spawnOption is 5, randomize between 1-4
+                else if (spawnOption == 5)
+                {
+                    e.Replacement = variants[baseIndex + Random(0, 3)];
+                }
+
+                return; // Stop checking after finding a match
+            }
+        }
+    }
+}

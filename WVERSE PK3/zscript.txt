@@ -1,5 +1,10 @@
 version 4.2.4
 
+#include "zscript/events/wverse_spawner.zsc"
+
+// ZOMBIEMAN
+#include "zscript/enemies/zombieman/wverse_zombieman.zsc"
+
 // IMP
 #include "zscript/enemies/imp/wverse_imp.zsc"
 

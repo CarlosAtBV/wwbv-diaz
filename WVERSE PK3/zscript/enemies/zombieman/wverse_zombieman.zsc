@@ -1,0 +1,15 @@
+class WVERSE_DZ_ZombieMan : ZombieMan
+{
+}
+
+class WVERSE_AH_ZombieMan : ZombieMan
+{
+}
+
+class WVERSE_TSP_ZombieMan : ZombieMan
+{
+}
+
+class WVERSE_MM_ZombieMan : ZombieMan
+{
+}

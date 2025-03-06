@@ -1,4 +1,4 @@
-:DoorOpenNormal
+/*:DoorOpenNormal
 	playrepeat	doors/open
 	stopsound	doors/slam
 end
@@ -34,4 +34,4 @@ end
 
 :CeilingSemiSilent
 	stopsound	plats/slowstop
-end
+end*/

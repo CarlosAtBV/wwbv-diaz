@@ -1,2 +1,2 @@
-STARTUPTITLE = "Agent Diaz (Enhanced Edition)"
+STARTUPTITLE = "Agent Diaz: Declassified"
 STARTUPCOLORS = "cba288", "3a3225"

@@ -1,1 +1,7 @@
-server noarchive bool wverse_lostsoulhealth = false;
+server int wverse_zombieman_spawn = 1;
+server int wverse_shotgunguy_spawn = 0;
+server int wverse_chaingunguy_spawn = 0;
+server int wverse_doomimp_spawn = 0;
+server int wverse_demon_spawn = 0;
+
+server bool wverse_lostsoulhealth = false;

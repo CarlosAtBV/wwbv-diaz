@@ -17,6 +17,7 @@ Default
 #include "zscript/characters/char_hernandez.zsc"
 #include "zscript/characters/char_molinero.zsc"
 #include "zscript/characters/char_cortes.zsc"
+#include "zscript/characters/char_mel.zsc"
 
 // WEAPONS
 #include "zscript/weapons/diaz/weapon_diaz_melee.zsc"

@@ -1,0 +1,22 @@
+Class DiazEE_MelPlayer : DoomPlayer
+{
+	Default
+	{
+		Health 100;
+		Player.ViewHeight 47;
+		Player.AttackZOffset 17;
+		Player.JumpZ 9.0;
+		Player.StartItem "MeleeButtonActor", 1;
+		Player.StartItem "IsMel", 1;	
+		Player.SoundClass "Mel";
+		Player.DisplayName "Crosswell";
+		Player.StartItem "P50Handgun";
+		Player.StartItem "Weapon_Diaz_Melee";
+		Player.Portrait "MELCPORT";
+		Player.WeaponSlot 1, "Weapon_Diaz_Melee", "PsiAmp";
+		Player.WeaponSlot 2, "P50Handgun", "Marteba";
+		Species "Player";
+		+THRUSPECIES
+		+PLAYERPAWN.NOTHRUSTWHENINVUL
+	}
+}

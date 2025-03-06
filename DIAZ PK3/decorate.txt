@@ -59,6 +59,11 @@ ACTOR IsCortes : Inventory
 	Inventory.MaxAmount 1
 }
 
+ACTOR IsMel : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
 // Weapon Select Memory was adapted from mkww-ah, by WildWeasel and Cardboard Marty
 // This makes things less clustered for the select state on weapons
 
