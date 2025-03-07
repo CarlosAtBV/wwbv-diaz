@@ -22,149 +22,149 @@ $playeralias	Mel    	 male  	*largemelee         mel/largemelee
 $playeralias	Mel   	 male  	*xlmelee			mel/xlmelee
 
 $random mel/pain100 { mel/pain1001 mel/pain1002 mel/pain1003 mel/pain1004 }
-mel/pain1001 "sounds/players/mel/vo_mel_pain100-1.ogg"
-mel/pain1002 "sounds/players/mel/vo_mel_pain100-2.ogg"
-mel/pain1003 "sounds/players/mel/vo_mel_pain100-3.ogg"
-mel/pain1004 "sounds/players/mel/vo_mel_pain100-4.ogg"
+mel/pain1001 "sounds/player/mel/vo_mel_pain100-1.ogg"
+mel/pain1002 "sounds/player/mel/vo_mel_pain100-2.ogg"
+mel/pain1003 "sounds/player/mel/vo_mel_pain100-3.ogg"
+mel/pain1004 "sounds/player/mel/vo_mel_pain100-4.ogg"
 
 $random mel/pain75 { mel/pain751 mel/pain752 mel/pain753 mel/pain754 }
-mel/pain751 "sounds/players/mel/vo_mel_pain75-1.ogg"
-mel/pain752 "sounds/players/mel/vo_mel_pain75-2.ogg"
-mel/pain753 "sounds/players/mel/vo_mel_pain75-3.ogg"
-mel/pain754 "sounds/players/mel/vo_mel_pain75-4.ogg"
+mel/pain751 "sounds/player/mel/vo_mel_pain75-1.ogg"
+mel/pain752 "sounds/player/mel/vo_mel_pain75-2.ogg"
+mel/pain753 "sounds/player/mel/vo_mel_pain75-3.ogg"
+mel/pain754 "sounds/player/mel/vo_mel_pain75-4.ogg"
 
 $random mel/pain50 { mel/pain501 mel/pain502 mel/pain503 mel/pain504 }
-mel/pain501 "sounds/players/mel/vo_mel_pain50-1.ogg"
-mel/pain502 "sounds/players/mel/vo_mel_pain50-2.ogg"
-mel/pain503 "sounds/players/mel/vo_mel_pain50-3.ogg"
-mel/pain504 "sounds/players/mel/vo_mel_pain50-4.ogg"
+mel/pain501 "sounds/player/mel/vo_mel_pain50-1.ogg"
+mel/pain502 "sounds/player/mel/vo_mel_pain50-2.ogg"
+mel/pain503 "sounds/player/mel/vo_mel_pain50-3.ogg"
+mel/pain504 "sounds/player/mel/vo_mel_pain50-4.ogg"
 
 $random mel/pain25 { mel/pain251 mel/pain252 mel/pain253 mel/pain254 }
-mel/pain251 "sounds/players/mel/vo_mel_pain25-1.ogg"
-mel/pain252 "sounds/players/mel/vo_mel_pain25-2.ogg"
-mel/pain253 "sounds/players/mel/vo_mel_pain25-3.ogg"
-mel/pain254 "sounds/players/mel/vo_mel_pain25-4.ogg"
+mel/pain251 "sounds/player/mel/vo_mel_pain25-1.ogg"
+mel/pain252 "sounds/player/mel/vo_mel_pain25-2.ogg"
+mel/pain253 "sounds/player/mel/vo_mel_pain25-3.ogg"
+mel/pain254 "sounds/player/mel/vo_mel_pain25-4.ogg"
 
 $random mel/death { mel/death01 mel/death02 }
-mel/death01 "sounds/players/mel/vo_mel_death_normal01.ogg"
-mel/death02 "sounds/players/mel/vo_mel_death_normal02.ogg"
+mel/death01 "sounds/player/mel/vo_mel_death_normal01.ogg"
+mel/death02 "sounds/player/mel/vo_mel_death_normal02.ogg"
 
-mel/electricdeath "sounds/players/mel/vo_mel_death_electric01.ogg"
-mel/firedeath     "sounds/players/mel/vo_mel_death_fire01.ogg"
+mel/electricdeath "sounds/player/mel/vo_mel_death_electric01.ogg"
+mel/firedeath     "sounds/player/mel/vo_mel_death_fire01.ogg"
 $volume mel/firedeath 0.7
-mel/poisondeath   "sounds/players/mel/vo_mel_death_poison01.ogg"
+mel/poisondeath   "sounds/player/mel/vo_mel_death_poison01.ogg"
 
 $random mel/wimpydeath { mel/wimpydeath01 mel/wimpydeath02 mel/wimpydeath03 mel/wimpydeath04 }
-mel/wimpydeath01 "sounds/players/mel/vo_mel_death_wimpy01.ogg"
-mel/wimpydeath02 "sounds/players/mel/vo_mel_death_wimpy02.ogg"
-mel/wimpydeath03 "sounds/players/mel/vo_mel_death_wimpy03.ogg"
-mel/wimpydeath04 "sounds/players/mel/vo_mel_death_wimpy04.ogg"
+mel/wimpydeath01 "sounds/player/mel/vo_mel_death_wimpy01.ogg"
+mel/wimpydeath02 "sounds/player/mel/vo_mel_death_wimpy02.ogg"
+mel/wimpydeath03 "sounds/player/mel/vo_mel_death_wimpy03.ogg"
+mel/wimpydeath04 "sounds/player/mel/vo_mel_death_wimpy04.ogg"
 
 $random mel/xdeath { mel/xdeath01 mel/xdeath02 }
-mel/xdeath01 "sounds/players/mel/vo_mel_death_xdeath01.ogg"
-mel/xdeath02 "sounds/players/mel/vo_mel_death_xdeath02.ogg"
+mel/xdeath01 "sounds/player/mel/vo_mel_death_xdeath01.ogg"
+mel/xdeath02 "sounds/player/mel/vo_mel_death_xdeath02.ogg"
 $volume mel/xdeath 0.7
 
 
 $random mel/jump { mel/jump01 mel/jump02 mel/jump03 mel/jump04 mel/jump05 mel/jump06 mel/jump07 mel/jump08 mel/jump09 mel/jump10 mel/jump11 mel/jump12 null null null null null null null null null null null }
-mel/jump01 "sounds/players/mel/vo_mel_jump01.ogg"
-mel/jump02 "sounds/players/mel/vo_mel_jump02.ogg"
-mel/jump03 "sounds/players/mel/vo_mel_jump03.ogg"
-mel/jump04 "sounds/players/mel/vo_mel_jump04.ogg"
-mel/jump05 "sounds/players/mel/vo_mel_jump05.ogg"
-mel/jump06 "sounds/players/mel/vo_mel_jump06.ogg"
-mel/jump07 "sounds/players/mel/vo_mel_jump07.ogg"
-// mel/jump08 "sounds/players/mel/vo_mel_jump08.ogg" sounds kinda goofy lol
-mel/jump09 "sounds/players/mel/vo_mel_jump09.ogg"
-mel/jump10 "sounds/players/mel/vo_mel_jump10.ogg"
-mel/jump11 "sounds/players/mel/vo_mel_jump11.ogg"
-mel/jump12 "sounds/players/mel/vo_mel_jump12.ogg"
+mel/jump01 "sounds/player/mel/vo_mel_jump01.ogg"
+mel/jump02 "sounds/player/mel/vo_mel_jump02.ogg"
+mel/jump03 "sounds/player/mel/vo_mel_jump03.ogg"
+mel/jump04 "sounds/player/mel/vo_mel_jump04.ogg"
+mel/jump05 "sounds/player/mel/vo_mel_jump05.ogg"
+mel/jump06 "sounds/player/mel/vo_mel_jump06.ogg"
+mel/jump07 "sounds/player/mel/vo_mel_jump07.ogg"
+// mel/jump08 "sounds/player/mel/vo_mel_jump08.ogg" sounds kinda goofy lol
+mel/jump09 "sounds/player/mel/vo_mel_jump09.ogg"
+mel/jump10 "sounds/player/mel/vo_mel_jump10.ogg"
+mel/jump11 "sounds/player/mel/vo_mel_jump11.ogg"
+mel/jump12 "sounds/player/mel/vo_mel_jump12.ogg"
 
 $random mel/land { mel/land1 mel/land2 mel/land3 mel/land4 mel/land5 mel/land6 mel/land7 }
-mel/land1 "sounds/players/mel/vo_mel_land1.ogg"
-mel/land2 "sounds/players/mel/vo_mel_land2.ogg"
-mel/land3 "sounds/players/mel/vo_mel_land3.ogg"
-mel/land4 "sounds/players/mel/vo_mel_land4.ogg"
-mel/land5 "sounds/players/mel/vo_mel_land5.ogg"
-mel/land6 "sounds/players/mel/vo_mel_land6.ogg"
-mel/land7 "sounds/players/mel/vo_mel_land7.ogg"
+mel/land1 "sounds/player/mel/vo_mel_land1.ogg"
+mel/land2 "sounds/player/mel/vo_mel_land2.ogg"
+mel/land3 "sounds/player/mel/vo_mel_land3.ogg"
+mel/land4 "sounds/player/mel/vo_mel_land4.ogg"
+mel/land5 "sounds/player/mel/vo_mel_land5.ogg"
+mel/land6 "sounds/player/mel/vo_mel_land6.ogg"
+mel/land7 "sounds/player/mel/vo_mel_land7.ogg"
 
 $random mel/usefail { mel/unf1 mel/unf2 mel/unf3 mel/unf4 mel/unfvo1 mel/unfvo2 mel/unfvo3 }
-mel/unf1 "sounds/players/mel/vo_mel_usefail1.ogg"
-mel/unf2 "sounds/players/mel/vo_mel_usefail2.ogg"
-mel/unf3 "sounds/players/mel/vo_mel_usefail3.ogg"
-mel/unf4 "sounds/players/mel/vo_mel_usefail4.ogg"
-mel/unfvo1 "sounds/players/mel/vo_mel_usefailvc1.ogg"
-mel/unfvo2 "sounds/players/mel/vo_mel_usefailvc2.ogg"
-mel/unfvo3 "sounds/players/mel/vo_mel_usefailvc3.ogg"
+mel/unf1 "sounds/player/mel/vo_mel_usefail1.ogg"
+mel/unf2 "sounds/player/mel/vo_mel_usefail2.ogg"
+mel/unf3 "sounds/player/mel/vo_mel_usefail3.ogg"
+mel/unf4 "sounds/player/mel/vo_mel_usefail4.ogg"
+mel/unfvo1 "sounds/player/mel/vo_mel_usefailvc1.ogg"
+mel/unfvo2 "sounds/player/mel/vo_mel_usefailvc2.ogg"
+mel/unfvo3 "sounds/player/mel/vo_mel_usefailvc3.ogg"
 
 //////////////////
 // Mel's Melee
 //////////////////
 
 $random mel/smallmelee  { mel/smallmelee1 mel/smallmelee2 mel/smallmelee3 mel/smallmelee4 mel/smallmelee5 mel/smallmelee6 mel/smallmelee7 null null null null null null null null null null null null null }
-mel/smallmelee1 "sounds/players/mel/melee/vo_mel_melee_sm01.ogg"
-mel/smallmelee2 "sounds/players/mel/melee/vo_mel_melee_sm02.ogg"
-mel/smallmelee3 "sounds/players/mel/melee/vo_mel_melee_sm03.ogg"
-mel/smallmelee4 "sounds/players/mel/melee/vo_mel_melee_sm04.ogg"
-mel/smallmelee5 "sounds/players/mel/melee/vo_mel_melee_sm05.ogg"
-mel/smallmelee6 "sounds/players/mel/melee/vo_mel_melee_sm06.ogg"
-mel/smallmelee7 "sounds/players/mel/melee/vo_mel_melee_sm07.ogg"
+mel/smallmelee1 "sounds/player/mel/melee/vo_mel_melee_sm01.ogg"
+mel/smallmelee2 "sounds/player/mel/melee/vo_mel_melee_sm02.ogg"
+mel/smallmelee3 "sounds/player/mel/melee/vo_mel_melee_sm03.ogg"
+mel/smallmelee4 "sounds/player/mel/melee/vo_mel_melee_sm04.ogg"
+mel/smallmelee5 "sounds/player/mel/melee/vo_mel_melee_sm05.ogg"
+mel/smallmelee6 "sounds/player/mel/melee/vo_mel_melee_sm06.ogg"
+mel/smallmelee7 "sounds/player/mel/melee/vo_mel_melee_sm07.ogg"
 
 $random mel/mediummelee  { mel/mediummelee1 mel/mediummelee2 mel/mediummelee3 mel/mediummelee4 mel/mediummelee5 mel/mediummelee6 mel/mediummelee7 mel/mediummelee8 mel/mediummelee9 mel/mediummelee10 mel/mediummelee11 mel/mediummelee12 null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null }
-mel/mediummelee1 "sounds/players/mel/melee/vo_mel_melee_md01.ogg"
-mel/mediummelee2 "sounds/players/mel/melee/vo_mel_melee_md02.ogg"
-mel/mediummelee3 "sounds/players/mel/melee/vo_mel_melee_md03.ogg"
-mel/mediummelee4 "sounds/players/mel/melee/vo_mel_melee_md04.ogg"
-mel/mediummelee5 "sounds/players/mel/melee/vo_mel_melee_md05.ogg"
-mel/mediummelee6 "sounds/players/mel/melee/vo_mel_melee_md06.ogg"
-mel/mediummelee7 "sounds/players/mel/melee/vo_mel_melee_md07.ogg"
-mel/mediummelee8 "sounds/players/mel/melee/vo_mel_melee_md08.ogg"
-mel/mediummelee9 "sounds/players/mel/melee/vo_mel_melee_md09.ogg"
-mel/mediummelee10 "sounds/players/mel/melee/vo_mel_melee_md10.ogg"
-mel/mediummelee11 "sounds/players/mel/melee/vo_mel_melee_md11.ogg"
-mel/mediummelee12 "sounds/players/mel/melee/vo_mel_melee_md12.ogg"
+mel/mediummelee1 "sounds/player/mel/melee/vo_mel_melee_md01.ogg"
+mel/mediummelee2 "sounds/player/mel/melee/vo_mel_melee_md02.ogg"
+mel/mediummelee3 "sounds/player/mel/melee/vo_mel_melee_md03.ogg"
+mel/mediummelee4 "sounds/player/mel/melee/vo_mel_melee_md04.ogg"
+mel/mediummelee5 "sounds/player/mel/melee/vo_mel_melee_md05.ogg"
+mel/mediummelee6 "sounds/player/mel/melee/vo_mel_melee_md06.ogg"
+mel/mediummelee7 "sounds/player/mel/melee/vo_mel_melee_md07.ogg"
+mel/mediummelee8 "sounds/player/mel/melee/vo_mel_melee_md08.ogg"
+mel/mediummelee9 "sounds/player/mel/melee/vo_mel_melee_md09.ogg"
+mel/mediummelee10 "sounds/player/mel/melee/vo_mel_melee_md10.ogg"
+mel/mediummelee11 "sounds/player/mel/melee/vo_mel_melee_md11.ogg"
+mel/mediummelee12 "sounds/player/mel/melee/vo_mel_melee_md12.ogg"
 
 $random mel/largemelee { mel/largemelee1 mel/largemelee2 mel/largemelee3 mel/largemelee4 mel/largemelee5 mel/largemelee6 mel/largemelee7 mel/largemelee8 mel/largemelee9 null null null null null null null null null null }
-mel/largemelee1 "sounds/players/mel/melee/vo_mel_melee_lg01.ogg"
-mel/largemelee2 "sounds/players/mel/melee/vo_mel_melee_lg02.ogg"
-mel/largemelee3 "sounds/players/mel/melee/vo_mel_melee_lg03.ogg"
-mel/largemelee4 "sounds/players/mel/melee/vo_mel_melee_lg04.ogg"
-mel/largemelee5 "sounds/players/mel/melee/vo_mel_melee_lg05.ogg"
-mel/largemelee6 "sounds/players/mel/melee/vo_mel_melee_lg06.ogg"
-mel/largemelee7 "sounds/players/mel/melee/vo_mel_melee_lg07.ogg"
-mel/largemelee8 "sounds/players/mel/melee/vo_mel_melee_lg08.ogg"
-mel/largemelee9 "sounds/players/mel/melee/vo_mel_melee_lg09.ogg"
+mel/largemelee1 "sounds/player/mel/melee/vo_mel_melee_lg01.ogg"
+mel/largemelee2 "sounds/player/mel/melee/vo_mel_melee_lg02.ogg"
+mel/largemelee3 "sounds/player/mel/melee/vo_mel_melee_lg03.ogg"
+mel/largemelee4 "sounds/player/mel/melee/vo_mel_melee_lg04.ogg"
+mel/largemelee5 "sounds/player/mel/melee/vo_mel_melee_lg05.ogg"
+mel/largemelee6 "sounds/player/mel/melee/vo_mel_melee_lg06.ogg"
+mel/largemelee7 "sounds/player/mel/melee/vo_mel_melee_lg07.ogg"
+mel/largemelee8 "sounds/player/mel/melee/vo_mel_melee_lg08.ogg"
+mel/largemelee9 "sounds/player/mel/melee/vo_mel_melee_lg09.ogg"
 
 $random mel/xlmelee { mel/xlmelee1 mel/xlmelee2 mel/xlmelee3 mel/xlmelee4 null null null null null null null null null null null null null null null null null null null }
-mel/xlmelee1 "sounds/players/mel/melee/vo_mel_melee_xl01_short.ogg"
-mel/xlmelee2 "sounds/players/mel/melee/vo_mel_melee_xl02_short.ogg"
-mel/xlmelee3 "sounds/players/mel/melee/vo_mel_melee_xl03_short.ogg"
-mel/xlmelee4 "sounds/players/mel/melee/vo_mel_melee_xl04.ogg"
+mel/xlmelee1 "sounds/player/mel/melee/vo_mel_melee_xl01_short.ogg"
+mel/xlmelee2 "sounds/player/mel/melee/vo_mel_melee_xl02_short.ogg"
+mel/xlmelee3 "sounds/player/mel/melee/vo_mel_melee_xl03_short.ogg"
+mel/xlmelee4 "sounds/player/mel/melee/vo_mel_melee_xl04.ogg"
 
 $random meltemp { meltemp1 meltemp2 meltemp3 meltemp4 meltemp5 null null null null null null }
-meltemp1 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic01.ogg" 
-meltemp2 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
-meltemp3 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
-meltemp4 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
-meltemp5 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
+meltemp1 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic01.ogg" 
+meltemp2 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
+meltemp3 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
+meltemp4 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
+meltemp5 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
 
 ////////////////////
 //Mel's Pickup Lines
 ////////////////////
 
 //SHOTGUN
-mel/shotgunpickup "sounds/players/mel/weaponpickups/vo_mel_pickup_shotgun1.ogg"
+mel/shotgunpickup "sounds/player/mel/weaponpickups/vo_mel_pickup_shotgun1.ogg"
 
 //GENERIC
 $random mel/genericpickup { mel/genericpickup1 mel/genericpickup2 mel/genericpickup3 mel/genericpickup4 mel/genericpickup5 mel/genericpickup6 mel/genericpickup7 mel/genericpickup8 mel/genericpickup9 mel/genericpickup10}
-mel/genericpickup1 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic01.ogg"
-mel/genericpickup2 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic02.ogg"
-mel/genericpickup3 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic03.ogg"
-mel/genericpickup4 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
-mel/genericpickup5 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
-mel/genericpickup6 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic06.ogg"
-mel/genericpickup7 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic07.ogg"
-mel/genericpickup8 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
-mel/genericpickup9 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic09.ogg"
-mel/genericpickup10 "sounds/players/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
+mel/genericpickup1 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic01.ogg"
+mel/genericpickup2 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic02.ogg"
+mel/genericpickup3 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic03.ogg"
+mel/genericpickup4 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
+mel/genericpickup5 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
+mel/genericpickup6 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic06.ogg"
+mel/genericpickup7 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic07.ogg"
+mel/genericpickup8 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
+mel/genericpickup9 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic09.ogg"
+mel/genericpickup10 "sounds/player/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
