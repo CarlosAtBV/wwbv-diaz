@@ -23,5 +23,5 @@ Fatso
 Archvile
 SpiderMastermind
 Cyberdemon
-WVerse_LostSoul
-WVerse_Imp
+TSP_LostSoul
+TSP_Imp
